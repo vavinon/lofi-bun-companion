@@ -1,0 +1,110 @@
+# 🐰 Lo-fi Bun Companion — Agent Operating Guidelines & Project Framework
+
+## 1. 🗣️ Language & Communication Policy
+- **User Interaction & Collaboration (🇹🇭 Thai)**: 
+  - Always converse, brainstorm, discuss architecture, and explain concepts in **Thai** for natural, clear, and nuanced communication.
+- **Codebase & Technical Assets (🇬🇧 English)**: 
+  - All source code, comments, JSDoc/TSDoc, commit messages, variable/type names, and file names MUST be in **English**.
+- **Documentation (`non-docs/`) (🇹🇭 / 🇬🇧 Hybrid)**: 
+  - Technical specs and architecture headers in English, supplemented with clear Thai summaries and explanations.
+
+---
+
+## 2. 📋 Core Workflow Protocol: "Plan-First Alignment"
+1. **Plan First**: Before writing or modifying non-trivial code, the Agent MUST create a dated implementation plan in `non-docs/tasks/YYYY-MM-DD-<task-name>.md`.
+2. **Visual Explanation**: Always use **Mermaid diagrams** or flowcharts to represent state machines, user flows, and component architecture.
+3. **User Alignment**: Discuss tradeoffs (Pros & Cons) and wait for user confirmation before executing changes.
+4. **Atomic & Non-Destructive Execution**: Implement changes in modular, verifiable steps. Never delete files or alter project-wide structure without explicit user agreement.
+5. **Verification & 5-Pillar Automated Quality Gates (`npm run verify`)**: 
+   - Before completing any task or making a commit, all 5 quality pillars MUST pass with 0 errors:
+     1. **Linting**: `npm run lint` (ESLint v9 flat config — no dead code, proper React hooks dependencies)
+     2. **Formatting**: `npm run format:check` (Prettier code style enforcement)
+     3. **Type Safety**: `npm run typecheck` (`tsc --noEmit` strict type analysis)
+     4. **Automated Unit Tests**: `npm test` (Vitest suites for state machine, timers, stores)
+     5. **Build Integrity**: `npm run build` (Vite production bundle verification)
+   - Combined verification script: `npm run verify` runs all 5 gates in sequence.
+6. **Git Operations & Branching Strategy**: 
+   - **Branch Hierarchy**:
+     - `main`: Stable baseline / Release-ready code (Clean & pristine root).
+     - `dev`: Active integration branch.
+     - `dev-<task-name>` (or `feat/<task-name>`): Feature branches branched off `dev` for specific task execution. Merged into `dev` only after passing `npm run verify`.
+   - **Decoupled & Manual Approval Protocol**:
+     - **`git commit`**: Local only. Used only after `npm run verify` passes 100%, and with explicit user approval.
+     - **`git push`**: Remote synchronization. **NEVER chained automatically after commit**. Pushing to remote is a strictly separate step requiring its own explicit confirmation after all local checks are complete.
+     - The Agent MUST NEVER execute automated commit-and-push chains (`git commit ... && git push`).
+
+7. **Living Documentation & Devlogs**: Update task checklists and record completed milestones in `non-docs/devlogs/YYYY-MM/YYYY-MM-DD.md`.
+
+---
+
+## 2.1 🧼 Code Simplicity, Modularity & Commenting Standards
+1. **KISS Principle (Keep It Simple, Clean & Understandable)**:
+   - Always prefer simple, straightforward, and readable solutions over clever, complex, or over-engineered abstractions.
+   - Avoid deep nesting, premature micro-optimizations, and bloated helper layers.
+2. **Granular File Modularity (Single Responsibility)**:
+   - Keep files small, focused, and organized by domain (ideally under 100–150 lines per file).
+   - Strictly separate:
+     - `types/`: Type definitions and constants only (no UI/logic).
+     - `stores/`: Pure state transitions & business logic.
+     - `components/`: Pure visual widgets decoupled from heavy math logic.
+     - `utils/`: Reusable, side-effect-free pure helper functions.
+3. **Clear & Intentional English Comments**:
+   - Write clear JSDoc and inline comments explaining **"WHY"** a design or formula exists (not just re-stating what code does).
+   - Document state transition triggers, priority orders, and CSS animation step math so anyone can debug instantly.
+
+---
+
+## 3. 🗂️ Workspace Directory Structure
+
+```text
+c:/DevProjects/lofi_bun_companion/
+├── AGENTS.md                  # Master guidelines, tech stack & protocols (this file)
+├── non-docs/
+│   ├── tasks/                 # Dated task plans (YYYY-MM-DD-<topic>.md)
+│   │   └── templates/         # Task templates
+│   ├── devlogs/               # Daily progress & decision logs (YYYY-MM/YYYY-MM-DD.md)
+│   ├── specs/                 # Technical specs, state diagrams & ADRs
+│   └── notes/                 # Brainstorming, inspirations & sound/sprite assets
+└── lofi-bun-companion/        # Application Source Code
+    ├── src/
+    │   ├── assets/            # Sprites, icons, and static images
+    │   ├── components/        # UI and visual widgets (Floating pet, Mini widget, Full view)
+    │   ├── hooks/             # Custom React hooks (System metrics, Timer, Audio)
+    │   ├── stores/            # Zustand state stores
+    │   ├── utils/             # Audio, time, math, and system monitor utilities
+    │   ├── types/             # TypeScript definitions
+    │   └── __tests__/         # Automated Vitest unit & integration test suites
+    └── public/
+        └── sounds/            # Lo-fi loops, ambient audio, and SFX
+```
+
+---
+
+## 4. 🎮 Project Overview: Lo-fi Bun Companion
+A cozy, lightweight Virtual Desk Companion featuring an animated bunny character, real-time hardware monitor (RunCat/Bongo Cat style), Pomodoro focus timer, and ambient soundscape mixer.
+
+### Core Modules
+- **Hardware-Reactive Bunny State Machine**:
+  - `IDLE / LOW_LOAD` (0-20% CPU): Chilling, sipping tea/coffee, gentle blinking
+  - `FOCUS / MED_LOAD` (20-60% CPU): Typing on keyboard at steady pace
+  - `FRENZY / HIGH_LOAD` (60-100% CPU): Blazing-fast typing, sweat drops, fire effect
+  - `HEAVY_RAM` (>80% RAM): Bun carrying heavy stacks of books/carrots (chubby state)
+  - `DISK_ACTIVE`: Fast-page flipping animation during heavy disk I/O
+  - `RESTING / NAP`: Stretching or napping when timer ends
+  - `HYDRATE`: Reminding user to drink water / take eye breaks
+- **Floating Desk Pet & Mini Widget Mode**:
+  - Always-on-Top / Draggable minimal floating companion badge
+  - Click to expand to full Pomodoro & Audio Mixer suite
+- **Pomodoro Timer**: Configurable Work/Break intervals with smooth visual cues
+- **Soundscape Mixer**: Independent volume channels for Lo-fi beats, rain, keyboard clicks, and cafe chatter
+- **Interactive Actions**: Clickable pet interactions (pats, treats, heart animations)
+
+### Tech Stack & Principles
+- **Frontend**: React + Vite + TypeScript + Tailwind CSS (or scoped CSS modules for pixel art)
+- **State Management**: Zustand
+- **System Monitoring**: Lightweight system metrics hook (polling intervals: 1.5–2s)
+- **Audio Engine**: Howler.js or Native Web Audio API
+- **Animation**: Pure CSS Spritesheet / Keyframes / Framer Motion for near-zero CPU usage
+- **Automated Testing**: Vitest + React Testing Library (Fast unit & integration tests)
+- **Desktop Packaging**: Tauri (or lightweight web wrapper)
+- **Modularity & Performance**: Strictly decouple Hardware Polling, Audio, Timer, and Character Animation states with minimal CPU/RAM footprint on idle.
