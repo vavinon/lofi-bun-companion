@@ -14,8 +14,9 @@
 ```mermaid
 graph TD
     subgraph Gen1["Gen 1: Standalone Desk Companion & Everywhere (v0.x - v1.x)"]
-        v01["v0.1: Core Sprite & State Engine"] --> v02["v0.2: Cozy Emotional Pet Widget"]
-        v02 --> v10["v1.0: Full Desktop Suite (Pomodoro + Real HW)"]
+        v01["v0.1: Core Sprite & State Engine"] --> v02["v0.2: Cozy Emotional Pet (Web)"]
+        v02 --> v05["v0.5: Desktop Shell & Real Hardware"]
+        v05 --> v10["v1.0: Full Desktop Suite (Pomodoro + Polish)"]
         v10 --> v15["v1.5: Browser Companion Extension (Chrome / Edge / Firefox)"]
     end
 
@@ -44,22 +45,30 @@ graph TD
 
 ## 3. 📋 รายละเอียดแต่ละ Generation
 
-### 🐾 Gen 1: Standalone Desk Companion (v0.1 – v1.0) — *Focus: 🐰 Lo-fi Bun Flagship*
+### 🐾 Gen 1: Standalone Desk Companion (v0.1 – v1.5) — *Focus: 🐰 Lo-fi Bun Flagship*
 * **v0.1 — Core Sprite Engine & Flagship Lo-fi Bun PoC**:
-  - โครงสร้าง React + Vite + TypeScript + Tailwind CSS + Vitest
+  - โครงสร้าง React + Vite + TypeScript + CSS Modules + Vitest
   - แอนิเมชัน Pixel Art 5 ท่าทางของ **🐰 Lo-fi Bun** (จิบชา, พิมพ์งาน, ไฟลุก, แบกกองแครอท, กอดหมอนหลับ)
-  - Pure CSS `steps()` GPU-accelerated Sprite Renderer (CPU 0.0%)
+  - Pure CSS `steps()` GPU-accelerated Sprite Renderer (CPU 0.0%) + Breathing Idle micro-animation
   - สถาปัตยกรรม Pluggable Companion Registry (พร้อมต่อเติมสัตว์เลี้ยงตัวถัดไปใน v2.0 ได้ทันที)
+  - Pure Utility Functions แยกจาก Store: `hysteresis.ts` + `stateResolver.ts` (Unit-testable อิสระ)
   - Interactive Mock Hardware Slider สำหรับทดสอบปรับค่า CPU/RAM/Disk ได้ทันที
-* **v0.2 — The Cozy Emotional Pet (Desk Widget)**:
-  - Mini Floating Pet Widget (~80x80px) ไร้ขอบ ลากได้อิสระพร้อมระบบ Snap ขอบจอ
+* **v0.2 — The Cozy Emotional Pet (Web Interactive)**:
   - Tactile Petting: คลิกลูบหัว Lo-fi Bun แล้วมีหัวใจลอย (`FloatingHearts`) และเสียง Purr ตอบรับนุ่มๆ
-  - AFK Inactivity Detection (>5 นาทีไม่แตะคอม ➜ Lo-fi Bun เข้าสู่ท่านอนสัปหงก)
-  - Hysteresis Filtering (±3% Buffer) ป้องกันแอนิเมชันกระตุก
+  - First Boot Unboxing: ตอนเปิดครั้งแรก Lo-fi Bun โผล่จากกล่องพัสดุ พร้อม speech bubble ต้อนรับ 📦
+  - AFK Inactivity Detection (>5 นาทีไม่แตะคอม ➜ Lo-fi Bun เข้าสู่ท่านอนสัปหงก) + Gentle Wakeup
+  - Time-of-Day Ambient Tint: สีพื้นหลังเปลี่ยนตามเวลาจริง (เช้า/กลางวัน/ค่ำ/ดึก) 🌅
+  - Speech Bubble System: ฟองคำพูดน่ารักโผล่สุ่มทุก 10-15 นาที ("☕ ชงชาให้นะ~")
+* **v0.5 — Desktop Shell & Real Hardware Sync** *(NEW)*:
+  - Tauri v2 Desktop Shell: หน้าต่างไร้ขอบ (Frameless), Always-on-Top, พื้นหลังโปร่งใส
+  - Mini Floating Pet Widget (~80x80px) ลากได้อิสระพร้อมระบบ Snap ขอบจอ + Dangling Pose
+  - Real Hardware Polling: Rust `sysinfo` crate (CPU, RAM, Disk I/O) ทุก 1.5 วินาที แทน Mock Sliders
+  - Hysteresis Filtering (±3% Buffer) ป้องกันแอนิเมชันกระตุกจากค่าจริง
 * **v1.0 — Complete Lo-fi Suite (MVP Production Release)**:
   - Expandable Pomodoro Dashboard (Classic Pomodoro, Countdown, Stopwatch, Hydration)
-  - Real Hardware Polling (Rust `sysinfo` poller ทุก 1.5s)
   - Audio Engine (Muted by default, เสียงเตือนนุ่มนวลตอนหมดเวลา)
+  - Eco Mode / Battery Saver Toggle (ลดแอนิเมชันเป็น 12 FPS + polling ทุก 3 วินาที)
+  - Focus Streak Milestones: Confetti burst เมื่อทำ Pomodoro ครบ 3 รอบติด 🎊
   - Cross-Platform Packaging:
     - 🪟 Windows: Portable Single-File `.exe` (~10MB) & `.msi` Installer (Auto-start)
     - 🍏 macOS: `.dmg` (Apple Silicon & Intel) + Menu Bar Companion

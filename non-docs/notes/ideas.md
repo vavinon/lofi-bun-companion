@@ -35,18 +35,28 @@
 | Feature | Target Version | Status |
 | :--- | :--- | :--- |
 | **GPU Pure CSS Sprite Engine** (Zero CPU) | **v0.1** | 🟡 In Progress |
-| **6 Animals Registry & State Machine** | **v0.1** | 🟡 In Progress |
+| **Pluggable Companion Registry & State Machine** | **v0.1** | 🟡 In Progress |
+| **Pure Utils: Hysteresis + State Resolver** | **v0.1** | 🟡 In Progress |
+| **Breathing Idle Micro-Animation** | **v0.1** | 🟡 In Progress |
 | **Interactive Mock Hardware Slider** | **v0.1** | 🟡 In Progress |
-| **Mini Floating Widget & Edge Snapping** | **v0.2** | 📅 Planned |
 | **Tactile Petting & Floating Hearts FX** | **v0.2** | 📅 Planned |
+| **First Boot Unboxing Animation** | **v0.2** | 📅 Planned |
 | **5-Minute AFK Inactivity Sleep Detection** | **v0.2** | 📅 Planned |
+| **Time-of-Day Ambient Tint** | **v0.2** | 📅 Planned |
+| **Speech Bubble System** | **v0.2** | 📅 Planned |
+| **Tauri v2 Desktop Shell (Frameless Widget)** | **v0.5** | 📅 Planned |
+| **Mini Floating Widget & Edge Snapping** | **v0.5** | 📅 Planned |
+| **Real Hardware Polling (Rust `sysinfo`)** | **v0.5** | 📅 Planned |
+| **Hysteresis Filtering with Real Metrics** | **v0.5** | 📅 Planned |
 | **Full Pomodoro Suite (4 Modes)** | **v1.0** | 📅 Planned |
-| **Real Hardware Polling (Rust `sysinfo`)** | **v1.0** | 📅 Planned |
+| **Audio Engine & Timer Chimes** | **v1.0** | 📅 Planned |
+| **Eco Mode / Battery Saver Toggle** | **v1.0** | 📅 Planned |
+| **Focus Streak Milestone Celebrations** | **v1.0** | 📅 Planned |
 | **Multi-Platform Desktop Packaging (Win/Mac/Linux)** | **v1.0** | 📅 Planned |
 | **Automated Vitest Test Suite** | **v1.0** | 📅 Planned |
 | **Browser Extension (Manifest V3 Side Panel & New Tab)** | **v1.5** | 📅 Planned |
 | **Custom Skin Drop-in Modding Folder** | **v2.0** | 💡 Future |
-| **Battery Saver Mode (12 FPS Throttle)** | **v2.0** | 💡 Future |
+| **Bun & Friends (5 New Companions)** | **v2.0** | 💡 Future |
 | **Idle Focus Foraging Quests (Tea Crafting)** | **v2.2** | 💡 Future |
 | **Isometric Cozy Room Decorator** | **v2.5** | 💡 Future |
 | **Lo-fi Study Cafe (P2P Co-Working)** | **v3.0** | 💡 Future |
