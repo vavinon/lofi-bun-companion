@@ -11,7 +11,7 @@
 ---
 
 ## 2. 📋 Core Workflow Protocol: "Plan-First Alignment"
-1. **Plan First**: Before writing or modifying non-trivial code, the Agent MUST create a dated implementation plan in `non-docs/tasks/YYYY-MM-DD-<task-name>.md`.
+1. **Plan First**: Before writing or modifying non-trivial code, the Agent MUST create a dated implementation plan in `non-docs/tasks/YYYY-MM-DD-<version>-<task-name>.md`.
 2. **Visual Explanation**: Always use **Mermaid diagrams** or flowcharts to represent state machines, user flows, and component architecture.
 3. **User Alignment**: Discuss tradeoffs (Pros & Cons) and wait for user confirmation before executing changes.
 4. **Atomic & Non-Destructive Execution**: Implement changes in modular, verifiable steps. Never delete files or alter project-wide structure without explicit user agreement.
@@ -23,17 +23,46 @@
      4. **Automated Unit Tests**: `npm test` (Vitest suites for state machine, timers, stores)
      5. **Build Integrity**: `npm run build` (Vite production bundle verification)
    - Combined verification script: `npm run verify` runs all 5 gates in sequence.
-6. **Git Operations & Branching Strategy**: 
-   - **Branch Hierarchy**:
-     - `main`: Stable baseline / Release-ready code (Clean & pristine root).
-     - `dev`: Active integration branch.
-     - `dev-<task-name>` (or `feat/<task-name>`): Feature branches branched off `dev` for specific task execution. Merged into `dev` only after passing `npm run verify`.
-   - **Decoupled & Manual Approval Protocol**:
-     - **`git commit`**: Local only. Used only after `npm run verify` passes 100%, and with explicit user approval.
-     - **`git push`**: Remote synchronization. **NEVER chained automatically after commit**. Pushing to remote is a strictly separate step requiring its own explicit confirmation after all local checks are complete.
-     - The Agent MUST NEVER execute automated commit-and-push chains (`git commit ... && git push`).
 
-7. **Living Documentation & Devlogs**: Update task checklists and record completed milestones in `non-docs/devlogs/YYYY-MM/YYYY-MM-DD.md`.
+---
+
+## 2.1 🏷️ Engineering & Collaboration Standards
+
+### A. Versioning Standard: **SemVer 2.0.0 (Semantic Versioning)**
+- Format: `MAJOR.MINOR.PATCH` (e.g. `0.1.0`, `0.2.0`, `1.0.0`).
+- **`0.y.z`**: Initial development / Prototype phase.
+- **`MAJOR` (`X.0.0`)**: Incompatible architectural/breaking changes.
+- **`MINOR` (`0.X.0` / `1.X.0`)**: New backward-compatible features.
+- **`PATCH` (`0.0.X` / `1.0.X`)**: Backward-compatible bug fixes & minor tweaks.
+- Git release tags MUST use `v<MAJOR>.<MINOR>.<PATCH>` (e.g. `v0.1.0`).
+
+### B. Commit Standard: **Conventional Commits 1.0.0**
+- Commit format: `<type>(<scope>): <description>` (in English, imperative mood, lowercase subject).
+- **Types**:
+  - `feat`: New feature (e.g. `feat(renderer): implement pure css step animator`)
+  - `fix`: Bug fix (e.g. `fix(hysteresis): fix threshold boundary check`)
+  - `refactor`: Code change without behavioral change (e.g. `refactor(store): extract pure state resolver`)
+  - `perf`: Performance optimization (e.g. `perf(renderer): reduce repaint cycles during idle`)
+  - `test`: Adding or updating test suites (e.g. `test(utils): add tests for hysteresis buffer`)
+  - `docs`: Documentation updates (e.g. `docs(spec): align roadmap to semver 2.0.0`)
+  - `chore`: Maintenance, dependencies, toolchain (e.g. `chore(deps): configure eslint flat config`)
+
+### C. Git Operations & Branching Strategy
+- **Branch Hierarchy**:
+  - `main`: Release-ready code & production tags (`v1.0.0`).
+  - `dev`: Active integration branch.
+  - **Feature Branch**: `feat/<semver>-<slug>` (e.g. `feat/0.1.0-core-sprite-engine`).
+  - **Bugfix Branch**: `fix/<slug>` (e.g. `fix/hysteresis-jitter`).
+  - **Chore / Docs Branch**: `chore/<slug>` or `docs/<slug>`.
+- **Decoupled & Manual Approval Protocol**:
+  - **`git commit`**: Local only. Used only after `npm run verify` passes 100%, and with explicit user approval.
+  - **`git push`**: Remote synchronization. **NEVER chained automatically after commit**. Pushing to remote is a strictly separate step requiring its own explicit confirmation.
+  - The Agent MUST NEVER execute automated commit-and-push chains (`git commit ... && git push`).
+
+### D. Architectural Decision Records (ADRs) & Changelog
+- Significant architectural choices are documented in `non-docs/specs/adr/ADR-XXX-<title>.md`.
+- Milestone releases maintain a `CHANGELOG.md` following **Keep a Changelog 1.1.0** format.
+- Daily progress & decision logs are tracked in `non-docs/devlogs/YYYY-MM/YYYY-MM-DD.md`.
 
 ---
 
