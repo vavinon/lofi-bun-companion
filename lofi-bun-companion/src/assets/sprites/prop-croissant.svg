@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 20" width="28" height="20" shape-rendering="crispEdges">
+  <defs>
+    <style>
+      .croissant-gold { fill: #E59840; }
+      .croissant-crust { fill: #C67D34; }
+      .croissant-shadow { fill: #9A531C; }
+      .butter-yellow { fill: #FEE440; }
+      .butter-light { fill: #FFF382; }
+      .butter-drop { fill: #FEE440; stroke: #2E221F; stroke-width: 0.6; }
+      .prop-outline { stroke: #2E221F; stroke-width: 1.2; stroke-linecap: square; stroke-linejoin: miter; }
+      .prop-outline-thin { stroke: #2E221F; stroke-width: 0.8; stroke-linecap: square; }
+      .layer-line { stroke: #C67D34; stroke-width: 1; stroke-linecap: round; }
+      .layer-shadow { stroke: #9A531C; stroke-width: 0.9; stroke-linecap: round; }
+    </style>
+  </defs>
+
+  <!-- ========================================================================= -->
+  <!-- GOLDEN CROISSANT TOWER STACK PROP (Heavy RAM >80% Overlay for Bakery Shiba) -->
+  <!-- Size: 28 x 20 px                                                          -->
+  <!-- ========================================================================= -->
+
+  <!-- Top Garnish: Melting Golden Butter Cube on Apex -->
+  <g id="apex-butter-cube">
+    <!-- Butter Cube Body & Highlight -->
+    <rect x="12.5" y="1" width="3.5" height="3" rx="0.5" class="butter-yellow" stroke="#2E221F" stroke-width="0.8"/>
+    <rect x="13" y="1.3" width="2.5" height="1" rx="0.3" class="butter-light"/>
+    <!-- Cute Butter Melt Drips -->
+    <path d="M12.5 3 C11.8 4, 12 5.5, 12.8 5 C13.2 4.5, 13 3.5, 12.5 3 Z" class="butter-yellow"/>
+    <circle cx="16.5" cy="4.2" r="0.7" class="butter-yellow"/>
+  </g>
+
+  <!-- Bottom-Left Base Croissant -->
+  <g id="bottom-left-croissant">
+    <!-- Left Crescent Tip -->
+    <path d="M1 15 C1 13, 3 12, 5 13 L4 17 Z" class="croissant-crust" stroke="#2E221F" stroke-width="0.9"/>
+    <!-- Croissant Body Base -->
+    <path d="M4 14 C4 11.5, 8 11, 13 13 C14 15, 10 17.5, 5 16.5 C4 16, 4 15, 4 14 Z" class="croissant-shadow prop-outline"/>
+    <!-- Golden Flaky Midsection -->
+    <path d="M4.5 13.8 C5.5 12.2, 9 12, 12.5 13.5 C13 15, 9.5 16.5, 5.5 15.8 Z" class="croissant-gold"/>
+    <path d="M6 14.5 C7.5 14, 10 14, 12 14.5 C11 15.5, 8.5 15.8, 6.5 15.2 Z" class="croissant-crust"/>
+    <!-- Layer Swirls -->
+    <path d="M7 13 Q8.5 15.5 10 13" fill="none" class="layer-shadow"/>
+  </g>
+
+  <!-- Bottom-Right Base Croissant -->
+  <g id="bottom-right-croissant">
+    <!-- Right Crescent Tip -->
+    <path d="M27 15 C27 13, 25 12, 23 13 L24 17 Z" class="croissant-crust" stroke="#2E221F" stroke-width="0.9"/>
+    <!-- Croissant Body Base -->
+    <path d="M24 14 C24 11.5, 20 11, 15 13 C14 15, 18 17.5, 23 16.5 C24 16, 24 15, 24 14 Z" class="croissant-shadow prop-outline"/>
+    <!-- Golden Flaky Midsection -->
+    <path d="M23.5 13.8 C22.5 12.2, 19 12, 15.5 13.5 C15 15, 18.5 16.5, 22.5 15.8 Z" class="croissant-gold"/>
+    <path d="M22 14.5 C20.5 14, 18 14, 16 14.5 C17 15.5, 19.5 15.8, 21.5 15.2 Z" class="croissant-crust"/>
+    <!-- Layer Swirls -->
+    <path d="M21 13 Q19.5 15.5 18 13" fill="none" class="layer-shadow"/>
+  </g>
+
+  <!-- Middle Bridge Croissant (Stacked horizontally across base) -->
+  <g id="middle-bridge-croissant">
+    <!-- Crescent Tips Left & Right -->
+    <path d="M4 10 C3 9, 5 7.5, 7 8.5 L6 11.5 Z" class="croissant-crust" stroke="#2E221F" stroke-width="0.8"/>
+    <path d="M24 10 C25 9, 23 7.5, 21 8.5 L22 11.5 Z" class="croissant-crust" stroke="#2E221F" stroke-width="0.8"/>
+    <!-- Plump Middle Body -->
+    <path d="M6 10 C6 7.5, 12 6.5, 22 10 C22.5 12.5, 17 14, 7 12 C6 11, 6 10.5, 6 10 Z" class="croissant-shadow prop-outline"/>
+    <!-- Golden Flaky Layers -->
+    <path d="M7 9.5 C8 7.8, 13 7.2, 21 9.5 C21.5 11.5, 16.5 13, 8 11.5 Z" class="croissant-gold"/>
+    <path d="M9 8.8 C11.5 8.2, 16.5 8.5, 19.5 9.5 C18.5 11.2, 13.5 11.5, 10 10.5 Z" class="croissant-crust"/>
+    <!-- Crispy Layer Creases -->
+    <line x1="11" y1="8" x2="12.5" y2="11.5" class="layer-line"/>
+    <line x1="14" y1="7.8" x2="15" y2="11.8" class="layer-line"/>
+    <line x1="17" y1="8.2" x2="18" y2="11.5" class="layer-line"/>
+    <!-- Butter Highlight Glaze -->
+    <ellipse cx="14" cy="8.6" rx="2.5" ry="0.8" class="butter-light" opacity="0.8"/>
+  </g>
+
+  <!-- Top-Center Crown Croissant (Wobbly Stack Summit) -->
+  <g id="top-center-croissant">
+    <!-- Left & Right Tapered Crescent Tips -->
+    <path d="M7 5.5 C6 4.5, 8 3.5, 10 4.5 L9 7 Z" class="croissant-crust" stroke="#2E221F" stroke-width="0.8"/>
+    <path d="M21 5.5 C22 4.5, 20 3.5, 18 4.5 L19 7 Z" class="croissant-crust" stroke="#2E221F" stroke-width="0.8"/>
+    <!-- Golden Curved Body -->
+    <path d="M9 5.5 C9 3.2, 14 2.5, 19 5.5 C19.5 7.8, 15.5 9, 10 7.8 C9 7, 9 6.2, 9 5.5 Z" class="croissant-shadow prop-outline"/>
+    <!-- Golden Core Crust -->
+    <path d="M9.8 5 C11 3.8, 14.5 3.5, 18.2 5 C18.5 6.8, 15 8, 10.8 7 Z" class="croissant-gold"/>
+    <path d="M11.5 4.5 C13 4, 16 4.2, 17.2 5 C16.5 6.5, 13.5 6.8, 12 6 Z" class="croissant-crust"/>
+    <!-- Croissant Swirl Grooves -->
+    <line x1="13" y1="3.8" x2="13.8" y2="6.5" class="layer-line"/>
+    <line x1="15.5" y1="4" x2="16" y2="6.6" class="layer-line"/>
+    <!-- Warm Glaze Sheen -->
+    <ellipse cx="14.5" cy="4.5" rx="2" ry="0.6" class="butter-light" opacity="0.9"/>
+  </g>
+
+  <!-- Floating Butter & Crumbs Details -->
+  <g id="golden-crumbs">
+    <circle cx="2" cy="18" r="0.6" class="croissant-crust"/>
+    <circle cx="26" cy="18" r="0.6" class="croissant-crust"/>
+    <circle cx="25.5" cy="8" r="0.5" class="butter-yellow"/>
+    <circle cx="2.5" cy="9" r="0.5" class="butter-yellow"/>
+  </g>
+</svg>
