@@ -44,18 +44,28 @@ stateDiagram-v2
 1. **`IDLE` (CPU 0–20%)**: ความเร็ว 800ms / loop (4 Frames) — อารมณ์สบายๆ ผ่อนคลาย จิบเครื่องดื่ม ขยับหายใจ
 2. **`FOCUS` (CPU 20–60%)**: ความเร็ว 600ms / loop (4 Frames) — อารมณ์มีสมาธิ ทำงานจังหวะคงที่ Lo-fi Beat
 3. **`FRENZY` (CPU 60–100%)**: ความเร็ว 300ms / loop (4 Frames) — สปีดรัวเร็ว มีเอฟเฟกต์ไฟ/เหงื่อ/ควันสู้ชีวิต
-4. **`HEAVY_RAM` (RAM >80%)**: Sprite Overlay Layer — กองสิ่งของตามเอกลักษณ์ของแต่ละตัวซ้อนทับ
+4. **`HEAVY_RAM` (RAM >80%)**: Sprite Overlay Layer — กองสิ่งของตามเอกลักษณ์ของแต่ละตัวซ้อนทับ (ไม่ต้องวาดสไปรต์ตัวละครใหม่)
 5. **`REST` (โหมดพักผ่อน / AFK)**: ความเร็ว 1000ms / loop (4 Frames) — ท่านอน หลับตาพริ้ม สัปหงก หรือพักผ่อน
+
+> [!NOTE]
+> **⚡ Transient Micro-Burst (`DISK_ACTIVE`)**:
+> เมื่อมีการอ่าน/เขียนดิสก์หนักๆ สัตว์เลี้ยงจะแสดง Action พิเศษสั้นๆ **1.5 วินาที** (เช่น เปิดหนังสือรัวๆ / เคลื่อนไหวรวดเร็ว) ซ้อนทับ แล้วกลับสู่สถานะ Base เดิมทันที ไม่ถือเป็น Base Body Loop ถาวร
 
 ---
 
-## 3. 🎨 Art & Asset Specifications
+## 3. 🎨 Art, Asset & Window Sizing Specifications
 
-* **Base Grid**: `64 x 64 px` ต่อ 1 Frame
+* **Base Canvas Grid**: `64 x 64 px` ต่อ 1 Frame
 * **Spritesheet Format**: `256 x 64 px` ต่อ 1 ท่าทาง (4 Frames เรียงแนวนอน)
 * **Outline**: 1-pixel Dark Outline (แนะนำ `#2E221F` หรือ Dark Tone ประจำตัว)
 * **Palette Budget**: จำกัด 16–24 สีต่อตัวละคร เพื่อคุมโทน Cozy Lo-fi Aesthetics
-* **Rendering**: ใช้ Pure CSS GPU Accelerated `steps(4)` พร้อม `image-rendering: pixelated;`
+* **Rendering Engine**: ใช้ Pure CSS GPU Accelerated `steps(4)` พร้อม `image-rendering: pixelated;`
+* **📐 Window Geometry & Integer Scaling Formula**:
+  $$\text{Window Size} = (\text{Base Grid } 64\text{px} \times \text{Scale}) + \text{Padding } (16\text{-}32\text{px})$$
+  - **Scale 1x**: ตัวละคร $64\text{px}$ $\rightarrow$ หน้าต่างรวม $80 \times 80\text{px}$
+  - **Scale 2x**: ตัวละคร $128\text{px}$ $\rightarrow$ หน้าต่างรวม $160 \times 160\text{px}$
+  - **Scale 3x**: ตัวละคร $192\text{px}$ $\rightarrow$ หน้าต่างรวม $224 \times 224\text{px}$
+  - **Scale 4x**: ตัวละคร $256\text{px}$ $\rightarrow$ หน้าต่างรวม $288 \times 288\text{px}$
 
 ---
 

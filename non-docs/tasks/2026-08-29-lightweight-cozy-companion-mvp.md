@@ -1,7 +1,7 @@
 # 🎯 Task: Lightweight Cozy Companion MVP (Initial Concept Draft)
-> ⚠️ **Note (Status: Superseded)**: แผนงานฉบับร่างเบื้องต้นนี้ถูก Refactor แยกย่อยเป็นแผนงานรายเวอร์ชันตามหลัก **The Gradual WOW Journey** แล้ว โดยเริ่มดำเนินการที่ [2026-08-29-v0.1-core-sprite-engine.md](file:///c:/DevProjects/lofi_bun_companion/non-docs/tasks/2026-08-29-v0.1-core-sprite-engine.md)
+> ⚠️ **Note (Status: Superseded)**: แผนงานฉบับร่างเบื้องต้นนี้ถูก Refactor แยกย่อยเป็นแผนงานรายเวอร์ชันตามหลัก **SemVer 2.0.0 & The Gradual WOW Journey** แล้ว โดยเริ่มดำเนินการที่ [2026-08-30-0.1.0-core-sprite-engine.md](file:///c:/DevProjects/lofi_bun_companion/non-docs/tasks/2026-08-30-0.1.0-core-sprite-engine.md)
 - **Date**: 2026-08-29
-- **Status**: ⚪ Superseded by v0.1 Task Plan
+- **Status**: ⚪ Superseded by v0.1.0 Task Plan
 - **Author/Owner**: Agent & User
 
 ---

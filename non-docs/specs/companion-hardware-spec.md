@@ -56,7 +56,7 @@ To ensure predictable behavior and avoid unnecessary re-renders, the state machi
 1. **Priority 1: Pomodoro Rest / Break Mode (`RESTING`)**
    - When focus timer completes, animal immediately enters sleep/relaxation state, overriding hardware metrics.
 2. **Priority 2: Disk I/O Burst (`DISK_ACTIVE`)**
-   - High disk read/write triggers a quick 1.5-second animation burst (e.g. flipping pages, sonar ping), then smoothly reverts back to baseline CPU tier.
+   - High disk read/write triggers a quick **1.5-second transient micro-action** (e.g. flipping pages, sonar ping, scratching box) as an overlay/action modifier, then smoothly reverts back to baseline CPU tier.
 3. **Priority 3: CPU Workload Tier (`IDLE` / `FOCUS` / `FRENZY`)**
    - Base body animation speed and pose are driven by CPU usage buckets with hysteresis (preventing erratic state switching when CPU fluctuates around thresholds).
 4. **Independent Prop Layer: Memory Load (`HEAVY_RAM`)**
@@ -64,7 +64,7 @@ To ensure predictable behavior and avoid unnecessary re-renders, the state machi
 
 ---
 
-## 4. 🖥️ Display Modes
+## 4. 🖥️ Display Modes & Window Architecture
 
 ```mermaid
 stateDiagram-v2
@@ -74,8 +74,10 @@ stateDiagram-v2
 ```
 
 ### 1. Mini Floating Pet Mode (Always-on-Top)
-- **Size**: ~100x60px or ~80x80px (Adjustable scaling: 1x, 2x, 3x crisp pixel integer scale)
-- **Window**: Transparent background, frameless, draggable anywhere on screen, Always-on-Top
+- **Window Geometry**: Base Grid $64\text{px} \times \text{Scale} + \text{Padding}$ (e.g. $80\text{x}80\text{px}$ @1x, $160\text{x}160\text{px}$ @2x, $224\text{x}224\text{px}$ @3x)
+- **Window Architecture**:
+  - **`v0.1.0 – v0.2.0` (Web Mode)**: Custom Web Overlay Context Menu & Lab Container
+  - **`v0.3.0+` (Tauri Desktop)**: Transparent background, frameless, draggable anywhere on screen, Always-on-Top, Native Context Menu
 - **Mouse Interactions**:
   - **Right Click**: Opens **Quick Context Menu** (Switch companions, toggle Pomodoro, mute audio, eco mode, exit)
   - **Single Left Click**: Quick Head Pat / Petting reaction (`FloatingHearts` + soft purr)
