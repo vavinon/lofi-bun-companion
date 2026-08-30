@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🐾 Lo-fi Companion Character Showcase & Pixel Art Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Press+Start+2P&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #120f0d;
+      --bg-card: rgba(30, 24, 21, 0.75);
+      --border-card: rgba(255, 220, 180, 0.12);
+      --accent-warm: #ff9e4a;
+      --accent-matcha: #8da399;
+      --accent-tea: #a3b899;
+      --text-main: #f5ebe0;
+      --text-muted: #b09f92;
+      --pixel-scale: 3;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 15% 20%, rgba(255, 158, 74, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 75%, rgba(141, 163, 153, 0.08) 0%, transparent 45%),
+        linear-gradient(180deg, #161210 0%, #0d0a09 100%);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    .badge-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: rgba(255, 158, 74, 0.15);
+      border: 1px solid rgba(255, 158, 74, 0.3);
+      border-radius: 999px;
+      color: var(--accent-warm);
+      font-size: 0.825rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #fff4e8 0%, #e5a953 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+      max-width: 680px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Character Tabs */
+    .char-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 2rem;
+    }
+
+    .tab-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 12px;
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 0.925rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(12px);
+    }
+
+    .tab-btn:hover {
+      background: rgba(45, 36, 31, 0.9);
+      border-color: rgba(255, 158, 74, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .tab-btn.active {
+      background: linear-gradient(135deg, #2e221d 0%, #1e1714 100%);
+      border-color: var(--accent-warm);
+      box-shadow: 0 4px 20px rgba(255, 158, 74, 0.25);
+      color: #fff;
+    }
+
+    .tab-btn .tag {
+      font-size: 0.7rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #dfd7cf;
+    }
+
+    .tab-btn.active .tag {
+      background: var(--accent-warm);
+      color: #1e1714;
+      font-weight: 700;
+    }
+
+    /* Main Showcase Grid */
+    .studio-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    @media (max-width: 960px) {
+      .studio-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Stage Panel */
+    .stage-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 24px;
+      padding: 2rem;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .stage-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .char-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .char-role {
+      font-size: 0.875rem;
+      color: var(--accent-warm);
+      font-weight: 500;
+      margin-top: 2px;
+    }
+
+    .scale-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 4px 10px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .scale-btn {
+      background: none;
+      border: none;
+      color: var(--text-main);
+      font-weight: bold;
+      cursor: pointer;
+      padding: 2px 8px;
+      border-radius: 6px;
+      transition: background 0.15s;
+    }
+
+    .scale-btn.active, .scale-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: var(--accent-warm);
+    }
+
+    /* Canvas Stage Area */
+    .viewport-box {
+      width: 100%;
+      height: 340px;
+      background: radial-gradient(circle at center, #271f1b 0%, #15110f 100%);
+      border: 2px dashed rgba(255, 220, 180, 0.15);
+      border-radius: 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+    }
+
+    .desk-mat {
+      position: absolute;
+      bottom: 25px;
+      width: 80%;
+      height: 48px;
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 24px;
+      filter: blur(8px);
+      z-index: 1;
+    }
+
+    .character-avatar {
+      position: relative;
+      z-index: 2;
+      image-rendering: pixelated;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: crisp-edges;
+      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    /* Animated Pixel Art Sprite Container */
+    .pixel-canvas-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    /* State Switcher Buttons */
+    .state-pills {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-bottom: 1.25rem;
+    }
+
+    .state-pill {
+      padding: 10px 8px;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      color: var(--text-muted);
+      font-size: 0.825rem;
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .state-pill:hover {
+      border-color: rgba(255, 158, 74, 0.4);
+      color: var(--text-main);
+    }
+
+    .state-pill.active {
+      background: rgba(255, 158, 74, 0.15);
+      border-color: var(--accent-warm);
+      color: #fff;
+      box-shadow: inset 0 0 12px rgba(255, 158, 74, 0.2);
+    }
+
+    /* Hardware Simulation Sliders */
+    .hardware-lab {
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 16px;
+      padding: 1.25rem;
+    }
+
+    .slider-row {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 1rem;
+    }
+
+    .slider-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .slider-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .slider-header span:last-child {
+      color: var(--accent-warm);
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.75rem;
+    }
+
+    input[type="range"] {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      outline: none;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--accent-warm);
+      cursor: pointer;
+      box-shadow: 0 0 8px var(--accent-warm);
+    }
+
+    /* Info Side Panel */
+    .info-card {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .spec-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 20px;
+      padding: 1.5rem;
+      backdrop-filter: blur(16px);
+    }
+
+    .spec-box h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .desc-text {
+      font-size: 0.925rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 1rem;
+    }
+
+    .palette-swatch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      padding: 6px;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      cursor: pointer;
+      transition: transform 0.15s;
+    }
+
+    .palette-swatch:hover {
+      transform: scale(1.05);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .swatch-color {
+      width: 100%;
+      height: 28px;
+      border-radius: 6px;
+    }
+
+    .swatch-hex {
+      font-family: monospace;
+      font-size: 0.675rem;
+      color: var(--text-muted);
+    }
+
+    /* Pixel CSS Animations */
+    @keyframes bob-idle {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-4px); }
+    }
+
+    @keyframes bob-focus {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      25% { transform: translateY(-2px) rotate(1deg); }
+      75% { transform: translateY(1px) rotate(-1deg); }
+    }
+
+    @keyframes bob-frenzy {
+      0% { transform: translate(1px, 1px) rotate(0deg); }
+      20% { transform: translate(-2px, -1px) rotate(2deg); }
+      40% { transform: translate(2px, 2px) rotate(-2deg); }
+      60% { transform: translate(-1px, 1px) rotate(1deg); }
+      80% { transform: translate(2px, -2px) rotate(-1deg); }
+      100% { transform: translate(0px, 0px) rotate(0deg); }
+    }
+
+    @keyframes breath-rest {
+      0%, 100% { transform: scaleY(1) scaleX(1); }
+      50% { transform: scaleY(0.92) scaleX(1.04); }
+    }
+
+    .anim-idle { animation: bob-idle 1.6s ease-in-out infinite; }
+    .anim-focus { animation: bob-focus 0.6s linear infinite; }
+    .anim-frenzy { animation: bob-frenzy 0.25s linear infinite; }
+    .anim-rest { animation: breath-rest 2.4s ease-in-out infinite; }
+
+    /* Prop Overlay (Heavy RAM) */
+    .prop-overlay {
+      position: absolute;
+      top: -24px;
+      right: -10px;
+      font-size: 1.8rem;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
+      animation: bob-idle 1.2s ease-in-out infinite;
+      display: none;
+    }
+
+    .prop-overlay.show {
+      display: block;
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+    .status-ready { background: #2b4c3f; color: #a3e6c0; }
+    .status-draft { background: #4c3e2b; color: #e6c5a3; }
+
+    /* Floating Toast */
+    #toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #2e221f;
+      border: 1px solid var(--accent-warm);
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 100;
+    }
+    #toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="badge-tag">🐾 Multi-Character Studio Preview</div>
+      <h1>Lo-fi Bun & Friends Companion Gallery</h1>
+      <p class="subtitle">
+        Visual Pixel Art & State Machine preview สำหรับตัวละครทั้งหมดในจักรวาล Lo-fi Bun Companion (Grid 64x64px Scaled via CSS Pixelated)
+      </p>
+    </header>
+
+    <!-- Character Selector Tabs -->
+    <div class="char-tabs" id="charTabs">
+      <!-- Generated via JS -->
+    </div>
+
+    <!-- Main Studio Grid -->
+    <div class="studio-grid">
+      
+      <!-- Stage Section -->
+      <div class="stage-card">
+        <div class="stage-header">
+          <div>
+            <div class="char-title" id="charTitle">🐰 Lo-fi Bun <span class="status-badge status-ready" id="charStatus">v0.1.0 Ready</span></div>
+            <div class="char-role" id="charRole">Flagship Desk Companion & Focus Partner</div>
+          </div>
+          <div class="scale-controls">
+            <span>Scale:</span>
+            <button class="scale-btn" onclick="setScale(2)">2x</button>
+            <button class="scale-btn active" onclick="setScale(3)">3x</button>
+            <button class="scale-btn" onclick="setScale(4)">4x</button>
+          </div>
+        </div>
+
+        <!-- Pixel Avatar Viewport -->
+        <div class="viewport-box">
+          <div class="desk-mat"></div>
+          <div class="pixel-canvas-wrapper" id="spriteWrapper">
+            <div class="prop-overlay" id="propOverlay">🥕</div>
+            <div id="characterSvg" class="character-avatar anim-idle">
+              <!-- SVG Character Injected Here -->
+            </div>
+          </div>
+        </div>
+
+        <!-- State Selector Pills -->
+        <div class="state-pills">
+          <div class="state-pill active" onclick="setState('IDLE')">☕ IDLE (0-20%)</div>
+          <div class="state-pill" onclick="setState('FOCUS')">⌨️ FOCUS (20-60%)</div>
+          <div class="state-pill" onclick="setState('FRENZY')">🔥 FRENZY (>60%)</div>
+          <div class="state-pill" onclick="setState('REST')">🛏️ REST (Break)</div>
+        </div>
+
+        <!-- Live Hardware Simulator -->
+        <div class="hardware-lab">
+          <div class="slider-row">
+            <div class="slider-header">
+              <span>Simulated CPU Load (Controls State & Speed)</span>
+              <span id="cpuVal">12%</span>
+            </div>
+            <input type="range" id="cpuSlider" min="0" max="100" value="12" oninput="onCpuChange(this.value)" />
+          </div>
+          <div class="slider-row">
+            <div class="slider-header">
+              <span>Simulated RAM Usage (Triggers Signature Prop Layer)</span>
+              <span id="ramVal">45%</span>
+            </div>
+            <input type="range" id="ramSlider" min="0" max="100" value="45" oninput="onRamChange(this.value)" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Info & Palette Sidebar -->
+      <div class="info-card">
+        
+        <!-- Storyboard Detail -->
+        <div class="spec-box">
+          <h3>📖 State Storyboard</h3>
+          <p class="desc-text" id="stateDesc">
+            <strong>☕ IDLE State:</strong> น้องต่ายนั่งกอดถ้วยมัทฉะอุ่นๆ สองมือ ควันรูปหัวใจลอยขึ้นช้าๆ หูขวาที่พับขยับดุ๊กดิ๊กตามจังหวะหายใจเข้าออกอย่างสบายใจ
+          </p>
+        </div>
+
+        <!-- Anatomy & Concept -->
+        <div class="spec-box">
+          <h3>🌟 Visual Identity & Lore</h3>
+          <p class="desc-text" id="charLore">
+            ขนสีครีมวานิลลา หูซ้ายตั้งตรงหูขวาพับนุ่มนิ่ม สวมผ้าพันคอไหมพรมสีเขียวเสจคู่ใจ มาพร้อมชามเซรามิกใส่มัทฉะและคีย์บอร์ดเรโทร
+          </p>
+        </div>
+
+        <!-- Color Palette Tokens -->
+        <div class="spec-box">
+          <h3>🎨 16-Bit Color Palette Tokens (Click to Copy)</h3>
+          <div class="palette-grid" id="paletteGrid">
+            <!-- Palette Swatches Injected Here -->
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div id="toast">Copied HEX code!</div>
+
+  <script>
+    // Character Database
+    const CHARACTERS = {
+      bun: {
+        id: 'bun',
+        name: 'Lo-fi Bun',
+        emoji: '🐰',
+        status: 'v0.1.0 Ready',
+        isReady: true,
+        role: 'Flagship Desk Companion & Cozy Focus Partner',
+        prop: '🥕',
+        lore: 'น้องต่ายขนสีครีมวานิลลา หูซ้ายตั้งตรงหูขวาพับนุ่มนิ่ม สวมผ้าพันคอไหมพรมสีเขียวเสจ มาพร้อมถ้วยมัทฉะอุ่นๆ และคีย์บอร์ดเรโทร',
+        palette: [
+          { name: 'FUR_BASE', hex: '#FFF8F0' },
+          { name: 'FUR_SHADOW', hex: '#EADBC8' },
+          { name: 'SCARF_SAGE', hex: '#8DA399' },
+          { name: 'TEA_GREEN', hex: '#A3B899' },
+          { name: 'CHEEK_PINK', hex: '#FFB5B5' },
+          { name: 'FIRE_ORANGE', hex: '#FF7A59' },
+          { name: 'CARROT_ORANGE', hex: '#FF9A3C' },
+          { name: 'INK_OUTLINE', hex: '#2E221F' }
+        ],
+        states: {
+          IDLE: '☕ น้องต่ายนั่งกอดถ้วยมัทฉะอุ่นๆ สองมือ ควันรูปหัวใจลอยขึ้นช้าๆ หูขวาที่พับขยับดุ๊กดิ๊กตามจังหวะหายใจ',
+          FOCUS: '⌨️ มือน้อยๆ สลับกดแป้นพิมพ์เรโทรอย่างตั้งใจ หูเอนไปข้างหลังเล็กน้อย มีสมาธิเต็มเปี่ยม',
+          FRENZY: '🔥 พิมพ์งานไฟลุกรัวเร็ว! เปลวไฟสีส้มปุ๊กปิ๊กลุกวูบขึ้นด้านหลังหัว เม็ดเหงื่อพุ่งข้างแก้ม สู้ตาย!',
+          REST: '🛏️ นอนกอดหมอนใบใหญ่นุ่มนิ่มสีลาเวนเดอร์ ท้องกระเพื่อมตามจังหวะหายใจ ฟอง z ลอยแตกเป๊าะ'
+        },
+        svg: `
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Bun Base Pixel Grid Representation -->
+            <!-- Left Ear Straight -->
+            <rect x="22" y="10" width="6" height="14" rx="3" fill="#FFF8F0" stroke="#2E221F" stroke-width="2"/>
+            <rect x="24" y="13" width="2" height="8" rx="1" fill="#FFB5B5"/>
+            <!-- Right Floppy Ear -->
+            <rect x="36" y="14" width="7" height="11" rx="3" fill="#FFF8F0" stroke="#2E221F" stroke-width="2" transform="rotate(25 36 14)"/>
+            <rect x="38" y="16" width="3" height="6" rx="1" fill="#FFB5B5" transform="rotate(25 38 16)"/>
+            <!-- Head & Body (Chubby 1:1.2) -->
+            <ellipse cx="32" cy="36" rx="16" ry="15" fill="#FFF8F0" stroke="#2E221F" stroke-width="2"/>
+            <!-- Cute Blush Cheeks -->
+            <circle cx="23" cy="38" r="2.5" fill="#FFB5B5"/>
+            <circle cx="41" cy="38" r="2.5" fill="#FFB5B5"/>
+            <!-- Eyes & Glasses -->
+            <circle cx="27" cy="34" r="2.5" stroke="#2E221F" stroke-width="1.5" fill="#FFF"/>
+            <circle cx="37" cy="34" r="2.5" stroke="#2E221F" stroke-width="1.5" fill="#FFF"/>
+            <circle cx="27.5" cy="34" r="1.2" fill="#3D2B27"/>
+            <circle cx="37.5" cy="34" r="1.2" fill="#3D2B27"/>
+            <line x1="29.5" y1="34" x2="34.5" y2="34" stroke="#2E221F" stroke-width="1.5"/>
+            <!-- Nose & Mouth -->
+            <path d="M31 37L32 38L33 37" stroke="#2E221F" stroke-width="1.2" stroke-linecap="round"/>
+            <!-- Sage Green Scarf -->
+            <path d="M20 42C24 45 40 45 44 42C45 46 41 48 32 48C23 48 19 46 20 42Z" fill="#8DA399" stroke="#2E221F" stroke-width="1.5"/>
+            <rect x="24" y="45" width="5" height="8" rx="1" fill="#6A8076" stroke="#2E221F" stroke-width="1.2"/>
+            <!-- Matcha Cup / Keyboard Prop -->
+            <rect x="27" y="47" width="10" height="7" rx="2" fill="#A3B899" stroke="#2E221F" stroke-width="1.5"/>
+            <rect x="29" y="46" width="6" height="2" rx="1" fill="#FFF"/>
+          </svg>
+        `
+      },
+
+      neko: {
+        id: 'neko',
+        name: 'Coffee Neko',
+        emoji: '🐱',
+        status: 'v1.1.0 Draft',
+        isReady: false,
+        role: 'Cozy Barista & Chill Study Companion',
+        prop: '🐟',
+        lore: 'เจ้าเหมียวส้มขนลายทาง สวมผ้ากันเปื้อนบาริสต้าสีมอคค่า นั่งประจำเคาน์เตอร์ไม้ดริปกาแฟหอมกรุ่นและปัดแก้วเบาๆ',
+        palette: [
+          { name: 'NEKO_ORANGE', hex: '#FF9E4A' },
+          { name: 'NEKO_STRIPE', hex: '#D96B27' },
+          { name: 'NEKO_CREAM', hex: '#FFF5EB' },
+          { name: 'APRON_MOCHA', hex: '#5C3D2E' },
+          { name: 'EYE_EMERALD', hex: '#4E9F3D' },
+          { name: 'COFFEE_DARK', hex: '#331D12' },
+          { name: 'NOSE_PINK', hex: '#FFB0B0' },
+          { name: 'FISH_SILVER', hex: '#A8B2C1' }
+        ],
+        states: {
+          IDLE: '☕ นั่งจิบกาแฟดริปอุ่นๆ บนบาร์ไม้ ควันกรุ่น หางแกว่งซ้ายขวาอย่างผ่อนคลาย',
+          FOCUS: '⌨️ สองอุ้งเท้านุ่มนิ่ม (Paw Paws) กดแป้นพิมพ์เป็นจังหวะเพลงแจ๊ส Lo-fi หูตั้งชัน',
+          FRENZY: '🔥 แมวดีด! วิ่งวนรอบโต๊ะ รัวอุ้งมือด้วยความเร็วสูง กาแฟเดือดปุดๆ สายฟ้าแลบ',
+          REST: '🛏️ ขดตัวกลมดิ๊กในกล่องกระดาษใบโปรด หูพับลง หางพันรอบตัวหลับปุ๋ย'
+        },
+        svg: `
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Triangle Ears -->
+            <polygon points="20,24 26,12 30,22" fill="#FF9E4A" stroke="#2E221F" stroke-width="2"/>
+            <polygon points="22,22 26,15 28,21" fill="#FFB0B0"/>
+            <polygon points="44,24 38,12 34,22" fill="#FF9E4A" stroke="#2E221F" stroke-width="2"/>
+            <polygon points="42,22 38,15 36,21" fill="#FFB0B0"/>
+            <!-- Chubby Head & Body -->
+            <ellipse cx="32" cy="36" rx="16" ry="14" fill="#FF9E4A" stroke="#2E221F" stroke-width="2"/>
+            <ellipse cx="32" cy="40" rx="9" ry="8" fill="#FFF5EB"/>
+            <!-- Tabby Stripes -->
+            <path d="M30 24L32 27L34 24" stroke="#D96B27" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M19 32L24 33" stroke="#D96B27" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M45 32L40 33" stroke="#D96B27" stroke-width="1.5" stroke-linecap="round"/>
+            <!-- Eyes Emerald -->
+            <ellipse cx="26" cy="33" rx="2.5" ry="3" fill="#4E9F3D" stroke="#2E221F" stroke-width="1.2"/>
+            <ellipse cx="38" cy="33" rx="2.5" ry="3" fill="#4E9F3D" stroke="#2E221F" stroke-width="1.2"/>
+            <circle cx="27" cy="32" r="0.8" fill="#FFF"/>
+            <circle cx="39" cy="32" r="0.8" fill="#FFF"/>
+            <!-- Nose & Mouth -->
+            <polygon points="32,36 30.5,35 33.5,35" fill="#FFB0B0"/>
+            <path d="M30 38C31 39 32 39 32 37C32 39 33 39 34 38" stroke="#2E221F" stroke-width="1.2"/>
+            <!-- Mocha Apron -->
+            <path d="M26 44L38 44L36 52L28 52Z" fill="#5C3D2E" stroke="#2E221F" stroke-width="1.5"/>
+            <circle cx="32" cy="47" r="1.5" fill="#FFF4E0"/>
+            <!-- Tail -->
+            <path d="M46 44C52 42 54 36 52 32" stroke="#FF9E4A" stroke-width="4" stroke-linecap="round"/>
+            <path d="M46 44C52 42 54 36 52 32" stroke="#2E221F" stroke-width="1.5" fill="none"/>
+          </svg>
+        `
+      },
+
+      shiba: {
+        id: 'shiba',
+        name: 'Bakery Shiba',
+        emoji: '🐶',
+        status: 'v1.1.0 Draft',
+        isReady: false,
+        role: 'Artisan Baker & Morale Booster',
+        prop: '🥐',
+        lore: 'น้องหมาชิบะขนสีทองขนมปังปิ้ง สวมหมวกเชฟสีขาวนวล ชอบนวดแป้งโดว์อย่างกระตือรือร้นและแจกรอยยิ้มกำลังใจ',
+        palette: [
+          { name: 'SHIBA_GOLD', hex: '#E5A953' },
+          { name: 'SHIBA_CREAM', hex: '#FFF4E0' },
+          { name: 'HAT_WHITE', hex: '#FFFFFF' },
+          { name: 'HAT_SHADOW', hex: '#D8D2C9' },
+          { name: 'DOUGH_BEIGE', hex: '#F5EBE0' },
+          { name: 'CROISSANT', hex: '#C67D34' },
+          { name: 'CHEEK_BLUSH', hex: '#FFBFA3' },
+          { name: 'NOSE_BLACK', hex: '#2B1E1A' }
+        ],
+        states: {
+          IDLE: '☕ ยืนกอดก้อนแป้งนุ่มๆ หมวกเชฟเอียงเล็กน้อย หางม้วนกลมแกว่งดุ๊กดิ๊กอย่างอารมณ์ดี',
+          FOCUS: '⌨️ นวดแป้งขนมปังโดว์เข้าจังหวะบีท ขยับสองมือกดแป้งขึ้นลงสม่ำเสมอ',
+          FRENZY: '🔥 นวดแป้งติดสปีด! แป้งฟุ้งกระจาย เตาอบควันพุ่งฟุ้ง ตาหยีสู้ตายสุดใจ',
+          REST: '🛏️ นอนหงายแผ่พุงกลิ้งไปมา หมวกเชฟหลุดมาปิดตา หายใจท้องกระเพื่อมน่าเอ็นดู'
+        },
+        svg: `
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Ears -->
+            <polygon points="18,22 24,10 28,20" fill="#E5A953" stroke="#2E221F" stroke-width="2"/>
+            <polygon points="46,22 40,10 36,20" fill="#E5A953" stroke="#2E221F" stroke-width="2"/>
+            <!-- Chef Hat -->
+            <path d="M26 14C24 10 28 6 32 6C36 6 40 10 38 14Z" fill="#FFFFFF" stroke="#2E221F" stroke-width="1.5"/>
+            <rect x="26" y="13" width="12" height="3" fill="#D8D2C9" stroke="#2E221F" stroke-width="1"/>
+            <!-- Head & Chubby Cheeks -->
+            <ellipse cx="32" cy="35" rx="16" ry="14" fill="#E5A953" stroke="#2E221F" stroke-width="2"/>
+            <ellipse cx="23" cy="38" rx="6" ry="5" fill="#FFF4E0"/>
+            <ellipse cx="41" cy="38" rx="6" ry="5" fill="#FFF4E0"/>
+            <!-- Eyebrow Dots -->
+            <circle cx="26" cy="27" r="1.8" fill="#FFF4E0"/>
+            <circle cx="38" cy="27" r="1.8" fill="#FFF4E0"/>
+            <!-- Eyes Happy Arcs -->
+            <path d="M25 32C26 30 28 30 29 32" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M35 32C36 30 38 30 39 32" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+            <!-- Nose & Open Happy Mouth -->
+            <ellipse cx="32" cy="36" rx="2" ry="1.4" fill="#2B1E1A"/>
+            <path d="M30 38C31 41 33 41 34 38" stroke="#2E221F" stroke-width="1.2" fill="#FF8A8A"/>
+            <!-- Bread Dough Prop -->
+            <ellipse cx="32" cy="48" rx="9" ry="5" fill="#F5EBE0" stroke="#2E221F" stroke-width="1.5"/>
+          </svg>
+        `
+      },
+
+      capybara: {
+        id: 'capybara',
+        name: 'Onsen Capybara',
+        emoji: '🍊',
+        status: 'v1.1.0 Draft',
+        isReady: false,
+        role: 'Zen Master & Anti-Burnout / Stress Reducer',
+        prop: '🍊',
+        lore: 'พี่กะปินั่งแช่น้ำออนเซ็นอุ่นๆ บนหัวมีส้มยูซุวางนิ่งสงบ ไม่ว่าคอมจะโหลดหนักแค่ไหน พี่กะปิก็ยังชิลขั้นสุด',
+        palette: [
+          { name: 'CAPY_BROWN', hex: '#8C6239' },
+          { name: 'CAPY_SNOUT', hex: '#543820' },
+          { name: 'YUZU_YELLOW', hex: '#FFD13B' },
+          { name: 'YUZU_LEAF', hex: '#5B8A3C' },
+          { name: 'WOOD_CYPRESS', hex: '#D1A774' },
+          { name: 'SPRING_AQUA', hex: '#8BD3DD' },
+          { name: 'STEAM_WHITE', hex: '#FFFFFF' },
+          { name: 'OUTLINE_DARK', hex: '#241810' }
+        ],
+        states: {
+          IDLE: '☕ แช่น้ำอุ่นในอ่างไม้ ส้มยูซุวางนิ่งบนหัว ละอองไอน้ำลอยเอื่อยๆ ชิลไร้กังวล',
+          FOCUS: '⌨️ กะพริบตาทีละข้างอย่างมีสติ ใบไม้ลอยวนตามผิวน้ำ สมาธิสงบนิ่งดั่งสายน้ำ',
+          FRENZY: '🔥 น้ำในอ่างเริ่มเดือดปุดๆ ส้มยูซุหมุนติ้ว แต่หน้าตายังคงนิ่งสงบแบบ Zen ปลงกับโลก',
+          REST: '🛏️ ค่อยๆ จมตัวลงไปในน้ำเหลือแต่จมูกกับส้มยูซุ หลับตาพริ้มฟินที่สุดในสามโลก'
+        },
+        svg: `
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Yuzu on Head -->
+            <circle cx="32" cy="16" r="4.5" fill="#FFD13B" stroke="#241810" stroke-width="1.5"/>
+            <path d="M32 12C33 10 35 10 36 11" stroke="#5B8A3C" stroke-width="1.5" stroke-linecap="round"/>
+            <!-- Capy Head (Rectangular & Stoic) -->
+            <rect x="20" y="20" width="24" height="20" rx="6" fill="#8C6239" stroke="#241810" stroke-width="2"/>
+            <rect x="18" y="27" width="10" height="13" rx="4" fill="#543820" stroke="#241810" stroke-width="1.5"/>
+            <!-- Tiny Ear -->
+            <ellipse cx="41" cy="22" rx="2.5" ry="2" fill="#543820" stroke="#241810" stroke-width="1.2"/>
+            <!-- Calm Half-Closed Eye -->
+            <line x1="28" y1="28" x2="34" y2="28" stroke="#241810" stroke-width="2" stroke-linecap="round"/>
+            <!-- Nostril -->
+            <circle cx="21" cy="33" r="1.2" fill="#241810"/>
+            <!-- Onsen Wood Tub & Water -->
+            <rect x="12" y="42" width="40" height="16" rx="4" fill="#D1A774" stroke="#241810" stroke-width="2"/>
+            <path d="M14 43C18 41 46 41 50 43" stroke="#8BD3DD" stroke-width="3" stroke-linecap="round"/>
+            <!-- Steam -->
+            <path d="M26 12C25 9 27 8 26 5" stroke="#FFFFFF" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
+            <path d="M38 10C37 8 39 7 38 4" stroke="#FFFFFF" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
+          </svg>
+        `
+      },
+
+      cockatiel: {
+        id: 'cockatiel',
+        name: 'DJ Cockatiel',
+        emoji: '🦜',
+        status: 'v1.1.0 Draft',
+        isReady: false,
+        role: 'Beat Maker & Lo-fi Rhythm Keeper',
+        prop: '💿',
+        lore: 'นกคอกคาเทลหงอนเหลืองแก้มส้ม สวมหูฟังเรโทร ชอบโยกหัวตามจังหวะ Lo-fi Beat และสร้างสรรค์ดนตรีโฟกัส',
+        palette: [
+          { name: 'TIEL_GREY', hex: '#9E9E9E' },
+          { name: 'TIEL_YELLOW', hex: '#FFF176' },
+          { name: 'TIEL_ORANGE', hex: '#FF7043' },
+          { name: 'GEAR_TEAL', hex: '#4DB6AC' },
+          { name: 'BEAK_BEIGE', hex: '#D7CCC8' },
+          { name: 'VINYL_BLACK', hex: '#212121' },
+          { name: 'WING_WHITE', hex: '#ECEFF1' },
+          { name: 'OUTLINE', hex: '#263238' }
+        ],
+        states: {
+          IDLE: '☕ ยืนโยกหัวเบาๆ ตามจังหวะ หงอนขนนกพริ้วไหวขึ้นลงอย่างอารมณ์ดี',
+          FOCUS: '⌨️ สวมหูฟัง เคาะจะงอยปากและเท้าลงบนแป้นคีย์บอร์ดเรโทรสร้างจังหวะบีท',
+          FRENZY: '🔥 โยกหัวสุดเหวี่ยง (Extreme Headbang)! แผ่นเสียงหมุนไฟแลบ โน้ตดนตรีลอยฟุ้ง',
+          REST: '🛏️ ซุกหน้าเก็บจะงอยปากเข้าไปในขนปีก หลับตานิ่งๆ บนคอนไม้ สบายใจ'
+        },
+        svg: `
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Yellow Crest -->
+            <path d="M30 18C28 10 24 8 22 6C26 10 32 12 34 16" stroke="#FFF176" stroke-width="3" stroke-linecap="round"/>
+            <path d="M33 16C33 10 30 7 28 4C32 8 36 10 37 15" stroke="#FFE082" stroke-width="2" stroke-linecap="round"/>
+            <!-- Grey Body & Yellow Face -->
+            <ellipse cx="32" cy="38" rx="14" ry="15" fill="#9E9E9E" stroke="#263238" stroke-width="2"/>
+            <ellipse cx="28" cy="32" rx="10" ry="9" fill="#FFF176"/>
+            <!-- Bright Orange Cheek Dot -->
+            <circle cx="26" cy="34" r="3.5" fill="#FF7043"/>
+            <!-- Cute Eye -->
+            <circle cx="32" cy="30" r="2" fill="#212121"/>
+            <circle cx="32.5" cy="29.5" r="0.7" fill="#FFF"/>
+            <!-- Beak -->
+            <path d="M36 32L42 34L36 37Z" fill="#D7CCC8" stroke="#263238" stroke-width="1.2"/>
+            <!-- Headphones -->
+            <path d="M22 28C22 18 42 18 42 28" stroke="#4DB6AC" stroke-width="2.5" fill="none"/>
+            <rect x="20" y="26" width="4" height="8" rx="2" fill="#00897B" stroke="#263238" stroke-width="1"/>
+            <rect x="40" y="26" width="4" height="8" rx="2" fill="#00897B" stroke="#263238" stroke-width="1"/>
+          </svg>
+        `
+      },
+
+      dolphin: {
+        id: 'dolphin',
+        name: 'Wave Dolphin',
+        emoji: '🐬',
+        status: 'v1.1.0 Draft',
+        isReady: false,
+        role: 'Flow State Surfer & Deep Work Buddy',
+        prop: '🪸',
+        lore: 'โลมาสีฟ้าน้ำทะเลผิวละมุน แหวกว่ายในสายน้ำแห่งสมาธิ ช่วยนำพาผู้ใช้เข้าสู่สภาวะ Deep Flow State',
+        palette: [
+          { name: 'OCEAN_BLUE', hex: '#4EA8DE' },
+          { name: 'OCEAN_DEEP', hex: '#2D6A4F' },
+          { name: 'BELLY_WHITE', hex: '#F0F8FF' },
+          { name: 'BUBBLE_AQUA', hex: '#90E0EF' },
+          { name: 'CORAL_PINK', hex: '#FF8FAB' },
+          { name: 'SPARKLE_GOLD', hex: '#FFE6A7' },
+          { name: 'WATER_LIGHT', hex: '#CAF0F8' },
+          { name: 'OUTLINE_NAVY', hex: '#1D3557' }
+        ],
+        states: {
+          IDLE: '☕ ลอยตัวนิ่งๆ บนผิวน้ำ ครีบขยับพยุงตัว ฟองอากาศรูปหัวใจลอยขึ้นช้าๆ สดชื่น',
+          FOCUS: '⌨️ แหวกว่ายเป็นวงกลมราบรื่น เข้าสู่สภาวะ Flow State คลื่นน้ำพลิ้วไหวสงบ',
+          FRENZY: '🔥 กระโดดหมุนตัว 360 องศาพุ่งเหนือน้ำ ละอองน้ำแตกกระจายด้วยความเร็วสูง',
+          REST: '🛏️ ลอยตัวนิ่งบนห่วงยางเป็ดสีเหลือง หลับตาพริ้ม ฟองอากาศลอยแตกเบาๆ'
+        },
+        svg: `
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Curved Dolphin Body -->
+            <path d="M16 42C14 30 26 20 42 22C48 23 52 28 48 34C44 38 32 44 20 44Z" fill="#4EA8DE" stroke="#1D3557" stroke-width="2"/>
+            <!-- White Belly -->
+            <path d="M20 43C28 43 38 38 42 34C36 38 28 40 20 43Z" fill="#F0F8FF"/>
+            <!-- Dorsal Fin -->
+            <path d="M28 21C30 15 34 16 36 21Z" fill="#4EA8DE" stroke="#1D3557" stroke-width="1.5"/>
+            <!-- Flipper -->
+            <path d="M30 36C34 40 38 38 36 34Z" fill="#3A86C8" stroke="#1D3557" stroke-width="1.2"/>
+            <!-- Happy Eye & Smile -->
+            <path d="M44 26C45 25 47 25 48 26" stroke="#1D3557" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M47 29C49 29 50 28 51 28" stroke="#1D3557" stroke-width="1.2" stroke-linecap="round"/>
+            <!-- Bubbles -->
+            <circle cx="18" cy="24" r="2.5" fill="#90E0EF" stroke="#1D3557" stroke-width="1" opacity="0.8"/>
+            <circle cx="22" cy="18" r="1.5" fill="#90E0EF" opacity="0.8"/>
+          </svg>
+        `
+      }
+    };
+
+    let currentCharKey = 'bun';
+    let currentState = 'IDLE';
+    let currentScale = 3;
+
+    // Render Tabs
+    function renderTabs() {
+      const tabsContainer = document.getElementById('charTabs');
+      tabsContainer.innerHTML = Object.keys(CHARACTERS).map(key => {
+        const c = CHARACTERS[key];
+        const activeClass = key === currentCharKey ? 'active' : '';
+        return `
+          <button class="tab-btn ${activeClass}" onclick="selectChar('${key}')">
+            <span>${c.emoji}</span>
+            <span>${c.name}</span>
+            <span class="tag">${c.isReady ? 'v0.1.0' : 'v1.1.0'}</span>
+          </button>
+        `;
+      }).join('');
+    }
+
+    // Select Character
+    function selectChar(key) {
+      currentCharKey = key;
+      renderTabs();
+      updateView();
+    }
+
+    // Set Scale
+    function setScale(scale) {
+      currentScale = scale;
+      document.querySelectorAll('.scale-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      const avatar = document.getElementById('characterSvg');
+      avatar.style.transform = `scale(${scale})`;
+    }
+
+    // Set State
+    function setState(state) {
+      currentState = state;
+      document.querySelectorAll('.state-pill').forEach(pill => {
+        if (pill.innerText.includes(state)) {
+          pill.classList.add('active');
+        } else {
+          pill.classList.remove('active');
+        }
+      });
+
+      // Update Animation Class
+      const avatar = document.getElementById('characterSvg');
+      avatar.className = 'character-avatar';
+      if (state === 'IDLE') avatar.classList.add('anim-idle');
+      else if (state === 'FOCUS') avatar.classList.add('anim-focus');
+      else if (state === 'FRENZY') avatar.classList.add('anim-frenzy');
+      else if (state === 'REST') avatar.classList.add('anim-rest');
+
+      avatar.style.transform = `scale(${currentScale})`;
+
+      // Update State Description
+      const char = CHARACTERS[currentCharKey];
+      document.getElementById('stateDesc').innerHTML = `<strong>${state} State:</strong> ${char.states[state]}`;
+    }
+
+    // CPU Slider Simulator
+    function onCpuChange(val) {
+      document.getElementById('cpuVal').innerText = val + '%';
+      if (val > 60) setState('FRENZY');
+      else if (val >= 20) setState('FOCUS');
+      else setState('IDLE');
+    }
+
+    // RAM Slider Simulator
+    function onRamChange(val) {
+      document.getElementById('ramVal').innerText = val + '%';
+      const prop = document.getElementById('propOverlay');
+      if (val > 80) {
+        prop.classList.add('show');
+      } else {
+        prop.classList.remove('show');
+      }
+    }
+
+    // Copy Color Hex
+    function copyHex(hex) {
+      navigator.clipboard.writeText(hex);
+      const toast = document.getElementById('toast');
+      toast.innerText = `Copied ${hex} to clipboard!`;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2000);
+    }
+
+    // Update Full View
+    function updateView() {
+      const char = CHARACTERS[currentCharKey];
+      
+      // Header & Lore
+      document.getElementById('charTitle').innerHTML = `${char.emoji} ${char.name} <span class="status-badge ${char.isReady ? 'status-ready' : 'status-draft'}">${char.status}</span>`;
+      document.getElementById('charRole').innerText = char.role;
+      document.getElementById('charLore').innerText = char.lore;
+      document.getElementById('propOverlay').innerText = char.prop;
+
+      // SVG
+      document.getElementById('characterSvg').innerHTML = char.svg;
+      
+      // Palette
+      const paletteGrid = document.getElementById('paletteGrid');
+      paletteGrid.innerHTML = char.palette.map(p => `
+        <div class="palette-swatch" onclick="copyHex('${p.hex}')" title="${p.name} - Click to copy">
+          <div class="swatch-color" style="background-color: ${p.hex};"></div>
+          <span class="swatch-hex">${p.hex}</span>
+        </div>
+      `).join('');
+
+      setState(currentState);
+    }
+
+    // Initialize
+    renderTabs();
+    updateView();
+  </script>
+</body>
+</html>

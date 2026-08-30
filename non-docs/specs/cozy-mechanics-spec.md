@@ -8,30 +8,50 @@
 
 ---
 
-## 2. 🐾 Tactile Micro-Interactions (การตอบสนองเมื่อมีปฏิสัมพันธ์)
+## 2. 🖱️ Comprehensive Mouse & Desktop Interaction Map (ระบบสั่งการผ่านเมาส์)
+
+เพื่อให้การใช้งานลื่นไหลและไม่รบกวนสมาธิ การสั่งการทั้งหมดจะถูกควบคุมผ่านท่าทางเมาส์ที่ชัดเจน:
 
 ```mermaid
 flowchart TD
-    Click[Left Click on Pet] --> PetAction{Action Evaluator}
-    PetAction -->|Quick Pat| HeartFX[Spawn Floating Heart Sparkles ❤️]
-    PetAction -->|Quick Pat| Sound[Subtle Soft Purr / Chirp 🎵 Optional]
-    PetAction -->|Quick Pat| EarTwitch[Happy Ear Twitch / Tail Wag Animation ✨]
+    MouseInput[Mouse Actions on Companion]
     
-    Drag[Click & Hold / Drag] --> Dangling[Dangling Legs / Scruff Grab Pose 🐾]
-    Drop[Release Drag] --> Landing[Gentle Landing Bounce]
+    MouseInput -->|Right Click| ContextMenu["📋 Quick Context Menu (เมนูลัด สลับตัว/ตั้งค่า/ปิดเสียง)"]
+    MouseInput -->|Single Left Click| PetAction["❤️ Tactile Petting (ลูบหัว/หัวใจลอย/เสียง Purr)"]
+    MouseInput -->|Double Left Click| Dashboard["🎛️ Full Dashboard (Pomodoro & Soundscape Mixer)"]
+    MouseInput -->|Click & Drag| Dangling["🐾 Move & Drag (ห้อยขา / Snap ขอบจอ)"]
+    MouseInput -->|Hover| Tooltip["📊 Cozy Tooltip (แสดง CPU / RAM จริง)"]
 ```
 
-### 1. Head Patting & Rubbing
-- **Trigger**: คลิกซ้ายที่ตัวสัตว์เลี้ยง
-- **Visual Feedback**: แอนิเมชันหัวใจสีชมพูพาสเทลลอยขึ้น (`FloatingHearts`) พร้อมสัตว์เลี้ยงกระดิกหู/ยิ้มตาหยี
-- **Audio Feedback**: เสียง Purr นุ่มๆ เบาๆ (เฉพาะเมื่อผู้ใช้เปิดเสียง)
-- **Counter**: เก็บสถิติ "Pats Today" สั้นๆ เพื่อความเพลิดเพลิน
+### 📋 ตารางข้อกำหนดพฤติกรรมของเมาส์ (Interaction Matrix)
 
-### 2. Dragging & Physics
-- เมื่อคลิกค้างแล้วลากน้อง: ตัวละครจะเปลี่ยนเป็นท่าห้อยขากลางอากาศ (Dangling pose)
-- เมื่อปล่อยเมาส์: มีแรงกระเด้งนุ่มนวล (Soft landing bounce) พร้อม Snap ติดขอบจออย่างเป็นระเบียบ
+| ท่าทางเมาส์ (Mouse Gesture) | พฤติกรรมที่ตอบสนอง (Interaction Behavior) | รายละเอียดทางเทคนิค & Feedback |
+| :--- | :--- | :--- |
+| **คลิกขวา (Right Click)** | **เปิด Quick Context Menu** | เปิดเมนูสั่งการด่วนแบบ Native/Custom Frameless Menu ไม่บังหน้าจอ |
+| **คลิกซ้าย 1 ครั้ง (Single Click)** | **ลูบหัวน้อง (Head Pat / Petting)** | สัตว์เลี้ยงยิ้มตาหยี + แอนิเมชันหัวใจพาสเทลลอย `FloatingHearts` + เสียง Purr เบาๆ |
+| **ดับเบิลคลิก (Double Click)** | **เปิด/ย่อ Full Dashboard** | ขยายหน้าต่างสู่โหมด Pomodoro Focus Suite & Sound Mixer หรือย่อกลับ |
+| **คลิกซ้ายค้างแล้วลาก (Drag)** | **ย้ายตำแหน่งสัตว์เลี้ยง** | น้องเปลี่ยนเป็นท่าห้อยขากลางอากาศ (Dangling pose) และ Snap ขอบจอเมื่อปล่อย |
+| **เมาส์ชี้ค้าง (Hover)** | **แสดง Cozy Tooltip** | Tooltip สไตล์ Lo-fi โชว์ข้อมูลสถานะ เช่น `CPU: 18% | RAM: 42% (Focus Mode)` |
 
 ---
+
+### 🎛️ โครงสร้างเมนูคลิกขวา (Right-Click Context Menu Structure)
+
+```text
+┌────────────────────────────────────────────────────────┐
+│  🐰 Lo-fi Bun Companion                          v0.1.0 │
+├────────────────────────────────────────────────────────┤
+│  🎛️  Open Full Focus Dashboard           (Double Click)│
+│  🐾  Switch Companion                      ▶ Submenu   │ ──▶ [ • 🐰 Lo-fi Bun (Active) ]
+│  ⏱️  Quick Pomodoro (25m Focus)                         │     [   🐱 Coffee Neko       ]
+│  🔇  Mute / Unmute Ambient Sounds                       │     [   🐶 Bakery Shiba      ]
+│  🌱  Eco Mode (Battery Saver 12 FPS)                    │     [   🍊 Onsen Capybara    ]
+│  📌  Always on Top                       [✔ Enabled]   │     [   🦜 DJ Cockatiel      ]
+├────────────────────────────────────────────────────────┤     [   🐬 Wave Dolphin      ]
+│  ⚙️  Preferences & Hotkeys...                           │
+│  ❌  Quit Companion                                     │
+└────────────────────────────────────────────────────────┘
+```
 
 ## 3. 💤 Inactivity & Ambient Life State (ระบบตรวจจับความเงียบ)
 

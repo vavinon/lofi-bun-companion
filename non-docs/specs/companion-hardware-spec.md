@@ -75,12 +75,13 @@ stateDiagram-v2
 
 ### 1. Mini Floating Pet Mode (Always-on-Top)
 - **Size**: ~100x60px or ~80x80px (Adjustable scaling: 1x, 2x, 3x crisp pixel integer scale)
-- **Window**: Transparent background, frameless, draggable anywhere on screen
-- **Interactions**:
-  - Left Click (Quick Pat): Triggers petting reaction / heart sparkles
-  - Double Click: Opens Full Dashboard / Pomodoro
-  - Right Click: Quick Companion Switch / Mute / Eco Mode / Exit menu
-  - Hover: Shows cozy tooltip with exact CPU % / RAM %
+- **Window**: Transparent background, frameless, draggable anywhere on screen, Always-on-Top
+- **Mouse Interactions**:
+  - **Right Click**: Opens **Quick Context Menu** (Switch companions, toggle Pomodoro, mute audio, eco mode, exit)
+  - **Single Left Click**: Quick Head Pat / Petting reaction (`FloatingHearts` + soft purr)
+  - **Double Click**: Opens / Minimizes Full Dashboard
+  - **Click & Drag**: Moves floating pet (dangling animation + edge snapping)
+  - **Hover**: Shows cozy tooltip with live `CPU: X% | RAM: Y%` stats
 
 ### 2. Full Dashboard Mode
 - **Pomodoro & Focus Timer Suite** (Toggleable / Optional module):
