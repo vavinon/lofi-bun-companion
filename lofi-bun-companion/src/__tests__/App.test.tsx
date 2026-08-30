@@ -71,7 +71,7 @@ describe('App Showcase Container Component', () => {
     // Verify Title and Subtitle
     expect(container.textContent).toContain('Lo-fi Bun Companion');
     expect(container.textContent).toContain('v1.0.0 • Desktop Mascot Edition');
-    expect(container.textContent).toContain('Pet: BUN-01 (Flagship)');
+    expect(container.textContent).toContain('Pet: BUN (Flagship)');
 
     // Verify View Mode Button in Full View
     const viewModeBtn = container.querySelector(

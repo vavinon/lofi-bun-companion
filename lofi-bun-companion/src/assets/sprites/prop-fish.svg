@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 20" width="28" height="20" shape-rendering="crispEdges">
+  <defs>
+    <style>
+      .fish-back { fill: #6C829B; }
+      .fish-silver { fill: #A8B2C1; }
+      .fish-belly { fill: #E2E8F0; }
+      .grill-mark { stroke: #7D4E38; stroke-width: 1.2; stroke-linecap: round; }
+      .lemon-peel { fill: #FEE440; }
+      .lemon-pulp { fill: #FFF382; }
+      .lemon-white { fill: #FFFFFF; }
+      .leaf-base { fill: #7FB069; }
+      .leaf-shadow { fill: #5A8449; }
+      .twine-base { fill: #D4A373; }
+      .prop-outline { stroke: #2E221F; stroke-width: 1.2; stroke-linecap: square; stroke-linejoin: miter; }
+      .prop-outline-thin { stroke: #2E221F; stroke-width: 1; stroke-linecap: square; }
+    </style>
+  </defs>
+
+  <!-- ========================================================================= -->
+  <!-- GRILLED MACKEREL STACK PROP (Heavy RAM >80% Overlay for Coffee Neko)      -->
+  <!-- Size: 28 x 20 px                                                          -->
+  <!-- ========================================================================= -->
+
+  <!-- Top Garnish: Fresh Parsley Leaves -->
+  <g id="parsley-garnish">
+    <path d="M11 4 C9 2, 8 3, 7 1 C9 1, 11 2, 12 4 Z" class="leaf-shadow" stroke="#2E221F" stroke-width="0.8"/>
+    <path d="M12 4 C11 1, 13 0, 14 0 C14 2, 13 3, 12.5 4 Z" class="leaf-base" stroke="#2E221F" stroke-width="0.8"/>
+  </g>
+
+  <!-- Bottom-Left Grilled Mackerel -->
+  <g id="bottom-left-fish">
+    <!-- Tail Fin (Left) -->
+    <path d="M1 14 L4 11 L4 16 Z" class="fish-silver" stroke="#2E221F" stroke-width="1"/>
+    <!-- Fish Body Outline & Base -->
+    <path d="M4 12 C4 9.5, 9 9, 14 11 C15 13.5, 10 16, 5 15 C4 14.5, 4 13.5, 4 12 Z" class="fish-back prop-outline"/>
+    <!-- Silver Midbody & Belly -->
+    <path d="M4.5 12.5 C5 11, 9 10.5, 13.5 12 C14 13.5, 9.5 15.5, 5.5 14.5 Z" class="fish-silver"/>
+    <path d="M5.5 13.8 C7 13.5, 10 13.5, 13 14 C12 15.2, 8.5 15.4, 6 14.8 Z" class="fish-belly"/>
+    <!-- Eye -->
+    <circle cx="5.5" cy="12.2" r="0.7" fill="#2E221F"/>
+    <circle cx="5.3" cy="12" r="0.25" fill="#FFFFFF"/>
+    <!-- Grill Marks -->
+    <line x1="8" y1="10.8" x2="9.5" y2="13.8" class="grill-mark"/>
+    <line x1="11" y1="11.2" x2="12.5" y2="14.2" class="grill-mark"/>
+  </g>
+
+  <!-- Bottom-Right Grilled Mackerel -->
+  <g id="bottom-right-fish">
+    <!-- Tail Fin (Right) -->
+    <path d="M27 14 L24 11 L24 16 Z" class="fish-silver" stroke="#2E221F" stroke-width="1"/>
+    <!-- Fish Body Outline & Base -->
+    <path d="M24 12 C24 9.5, 19 9, 14 11 C13 13.5, 18 16, 23 15 C24 14.5, 24 13.5, 24 12 Z" class="fish-back prop-outline"/>
+    <!-- Silver Midbody & Belly -->
+    <path d="M23.5 12.5 C23 11, 19 10.5, 14.5 12 C14 13.5, 18.5 15.5, 22.5 14.5 Z" class="fish-silver"/>
+    <path d="M22.5 13.8 C21 13.5, 18 13.5, 15 14 C16 15.2, 19.5 15.4, 22 14.8 Z" class="fish-belly"/>
+    <!-- Eye -->
+    <circle cx="22.5" cy="12.2" r="0.7" fill="#2E221F"/>
+    <circle cx="22.7" cy="12" r="0.25" fill="#FFFFFF"/>
+    <!-- Grill Marks -->
+    <line x1="20" y1="10.8" x2="18.5" y2="13.8" class="grill-mark"/>
+    <line x1="17" y1="11.2" x2="15.5" y2="14.2" class="grill-mark"/>
+  </g>
+
+  <!-- Top-Center Plump Grilled Mackerel -->
+  <g id="top-center-fish">
+    <!-- Tail Fin (Right-slanted) -->
+    <path d="M22 8 L19 5.5 L20 10.5 Z" class="fish-silver" stroke="#2E221F" stroke-width="1"/>
+    <!-- Plump Fish Body Outline & Base -->
+    <path d="M7 8 C7 5, 13 4.5, 19 7 C20 10.5, 14 12.5, 8 11 C7 10, 7 9, 7 8 Z" class="fish-back prop-outline"/>
+    <!-- Silver Midbody & Light Belly -->
+    <path d="M7.8 8.2 C8.5 6.2, 13.5 5.8, 18.2 7.8 C18.5 9.8, 13.8 11.5, 8.8 10.2 Z" class="fish-silver"/>
+    <path d="M9 9.5 C11.5 9.2, 15 9.5, 17.5 10 C16 11.2, 12 11.4, 9.5 10.5 Z" class="fish-belly"/>
+    <!-- Fish Eye -->
+    <circle cx="8.5" cy="7.8" r="0.8" fill="#2E221F"/>
+    <circle cx="8.2" cy="7.5" r="0.3" fill="#FFFFFF"/>
+    <!-- Gill line -->
+    <path d="M10 6.5 C10.5 8, 10.5 9, 10 10" stroke="#2E221F" stroke-width="0.8" fill="none"/>
+    <!-- Cozy Charred Grill Marks -->
+    <line x1="12" y1="5.8" x2="13.5" y2="9.2" class="grill-mark"/>
+    <line x1="14.5" y1="6" x2="16" y2="9.5" class="grill-mark"/>
+    <line x1="17" y1="6.8" x2="18" y2="9.8" class="grill-mark"/>
+  </g>
+
+  <!-- Fresh Lemon Slice Garnish (Resting on top fish) -->
+  <g id="lemon-slice">
+    <!-- Outer Peel -->
+    <path d="M12 5 C12 2, 17 2, 18 5 C17 6, 13 6, 12 5 Z" class="lemon-peel" stroke="#2E221F" stroke-width="0.9"/>
+    <!-- Inner White Pith -->
+    <path d="M12.8 4.7 C13 2.8, 16.2 2.8, 17.2 4.7 Z" class="lemon-white"/>
+    <!-- Juicy Pulp & Segments -->
+    <path d="M13.2 4.5 C13.5 3.2, 15.8 3.2, 16.8 4.5 Z" class="lemon-pulp"/>
+    <line x1="15" y1="3" x2="15" y2="4.5" stroke="#FFFFFF" stroke-width="0.5"/>
+    <line x1="14" y1="3.5" x2="14.6" y2="4.4" stroke="#FFFFFF" stroke-width="0.5"/>
+    <line x1="16" y1="3.5" x2="15.4" y2="4.4" stroke="#FFFFFF" stroke-width="0.5"/>
+  </g>
+
+  <!-- Cozy Twine Ribbon Wrap around the 3-fish stack -->
+  <g id="twine-wrap">
+    <ellipse cx="14" cy="11.5" rx="2.5" ry="5.5" fill="none" stroke="#D4A373" stroke-width="1.2" stroke-dasharray="2 1"/>
+    <!-- Cute Bow Knot on center -->
+    <circle cx="14" cy="11.5" r="1.2" class="twine-base" stroke="#2E221F" stroke-width="0.8"/>
+    <circle cx="12.2" cy="11.8" r="0.9" class="twine-base" stroke="#2E221F" stroke-width="0.6"/>
+    <circle cx="15.8" cy="11.8" r="0.9" class="twine-base" stroke="#2E221F" stroke-width="0.6"/>
+  </g>
+</svg>

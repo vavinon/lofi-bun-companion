@@ -1,5 +1,6 @@
 import { beforeEach, describe, expect, it } from 'vitest';
 import { useCompanionStore } from '../stores/companionStore';
+import type { CompanionMetadata } from '../types/companion';
 
 describe('companionStore (Zustand State Store)', () => {
   beforeEach(() => {
@@ -17,10 +18,10 @@ describe('companionStore (Zustand State Store)', () => {
       });
     });
 
-    it('should initialize with forceRest as false, activeCompanionId as bun-01, and telemetryMode as MANUAL', () => {
+    it('should initialize with forceRest as false, activeCompanionId as bun, and telemetryMode as MANUAL', () => {
       const state = useCompanionStore.getState();
       expect(state.forceRest).toBe(false);
-      expect(state.activeCompanionId).toBe('bun-01');
+      expect(state.activeCompanionId).toBe('bun');
       expect(state.telemetryMode).toBe('MANUAL');
     });
 
@@ -149,9 +150,9 @@ describe('companionStore (Zustand State Store)', () => {
   describe('setActiveCompanionId Action', () => {
     it('should switch active companion id', () => {
       const store = useCompanionStore.getState();
-      store.setActiveCompanionId('cat-02');
+      store.setActiveCompanionId('neko');
 
-      expect(useCompanionStore.getState().activeCompanionId).toBe('cat-02');
+      expect(useCompanionStore.getState().activeCompanionId).toBe('neko');
     });
   });
 
@@ -214,7 +215,7 @@ describe('companionStore (Zustand State Store)', () => {
       store.setMetrics({ cpuUsage: 95, ramUsage: 92, diskUsage: 85 });
       store.setTelemetryMode('LIVE');
       store.setForceRest(true);
-      store.setActiveCompanionId('fox-03');
+      store.setActiveCompanionId('shiba');
       store.setViewMode('FULL');
       store.setWindowOpacity(0.5);
       store.setAlwaysOnTop(false);
@@ -230,12 +231,58 @@ describe('companionStore (Zustand State Store)', () => {
       });
       expect(state.telemetryMode).toBe('MANUAL');
       expect(state.forceRest).toBe(false);
-      expect(state.activeCompanionId).toBe('bun-01');
+      expect(state.activeCompanionId).toBe('bun');
       expect(state.resolvedState.activeState).toBe('IDLE');
       expect(state.resolvedState.isHeavyRam).toBe(false);
       expect(state.viewMode).toBe('COMPACT');
       expect(state.windowOpacity).toBe(1.0);
       expect(state.isAlwaysOnTop).toBe(true);
+    });
+  });
+
+  describe('useActiveCompanionMetadata Selector', () => {
+    it('should retrieve metadata for active companion reactively', async () => {
+      const React = await import('react');
+      const { act } = React;
+      const { createRoot } = await import('react-dom/client');
+      const { useActiveCompanionMetadata } =
+        await import('../stores/companionStore');
+
+      const holder: { current: CompanionMetadata | null } = { current: null };
+      const TestComponent: React.FC = () => {
+        const metadata = useActiveCompanionMetadata();
+        React.useEffect(() => {
+          holder.current = metadata;
+        });
+        return null;
+      };
+
+      const container = document.createElement('div');
+      document.body.appendChild(container);
+      const root = createRoot(container);
+
+      await act(async () => {
+        root.render(React.createElement(TestComponent));
+      });
+
+      expect(holder.current).not.toBeNull();
+      expect(holder.current?.id).toBe('bun');
+      expect(holder.current?.displayName).toBe('Lo-fi Bun');
+      expect(holder.current?.emoji).toBe('🐰');
+
+      // Switch companion to capybara
+      await act(async () => {
+        useCompanionStore.getState().setActiveCompanionId('capybara');
+      });
+
+      expect(holder.current?.id).toBe('capybara');
+      expect(holder.current?.displayName).toBe('Onsen Capybara');
+      expect(holder.current?.emoji).toBe('🍊');
+
+      await act(async () => {
+        root.unmount();
+      });
+      container.remove();
     });
   });
 
