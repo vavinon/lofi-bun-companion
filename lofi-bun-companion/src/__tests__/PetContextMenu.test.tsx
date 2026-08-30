@@ -68,13 +68,13 @@ describe('PetContextMenu Component', () => {
     const telemetryBtn = container.querySelector(
       '[data-testid="menu-item-telemetry"]'
     );
-    expect(useCompanionStore.getState().telemetryMode).toBe('MANUAL');
+    expect(useCompanionStore.getState().telemetryMode).toBe('LIVE');
 
     await act(async () => {
       telemetryBtn?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
     });
 
-    expect(useCompanionStore.getState().telemetryMode).toBe('LIVE');
+    expect(useCompanionStore.getState().telemetryMode).toBe('MANUAL');
     expect(onClose).toHaveBeenCalledTimes(1);
 
     await cleanup();
@@ -149,6 +149,84 @@ describe('PetContextMenu Component', () => {
 
     expect(onClose).toHaveBeenCalledTimes(1);
     expect(onExit).toHaveBeenCalledTimes(1);
+
+    await cleanup();
+  });
+
+  it('renders all 6 companions in Switch Companion submenu with active indicators', async () => {
+    const onClose = vi.fn();
+    await renderMenu({ isOpen: true, onClose });
+
+    const bunBtn = container.querySelector(
+      '[data-testid="menu-companion-bun"]'
+    );
+    const nekoBtn = container.querySelector(
+      '[data-testid="menu-companion-neko"]'
+    );
+    const shibaBtn = container.querySelector(
+      '[data-testid="menu-companion-shiba"]'
+    );
+    const capyBtn = container.querySelector(
+      '[data-testid="menu-companion-capybara"]'
+    );
+    const tielBtn = container.querySelector(
+      '[data-testid="menu-companion-cockatiel"]'
+    );
+    const dolphinBtn = container.querySelector(
+      '[data-testid="menu-companion-dolphin"]'
+    );
+
+    expect(bunBtn).not.toBeNull();
+    expect(nekoBtn).not.toBeNull();
+    expect(shibaBtn).not.toBeNull();
+    expect(capyBtn).not.toBeNull();
+    expect(tielBtn).not.toBeNull();
+    expect(dolphinBtn).not.toBeNull();
+
+    // Verify initial active indicator on bun
+    expect(bunBtn?.textContent).toContain('●');
+    expect(nekoBtn?.textContent).toContain('○');
+
+    // Click to select Coffee Neko
+    await act(async () => {
+      nekoBtn?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    });
+
+    expect(useCompanionStore.getState().activeCompanionId).toBe('neko');
+    expect(onClose).toHaveBeenCalledTimes(1);
+
+    await cleanup();
+  });
+
+  it('toggles companion submenu visibility on header click', async () => {
+    await renderMenu({ isOpen: true });
+
+    const toggleBtn = container.querySelector(
+      '[data-testid="menu-item-switch-companion"]'
+    );
+    expect(toggleBtn).not.toBeNull();
+
+    expect(
+      container.querySelector('[data-testid="menu-section-companions"]')
+    ).not.toBeNull();
+
+    // Click to collapse
+    await act(async () => {
+      toggleBtn?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    });
+
+    expect(
+      container.querySelector('[data-testid="menu-section-companions"]')
+    ).toBeNull();
+
+    // Click to expand again
+    await act(async () => {
+      toggleBtn?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    });
+
+    expect(
+      container.querySelector('[data-testid="menu-section-companions"]')
+    ).not.toBeNull();
 
     await cleanup();
   });

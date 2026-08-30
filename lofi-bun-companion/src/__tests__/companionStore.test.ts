@@ -18,11 +18,11 @@ describe('companionStore (Zustand State Store)', () => {
       });
     });
 
-    it('should initialize with forceRest as false, activeCompanionId as bun, and telemetryMode as MANUAL', () => {
+    it('should initialize with forceRest as false, activeCompanionId as bun, and telemetryMode as LIVE', () => {
       const state = useCompanionStore.getState();
       expect(state.forceRest).toBe(false);
       expect(state.activeCompanionId).toBe('bun');
-      expect(state.telemetryMode).toBe('MANUAL');
+      expect(state.telemetryMode).toBe('LIVE');
     });
 
     it('should initialize with default desktop window configuration (COMPACT view, opacity 1.0, always-on-top true)', () => {
@@ -104,15 +104,15 @@ describe('companionStore (Zustand State Store)', () => {
   });
 
   describe('setTelemetryMode Action', () => {
-    it('should update telemetryMode to LIVE and back to MANUAL', () => {
+    it('should update telemetryMode to MANUAL and back to LIVE', () => {
       const store = useCompanionStore.getState();
-      expect(store.telemetryMode).toBe('MANUAL');
-
-      store.setTelemetryMode('LIVE');
-      expect(useCompanionStore.getState().telemetryMode).toBe('LIVE');
+      expect(store.telemetryMode).toBe('LIVE');
 
       store.setTelemetryMode('MANUAL');
       expect(useCompanionStore.getState().telemetryMode).toBe('MANUAL');
+
+      store.setTelemetryMode('LIVE');
+      expect(useCompanionStore.getState().telemetryMode).toBe('LIVE');
     });
   });
 
@@ -229,7 +229,7 @@ describe('companionStore (Zustand State Store)', () => {
         ramUsage: 30,
         diskUsage: 5,
       });
-      expect(state.telemetryMode).toBe('MANUAL');
+      expect(state.telemetryMode).toBe('LIVE');
       expect(state.forceRest).toBe(false);
       expect(state.activeCompanionId).toBe('bun');
       expect(state.resolvedState.activeState).toBe('IDLE');

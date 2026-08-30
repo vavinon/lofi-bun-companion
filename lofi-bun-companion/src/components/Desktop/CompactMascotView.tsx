@@ -12,7 +12,10 @@
  */
 
 import React, { useState } from 'react';
-import { useCompanionStore } from '../../stores/companionStore';
+import {
+  useActiveCompanionMetadata,
+  useCompanionStore,
+} from '../../stores/companionStore';
 import { CompanionState } from '../../types/companion';
 import { PetSprite } from '../Pet/PetSprite';
 import { WindowHeader } from './WindowHeader';
@@ -61,6 +64,7 @@ const STATE_VISUAL_MAP: Record<CompanionState, StateVisualConfig> = {
 
 export const CompactMascotView: React.FC = () => {
   // Store subscriptions
+  const activeCompanion = useActiveCompanionMetadata();
   const activeState = useCompanionStore(
     (state) => state.resolvedState.activeState
   );
@@ -117,7 +121,7 @@ export const CompactMascotView: React.FC = () => {
       data-testid="compact-mascot-view"
     >
       {/* Top Drag Header with Quick Action Buttons */}
-      <WindowHeader title="Lo-fi Bun" />
+      <WindowHeader title={activeCompanion.displayName} />
 
       {/* Main Pet Interactive Stage */}
       <div
@@ -152,23 +156,36 @@ export const CompactMascotView: React.FC = () => {
           onMouseDown={(e) => e.stopPropagation()}
           data-testid="compact-floating-hud"
         >
-          {/* Active State Pill */}
-          <div
-            className={styles.statePill}
-            style={{
-              background: `${stateVisual.accentColor}25`,
-              border: `1px solid ${stateVisual.accentColor}60`,
-              color: stateVisual.accentColor,
-            }}
-            data-testid="compact-state-pill"
-          >
-            <span
-              className={styles.stateDot}
-              style={{ backgroundColor: stateVisual.accentColor }}
-            />
-            <span>
-              {stateVisual.icon} {stateVisual.label}
-            </span>
+          {/* Top HUD Badges Row: Companion Pill + Active State Pill */}
+          <div className={styles.hudTopRow}>
+            <div
+              className={styles.companionPill}
+              data-testid="compact-companion-pill"
+            >
+              <span>{activeCompanion.emoji}</span>
+              <span className={styles.companionName}>
+                {activeCompanion.displayName}
+              </span>
+            </div>
+
+            {/* Active State Pill */}
+            <div
+              className={styles.statePill}
+              style={{
+                background: `${stateVisual.accentColor}25`,
+                border: `1px solid ${stateVisual.accentColor}60`,
+                color: stateVisual.accentColor,
+              }}
+              data-testid="compact-state-pill"
+            >
+              <span
+                className={styles.stateDot}
+                style={{ backgroundColor: stateVisual.accentColor }}
+              />
+              <span>
+                {stateVisual.icon} {stateVisual.label}
+              </span>
+            </div>
           </div>
 
           {/* Minimal Metrics Bar */}

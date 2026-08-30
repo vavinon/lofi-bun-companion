@@ -83,7 +83,7 @@ export const DEFAULT_METRICS: HardwareMetrics = {
 
 export const DEFAULT_COMPANION_ID: CompanionId = 'bun';
 export const DEFAULT_FORCE_REST = false;
-export const DEFAULT_TELEMETRY_MODE: TelemetryMode = 'MANUAL';
+export const DEFAULT_TELEMETRY_MODE: TelemetryMode = 'LIVE';
 
 /** Helper to generate initial resolved state from default metrics */
 const getInitialResolvedState = (): ResolvedCompanionState =>
