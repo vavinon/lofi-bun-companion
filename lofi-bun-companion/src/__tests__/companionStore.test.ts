@@ -17,10 +17,11 @@ describe('companionStore (Zustand State Store)', () => {
       });
     });
 
-    it('should initialize with forceRest as false and activeCompanionId as bun-01', () => {
+    it('should initialize with forceRest as false, activeCompanionId as bun-01, and telemetryMode as MANUAL', () => {
       const state = useCompanionStore.getState();
       expect(state.forceRest).toBe(false);
       expect(state.activeCompanionId).toBe('bun-01');
+      expect(state.telemetryMode).toBe('MANUAL');
     });
 
     it('should initialize with resolvedState reflecting default metrics (IDLE, not heavy RAM)', () => {
@@ -94,6 +95,19 @@ describe('companionStore (Zustand State Store)', () => {
     });
   });
 
+  describe('setTelemetryMode Action', () => {
+    it('should update telemetryMode to LIVE and back to MANUAL', () => {
+      const store = useCompanionStore.getState();
+      expect(store.telemetryMode).toBe('MANUAL');
+
+      store.setTelemetryMode('LIVE');
+      expect(useCompanionStore.getState().telemetryMode).toBe('LIVE');
+
+      store.setTelemetryMode('MANUAL');
+      expect(useCompanionStore.getState().telemetryMode).toBe('MANUAL');
+    });
+  });
+
   describe('setForceRest Action', () => {
     it('should override active state to REST when forceRest is set to true', () => {
       const store = useCompanionStore.getState();
@@ -135,9 +149,10 @@ describe('companionStore (Zustand State Store)', () => {
   });
 
   describe('resetToDefaults Action', () => {
-    it('should reset all state and metrics back to initial defaults', () => {
+    it('should reset all state, telemetryMode, and metrics back to initial defaults', () => {
       const store = useCompanionStore.getState();
       store.setMetrics({ cpuUsage: 95, ramUsage: 92, diskUsage: 85 });
+      store.setTelemetryMode('LIVE');
       store.setForceRest(true);
       store.setActiveCompanionId('fox-03');
 
@@ -150,6 +165,7 @@ describe('companionStore (Zustand State Store)', () => {
         ramUsage: 30,
         diskUsage: 5,
       });
+      expect(state.telemetryMode).toBe('MANUAL');
       expect(state.forceRest).toBe(false);
       expect(state.activeCompanionId).toBe('bun-01');
       expect(state.resolvedState.activeState).toBe('IDLE');

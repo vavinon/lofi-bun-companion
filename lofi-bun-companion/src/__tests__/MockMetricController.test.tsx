@@ -176,6 +176,63 @@ describe('MockMetricController Component', () => {
     await cleanup();
   });
 
+  it('switches between MANUAL and LIVE telemetry modes and locks sliders', async () => {
+    await renderComponent();
+
+    const manualBtn = container.querySelector<HTMLButtonElement>(
+      '[data-testid="mode-btn-manual"]'
+    );
+    const liveBtn = container.querySelector<HTMLButtonElement>(
+      '[data-testid="mode-btn-live"]'
+    );
+    const cpuInput = container.querySelector<HTMLInputElement>(
+      'input[aria-label="CPU Usage Percentage"]'
+    )!;
+    const ramInput = container.querySelector<HTMLInputElement>(
+      'input[aria-label="RAM Usage Percentage"]'
+    )!;
+    const diskInput = container.querySelector<HTMLInputElement>(
+      'input[aria-label="Disk Usage Percentage"]'
+    )!;
+
+    expect(manualBtn).not.toBeNull();
+    expect(liveBtn).not.toBeNull();
+    expect(cpuInput.disabled).toBe(false);
+    expect(ramInput.disabled).toBe(false);
+    expect(diskInput.disabled).toBe(false);
+    expect(
+      container.querySelector('[data-testid="live-telemetry-banner"]')
+    ).toBeNull();
+
+    // Switch to LIVE mode
+    await act(async () => {
+      liveBtn?.click();
+    });
+
+    expect(useCompanionStore.getState().telemetryMode).toBe('LIVE');
+    expect(cpuInput.disabled).toBe(true);
+    expect(ramInput.disabled).toBe(true);
+    expect(diskInput.disabled).toBe(true);
+    expect(
+      container.querySelector('[data-testid="live-telemetry-banner"]')
+    ).not.toBeNull();
+
+    // Switch back to MANUAL mode
+    await act(async () => {
+      manualBtn?.click();
+    });
+
+    expect(useCompanionStore.getState().telemetryMode).toBe('MANUAL');
+    expect(cpuInput.disabled).toBe(false);
+    expect(ramInput.disabled).toBe(false);
+    expect(diskInput.disabled).toBe(false);
+    expect(
+      container.querySelector('[data-testid="live-telemetry-banner"]')
+    ).toBeNull();
+
+    await cleanup();
+  });
+
   it('reactively syncs when external store changes occur', async () => {
     await renderComponent();
 
