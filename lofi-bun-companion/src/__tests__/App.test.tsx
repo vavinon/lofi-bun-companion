@@ -45,13 +45,40 @@ describe('App Showcase Container Component', () => {
     container.remove();
   };
 
-  it('renders all core showcase elements and headers correctly', async () => {
+  it('renders CompactMascotView directly as default on app startup', async () => {
+    await renderComponent();
+
+    expect(
+      container.querySelector('[data-testid="app-compact-root"]')
+    ).not.toBeNull();
+    expect(
+      container.querySelector('[data-testid="compact-mascot-view"]')
+    ).not.toBeNull();
+    expect(
+      container.querySelector('[data-testid="compact-pet-stage"]')
+    ).not.toBeNull();
+    expect(
+      container.querySelector('[data-testid="compact-floating-hud"]')
+    ).not.toBeNull();
+
+    await cleanup();
+  });
+
+  it('renders all core showcase elements and headers correctly in FULL viewMode', async () => {
+    useCompanionStore.getState().setViewMode('FULL');
     await renderComponent();
 
     // Verify Title and Subtitle
     expect(container.textContent).toContain('Lo-fi Bun Companion');
-    expect(container.textContent).toContain('v0.2.0 • Real Hardware Telemetry');
+    expect(container.textContent).toContain('v1.0.0 • Desktop Mascot Edition');
     expect(container.textContent).toContain('Pet: BUN-01 (Flagship)');
+
+    // Verify View Mode Button in Full View
+    const viewModeBtn = container.querySelector(
+      '[data-testid="view-mode-toggle-btn"]'
+    );
+    expect(viewModeBtn).not.toBeNull();
+    expect(viewModeBtn?.textContent).toContain('Mascot View');
 
     // Verify Telemetry HUD Badges
     const modeBadge = container.querySelector(
@@ -96,7 +123,56 @@ describe('App Showcase Container Component', () => {
     await cleanup();
   });
 
+  it('switches between COMPACT and FULL viewModes seamlessly', async () => {
+    useCompanionStore.getState().setViewMode('FULL');
+    await renderComponent();
+
+    // Verify initially in FULL view
+    expect(
+      container.querySelector('[data-testid="app-full-root"]')
+    ).not.toBeNull();
+    expect(
+      container.querySelector('[data-testid="compact-mascot-view"]')
+    ).toBeNull();
+
+    // Click Mascot View button
+    const viewModeBtn = container.querySelector<HTMLButtonElement>(
+      '[data-testid="view-mode-toggle-btn"]'
+    );
+    expect(viewModeBtn).not.toBeNull();
+
+    await act(async () => {
+      viewModeBtn?.click();
+    });
+
+    // Verify now rendering Compact Mascot View
+    expect(
+      container.querySelector('[data-testid="app-compact-root"]')
+    ).not.toBeNull();
+    expect(
+      container.querySelector('[data-testid="compact-mascot-view"]')
+    ).not.toBeNull();
+    expect(
+      container.querySelector('[data-testid="compact-floating-hud"]')
+    ).not.toBeNull();
+
+    // Switch back to FULL view via store action
+    await act(async () => {
+      useCompanionStore.getState().setViewMode('FULL');
+    });
+
+    expect(
+      container.querySelector('[data-testid="app-full-root"]')
+    ).not.toBeNull();
+    expect(
+      container.querySelector('[data-testid="compact-mascot-view"]')
+    ).toBeNull();
+
+    await cleanup();
+  });
+
   it('updates Stage HUD and PetSprite when hardware sliders change', async () => {
+    useCompanionStore.getState().setViewMode('FULL');
     await renderComponent();
 
     // Find CPU slider
@@ -123,6 +199,7 @@ describe('App Showcase Container Component', () => {
   });
 
   it('updates RAM Prop indicator and renders Carrot overlay on high RAM', async () => {
+    useCompanionStore.getState().setViewMode('FULL');
     await renderComponent();
 
     const ramInput = container.querySelector<HTMLInputElement>(
@@ -148,6 +225,7 @@ describe('App Showcase Container Component', () => {
   });
 
   it('switches to REST mode and updates HUD when toggle switch is clicked', async () => {
+    useCompanionStore.getState().setViewMode('FULL');
     await renderComponent();
 
     const restToggle = container.querySelector<HTMLInputElement>(
@@ -172,6 +250,7 @@ describe('App Showcase Container Component', () => {
   });
 
   it('updates Telemetry HUD when switching to LIVE mode via controller', async () => {
+    useCompanionStore.getState().setViewMode('FULL');
     await renderComponent();
 
     const liveBtn = container.querySelector<HTMLButtonElement>(

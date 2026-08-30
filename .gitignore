@@ -11,6 +11,12 @@ dist-ssr/
 **/dist-ssr/
 build/
 **/build/
+releases/
+**/releases/
+src-tauri/target/
+**/src-tauri/target/
+src-tauri/gen/
+**/src-tauri/gen/
 *.local
 *.tsbuildinfo
 
