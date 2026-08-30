@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 20" width="28" height="20" shape-rendering="crispEdges">
+  <defs>
+    <style>
+      .coral-main { fill: #FF8FAB; }
+      .coral-dark { fill: #E05780; }
+      .coral-light { fill: #FFB3C6; }
+      .coral-deep { fill: #C9184A; }
+      .pearl-white { fill: #FFFFFF; }
+      .pearl-glow { fill: #E0FAFF; }
+      .pearl-shadow { fill: #B8E0F2; }
+      .shell-gold { fill: #FFD166; }
+      .shell-gold-shadow { fill: #F4A261; }
+      .shell-aqua { fill: #90E0EF; }
+      .shell-aqua-shadow { fill: #48CAE4; }
+      .bubble-cyan { fill: #CAF0F8; opacity: 0.85; }
+      .sparkle-glow { fill: #FFF176; opacity: 0.95; }
+      .prop-outline { stroke: #2E221F; stroke-width: 1.2; stroke-linecap: square; stroke-linejoin: miter; }
+      .prop-outline-thin { stroke: #2E221F; stroke-width: 0.8; stroke-linecap: square; }
+    </style>
+  </defs>
+
+  <!-- ========================================================================= -->
+  <!-- LUMINOUS CORAL CROWN PROP (Heavy RAM >80% Overlay for Wave Dolphin)       -->
+  <!-- Size: 28 x 20 px                                                          -->
+  <!-- ========================================================================= -->
+
+  <!-- Top Floating Ocean Sparkles & Bubbles -->
+  <g id="sparkle-bubbles">
+    <!-- Bubble Left -->
+    <circle cx="4" cy="3" r="1.5" class="bubble-cyan" stroke="#2E221F" stroke-width="0.7"/>
+    <circle cx="3.5" cy="2.5" r="0.4" fill="#FFFFFF"/>
+    
+    <!-- Bubble Right -->
+    <circle cx="24" cy="4" r="1.2" class="bubble-cyan" stroke="#2E221F" stroke-width="0.7"/>
+    <circle cx="23.6" cy="3.6" r="0.3" fill="#FFFFFF"/>
+
+    <!-- Central Diamond Sparkle -->
+    <polygon points="14,0.5 15,2 14,3.5 13,2" class="sparkle-glow"/>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- TIER 1: Pink Branching Coral Horns (Left & Right Antler Branches)          -->
+  <!-- ========================================================================= -->
+  <g id="coral-branches">
+    <!-- Left Main Branching Horn -->
+    <!-- Base stalk -->
+    <path d="M7 16 L6 11 L9 11 L10 16 Z" class="coral-dark prop-outline"/>
+    <path d="M7.5 15 L6.8 11.5 L8.5 11.5 L9.2 15 Z" class="coral-main"/>
+    <!-- Left outer fork -->
+    <path d="M6 12 L3 9 L4.5 7.5 L7.5 10.5 Z" class="coral-dark prop-outline"/>
+    <path d="M5.8 11.2 L3.8 9.2 L4.8 8.2 L6.8 10.2 Z" class="coral-main"/>
+    <!-- Left outer tip cap -->
+    <circle cx="3.8" cy="8.2" r="1.5" class="coral-light prop-outline-thin"/>
+    
+    <!-- Left inner fork -->
+    <path d="M8 11 L8.5 6 L11 6 L10 11 Z" class="coral-dark prop-outline"/>
+    <path d="M8.6 10.5 L9 6.8 L10.5 6.8 L9.8 10.5 Z" class="coral-main"/>
+    <!-- Left inner tip cap -->
+    <circle cx="9.8" cy="6" r="1.5" class="coral-light prop-outline-thin"/>
+
+    <!-- Right Main Branching Horn -->
+    <!-- Base stalk -->
+    <path d="M18 16 L19 11 L22 11 L21 16 Z" class="coral-dark prop-outline"/>
+    <path d="M18.8 15 L19.5 11.5 L21.2 11.5 L20.5 15 Z" class="coral-main"/>
+    <!-- Right outer fork -->
+    <path d="M22 12 L25 9 L23.5 7.5 L20.5 10.5 Z" class="coral-dark prop-outline"/>
+    <path d="M22.2 11.2 L24.2 9.2 L23.2 8.2 L21.2 10.2 Z" class="coral-main"/>
+    <!-- Right outer tip cap -->
+    <circle cx="24.2" cy="8.2" r="1.5" class="coral-light prop-outline-thin"/>
+    
+    <!-- Right inner fork -->
+    <path d="M20 11 L19.5 6 L17 6 L18 11 Z" class="coral-dark prop-outline"/>
+    <path d="M19.4 10.5 L19 6.8 L17.5 6.8 L18.2 10.5 Z" class="coral-main"/>
+    <!-- Right inner tip cap -->
+    <circle cx="18.2" cy="6" r="1.5" class="coral-light prop-outline-thin"/>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- TIER 2: Central Pearlescent Scallop Shell & Sea Jewels Base               -->
+  <!-- ========================================================================= -->
+  <g id="shell-base">
+    <!-- Golden Scallop Shell on Left Base -->
+    <g transform="translate(6, 12)">
+      <path d="M1 5 C0 2, 5 0, 7 3 C6 6, 2 6, 1 5 Z" class="shell-gold-shadow prop-outline"/>
+      <path d="M1.5 4.5 C0.8 2.5, 4.5 0.8, 6.2 3 C5.2 5.2, 2.2 5.2, 1.5 4.5 Z" class="shell-gold"/>
+      <line x1="2" y1="4" x2="4" y2="2" stroke="#2E221F" stroke-width="0.6"/>
+      <line x1="4" y1="5" x2="5" y2="2.5" stroke="#2E221F" stroke-width="0.6"/>
+    </g>
+
+    <!-- Aqua Spiral Shell on Right Base -->
+    <g transform="translate(16, 12)">
+      <ellipse cx="4" cy="3.5" rx="3.5" ry="2.5" class="shell-aqua-shadow prop-outline" transform="rotate(15 4 3.5)"/>
+      <ellipse cx="4" cy="3.2" rx="3" ry="2.1" class="shell-aqua" transform="rotate(15 4 3.2)"/>
+      <path d="M2.5 4 C4 3, 5.5 3.5, 6 2" fill="none" stroke="#2E221F" stroke-width="0.7"/>
+    </g>
+
+    <!-- Center Radiant Coral Blossom / Crown Base -->
+    <ellipse cx="14" cy="15" rx="5" ry="3.5" class="coral-deep prop-outline"/>
+    <ellipse cx="14" cy="14.5" rx="4.5" ry="3" class="coral-main"/>
+    <ellipse cx="14" cy="14" rx="3.5" ry="2" class="coral-light"/>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- TIER 3: Luminous Iridescent Pearls (Center Jewel + Side Studs)             -->
+  <!-- ========================================================================= -->
+  <g id="luminous-pearls">
+    <!-- Center Grand Glowing Pearl -->
+    <circle cx="14" cy="12" r="3.2" class="pearl-shadow prop-outline"/>
+    <circle cx="14" cy="11.8" r="2.8" class="pearl-glow"/>
+    <circle cx="14" cy="11.5" r="2.2" class="pearl-white"/>
+    <!-- Pearl Highlight Reflection -->
+    <circle cx="13" cy="10.5" r="0.7" fill="#FFFFFF"/>
+
+    <!-- Left Small Accent Pearl -->
+    <circle cx="9.5" cy="14" r="1.8" class="pearl-shadow prop-outline-thin"/>
+    <circle cx="9.5" cy="13.8" r="1.5" class="pearl-white"/>
+    <circle cx="9" cy="13.3" r="0.4" fill="#FFFFFF"/>
+
+    <!-- Right Small Accent Pearl -->
+    <circle cx="18.5" cy="14" r="1.8" class="pearl-shadow prop-outline-thin"/>
+    <circle cx="18.5" cy="13.8" r="1.5" class="pearl-white"/>
+    <circle cx="18" cy="13.3" r="0.4" fill="#FFFFFF"/>
+
+    <!-- Crown Top Tiny Floating Pearl -->
+    <circle cx="14" cy="6" r="1.3" class="pearl-shadow prop-outline-thin"/>
+    <circle cx="14" cy="5.8" r="1.1" class="pearl-white"/>
+  </g>
+
+  <!-- Glistening Ambient Light Beams -->
+  <g id="ambient-glisten">
+    <circle cx="1" cy="15" r="0.4" class="sparkle-glow"/>
+    <circle cx="27" cy="13" r="0.4" class="sparkle-glow"/>
+    <circle cx="14" cy="3.5" r="0.5" class="sparkle-glow"/>
+  </g>
+</svg>
