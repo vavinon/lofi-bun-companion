@@ -11,8 +11,10 @@
  * 6. ❌ Exit Pet (Close application)
  */
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useCompanionStore } from '../../stores/companionStore';
+import { getAllCompanions } from '../../data/companionRegistry';
+import { CompanionId } from '../../types/companion';
 import {
   WINDOW_OPACITY_PRESETS,
   WindowOpacityOption,
@@ -40,8 +42,15 @@ export const PetContextMenu: React.FC<PetContextMenuProps> = ({
   onExit,
 }) => {
   const menuRef = useRef<HTMLDivElement>(null);
+  const [isCompanionSubmenuOpen, setIsCompanionSubmenuOpen] = useState(true);
 
   // Store subscriptions and actions
+  const activeCompanionId = useCompanionStore(
+    (state) => state.activeCompanionId
+  );
+  const setActiveCompanionId = useCompanionStore(
+    (state) => state.setActiveCompanionId
+  );
   const telemetryMode = useCompanionStore((state) => state.telemetryMode);
   const setTelemetryMode = useCompanionStore((state) => state.setTelemetryMode);
   const forceRest = useCompanionStore((state) => state.forceRest);
@@ -54,6 +63,8 @@ export const PetContextMenu: React.FC<PetContextMenuProps> = ({
   const toggleViewMode = useCompanionStore((state) => state.toggleViewMode);
   const windowOpacity = useCompanionStore((state) => state.windowOpacity);
   const setWindowOpacity = useCompanionStore((state) => state.setWindowOpacity);
+
+  const companions = getAllCompanions();
 
   // Handle Escape key and outside click to close context menu
   useEffect(() => {
@@ -76,17 +87,22 @@ export const PetContextMenu: React.FC<PetContextMenuProps> = ({
   }
 
   // Calculate adjusted menu coordinates to prevent overflowing window bounds
-  const MENU_WIDTH = 200;
-  const MENU_HEIGHT = 280;
+  const MENU_WIDTH = 210;
+  const MENU_HEIGHT = 440;
   const viewportWidth = typeof window !== 'undefined' ? window.innerWidth : 320;
   const viewportHeight =
-    typeof window !== 'undefined' ? window.innerHeight : 380;
+    typeof window !== 'undefined' ? window.innerHeight : 480;
 
   const adjustedX = Math.min(x, Math.max(10, viewportWidth - MENU_WIDTH - 10));
   const adjustedY = Math.min(
     y,
     Math.max(10, viewportHeight - MENU_HEIGHT - 10)
   );
+
+  const handleSelectCompanion = (id: CompanionId) => {
+    setActiveCompanionId(id);
+    onClose();
+  };
 
   const handleToggleTelemetry = () => {
     setTelemetryMode(telemetryMode === 'LIVE' ? 'MANUAL' : 'LIVE');
@@ -157,6 +173,57 @@ export const PetContextMenu: React.FC<PetContextMenuProps> = ({
         </div>
 
         <ul className={styles.menuList}>
+          {/* Switch Companion Submenu / Section */}
+          <li className={styles.sectionHeaderItem}>
+            <button
+              type="button"
+              className={styles.sectionHeaderButton}
+              onClick={() => setIsCompanionSubmenuOpen(!isCompanionSubmenuOpen)}
+              data-testid="menu-item-switch-companion"
+            >
+              <span className={styles.itemLabel}>
+                <span className={styles.itemIcon}>🐾</span>
+                <span>Switch Companion</span>
+              </span>
+              <span className={styles.submenuChevron}>
+                {isCompanionSubmenuOpen ? '▾' : '▸'}
+              </span>
+            </button>
+
+            {isCompanionSubmenuOpen && (
+              <div
+                className={styles.companionSubmenuList}
+                data-testid="menu-section-companions"
+              >
+                {companions.map((comp) => {
+                  const isActive = activeCompanionId === comp.id;
+                  return (
+                    <button
+                      key={comp.id}
+                      type="button"
+                      className={`${styles.companionMenuItem} ${
+                        isActive ? styles.companionMenuActive : ''
+                      }`}
+                      onClick={() => handleSelectCompanion(comp.id)}
+                      role="menuitemradio"
+                      aria-checked={isActive}
+                      data-testid={`menu-companion-${comp.id}`}
+                    >
+                      <span className={styles.itemLabel}>
+                        <span className={styles.itemIcon}>{comp.emoji}</span>
+                        <span>{comp.displayName}</span>
+                      </span>
+                      <span className={styles.radioIndicator}>
+                        {isActive ? '●' : '○'}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+          </li>
+
+          <div className={styles.divider} />
           {/* Toggle Live Telemetry */}
           <li>
             <button

@@ -1,0 +1,980 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 320" width="256" height="320" shape-rendering="crispEdges">
+  <defs>
+    <!-- Shared Style Tokens for Coffee Neko -->
+    <style>
+      .outline { stroke: #2E221F; stroke-width: 2; stroke-linecap: square; stroke-linejoin: miter; }
+      .outline-thin { stroke: #2E221F; stroke-width: 1; stroke-linecap: square; }
+      .neko-orange { fill: #FF9E4A; }
+      .neko-shadow { fill: #D96B27; }
+      .neko-cream { fill: #FFF5EB; }
+      .neko-stripe { fill: #C86D28; }
+      .ear-pink { fill: #FFB4A2; }
+      .nose-pink { fill: #FFB0B0; }
+      .eye-emerald { fill: #4E9F3D; }
+      .eye-dark { fill: #2E221F; }
+      .apron-mocha { fill: #5C3D2E; }
+      .apron-strap { fill: #D4A373; }
+      .cup-ceramic { fill: #E8DFD8; }
+      .coffee-dark { fill: #331D12; }
+      .keyboard-base { fill: #E3DAC9; }
+      .keycap { fill: #FFFDF0; }
+      .keycap-pressed { fill: #B8ADA0; }
+      .fire-main { fill: #FF7A59; }
+      .fire-core { fill: #FFD166; }
+      .sweat { fill: #A0E7E5; }
+      .box-kraft { fill: #C89D7C; }
+      .box-shadow { fill: #A57857; }
+      .box-inner { fill: #8B6141; }
+      .paper-scrap { fill: #F4E8DC; }
+      .steam-bubble { fill: #FFFFFF; opacity: 0.85; }
+      .text-z { fill: #9D8BB5; font-family: monospace; font-size: 8px; font-weight: bold; }
+    </style>
+  </defs>
+
+  <!-- ========================================================================= -->
+  <!-- ROW 1 (Y: 0px) — IDLE STATE (Holding warm coffee mug, gentle tail curl)   -->
+  <!-- ========================================================================= -->
+
+  <!-- Frame 1.1 (IDLE - Frame 1: Holding warm coffee mug, gentle steam) -->
+  <g id="neko-idle-f1" transform="translate(0, 0)">
+    <!-- Tail (Curled up right) -->
+    <path d="M44 49 C50 49, 54 44, 53 38 C52 34, 48 35, 49 39 C50 42, 47 45, 42 47 Z" class="neko-orange" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M51 36 C52 38, 51 40, 49 41" stroke="#C86D28" stroke-width="1.5" fill="none"/>
+    <path d="M48 43 C49 45, 47 47, 44 48" stroke="#C86D28" stroke-width="1.5" fill="none"/>
+    <!-- Left Cat Ear (Upright triangle) -->
+    <path d="M19 24 L16 11 L27 19 Z" class="neko-orange" stroke="#2E221F" stroke-width="2"/>
+    <path d="M19 21 L18 14 L24 19 Z" class="ear-pink"/>
+    <!-- Right Cat Ear (Relaxed triangle) -->
+    <path d="M37 19 L48 11 L45 24 Z" class="neko-orange" stroke="#2E221F" stroke-width="2"/>
+    <path d="M40 19 L46 14 L45 21 Z" class="ear-pink"/>
+    <!-- Head Shadow & Base -->
+    <ellipse cx="32" cy="33" rx="15" ry="13" class="neko-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="32" rx="15" ry="12" class="neko-orange"/>
+    <!-- Forehead Tabby Stripes -->
+    <line x1="32" y1="21" x2="32" y2="25" stroke="#C86D28" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="28" y1="22" x2="29" y2="25" stroke="#C86D28" stroke-width="1.2" stroke-linecap="round"/>
+    <line x1="36" y1="22" x2="35" y2="25" stroke="#C86D28" stroke-width="1.2" stroke-linecap="round"/>
+    <!-- Cheek Tabby Stripes -->
+    <polygon points="18,31 22,32 18,33" class="neko-stripe"/>
+    <polygon points="46,31 42,32 46,33" class="neko-stripe"/>
+    <!-- Cream Muzzle -->
+    <ellipse cx="32" cy="36" rx="6" ry="4" class="neko-cream"/>
+    <!-- Emerald Eyes -->
+    <ellipse cx="26" cy="31" rx="2.5" ry="3" class="eye-emerald"/>
+    <circle cx="26" cy="31" r="1.5" class="eye-dark"/>
+    <circle cx="25" cy="30" r="0.8" fill="#FFFFFF"/>
+    <ellipse cx="38" cy="31" rx="2.5" ry="3" class="eye-emerald"/>
+    <circle cx="38" cy="31" r="1.5" class="eye-dark"/>
+    <circle cx="37" cy="30" r="0.8" fill="#FFFFFF"/>
+    <!-- Pink Nose & Cat Mouth -->
+    <polygon points="31,34 33,34 32,35.5" class="nose-pink"/>
+    <path d="M30 36.5 Q31 37.5 32 36.5 Q33 37.5 34 36.5" fill="none" stroke="#2E221F" stroke-width="1"/>
+    <!-- Whiskers -->
+    <line x1="16" y1="34" x2="22" y2="35" stroke="#2E221F" stroke-width="0.8"/>
+    <line x1="16" y1="37" x2="22" y2="37" stroke="#2E221F" stroke-width="0.8"/>
+    <line x1="48" y1="34" x2="42" y2="35" stroke="#2E221F" stroke-width="0.8"/>
+    <line x1="48" y1="37" x2="42" y2="37" stroke="#2E221F" stroke-width="0.8"/>
+    <!-- Body & Barista Apron -->
+    <ellipse cx="32" cy="48" rx="13" ry="9" class="neko-orange" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M25 43 L39 43 L37 54 L27 54 Z" class="apron-mocha" stroke="#2E221F" stroke-width="1.2"/>
+    <line x1="26" y1="41" x2="28" y2="43" stroke="#D4A373" stroke-width="1.2"/>
+    <line x1="38" y1="41" x2="36" y2="43" stroke="#D4A373" stroke-width="1.2"/>
+    <!-- Coffee Mug -->
+    <rect x="27" y="44" width="10" height="9" rx="2" class="cup-ceramic" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="32" cy="45" rx="4" ry="1.2" class="coffee-dark"/>
+    <path d="M37 46 Q40 48 37 50" fill="none" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Cute Paws holding mug -->
+    <circle cx="27" cy="48" r="2" class="neko-cream" stroke="#2E221F" stroke-width="1"/>
+    <circle cx="37" cy="48" r="2" class="neko-cream" stroke="#2E221F" stroke-width="1"/>
+    <!-- Steam Curl -->
+    <path d="M32 41 C31 38, 34 37, 33 34" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-linecap="round" opacity="0.8"/>
+  </g>
+
+  <!-- Frame 1.2 (IDLE - Frame 2: Ear twitches higher, body breathes up, steam heart) -->
+  <g id="neko-idle-f2" transform="translate(64, 0)">
+    <!-- Tail (Twitched slightly higher) -->
+    <path d="M44 48 C51 47, 56 42, 54 36 C53 32, 49 33, 50 37 C51 40, 48 43, 42 46 Z" class="neko-orange" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M52 34 C53 36, 52 38, 50 39" stroke="#C86D28" stroke-width="1.5" fill="none"/>
+    <path d="M49 41 C50 43, 48 45, 45 46" stroke="#C86D28" stroke-width="1.5" fill="none"/>
+    <!-- Left Cat Ear (Perked up) -->
+    <path d="M19 23 L15 9 L27 18 Z" class="neko-orange" stroke="#2E221F" stroke-width="2"/>
+    <path d="M19 20 L17 12 L24 18 Z" class="ear-pink"/>
+    <!-- Right Cat Ear -->
+    <path d="M37 18 L48 10 L45 23 Z" class="neko-orange" stroke="#2E221F" stroke-width="2"/>
+    <path d="M40 18 L46 13 L45 20 Z" class="ear-pink"/>
+    <!-- Head (Lifted 1px) -->
+    <ellipse cx="32" cy="32" rx="15" ry="13" class="neko-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="31" rx="15" ry="12" class="neko-orange"/>
+    <!-- Forehead Tabby Stripes -->
+    <line x1="32" y1="20" x2="32" y2="24" stroke="#C86D28" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="28" y1="21" x2="29" y2="24" stroke="#C86D28" stroke-width="1.2" stroke-linecap="round"/>
+    <line x1="36" y1="21" x2="35" y2="24" stroke="#C86D28" stroke-width="1.2" stroke-linecap="round"/>
+    <!-- Cheek Stripes -->
+    <polygon points="18,30 22,31 18,32" class="neko-stripe"/>
+    <polygon points="46,30 42,31 46,32" class="neko-stripe"/>
+    <!-- Cream Muzzle -->
+    <ellipse cx="32" cy="35" rx="6" ry="4" class="neko-cream"/>
+    <!-- Eyes -->
+    <ellipse cx="26" cy="30" rx="2.5" ry="3" class="eye-emerald"/>
+    <circle cx="26" cy="30" r="1.5" class="eye-dark"/>
+    <circle cx="25" cy="29" r="0.8" fill="#FFFFFF"/>
+    <ellipse cx="38" cy="30" rx="2.5" ry="3" class="eye-emerald"/>
+    <circle cx="38" cy="30" r="1.5" class="eye-dark"/>
+    <circle cx="37" cy="29" r="0.8" fill="#FFFFFF"/>
+    <!-- Nose & Mouth -->
+    <polygon points="31,33 33,33 32,34.5" class="nose-pink"/>
+    <path d="M30 35.5 Q31 36.5 32 35.5 Q33 36.5 34 35.5" fill="none" stroke="#2E221F" stroke-width="1"/>
+    <!-- Whiskers -->
+    <line x1="16" y1="33" x2="22" y2="34" stroke="#2E221F" stroke-width="0.8"/>
+    <line x1="16" y1="36" x2="22" y2="36" stroke="#2E221F" stroke-width="0.8"/>
+    <line x1="48" y1="33" x2="42" y2="34" stroke="#2E221F" stroke-width="0.8"/>
+    <line x1="48" y1="36" x2="42" y2="36" stroke="#2E221F" stroke-width="0.8"/>
+    <!-- Body & Apron -->
+    <ellipse cx="32" cy="47" rx="13" ry="9" class="neko-orange" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M25 42 L39 42 L37 53 L27 53 Z" class="apron-mocha" stroke="#2E221F" stroke-width="1.2"/>
+    <line x1="26" y1="40" x2="28" y2="42" stroke="#D4A373" stroke-width="1.2"/>
+    <line x1="38" y1="40" x2="36" y2="42" stroke="#D4A373" stroke-width="1.2"/>
+    <!-- Mug -->
+    <rect x="27" y="43" width="10" height="9" rx="2" class="cup-ceramic" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="32" cy="44" rx="4" ry="1.2" class="coffee-dark"/>
+    <path d="M37 45 Q40 47 37 49" fill="none" stroke="#2E221F" stroke-width="1.2"/>
+    <circle cx="27" cy="47" r="2" class="neko-cream" stroke="#2E221F" stroke-width="1"/>
+    <circle cx="37" cy="47" r="2" class="neko-cream" stroke="#2E221F" stroke-width="1"/>
+    <!-- Steam Heart -->
+    <path d="M32 38 C30 36, 32 34, 33 35 C34 34, 36 36, 34 38 Z" fill="#FFFFFF" opacity="0.85"/>
+  </g>
+
+  <!-- Frame 1.3 (IDLE - Frame 3: Happy warm sip, eyes closed ^ ^) -->
+  <g id="neko-idle-f3" transform="translate(128, 0)">
+    <!-- Tail (Curled high and joyful) -->
+    <path d="M44 49 C50 49, 55 45, 55 39 C54 35, 50 35, 51 39 C52 42, 49 45, 43 47 Z" class="neko-orange" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M53 37 C54 39, 53 41, 51 42" stroke="#C86D28" stroke-width="1.5" fill="none"/>
+    <path d="M50 43 C51 45, 49 47, 46 48" stroke="#C86D28" stroke-width="1.5" fill="none"/>
+    <!-- Ears (Tilted comfortably) -->
+    <path d="M18 24 L14 12 L26 20 Z" class="neko-orange" stroke="#2E221F" stroke-width="2"/>
+    <path d="M18 21 L16 15 L23 20 Z" class="ear-pink"/>
+    <path d="M38 20 L49 12 L46 24 Z" class="neko-orange" stroke="#2E221F" stroke-width="2"/>
+    <path d="M41 20 L47 15 L46 22 Z" class="ear-pink"/>
+    <!-- Head -->
+    <ellipse cx="32" cy="33" rx="15" ry="13" class="neko-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="32" rx="15" ry="12" class="neko-orange"/>
+    <!-- Tabby Stripes -->
+    <line x1="32" y1="21" x2="32" y2="25" stroke="#C86D28" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="28" y1="22" x2="29" y2="25" stroke="#C86D28" stroke-width="1.2" stroke-linecap="round"/>
+    <line x1="36" y1="22" x2="35" y2="25" stroke="#C86D28" stroke-width="1.2" stroke-linecap="round"/>
+    <polygon points="18,31 22,32 18,33" class="neko-stripe"/>
+    <polygon points="46,31 42,32 46,33" class="neko-stripe"/>
+    <!-- Cream Muzzle -->
+    <ellipse cx="32" cy="36" rx="6" ry="4" class="neko-cream"/>
+    <!-- Happy Closed Eyes (^ ^) -->
+    <path d="M24 31 Q26 28 28 31" fill="none" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M36 31 Q38 28 40 31" fill="none" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+    <!-- Blushing cheeks -->
+    <circle cx="21" cy="35" r="2.5" class="ear-pink"/>
+    <circle cx="43" cy="35" r="2.5" class="ear-pink"/>
+    <!-- Whiskers -->
+    <line x1="16" y1="34" x2="22" y2="35" stroke="#2E221F" stroke-width="0.8"/>
+    <line x1="16" y1="37" x2="22" y2="37" stroke="#2E221F" stroke-width="0.8"/>
+    <line x1="48" y1="34" x2="42" y2="35" stroke="#2E221F" stroke-width="0.8"/>
+    <line x1="48" y1="37" x2="42" y2="37" stroke="#2E221F" stroke-width="0.8"/>
+    <!-- Body & Apron -->
+    <ellipse cx="32" cy="48" rx="13" ry="9" class="neko-orange" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M25 43 L39 43 L37 54 L27 54 Z" class="apron-mocha" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Mug Raised to Mouth -->
+    <rect x="27" y="38" width="10" height="9" rx="2" class="cup-ceramic" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="32" cy="39" rx="4" ry="1.2" class="coffee-dark"/>
+    <path d="M37 40 Q40 42 37 44" fill="none" stroke="#2E221F" stroke-width="1.2"/>
+    <circle cx="26" cy="42" r="2" class="neko-cream" stroke="#2E221F" stroke-width="1"/>
+    <circle cx="38" cy="42" r="2" class="neko-cream" stroke="#2E221F" stroke-width="1"/>
+    <!-- Sip droplets -->
+    <circle cx="42" cy="32" r="0.8" fill="#FF9E4A"/>
+    <circle cx="44" cy="30" r="0.6" fill="#FF9E4A"/>
+  </g>
+
+  <!-- Frame 1.4 (IDLE - Frame 4: Cup lowered, satisfied barista smile) -->
+  <g id="neko-idle-f4" transform="translate(192, 0)">
+    <!-- Tail -->
+    <path d="M44 49 C50 49, 54 44, 53 38 C52 34, 48 35, 49 39 C50 42, 47 45, 42 47 Z" class="neko-orange" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M51 36 C52 38, 51 40, 49 41" stroke="#C86D28" stroke-width="1.5" fill="none"/>
+    <path d="M48 43 C49 45, 47 47, 44 48" stroke="#C86D28" stroke-width="1.5" fill="none"/>
+    <!-- Ears -->
+    <path d="M19 24 L16 11 L27 19 Z" class="neko-orange" stroke="#2E221F" stroke-width="2"/>
+    <path d="M19 21 L18 14 L24 19 Z" class="ear-pink"/>
+    <path d="M37 19 L48 11 L45 24 Z" class="neko-orange" stroke="#2E221F" stroke-width="2"/>
+    <path d="M40 19 L46 14 L45 21 Z" class="ear-pink"/>
+    <!-- Head -->
+    <ellipse cx="32" cy="33" rx="15" ry="13" class="neko-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="32" rx="15" ry="12" class="neko-orange"/>
+    <!-- Stripes -->
+    <line x1="32" y1="21" x2="32" y2="25" stroke="#C86D28" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="28" y1="22" x2="29" y2="25" stroke="#C86D28" stroke-width="1.2" stroke-linecap="round"/>
+    <line x1="36" y1="22" x2="35" y2="25" stroke="#C86D28" stroke-width="1.2" stroke-linecap="round"/>
+    <polygon points="18,31 22,32 18,33" class="neko-stripe"/>
+    <polygon points="46,31 42,32 46,33" class="neko-stripe"/>
+    <!-- Cream Muzzle -->
+    <ellipse cx="32" cy="36" rx="6" ry="4" class="neko-cream"/>
+    <!-- Emerald Eyes Open & Sparkling -->
+    <ellipse cx="26" cy="31" rx="2.5" ry="3" class="eye-emerald"/>
+    <circle cx="26" cy="31" r="1.5" class="eye-dark"/>
+    <circle cx="25" cy="30" r="0.8" fill="#FFFFFF"/>
+    <ellipse cx="38" cy="31" rx="2.5" ry="3" class="eye-emerald"/>
+    <circle cx="38" cy="31" r="1.5" class="eye-dark"/>
+    <circle cx="37" cy="30" r="0.8" fill="#FFFFFF"/>
+    <!-- Sweet Cat Smile -->
+    <polygon points="31,34 33,34 32,35.5" class="nose-pink"/>
+    <path d="M29 36 Q32 39 35 36" fill="none" stroke="#2E221F" stroke-width="1.2" stroke-linecap="round"/>
+    <!-- Whiskers -->
+    <line x1="16" y1="34" x2="22" y2="35" stroke="#2E221F" stroke-width="0.8"/>
+    <line x1="16" y1="37" x2="22" y2="37" stroke="#2E221F" stroke-width="0.8"/>
+    <line x1="48" y1="34" x2="42" y2="35" stroke="#2E221F" stroke-width="0.8"/>
+    <line x1="48" y1="37" x2="42" y2="37" stroke="#2E221F" stroke-width="0.8"/>
+    <!-- Body & Apron -->
+    <ellipse cx="32" cy="48" rx="13" ry="9" class="neko-orange" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M25 43 L39 43 L37 54 L27 54 Z" class="apron-mocha" stroke="#2E221F" stroke-width="1.2"/>
+    <line x1="26" y1="41" x2="28" y2="43" stroke="#D4A373" stroke-width="1.2"/>
+    <line x1="38" y1="41" x2="36" y2="43" stroke="#D4A373" stroke-width="1.2"/>
+    <!-- Mug Lowered -->
+    <rect x="27" y="45" width="10" height="9" rx="2" class="cup-ceramic" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="32" cy="46" rx="4" ry="1.2" class="coffee-dark"/>
+    <path d="M37 47 Q40 49 37 51" fill="none" stroke="#2E221F" stroke-width="1.2"/>
+    <circle cx="27" cy="49" r="2" class="neko-cream" stroke="#2E221F" stroke-width="1"/>
+    <circle cx="37" cy="49" r="2" class="neko-cream" stroke="#2E221F" stroke-width="1"/>
+    <!-- Soft Steam -->
+    <path d="M33 42 C34 39, 31 38, 33 35" fill="none" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- ROW 2 (Y: 64px) — FOCUS STATE (Keyboard typing jazz rhythm, paws tapping)  -->
+  <!-- ========================================================================= -->
+
+  <!-- Frame 2.1 (FOCUS - Frame 1: Left paw tapping key down, attentive ears) -->
+  <g id="neko-focus-f1" transform="translate(0, 64)">
+    <!-- Tail (Attentive rhythm) -->
+    <path d="M44 49 C50 49, 53 45, 52 40 C51 37, 48 38, 49 41 C50 43, 47 46, 42 47 Z" class="neko-orange" stroke="#2E221F" stroke-width="1.5"/>
+    <!-- Left Ear (Slanted slightly forward) -->
+    <path d="M19 24 L17 11 L28 19 Z" class="neko-orange" stroke="#2E221F" stroke-width="2"/>
+    <path d="M19 21 L18 14 L25 19 Z" class="ear-pink"/>
+    <!-- Right Ear -->
+    <path d="M36 19 L47 11 L45 24 Z" class="neko-orange" stroke="#2E221F" stroke-width="2"/>
+    <path d="M39 19 L45 14 L44 21 Z" class="ear-pink"/>
+    <!-- Head -->
+    <ellipse cx="32" cy="33" rx="15" ry="13" class="neko-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="32" rx="15" ry="12" class="neko-orange"/>
+    <!-- Tabby Stripes -->
+    <line x1="32" y1="21" x2="32" y2="25" stroke="#C86D28" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="28" y1="22" x2="29" y2="25" stroke="#C86D28" stroke-width="1.2" stroke-linecap="round"/>
+    <line x1="36" y1="22" x2="35" y2="25" stroke="#C86D28" stroke-width="1.2" stroke-linecap="round"/>
+    <polygon points="18,31 22,32 18,33" class="neko-stripe"/>
+    <polygon points="46,31 42,32 46,33" class="neko-stripe"/>
+    <!-- Cream Muzzle -->
+    <ellipse cx="32" cy="36" rx="6" ry="4" class="neko-cream"/>
+    <!-- Focused Eyes looking at screen -->
+    <ellipse cx="26" cy="32" rx="2.5" ry="2.8" class="eye-emerald"/>
+    <circle cx="27" cy="32" r="1.3" class="eye-dark"/>
+    <circle cx="27.5" cy="31" r="0.6" fill="#FFFFFF"/>
+    <ellipse cx="38" cy="32" rx="2.5" ry="2.8" class="eye-emerald"/>
+    <circle cx="39" cy="32" r="1.3" class="eye-dark"/>
+    <circle cx="39.5" cy="31" r="0.6" fill="#FFFFFF"/>
+    <!-- Nose & Focus mouth -->
+    <polygon points="31,34 33,34 32,35.5" class="nose-pink"/>
+    <circle cx="32" cy="37" r="0.7" class="eye-dark"/>
+    <!-- Whiskers -->
+    <line x1="16" y1="34" x2="22" y2="35" stroke="#2E221F" stroke-width="0.8"/>
+    <line x1="16" y1="37" x2="22" y2="37" stroke="#2E221F" stroke-width="0.8"/>
+    <line x1="48" y1="34" x2="42" y2="35" stroke="#2E221F" stroke-width="0.8"/>
+    <line x1="48" y1="37" x2="42" y2="37" stroke="#2E221F" stroke-width="0.8"/>
+    <!-- Body & Apron -->
+    <ellipse cx="32" cy="48" rx="13" ry="9" class="neko-orange" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M25 43 L39 43 L37 52 L27 52 Z" class="apron-mocha" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Keyboard Deck -->
+    <rect x="16" y="50" width="32" height="11" rx="2" class="keyboard-base" stroke="#2E221F" stroke-width="1.5"/>
+    <rect x="18" y="52" width="6" height="3" rx="1" class="keycap-pressed"/>
+    <rect x="26" y="52" width="6" height="3" rx="1" class="keycap"/>
+    <rect x="34" y="52" width="6" height="3" rx="1" class="keycap"/>
+    <rect x="42" y="52" width="4" height="3" rx="1" class="keycap"/>
+    <!-- Left Paw Down, Right Paw Up -->
+    <circle cx="21" cy="53" r="2.5" class="neko-cream" stroke="#2E221F" stroke-width="1"/>
+    <circle cx="36" cy="48" r="2.5" class="neko-cream" stroke="#2E221F" stroke-width="1"/>
+  </g>
+
+  <!-- Frame 2.2 (FOCUS - Frame 2: Right paw tapping key down) -->
+  <g id="neko-focus-f2" transform="translate(64, 64)">
+    <!-- Tail -->
+    <path d="M44 48 C51 48, 54 44, 53 39 C52 36, 49 37, 50 40 C51 42, 48 45, 43 46 Z" class="neko-orange" stroke="#2E221F" stroke-width="1.5"/>
+    <!-- Ears -->
+    <path d="M19 23 L16 10 L27 18 Z" class="neko-orange" stroke="#2E221F" stroke-width="2"/>
+    <path d="M19 20 L18 13 L24 18 Z" class="ear-pink"/>
+    <path d="M37 18 L48 10 L45 23 Z" class="neko-orange" stroke="#2E221F" stroke-width="2"/>
+    <path d="M40 18 L46 13 L45 20 Z" class="ear-pink"/>
+    <!-- Head -->
+    <ellipse cx="32" cy="33" rx="15" ry="13" class="neko-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="32" rx="15" ry="12" class="neko-orange"/>
+    <!-- Tabby Stripes -->
+    <line x1="32" y1="21" x2="32" y2="25" stroke="#C86D28" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="28" y1="22" x2="29" y2="25" stroke="#C86D28" stroke-width="1.2" stroke-linecap="round"/>
+    <line x1="36" y1="22" x2="35" y2="25" stroke="#C86D28" stroke-width="1.2" stroke-linecap="round"/>
+    <polygon points="18,31 22,32 18,33" class="neko-stripe"/>
+    <polygon points="46,31 42,32 46,33" class="neko-stripe"/>
+    <!-- Cream Muzzle -->
+    <ellipse cx="32" cy="36" rx="6" ry="4" class="neko-cream"/>
+    <!-- Eyes -->
+    <ellipse cx="26" cy="32" rx="2.5" ry="2.8" class="eye-emerald"/>
+    <circle cx="27" cy="32" r="1.3" class="eye-dark"/>
+    <circle cx="27.5" cy="31" r="0.6" fill="#FFFFFF"/>
+    <ellipse cx="38" cy="32" rx="2.5" ry="2.8" class="eye-emerald"/>
+    <circle cx="39" cy="32" r="1.3" class="eye-dark"/>
+    <circle cx="39.5" cy="31" r="0.6" fill="#FFFFFF"/>
+    <!-- Nose & Mouth -->
+    <polygon points="31,34 33,34 32,35.5" class="nose-pink"/>
+    <circle cx="32" cy="37" r="0.7" class="eye-dark"/>
+    <!-- Whiskers -->
+    <line x1="16" y1="34" x2="22" y2="35" stroke="#2E221F" stroke-width="0.8"/>
+    <line x1="16" y1="37" x2="22" y2="37" stroke="#2E221F" stroke-width="0.8"/>
+    <line x1="48" y1="34" x2="42" y2="35" stroke="#2E221F" stroke-width="0.8"/>
+    <line x1="48" y1="37" x2="42" y2="37" stroke="#2E221F" stroke-width="0.8"/>
+    <!-- Body & Apron -->
+    <ellipse cx="32" cy="48" rx="13" ry="9" class="neko-orange" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M25 43 L39 43 L37 52 L27 52 Z" class="apron-mocha" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Keyboard Deck -->
+    <rect x="16" y="50" width="32" height="11" rx="2" class="keyboard-base" stroke="#2E221F" stroke-width="1.5"/>
+    <rect x="18" y="52" width="6" height="3" rx="1" class="keycap"/>
+    <rect x="26" y="52" width="6" height="3" rx="1" class="keycap"/>
+    <rect x="34" y="52" width="6" height="3" rx="1" class="keycap-pressed"/>
+    <rect x="42" y="52" width="4" height="3" rx="1" class="keycap"/>
+    <!-- Left Paw Up, Right Paw Down -->
+    <circle cx="21" cy="48" r="2.5" class="neko-cream" stroke="#2E221F" stroke-width="1"/>
+    <circle cx="37" cy="53" r="2.5" class="neko-cream" stroke="#2E221F" stroke-width="1"/>
+  </g>
+
+  <!-- Frame 2.3 (FOCUS - Frame 3: Left paw tapping middle key, steady flow) -->
+  <g id="neko-focus-f3" transform="translate(128, 64)">
+    <!-- Tail -->
+    <path d="M44 49 C50 49, 53 45, 52 40 C51 37, 48 38, 49 41 C50 43, 47 46, 42 47 Z" class="neko-orange" stroke="#2E221F" stroke-width="1.5"/>
+    <!-- Ears -->
+    <path d="M19 24 L17 11 L28 19 Z" class="neko-orange" stroke="#2E221F" stroke-width="2"/>
+    <path d="M19 21 L18 14 L25 19 Z" class="ear-pink"/>
+    <path d="M36 19 L47 11 L45 24 Z" class="neko-orange" stroke="#2E221F" stroke-width="2"/>
+    <path d="M39 19 L45 14 L44 21 Z" class="ear-pink"/>
+    <!-- Head -->
+    <ellipse cx="32" cy="33" rx="15" ry="13" class="neko-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="32" rx="15" ry="12" class="neko-orange"/>
+    <!-- Tabby Stripes -->
+    <line x1="32" y1="21" x2="32" y2="25" stroke="#C86D28" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="28" y1="22" x2="29" y2="25" stroke="#C86D28" stroke-width="1.2" stroke-linecap="round"/>
+    <line x1="36" y1="22" x2="35" y2="25" stroke="#C86D28" stroke-width="1.2" stroke-linecap="round"/>
+    <polygon points="18,31 22,32 18,33" class="neko-stripe"/>
+    <polygon points="46,31 42,32 46,33" class="neko-stripe"/>
+    <!-- Cream Muzzle -->
+    <ellipse cx="32" cy="36" rx="6" ry="4" class="neko-cream"/>
+    <!-- Eyes -->
+    <ellipse cx="26" cy="32" rx="2.5" ry="2.8" class="eye-emerald"/>
+    <circle cx="27" cy="32" r="1.3" class="eye-dark"/>
+    <circle cx="27.5" cy="31" r="0.6" fill="#FFFFFF"/>
+    <ellipse cx="38" cy="32" rx="2.5" ry="2.8" class="eye-emerald"/>
+    <circle cx="39" cy="32" r="1.3" class="eye-dark"/>
+    <circle cx="39.5" cy="31" r="0.6" fill="#FFFFFF"/>
+    <!-- Nose & Mouth -->
+    <polygon points="31,34 33,34 32,35.5" class="nose-pink"/>
+    <circle cx="32" cy="37" r="0.7" class="eye-dark"/>
+    <!-- Whiskers -->
+    <line x1="16" y1="34" x2="22" y2="35" stroke="#2E221F" stroke-width="0.8"/>
+    <line x1="16" y1="37" x2="22" y2="37" stroke="#2E221F" stroke-width="0.8"/>
+    <line x1="48" y1="34" x2="42" y2="35" stroke="#2E221F" stroke-width="0.8"/>
+    <line x1="48" y1="37" x2="42" y2="37" stroke="#2E221F" stroke-width="0.8"/>
+    <!-- Body & Apron -->
+    <ellipse cx="32" cy="48" rx="13" ry="9" class="neko-orange" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M25 43 L39 43 L37 52 L27 52 Z" class="apron-mocha" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Keyboard Deck -->
+    <rect x="16" y="50" width="32" height="11" rx="2" class="keyboard-base" stroke="#2E221F" stroke-width="1.5"/>
+    <rect x="18" y="52" width="6" height="3" rx="1" class="keycap"/>
+    <rect x="26" y="52" width="6" height="3" rx="1" class="keycap-pressed"/>
+    <rect x="34" y="52" width="6" height="3" rx="1" class="keycap"/>
+    <rect x="42" y="52" width="4" height="3" rx="1" class="keycap"/>
+    <!-- Left Paw Down on Middle, Right Paw Up -->
+    <circle cx="28" cy="53" r="2.5" class="neko-cream" stroke="#2E221F" stroke-width="1"/>
+    <circle cx="39" cy="48" r="2.5" class="neko-cream" stroke="#2E221F" stroke-width="1"/>
+  </g>
+
+  <!-- Frame 2.4 (FOCUS - Frame 4: Head bob down 1px, right paw tap) -->
+  <g id="neko-focus-f4" transform="translate(192, 64)">
+    <!-- Tail -->
+    <path d="M44 49 C51 49, 54 45, 53 40 C52 37, 49 38, 50 41 C51 43, 48 46, 43 47 Z" class="neko-orange" stroke="#2E221F" stroke-width="1.5"/>
+    <!-- Ears (Head bob down 1px) -->
+    <path d="M19 24 L16 11 L27 19 Z" class="neko-orange" stroke="#2E221F" stroke-width="2"/>
+    <path d="M19 21 L18 14 L24 19 Z" class="ear-pink"/>
+    <path d="M37 19 L48 11 L45 24 Z" class="neko-orange" stroke="#2E221F" stroke-width="2"/>
+    <path d="M40 19 L46 14 L45 21 Z" class="ear-pink"/>
+    <!-- Head (Bobbed 1px) -->
+    <ellipse cx="32" cy="34" rx="15" ry="13" class="neko-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="33" rx="15" ry="12" class="neko-orange"/>
+    <!-- Tabby Stripes -->
+    <line x1="32" y1="22" x2="32" y2="26" stroke="#C86D28" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="28" y1="23" x2="29" y2="26" stroke="#C86D28" stroke-width="1.2" stroke-linecap="round"/>
+    <line x1="36" y1="23" x2="35" y2="26" stroke="#C86D28" stroke-width="1.2" stroke-linecap="round"/>
+    <polygon points="18,32 22,33 18,34" class="neko-stripe"/>
+    <polygon points="46,32 42,33 46,34" class="neko-stripe"/>
+    <!-- Cream Muzzle -->
+    <ellipse cx="32" cy="37" rx="6" ry="4" class="neko-cream"/>
+    <!-- Eyes -->
+    <ellipse cx="26" cy="33" rx="2.5" ry="2.8" class="eye-emerald"/>
+    <circle cx="27" cy="33" r="1.3" class="eye-dark"/>
+    <circle cx="27.5" cy="32" r="0.6" fill="#FFFFFF"/>
+    <ellipse cx="38" cy="33" rx="2.5" ry="2.8" class="eye-emerald"/>
+    <circle cx="39" cy="33" r="1.3" class="eye-dark"/>
+    <circle cx="39.5" cy="32" r="0.6" fill="#FFFFFF"/>
+    <!-- Nose & Mouth -->
+    <polygon points="31,35 33,35 32,36.5" class="nose-pink"/>
+    <circle cx="32" cy="38" r="0.7" class="eye-dark"/>
+    <!-- Whiskers -->
+    <line x1="16" y1="35" x2="22" y2="36" stroke="#2E221F" stroke-width="0.8"/>
+    <line x1="16" y1="38" x2="22" y2="38" stroke="#2E221F" stroke-width="0.8"/>
+    <line x1="48" y1="35" x2="42" y2="36" stroke="#2E221F" stroke-width="0.8"/>
+    <line x1="48" y1="38" x2="42" y2="38" stroke="#2E221F" stroke-width="0.8"/>
+    <!-- Body & Apron -->
+    <ellipse cx="32" cy="49" rx="13" ry="9" class="neko-orange" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M25 44 L39 44 L37 53 L27 53 Z" class="apron-mocha" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Keyboard Deck -->
+    <rect x="16" y="50" width="32" height="11" rx="2" class="keyboard-base" stroke="#2E221F" stroke-width="1.5"/>
+    <rect x="18" y="52" width="6" height="3" rx="1" class="keycap"/>
+    <rect x="26" y="52" width="6" height="3" rx="1" class="keycap"/>
+    <rect x="34" y="52" width="6" height="3" rx="1" class="keycap"/>
+    <rect x="42" y="52" width="4" height="3" rx="1" class="keycap-pressed"/>
+    <!-- Left Paw Up, Right Paw Down -->
+    <circle cx="22" cy="49" r="2.5" class="neko-cream" stroke="#2E221F" stroke-width="1"/>
+    <circle cx="43" cy="53" r="2.5" class="neko-cream" stroke="#2E221F" stroke-width="1"/>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- ROW 3 (Y: 128px) — FRENZY STATE (Airplane ears, turbo paws, flame fire)   -->
+  <!-- ========================================================================= -->
+
+  <!-- Frame 3.1 (FRENZY - Frame 1: Airplane ears, sweat drop, turbo ghosted paws) -->
+  <g id="neko-frenzy-f1" transform="translate(0, 128)">
+    <!-- Small Fire Spark Left -->
+    <path d="M15 14 C13 9, 18 7, 19 4 C21 8, 19 12, 15 14 Z" class="fire-main"/>
+    <path d="M16 12 C15 9, 17 8, 18 6 C19 8, 18 10, 16 12 Z" class="fire-core"/>
+    <!-- Airplane Ears (Flattened sideways in high gear) -->
+    <path d="M18 25 L8 20 L18 16 Z" class="neko-orange" stroke="#2E221F" stroke-width="2"/>
+    <path d="M17 23 L10 20 L17 18 Z" class="ear-pink"/>
+    <path d="M46 16 L56 20 L46 25 Z" class="neko-orange" stroke="#2E221F" stroke-width="2"/>
+    <path d="M47 18 L54 20 L47 23 Z" class="ear-pink"/>
+    <!-- Head -->
+    <ellipse cx="32" cy="33" rx="15" ry="13" class="neko-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="32" rx="15" ry="12" class="neko-orange"/>
+    <!-- Sweat Drop Flying Left -->
+    <path d="M13 29 C11 29, 10 31, 10 32 C10 34, 13 35, 13 35 C13 35, 16 34, 16 32 C16 31, 15 29, 13 29 Z" class="sweat"/>
+    <!-- Forehead Tabby Stripes -->
+    <line x1="32" y1="21" x2="32" y2="25" stroke="#C86D28" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="28" y1="22" x2="29" y2="25" stroke="#C86D28" stroke-width="1.2" stroke-linecap="round"/>
+    <line x1="36" y1="22" x2="35" y2="25" stroke="#C86D28" stroke-width="1.2" stroke-linecap="round"/>
+    <!-- Fierce Eyes & Slanted Eyebrows -->
+    <ellipse cx="26" cy="31" rx="3" ry="3.2" class="eye-emerald"/>
+    <circle cx="26" cy="31" r="1.6" class="eye-dark"/>
+    <circle cx="25" cy="30" r="0.9" fill="#FFFFFF"/>
+    <path d="M22 27 L28 29" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+    <ellipse cx="38" cy="31" rx="3" ry="3.2" class="eye-emerald"/>
+    <circle cx="38" cy="31" r="1.6" class="eye-dark"/>
+    <circle cx="37" cy="30" r="0.9" fill="#FFFFFF"/>
+    <path d="M42 27 L36 29" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+    <!-- Cream Muzzle & Determined Mouth with tiny fangs -->
+    <ellipse cx="32" cy="36" rx="6" ry="4" class="neko-cream"/>
+    <rect x="30" y="36" width="4" height="2" rx="0.8" fill="#FFFFFF" stroke="#2E221F" stroke-width="1"/>
+    <!-- Whiskers (Sharp) -->
+    <line x1="15" y1="33" x2="21" y2="35" stroke="#2E221F" stroke-width="1"/>
+    <line x1="15" y1="37" x2="21" y2="37" stroke="#2E221F" stroke-width="1"/>
+    <line x1="49" y1="33" x2="43" y2="35" stroke="#2E221F" stroke-width="1"/>
+    <line x1="49" y1="37" x2="43" y2="37" stroke="#2E221F" stroke-width="1"/>
+    <!-- Body & Apron -->
+    <ellipse cx="32" cy="48" rx="13" ry="9" class="neko-orange" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M25 43 L39 43 L37 52 L27 52 Z" class="apron-mocha" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Keyboard Deck -->
+    <rect x="16" y="50" width="32" height="11" rx="2" class="keyboard-base" stroke="#2E221F" stroke-width="1.5"/>
+    <!-- Ghosted Afterimage Paws -->
+    <ellipse cx="19" cy="47" rx="3.5" ry="2.5" fill="#FFF5EB" opacity="0.6"/>
+    <ellipse cx="23" cy="53" rx="3" ry="2.5" class="neko-cream" stroke="#2E221F" stroke-width="1"/>
+    <ellipse cx="43" cy="47" rx="3.5" ry="2.5" fill="#FFF5EB" opacity="0.6"/>
+    <ellipse cx="39" cy="53" rx="3" ry="2.5" class="neko-cream" stroke="#2E221F" stroke-width="1"/>
+  </g>
+
+  <!-- Frame 3.2 (FRENZY - Frame 2: Big flame flares behind head, turbo speed sparks) -->
+  <g id="neko-frenzy-f2" transform="translate(64, 128)">
+    <!-- Big Fire Flame Behind Head -->
+    <path d="M25 15 C20 8, 24 2, 32 0 C40 2, 44 8, 39 15 Z" class="fire-main"/>
+    <path d="M27 13 C23 9, 27 5, 32 3 C37 5, 41 9, 37 13 Z" class="fire-core"/>
+    <!-- Airplane Ears -->
+    <path d="M18 25 L8 20 L18 16 Z" class="neko-orange" stroke="#2E221F" stroke-width="2"/>
+    <path d="M17 23 L10 20 L17 18 Z" class="ear-pink"/>
+    <path d="M46 16 L56 20 L46 25 Z" class="neko-orange" stroke="#2E221F" stroke-width="2"/>
+    <path d="M47 18 L54 20 L47 23 Z" class="ear-pink"/>
+    <!-- Head -->
+    <ellipse cx="32" cy="33" rx="15" ry="13" class="neko-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="32" rx="15" ry="12" class="neko-orange"/>
+    <!-- Sweat Drop Flying Right -->
+    <path d="M51 29 C49 29, 48 31, 48 32 C48 34, 51 35, 51 35 C51 35, 54 34, 54 32 C54 31, 53 29, 51 29 Z" class="sweat"/>
+    <!-- Tabby Stripes -->
+    <line x1="32" y1="21" x2="32" y2="25" stroke="#C86D28" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="28" y1="22" x2="29" y2="25" stroke="#C86D28" stroke-width="1.2" stroke-linecap="round"/>
+    <line x1="36" y1="22" x2="35" y2="25" stroke="#C86D28" stroke-width="1.2" stroke-linecap="round"/>
+    <!-- Fierce Eyes -->
+    <ellipse cx="26" cy="31" rx="3" ry="3.2" class="eye-emerald"/>
+    <circle cx="26" cy="31" r="1.6" class="eye-dark"/>
+    <circle cx="25" cy="30" r="0.9" fill="#FFFFFF"/>
+    <path d="M22 27 L28 29" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+    <ellipse cx="38" cy="31" rx="3" ry="3.2" class="eye-emerald"/>
+    <circle cx="38" cy="31" r="1.6" class="eye-dark"/>
+    <circle cx="37" cy="30" r="0.9" fill="#FFFFFF"/>
+    <path d="M42 27 L36 29" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+    <!-- Cream Muzzle & Shouting Mouth -->
+    <ellipse cx="32" cy="36" rx="6" ry="4" class="neko-cream"/>
+    <path d="M30 36 Q32 39 34 36 Z" class="ear-pink" stroke="#2E221F" stroke-width="1"/>
+    <!-- Whiskers -->
+    <line x1="15" y1="33" x2="21" y2="35" stroke="#2E221F" stroke-width="1"/>
+    <line x1="15" y1="37" x2="21" y2="37" stroke="#2E221F" stroke-width="1"/>
+    <line x1="49" y1="33" x2="43" y2="35" stroke="#2E221F" stroke-width="1"/>
+    <line x1="49" y1="37" x2="43" y2="37" stroke="#2E221F" stroke-width="1"/>
+    <!-- Body & Apron -->
+    <ellipse cx="32" cy="48" rx="13" ry="9" class="neko-orange" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M25 43 L39 43 L37 52 L27 52 Z" class="apron-mocha" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Keyboard Deck -->
+    <rect x="16" y="50" width="32" height="11" rx="2" class="keyboard-base" stroke="#2E221F" stroke-width="1.5"/>
+    <!-- Turbo Smashing Paws -->
+    <ellipse cx="26" cy="52" rx="3" ry="2.5" class="neko-cream" stroke="#2E221F" stroke-width="1"/>
+    <ellipse cx="36" cy="52" rx="3" ry="2.5" class="neko-cream" stroke="#2E221F" stroke-width="1"/>
+    <!-- Speed Sparks -->
+    <circle cx="18" cy="52" r="1" class="fire-core"/>
+    <circle cx="46" cy="52" r="1" class="fire-core"/>
+  </g>
+
+  <!-- Frame 3.3 (FRENZY - Frame 3: Triple fire flame, double typing speed streaks) -->
+  <g id="neko-frenzy-f3" transform="translate(128, 128)">
+    <!-- Triple Fire Flame -->
+    <path d="M18 14 C15 7, 20 1, 25 5 C28 0, 36 0, 39 5 C44 1, 49 7, 46 14 Z" class="fire-main"/>
+    <path d="M21 12 C18 8, 22 4, 26 7 C29 3, 35 3, 38 7 C42 4, 46 8, 43 12 Z" class="fire-core"/>
+    <!-- Airplane Ears -->
+    <path d="M18 25 L8 20 L18 16 Z" class="neko-orange" stroke="#2E221F" stroke-width="2"/>
+    <path d="M17 23 L10 20 L17 18 Z" class="ear-pink"/>
+    <path d="M46 16 L56 20 L46 25 Z" class="neko-orange" stroke="#2E221F" stroke-width="2"/>
+    <path d="M47 18 L54 20 L47 23 Z" class="ear-pink"/>
+    <!-- Head -->
+    <ellipse cx="32" cy="33" rx="15" ry="13" class="neko-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="32" rx="15" ry="12" class="neko-orange"/>
+    <!-- Sweat Droplets both sides -->
+    <circle cx="12" cy="31" r="1.5" class="sweat"/>
+    <circle cx="52" cy="31" r="1.5" class="sweat"/>
+    <!-- Tabby Stripes -->
+    <line x1="32" y1="21" x2="32" y2="25" stroke="#C86D28" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="28" y1="22" x2="29" y2="25" stroke="#C86D28" stroke-width="1.2" stroke-linecap="round"/>
+    <line x1="36" y1="22" x2="35" y2="25" stroke="#C86D28" stroke-width="1.2" stroke-linecap="round"/>
+    <!-- Fierce Eyes -->
+    <ellipse cx="26" cy="31" rx="3" ry="3.2" class="eye-emerald"/>
+    <circle cx="26" cy="31" r="1.6" class="eye-dark"/>
+    <circle cx="25" cy="30" r="0.9" fill="#FFFFFF"/>
+    <path d="M22 27 L28 29" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+    <ellipse cx="38" cy="31" rx="3" ry="3.2" class="eye-emerald"/>
+    <circle cx="38" cy="31" r="1.6" class="eye-dark"/>
+    <circle cx="37" cy="30" r="0.9" fill="#FFFFFF"/>
+    <path d="M42 27 L36 29" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+    <!-- Cream Muzzle & Fangs -->
+    <ellipse cx="32" cy="36" rx="6" ry="4" class="neko-cream"/>
+    <rect x="30" y="36" width="4" height="2" rx="0.8" fill="#FFFFFF" stroke="#2E221F" stroke-width="1"/>
+    <!-- Whiskers -->
+    <line x1="15" y1="33" x2="21" y2="35" stroke="#2E221F" stroke-width="1"/>
+    <line x1="15" y1="37" x2="21" y2="37" stroke="#2E221F" stroke-width="1"/>
+    <line x1="49" y1="33" x2="43" y2="35" stroke="#2E221F" stroke-width="1"/>
+    <line x1="49" y1="37" x2="43" y2="37" stroke="#2E221F" stroke-width="1"/>
+    <!-- Body & Apron -->
+    <ellipse cx="32" cy="48" rx="13" ry="9" class="neko-orange" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M25 43 L39 43 L37 52 L27 52 Z" class="apron-mocha" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Keyboard Deck -->
+    <rect x="16" y="50" width="32" height="11" rx="2" class="keyboard-base" stroke="#2E221F" stroke-width="1.5"/>
+    <!-- Paws in Full Motion -->
+    <ellipse cx="20" cy="52" rx="3" ry="2.5" class="neko-cream" stroke="#2E221F" stroke-width="1"/>
+    <ellipse cx="44" cy="52" rx="3" ry="2.5" class="neko-cream" stroke="#2E221F" stroke-width="1"/>
+    <ellipse cx="32" cy="48" rx="4" ry="2" fill="#FFF5EB" opacity="0.6"/>
+  </g>
+
+  <!-- Frame 3.4 (FRENZY - Frame 4: Smoke puff from keyboard, flame flickers right) -->
+  <g id="neko-frenzy-f4" transform="translate(192, 128)">
+    <!-- Fire Flame Flickered Right -->
+    <path d="M37 12 C43 7, 48 4, 45 0 C41 4, 38 8, 35 12 Z" class="fire-main"/>
+    <path d="M38 10 C42 6, 45 4, 43 2 C41 4, 39 7, 37 10 Z" class="fire-core"/>
+    <!-- Airplane Ears -->
+    <path d="M18 25 L8 20 L18 16 Z" class="neko-orange" stroke="#2E221F" stroke-width="2"/>
+    <path d="M17 23 L10 20 L17 18 Z" class="ear-pink"/>
+    <path d="M46 16 L56 20 L46 25 Z" class="neko-orange" stroke="#2E221F" stroke-width="2"/>
+    <path d="M47 18 L54 20 L47 23 Z" class="ear-pink"/>
+    <!-- Head -->
+    <ellipse cx="32" cy="33" rx="15" ry="13" class="neko-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="32" rx="15" ry="12" class="neko-orange"/>
+    <!-- Tabby Stripes -->
+    <line x1="32" y1="21" x2="32" y2="25" stroke="#C86D28" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="28" y1="22" x2="29" y2="25" stroke="#C86D28" stroke-width="1.2" stroke-linecap="round"/>
+    <line x1="36" y1="22" x2="35" y2="25" stroke="#C86D28" stroke-width="1.2" stroke-linecap="round"/>
+    <!-- Fierce Eyes -->
+    <ellipse cx="26" cy="31" rx="3" ry="3.2" class="eye-emerald"/>
+    <circle cx="26" cy="31" r="1.6" class="eye-dark"/>
+    <circle cx="25" cy="30" r="0.9" fill="#FFFFFF"/>
+    <path d="M22 27 L28 29" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+    <ellipse cx="38" cy="31" rx="3" ry="3.2" class="eye-emerald"/>
+    <circle cx="38" cy="31" r="1.6" class="eye-dark"/>
+    <circle cx="37" cy="30" r="0.9" fill="#FFFFFF"/>
+    <path d="M42 27 L36 29" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+    <!-- Cream Muzzle & Open Shout Mouth -->
+    <ellipse cx="32" cy="36" rx="6" ry="4" class="neko-cream"/>
+    <path d="M30 36 Q32 39 34 36 Z" class="ear-pink" stroke="#2E221F" stroke-width="1"/>
+    <!-- Whiskers -->
+    <line x1="15" y1="33" x2="21" y2="35" stroke="#2E221F" stroke-width="1"/>
+    <line x1="15" y1="37" x2="21" y2="37" stroke="#2E221F" stroke-width="1"/>
+    <line x1="49" y1="33" x2="43" y2="35" stroke="#2E221F" stroke-width="1"/>
+    <line x1="49" y1="37" x2="43" y2="37" stroke="#2E221F" stroke-width="1"/>
+    <!-- Body & Apron -->
+    <ellipse cx="32" cy="48" rx="13" ry="9" class="neko-orange" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M25 43 L39 43 L37 52 L27 52 Z" class="apron-mocha" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Keyboard Deck -->
+    <rect x="16" y="50" width="32" height="11" rx="2" class="keyboard-base" stroke="#2E221F" stroke-width="1.5"/>
+    <!-- Smoke Puff from keyboard -->
+    <circle cx="24" cy="46" r="2" fill="#D96B27" opacity="0.8"/>
+    <circle cx="28" cy="44" r="2.5" fill="#FFF5EB" opacity="0.8"/>
+    <!-- Paws -->
+    <ellipse cx="30" cy="52" rx="3" ry="2.5" class="neko-cream" stroke="#2E221F" stroke-width="1"/>
+    <ellipse cx="38" cy="52" rx="3" ry="2.5" class="neko-cream" stroke="#2E221F" stroke-width="1"/>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- ROW 4 (Y: 192px) — DISK STATE (Scratching cardboard box, shreds flying)   -->
+  <!-- ========================================================================= -->
+
+  <!-- Frame 4.1 (DISK - Frame 1: Pouncing on cardboard box, left claws digging) -->
+  <g id="neko-disk-f1" transform="translate(0, 192)">
+    <!-- Tail (Raised high & alert) -->
+    <path d="M45 46 C52 44, 55 38, 53 32 C52 28, 48 30, 49 34 C50 37, 48 41, 43 44 Z" class="neko-orange" stroke="#2E221F" stroke-width="1.5"/>
+    <!-- Ears (Perked forward eagerly) -->
+    <path d="M19 24 L16 11 L27 19 Z" class="neko-orange" stroke="#2E221F" stroke-width="2"/>
+    <path d="M19 21 L18 14 L24 19 Z" class="ear-pink"/>
+    <path d="M37 19 L48 11 L45 24 Z" class="neko-orange" stroke="#2E221F" stroke-width="2"/>
+    <path d="M40 19 L46 14 L45 21 Z" class="ear-pink"/>
+    <!-- Head -->
+    <ellipse cx="32" cy="33" rx="15" ry="13" class="neko-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="32" rx="15" ry="12" class="neko-orange"/>
+    <!-- Tabby Stripes -->
+    <line x1="32" y1="21" x2="32" y2="25" stroke="#C86D28" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="28" y1="22" x2="29" y2="25" stroke="#C86D28" stroke-width="1.2" stroke-linecap="round"/>
+    <line x1="36" y1="22" x2="35" y2="25" stroke="#C86D28" stroke-width="1.2" stroke-linecap="round"/>
+    <polygon points="18,31 22,32 18,33" class="neko-stripe"/>
+    <polygon points="46,31 42,32 46,33" class="neko-stripe"/>
+    <!-- Cream Muzzle -->
+    <ellipse cx="32" cy="36" rx="6" ry="4" class="neko-cream"/>
+    <!-- Eyes looking down intently at cardboard box -->
+    <ellipse cx="26" cy="33" rx="2.5" ry="2.8" class="eye-emerald"/>
+    <circle cx="26" cy="34" r="1.3" class="eye-dark"/>
+    <circle cx="25.5" cy="33.5" r="0.6" fill="#FFFFFF"/>
+    <ellipse cx="38" cy="33" rx="2.5" ry="2.8" class="eye-emerald"/>
+    <circle cx="38" cy="34" r="1.3" class="eye-dark"/>
+    <circle cx="37.5" cy="33.5" r="0.6" fill="#FFFFFF"/>
+    <!-- Nose & Mouth -->
+    <polygon points="31,34 33,34 32,35.5" class="nose-pink"/>
+    <path d="M30 36.5 Q32 38 34 36.5" fill="none" stroke="#2E221F" stroke-width="1"/>
+    <!-- Whiskers -->
+    <line x1="16" y1="34" x2="22" y2="35" stroke="#2E221F" stroke-width="0.8"/>
+    <line x1="16" y1="37" x2="22" y2="37" stroke="#2E221F" stroke-width="0.8"/>
+    <line x1="48" y1="34" x2="42" y2="35" stroke="#2E221F" stroke-width="0.8"/>
+    <line x1="48" y1="37" x2="42" y2="37" stroke="#2E221F" stroke-width="0.8"/>
+    <!-- Body & Apron -->
+    <ellipse cx="32" cy="47" rx="13" ry="9" class="neko-orange" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M25 42 L39 42 L37 51 L27 51 Z" class="apron-mocha" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Kraft Cardboard Box -->
+    <path d="M12 59 L12 48 L52 48 L52 59 Z" class="box-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M14 58 L14 49 L50 49 L50 58 Z" class="box-kraft"/>
+    <!-- Box Flap details & Tape line -->
+    <line x1="32" y1="49" x2="32" y2="58" stroke="#A57857" stroke-width="1.5"/>
+    <!-- Scratch marks on box -->
+    <line x1="20" y1="51" x2="19" y2="56" stroke="#8B6141" stroke-width="1.2"/>
+    <line x1="23" y1="51" x2="22" y2="56" stroke="#8B6141" stroke-width="1.2"/>
+    <!-- Paws Clawing -->
+    <circle cx="21" cy="50" r="2.5" class="neko-cream" stroke="#2E221F" stroke-width="1"/>
+    <circle cx="43" cy="46" r="2.5" class="neko-cream" stroke="#2E221F" stroke-width="1"/>
+    <!-- Tiny Paper Shred -->
+    <rect x="18" y="44" width="2" height="2" class="paper-scrap" transform="rotate(20 18 44)"/>
+  </g>
+
+  <!-- Frame 4.2 (DISK - Frame 2: Right claws slashing across box, shreds flying up) -->
+  <g id="neko-disk-f2" transform="translate(64, 192)">
+    <!-- Tail -->
+    <path d="M45 45 C53 43, 56 37, 54 31 C53 27, 49 29, 50 33 C51 36, 49 40, 43 43 Z" class="neko-orange" stroke="#2E221F" stroke-width="1.5"/>
+    <!-- Ears -->
+    <path d="M19 23 L15 10 L27 18 Z" class="neko-orange" stroke="#2E221F" stroke-width="2"/>
+    <path d="M19 20 L17 13 L24 18 Z" class="ear-pink"/>
+    <path d="M37 18 L48 10 L45 23 Z" class="neko-orange" stroke="#2E221F" stroke-width="2"/>
+    <path d="M40 18 L46 13 L45 20 Z" class="ear-pink"/>
+    <!-- Head -->
+    <ellipse cx="32" cy="33" rx="15" ry="13" class="neko-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="32" rx="15" ry="12" class="neko-orange"/>
+    <!-- Stripes -->
+    <line x1="32" y1="21" x2="32" y2="25" stroke="#C86D28" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="28" y1="22" x2="29" y2="25" stroke="#C86D28" stroke-width="1.2" stroke-linecap="round"/>
+    <line x1="36" y1="22" x2="35" y2="25" stroke="#C86D28" stroke-width="1.2" stroke-linecap="round"/>
+    <!-- Eyes Tracking Scratch -->
+    <ellipse cx="26" cy="32" rx="2.5" ry="2.8" class="eye-emerald"/>
+    <circle cx="27" cy="33" r="1.3" class="eye-dark"/>
+    <circle cx="27.5" cy="32.5" r="0.6" fill="#FFFFFF"/>
+    <ellipse cx="38" cy="32" rx="2.5" ry="2.8" class="eye-emerald"/>
+    <circle cx="39" cy="33" r="1.3" class="eye-dark"/>
+    <circle cx="39.5" cy="32.5" r="0.6" fill="#FFFFFF"/>
+    <!-- Cream Muzzle -->
+    <ellipse cx="32" cy="36" rx="6" ry="4" class="neko-cream"/>
+    <polygon points="31,34 33,34 32,35.5" class="nose-pink"/>
+    <path d="M30 36.5 Q32 38 34 36.5" fill="none" stroke="#2E221F" stroke-width="1"/>
+    <!-- Whiskers -->
+    <line x1="16" y1="34" x2="22" y2="35" stroke="#2E221F" stroke-width="0.8"/>
+    <line x1="16" y1="37" x2="22" y2="37" stroke="#2E221F" stroke-width="0.8"/>
+    <line x1="48" y1="34" x2="42" y2="35" stroke="#2E221F" stroke-width="0.8"/>
+    <line x1="48" y1="37" x2="42" y2="37" stroke="#2E221F" stroke-width="0.8"/>
+    <!-- Body & Apron -->
+    <ellipse cx="32" cy="47" rx="13" ry="9" class="neko-orange" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M25 42 L39 42 L37 51 L27 51 Z" class="apron-mocha" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Cardboard Box -->
+    <path d="M12 59 L12 48 L52 48 L52 59 Z" class="box-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M14 58 L14 49 L50 49 L50 58 Z" class="box-kraft"/>
+    <line x1="32" y1="49" x2="32" y2="58" stroke="#A57857" stroke-width="1.5"/>
+    <!-- Scratch marks right -->
+    <line x1="38" y1="51" x2="39" y2="56" stroke="#8B6141" stroke-width="1.2"/>
+    <line x1="41" y1="51" x2="42" y2="56" stroke="#8B6141" stroke-width="1.2"/>
+    <!-- Paws -->
+    <circle cx="23" cy="46" r="2.5" class="neko-cream" stroke="#2E221F" stroke-width="1"/>
+    <circle cx="41" cy="51" r="2.5" class="neko-cream" stroke="#2E221F" stroke-width="1"/>
+    <!-- Flying Shreds & Motion line -->
+    <path d="M43 45 Q47 43 45 40" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-linecap="round"/>
+    <rect x="44" y="38" width="2.5" height="1.8" class="paper-scrap" transform="rotate(45 44 38)"/>
+    <rect x="48" y="44" width="2" height="1.5" class="paper-scrap" transform="rotate(-30 48 44)"/>
+  </g>
+
+  <!-- Frame 4.3 (DISK - Frame 3: Both paws scratching in burst, cardboard confetti) -->
+  <g id="neko-disk-f3" transform="translate(128, 192)">
+    <!-- Tail (Whipping with excitement) -->
+    <path d="M45 47 C54 46, 58 39, 56 33 C54 29, 50 31, 52 35 C53 38, 50 42, 44 45 Z" class="neko-orange" stroke="#2E221F" stroke-width="1.5"/>
+    <!-- Airplane/Excited Ears -->
+    <path d="M19 22 L13 10 L26 17 Z" class="neko-orange" stroke="#2E221F" stroke-width="2"/>
+    <path d="M19 19 L15 13 L23 17 Z" class="ear-pink"/>
+    <path d="M38 17 L51 10 L45 22 Z" class="neko-orange" stroke="#2E221F" stroke-width="2"/>
+    <path d="M41 17 L49 13 L45 19 Z" class="ear-pink"/>
+    <!-- Head -->
+    <ellipse cx="32" cy="33" rx="15" ry="13" class="neko-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="32" rx="15" ry="12" class="neko-orange"/>
+    <!-- Stripes -->
+    <line x1="32" y1="21" x2="32" y2="25" stroke="#C86D28" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="28" y1="22" x2="29" y2="25" stroke="#C86D28" stroke-width="1.2" stroke-linecap="round"/>
+    <line x1="36" y1="22" x2="35" y2="25" stroke="#C86D28" stroke-width="1.2" stroke-linecap="round"/>
+    <!-- Happy Intense Closed Eyes (> <) -->
+    <path d="M23 31 L27 33 L23 35" fill="none" stroke="#2E221F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M41 31 L37 33 L41 35" fill="none" stroke="#2E221F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Cream Muzzle & Open Happy Mouth -->
+    <ellipse cx="32" cy="36" rx="6" ry="4" class="neko-cream"/>
+    <polygon points="31,34 33,34 32,35.5" class="nose-pink"/>
+    <path d="M30 36.5 Q32 39 34 36.5 Z" class="ear-pink" stroke="#2E221F" stroke-width="1"/>
+    <!-- Whiskers -->
+    <line x1="16" y1="34" x2="22" y2="35" stroke="#2E221F" stroke-width="0.8"/>
+    <line x1="16" y1="37" x2="22" y2="37" stroke="#2E221F" stroke-width="0.8"/>
+    <line x1="48" y1="34" x2="42" y2="35" stroke="#2E221F" stroke-width="0.8"/>
+    <line x1="48" y1="37" x2="42" y2="37" stroke="#2E221F" stroke-width="0.8"/>
+    <!-- Body & Apron -->
+    <ellipse cx="32" cy="47" rx="13" ry="9" class="neko-orange" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M25 42 L39 42 L37 51 L27 51 Z" class="apron-mocha" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Cardboard Box with Multi-scratches -->
+    <path d="M12 59 L12 48 L52 48 L52 59 Z" class="box-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M14 58 L14 49 L50 49 L50 58 Z" class="box-kraft"/>
+    <line x1="32" y1="49" x2="32" y2="58" stroke="#A57857" stroke-width="1.5"/>
+    <line x1="20" y1="51" x2="19" y2="56" stroke="#8B6141" stroke-width="1.2"/>
+    <line x1="25" y1="51" x2="26" y2="57" stroke="#8B6141" stroke-width="1.2"/>
+    <line x1="39" y1="51" x2="38" y2="56" stroke="#8B6141" stroke-width="1.2"/>
+    <line x1="44" y1="51" x2="45" y2="57" stroke="#8B6141" stroke-width="1.2"/>
+    <!-- Both Paws Slashing Fast -->
+    <circle cx="22" cy="51" r="2.5" class="neko-cream" stroke="#2E221F" stroke-width="1"/>
+    <circle cx="42" cy="51" r="2.5" class="neko-cream" stroke="#2E221F" stroke-width="1"/>
+    <!-- Shreds Bursting Left and Right -->
+    <rect x="14" y="42" width="2" height="2" class="paper-scrap" transform="rotate(-40 14 42)"/>
+    <rect x="18" y="38" width="2.5" height="1.8" class="paper-scrap" transform="rotate(15 18 38)"/>
+    <rect x="46" y="38" width="2.5" height="1.8" class="paper-scrap" transform="rotate(-15 46 38)"/>
+    <rect x="50" y="42" width="2" height="2" class="paper-scrap" transform="rotate(40 50 42)"/>
+  </g>
+
+  <!-- Frame 4.4 (DISK - Frame 4: Paws ready for next claw slash, bits settling) -->
+  <g id="neko-disk-f4" transform="translate(192, 192)">
+    <!-- Tail -->
+    <path d="M45 46 C52 44, 55 38, 53 32 C52 28, 48 30, 49 34 C50 37, 48 41, 43 44 Z" class="neko-orange" stroke="#2E221F" stroke-width="1.5"/>
+    <!-- Ears -->
+    <path d="M19 24 L16 11 L27 19 Z" class="neko-orange" stroke="#2E221F" stroke-width="2"/>
+    <path d="M19 21 L18 14 L24 19 Z" class="ear-pink"/>
+    <path d="M37 19 L48 11 L45 24 Z" class="neko-orange" stroke="#2E221F" stroke-width="2"/>
+    <path d="M40 19 L46 14 L45 21 Z" class="ear-pink"/>
+    <!-- Head -->
+    <ellipse cx="32" cy="33" rx="15" ry="13" class="neko-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="32" rx="15" ry="12" class="neko-orange"/>
+    <!-- Stripes -->
+    <line x1="32" y1="21" x2="32" y2="25" stroke="#C86D28" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="28" y1="22" x2="29" y2="25" stroke="#C86D28" stroke-width="1.2" stroke-linecap="round"/>
+    <line x1="36" y1="22" x2="35" y2="25" stroke="#C86D28" stroke-width="1.2" stroke-linecap="round"/>
+    <!-- Eyes Sparkling Down -->
+    <ellipse cx="26" cy="33" rx="2.5" ry="2.8" class="eye-emerald"/>
+    <circle cx="26" cy="33.5" r="1.3" class="eye-dark"/>
+    <circle cx="25.5" cy="33" r="0.6" fill="#FFFFFF"/>
+    <ellipse cx="38" cy="33" rx="2.5" ry="2.8" class="eye-emerald"/>
+    <circle cx="38" cy="33.5" r="1.3" class="eye-dark"/>
+    <circle cx="37.5" cy="33" r="0.6" fill="#FFFFFF"/>
+    <!-- Cream Muzzle & Cat Smile -->
+    <ellipse cx="32" cy="36" rx="6" ry="4" class="neko-cream"/>
+    <polygon points="31,34 33,34 32,35.5" class="nose-pink"/>
+    <path d="M30 36.5 Q32 38 34 36.5" fill="none" stroke="#2E221F" stroke-width="1"/>
+    <!-- Whiskers -->
+    <line x1="16" y1="34" x2="22" y2="35" stroke="#2E221F" stroke-width="0.8"/>
+    <line x1="16" y1="37" x2="22" y2="37" stroke="#2E221F" stroke-width="0.8"/>
+    <line x1="48" y1="34" x2="42" y2="35" stroke="#2E221F" stroke-width="0.8"/>
+    <line x1="48" y1="37" x2="42" y2="37" stroke="#2E221F" stroke-width="0.8"/>
+    <!-- Body & Apron -->
+    <ellipse cx="32" cy="47" rx="13" ry="9" class="neko-orange" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M25 42 L39 42 L37 51 L27 51 Z" class="apron-mocha" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Cardboard Box -->
+    <path d="M12 59 L12 48 L52 48 L52 59 Z" class="box-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M14 58 L14 49 L50 49 L50 58 Z" class="box-kraft"/>
+    <line x1="32" y1="49" x2="32" y2="58" stroke="#A57857" stroke-width="1.5"/>
+    <line x1="22" y1="51" x2="21" y2="56" stroke="#8B6141" stroke-width="1.2"/>
+    <line x1="42" y1="51" x2="43" y2="56" stroke="#8B6141" stroke-width="1.2"/>
+    <!-- Paws Raised Poised -->
+    <circle cx="22" cy="47" r="2.5" class="neko-cream" stroke="#2E221F" stroke-width="1"/>
+    <circle cx="42" cy="47" r="2.5" class="neko-cream" stroke="#2E221F" stroke-width="1"/>
+    <!-- Bits Floating Down -->
+    <rect x="28" y="43" width="2" height="1.5" class="paper-scrap" transform="rotate(10 28 43)"/>
+    <rect x="36" y="44" width="1.8" height="1.8" class="paper-scrap" transform="rotate(-20 36 44)"/>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- ROW 5 (Y: 256px) — REST STATE (Curled up inside cozy Kraft box, Zzz)      -->
+  <!-- ========================================================================= -->
+
+  <!-- Frame 5.1 (REST - Frame 1: Sleeping in Kraft box, tail curled, bubble emerging) -->
+  <g id="neko-rest-f1" transform="translate(0, 256)">
+    <!-- Cozy Cardboard Box Exterior (Back & Base) -->
+    <path d="M10 40 L10 58 L54 58 L54 40 Z" class="box-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M12 42 L12 56 L52 56 L52 42 Z" class="box-kraft"/>
+    <path d="M14 42 L14 46 L50 46 L50 42 Z" class="box-inner"/>
+    <!-- Curled Cat Body -->
+    <ellipse cx="32" cy="46" rx="14" ry="9" class="neko-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="32" cy="45" rx="14" ry="8.5" class="neko-orange"/>
+    <!-- Tabby Stripes on Back -->
+    <path d="M26 40 C28 42, 28 45, 27 48" stroke="#C86D28" stroke-width="1.5" fill="none"/>
+    <path d="M32 39 C34 42, 34 45, 33 48" stroke="#C86D28" stroke-width="1.5" fill="none"/>
+    <path d="M38 40 C40 42, 40 45, 39 48" stroke="#C86D28" stroke-width="1.5" fill="none"/>
+    <!-- Cat Head Curled Sideways Left -->
+    <ellipse cx="22" cy="43" rx="8" ry="7" class="neko-orange" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Soft Folded Ears -->
+    <path d="M17 38 L13 32 L21 36 Z" class="neko-orange" stroke="#2E221F" stroke-width="1.2"/>
+    <path d="M17 37 L14 33 L19 36 Z" class="ear-pink"/>
+    <!-- Peaceful Closed Eye (- -) & Blush -->
+    <line x1="17" y1="43" x2="21" y2="43" stroke="#2E221F" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="16" cy="45" r="1.5" class="ear-pink"/>
+    <!-- Cream Paws & Tail wrapping snugly -->
+    <circle cx="28" cy="49" r="2" class="neko-cream" stroke="#2E221F" stroke-width="1"/>
+    <path d="M42 47 C48 47, 50 43, 47 41 C44 39, 41 42, 38 45 Z" class="neko-orange" stroke="#2E221F" stroke-width="1.2"/>
+    <path d="M46 42 C47 44, 46 45, 44 46" stroke="#C86D28" stroke-width="1.2" fill="none"/>
+    <!-- Box Front Rim Overlap -->
+    <line x1="12" y1="46" x2="52" y2="46" stroke="#A57857" stroke-width="1.5"/>
+    <!-- Tiny Sleep Bubble Emerging -->
+    <circle cx="14" cy="35" r="2" class="steam-bubble" stroke="#9D8BB5" stroke-width="0.8"/>
+  </g>
+
+  <!-- Frame 5.2 (REST - Frame 2: Body expands on inhale, bubble floats higher) -->
+  <g id="neko-rest-f2" transform="translate(64, 256)">
+    <!-- Box -->
+    <path d="M10 40 L10 58 L54 58 L54 40 Z" class="box-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M12 42 L12 56 L52 56 L52 42 Z" class="box-kraft"/>
+    <path d="M14 42 L14 46 L50 46 L50 42 Z" class="box-inner"/>
+    <!-- Curled Cat Body (Expanded 1px) -->
+    <ellipse cx="32" cy="45" rx="14.5" ry="9.5" class="neko-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="32" cy="44" rx="14.5" ry="9" class="neko-orange"/>
+    <!-- Tabby Stripes -->
+    <path d="M26 39 C28 41, 28 44, 27 47" stroke="#C86D28" stroke-width="1.5" fill="none"/>
+    <path d="M32 38 C34 41, 34 44, 33 47" stroke="#C86D28" stroke-width="1.5" fill="none"/>
+    <path d="M38 39 C40 41, 40 44, 39 47" stroke="#C86D28" stroke-width="1.5" fill="none"/>
+    <!-- Head -->
+    <ellipse cx="22" cy="42" rx="8" ry="7" class="neko-orange" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Ears -->
+    <path d="M17 37 L13 31 L21 35 Z" class="neko-orange" stroke="#2E221F" stroke-width="1.2"/>
+    <path d="M17 36 L14 32 L19 35 Z" class="ear-pink"/>
+    <!-- Closed Eye & Blush -->
+    <line x1="17" y1="42" x2="21" y2="42" stroke="#2E221F" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="16" cy="44" r="1.6" class="ear-pink"/>
+    <!-- Paws & Tail -->
+    <circle cx="28" cy="48" r="2" class="neko-cream" stroke="#2E221F" stroke-width="1"/>
+    <path d="M42 46 C48 46, 50 42, 47 40 C44 38, 41 41, 38 44 Z" class="neko-orange" stroke="#2E221F" stroke-width="1.2"/>
+    <path d="M46 41 C47 43, 46 44, 44 45" stroke="#C86D28" stroke-width="1.2" fill="none"/>
+    <!-- Box Front Rim -->
+    <line x1="12" y1="46" x2="52" y2="46" stroke="#A57857" stroke-width="1.5"/>
+    <!-- Bubble Floating Higher -->
+    <circle cx="13" cy="29" r="2.5" class="steam-bubble" stroke="#9D8BB5" stroke-width="0.8"/>
+  </g>
+
+  <!-- Frame 5.3 (REST - Frame 3: Bubble turns into cute pixel 'z', tail twitches) -->
+  <g id="neko-rest-f3" transform="translate(128, 256)">
+    <!-- Box -->
+    <path d="M10 40 L10 58 L54 58 L54 40 Z" class="box-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M12 42 L12 56 L52 56 L52 42 Z" class="box-kraft"/>
+    <path d="M14 42 L14 46 L50 46 L50 42 Z" class="box-inner"/>
+    <!-- Curled Cat Body -->
+    <ellipse cx="32" cy="46" rx="14" ry="9" class="neko-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="32" cy="45" rx="14" ry="8.5" class="neko-orange"/>
+    <!-- Tabby Stripes -->
+    <path d="M26 40 C28 42, 28 45, 27 48" stroke="#C86D28" stroke-width="1.5" fill="none"/>
+    <path d="M32 39 C34 42, 34 45, 33 48" stroke="#C86D28" stroke-width="1.5" fill="none"/>
+    <path d="M38 40 C40 42, 40 45, 39 48" stroke="#C86D28" stroke-width="1.5" fill="none"/>
+    <!-- Head -->
+    <ellipse cx="22" cy="43" rx="8" ry="7" class="neko-orange" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Ears -->
+    <path d="M17 38 L13 32 L21 36 Z" class="neko-orange" stroke="#2E221F" stroke-width="1.2"/>
+    <path d="M17 37 L14 33 L19 36 Z" class="ear-pink"/>
+    <!-- Closed Eye & Blush -->
+    <line x1="17" y1="43" x2="21" y2="43" stroke="#2E221F" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="16" cy="45" r="1.5" class="ear-pink"/>
+    <!-- Paws & Tail (Tip twitched up 1px) -->
+    <circle cx="28" cy="49" r="2" class="neko-cream" stroke="#2E221F" stroke-width="1"/>
+    <path d="M42 47 C49 47, 51 42, 48 39 C45 38, 42 41, 38 45 Z" class="neko-orange" stroke="#2E221F" stroke-width="1.2"/>
+    <path d="M47 40 C48 42, 47 44, 45 45" stroke="#C86D28" stroke-width="1.2" fill="none"/>
+    <!-- Box Front Rim -->
+    <line x1="12" y1="46" x2="52" y2="46" stroke="#A57857" stroke-width="1.5"/>
+    <!-- Pixel 'z' Floating -->
+    <text x="12" y="25" class="text-z">z</text>
+    <circle cx="16" cy="31" r="1.5" class="steam-bubble" stroke="#9D8BB5" stroke-width="0.8"/>
+  </g>
+
+  <!-- Frame 5.4 (REST - Frame 4: Bigger 'Z' and dream sparkles, peaceful rest) -->
+  <g id="neko-rest-f4" transform="translate(192, 256)">
+    <!-- Box -->
+    <path d="M10 40 L10 58 L54 58 L54 40 Z" class="box-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M12 42 L12 56 L52 56 L52 42 Z" class="box-kraft"/>
+    <path d="M14 42 L14 46 L50 46 L50 42 Z" class="box-inner"/>
+    <!-- Curled Cat Body -->
+    <ellipse cx="32" cy="46" rx="14" ry="9" class="neko-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="32" cy="45" rx="14" ry="8.5" class="neko-orange"/>
+    <!-- Tabby Stripes -->
+    <path d="M26 40 C28 42, 28 45, 27 48" stroke="#C86D28" stroke-width="1.5" fill="none"/>
+    <path d="M32 39 C34 42, 34 45, 33 48" stroke="#C86D28" stroke-width="1.5" fill="none"/>
+    <path d="M38 40 C40 42, 40 45, 39 48" stroke="#C86D28" stroke-width="1.5" fill="none"/>
+    <!-- Head -->
+    <ellipse cx="22" cy="43" rx="8" ry="7" class="neko-orange" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Ears -->
+    <path d="M17 38 L13 32 L21 36 Z" class="neko-orange" stroke="#2E221F" stroke-width="1.2"/>
+    <path d="M17 37 L14 33 L19 36 Z" class="ear-pink"/>
+    <!-- Closed Eye & Blush -->
+    <line x1="17" y1="43" x2="21" y2="43" stroke="#2E221F" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="16" cy="45" r="1.5" class="ear-pink"/>
+    <!-- Paws & Tail -->
+    <circle cx="28" cy="49" r="2" class="neko-cream" stroke="#2E221F" stroke-width="1"/>
+    <path d="M42 47 C48 47, 50 43, 47 41 C44 39, 41 42, 38 45 Z" class="neko-orange" stroke="#2E221F" stroke-width="1.2"/>
+    <path d="M46 42 C47 44, 46 45, 44 46" stroke="#C86D28" stroke-width="1.2" fill="none"/>
+    <!-- Box Front Rim -->
+    <line x1="12" y1="46" x2="52" y2="46" stroke="#A57857" stroke-width="1.5"/>
+    <!-- Big 'Z' & Dream Sparkles -->
+    <text x="14" y="17" class="text-z" font-size="11px">Z</text>
+    <circle cx="24" cy="15" r="0.8" fill="#DDD5E9"/>
+    <circle cx="10" cy="19" r="0.6" fill="#DDD5E9"/>
+    <circle cx="13" cy="33" r="1.5" class="steam-bubble" stroke="#9D8BB5" stroke-width="0.8"/>
+  </g>
+</svg>

@@ -91,19 +91,47 @@
   z-index: 4;
 }
 
+.hudTopRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.companionPill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 3px 8px;
+  background: rgba(255, 154, 60, 0.18);
+  border: 1px solid rgba(255, 154, 60, 0.4);
+  border-radius: 20px;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #ff9a3c;
+  letter-spacing: 0.2px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.companionName {
+  white-space: nowrap;
+}
+
 .statePill {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
-  padding: 4px 10px;
+  padding: 3px 8px;
   border-radius: 20px;
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 700;
   letter-spacing: 0.3px;
   backdrop-filter: blur(8px);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-  margin: 0 auto;
 }
 
 .stateDot {

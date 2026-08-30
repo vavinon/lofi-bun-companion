@@ -1,0 +1,992 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 320" width="256" height="320" shape-rendering="crispEdges">
+  <defs>
+    <!-- Shared Style Tokens for Bakery Shiba -->
+    <style>
+      .outline { stroke: #2E221F; stroke-width: 2; stroke-linecap: square; stroke-linejoin: miter; }
+      .outline-thin { stroke: #2E221F; stroke-width: 1; stroke-linecap: square; }
+      .shiba-gold { fill: #E5A953; }
+      .shiba-shadow { fill: #C67D34; }
+      .shiba-cream { fill: #FFF4E0; }
+      .ear-inner { fill: #FFBFA3; }
+      .nose-dark { fill: #2E221F; }
+      .eye-dark { fill: #2E221F; }
+      .cheek-blush { fill: #FFBFA3; }
+      .hat-white { fill: #FFFFFF; }
+      .hat-shadow { fill: #D8D2C9; }
+      .dough-beige { fill: #F5EBE0; }
+      .dough-shadow { fill: #DFD0C0; }
+      .dough-highlight { fill: #FFFFFF; }
+      .sack-beige { fill: #D5C7B6; }
+      .sack-shadow { fill: #B7A693; }
+      .flour-dust { fill: #FFFFFF; opacity: 0.85; }
+      .smoke-puff { fill: #FFFFFF; opacity: 0.75; }
+      .fire-spark { fill: #FF7A59; }
+      .fire-core { fill: #FFD166; }
+      .sweat { fill: #A0E7E5; }
+      .text-z { fill: #9D8BB5; font-family: monospace; font-size: 8px; font-weight: bold; }
+    </style>
+  </defs>
+
+  <!-- ========================================================================= -->
+  <!-- ROW 0 (Y: 0px) — IDLE STATE (Hugging squishy dough, cinnamon tail wag)    -->
+  <!-- ========================================================================= -->
+
+  <!-- Frame 0.1 (IDLE - Frame 1: Hugging round soft dough, happy upright ears) -->
+  <g id="shiba-idle-f1" transform="translate(0, 0)">
+    <!-- Cinnamon Roll Tail (Curled up right) -->
+    <path d="M44 46 C52 46, 56 40, 54 34 C52 30, 48 31, 49 35 C50 38, 47 41, 42 43 Z" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <circle cx="51" cy="35" r="2.5" class="shiba-cream"/>
+    <!-- Left Shiba Ear (Upright triangle with white trim) -->
+    <path d="M18 22 L15 9 L26 18 Z" class="shiba-gold" stroke="#2E221F" stroke-width="2"/>
+    <path d="M18 19 L16 12 L23 18 Z" class="ear-inner"/>
+    <!-- Right Shiba Ear (Upright triangle) -->
+    <path d="M38 18 L49 9 L46 22 Z" class="shiba-gold" stroke="#2E221F" stroke-width="2"/>
+    <path d="M41 18 L48 12 L46 19 Z" class="ear-inner"/>
+    <!-- Baker Hat (Chef Toque tilted charmingly on left ear) -->
+    <path d="M22 17 C20 11, 24 6, 30 6 C34 5, 40 8, 38 16 Z" class="hat-white" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M24 16 C25 10, 29 9, 32 16" fill="none" stroke="#D8D2C9" stroke-width="1.2"/>
+    <path d="M32 16 C34 11, 37 11, 38 16" fill="none" stroke="#D8D2C9" stroke-width="1.2"/>
+    <rect x="23" y="16" width="16" height="3" rx="1" class="hat-shadow" stroke="#2E221F" stroke-width="1"/>
+    <!-- Head Base & Chubby Cheeks -->
+    <ellipse cx="32" cy="31" rx="15" ry="13" class="shiba-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="30" rx="15" ry="12" class="shiba-gold"/>
+    <!-- Cream Cheeks & White Muzzle Mask -->
+    <ellipse cx="23" cy="34" rx="6" ry="5" class="shiba-cream"/>
+    <ellipse cx="41" cy="34" rx="6" ry="5" class="shiba-cream"/>
+    <ellipse cx="32" cy="33" rx="7" ry="6" class="shiba-cream"/>
+    <!-- Cute Round White Eyebrow Dots -->
+    <circle cx="25" cy="24" r="1.8" class="shiba-cream"/>
+    <circle cx="39" cy="24" r="1.8" class="shiba-cream"/>
+    <!-- Sparkling Puppy Eyes -->
+    <ellipse cx="26" cy="29" rx="2.5" ry="3" class="eye-dark"/>
+    <circle cx="25.2" cy="28" r="0.9" fill="#FFFFFF"/>
+    <ellipse cx="38" cy="29" rx="2.5" ry="3" class="eye-dark"/>
+    <circle cx="37.2" cy="28" r="0.9" fill="#FFFFFF"/>
+    <!-- Cute Black Nose & Shiba Smile -->
+    <polygon points="30.5,32 33.5,32 32,33.8" class="nose-dark"/>
+    <path d="M29.5 35 Q32 36.8 34.5 35" fill="none" stroke="#2E221F" stroke-width="1.2" stroke-linecap="round"/>
+    <!-- Soft Blush -->
+    <circle cx="21" cy="34" r="2" class="cheek-blush" opacity="0.8"/>
+    <circle cx="43" cy="34" r="2" class="cheek-blush" opacity="0.8"/>
+    <!-- Body Base -->
+    <ellipse cx="32" cy="46" rx="13" ry="10" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="32" cy="47" rx="8" ry="7" class="shiba-cream"/>
+    <!-- Soft Squishy Dough Ball in Paws -->
+    <ellipse cx="32" cy="46" rx="10" ry="7.5" class="dough-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="32" cy="45" rx="9.5" ry="7" class="dough-beige"/>
+    <ellipse cx="30" cy="43" rx="4" ry="2" class="dough-highlight" opacity="0.7"/>
+    <!-- Paws Hugging Dough -->
+    <circle cx="23" cy="45" r="2.8" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+    <circle cx="41" cy="45" r="2.8" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Feet -->
+    <ellipse cx="25" cy="54" rx="3.5" ry="2" class="shiba-cream" stroke="#2E221F" stroke-width="1"/>
+    <ellipse cx="39" cy="54" rx="3.5" ry="2" class="shiba-cream" stroke="#2E221F" stroke-width="1"/>
+  </g>
+
+  <!-- Frame 0.2 (IDLE - Frame 2: Body breathes up 1px, tail wags slightly higher) -->
+  <g id="shiba-idle-f2" transform="translate(64, 0)">
+    <!-- Cinnamon Roll Tail (Higher wag) -->
+    <path d="M44 45 C53 45, 57 38, 55 32 C53 28, 49 29, 50 33 C51 36, 48 39, 42 42 Z" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <circle cx="52" cy="33" r="2.5" class="shiba-cream"/>
+    <!-- Left Ear (Perked up) -->
+    <path d="M18 21 L14 8 L26 17 Z" class="shiba-gold" stroke="#2E221F" stroke-width="2"/>
+    <path d="M18 18 L15 11 L23 17 Z" class="ear-inner"/>
+    <!-- Right Ear -->
+    <path d="M38 17 L49 8 L46 21 Z" class="shiba-gold" stroke="#2E221F" stroke-width="2"/>
+    <path d="M41 17 L48 11 L46 18 Z" class="ear-inner"/>
+    <!-- Baker Hat (Lifted 1px) -->
+    <path d="M22 16 C20 10, 24 5, 30 5 C34 4, 40 7, 38 15 Z" class="hat-white" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M24 15 C25 9, 29 8, 32 15" fill="none" stroke="#D8D2C9" stroke-width="1.2"/>
+    <path d="M32 15 C34 10, 37 10, 38 15" fill="none" stroke="#D8D2C9" stroke-width="1.2"/>
+    <rect x="23" y="15" width="16" height="3" rx="1" class="hat-shadow" stroke="#2E221F" stroke-width="1"/>
+    <!-- Head Base (Lifted 1px) -->
+    <ellipse cx="32" cy="30" rx="15" ry="13" class="shiba-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="29" rx="15" ry="12" class="shiba-gold"/>
+    <!-- Cream Cheeks -->
+    <ellipse cx="23" cy="33" rx="6" ry="5" class="shiba-cream"/>
+    <ellipse cx="41" cy="33" rx="6" ry="5" class="shiba-cream"/>
+    <ellipse cx="32" cy="32" rx="7" ry="6" class="shiba-cream"/>
+    <!-- Eyebrow Dots -->
+    <circle cx="25" cy="23" r="1.8" class="shiba-cream"/>
+    <circle cx="39" cy="23" r="1.8" class="shiba-cream"/>
+    <!-- Eyes -->
+    <ellipse cx="26" cy="28" rx="2.5" ry="3" class="eye-dark"/>
+    <circle cx="25.2" cy="27" r="0.9" fill="#FFFFFF"/>
+    <ellipse cx="38" cy="28" rx="2.5" ry="3" class="eye-dark"/>
+    <circle cx="37.2" cy="27" r="0.9" fill="#FFFFFF"/>
+    <!-- Nose & Smile -->
+    <polygon points="30.5,31 33.5,31 32,32.8" class="nose-dark"/>
+    <path d="M29.5 34 Q32 35.8 34.5 34" fill="none" stroke="#2E221F" stroke-width="1.2" stroke-linecap="round"/>
+    <!-- Blush -->
+    <circle cx="21" cy="33" r="2" class="cheek-blush" opacity="0.8"/>
+    <circle cx="43" cy="33" r="2" class="cheek-blush" opacity="0.8"/>
+    <!-- Body -->
+    <ellipse cx="32" cy="45" rx="13" ry="10" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="32" cy="46" rx="8" ry="7" class="shiba-cream"/>
+    <!-- Dough Ball -->
+    <ellipse cx="32" cy="45" rx="10" ry="7.5" class="dough-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="32" cy="44" rx="9.5" ry="7" class="dough-beige"/>
+    <ellipse cx="30" cy="42" rx="4" ry="2" class="dough-highlight" opacity="0.7"/>
+    <!-- Paws -->
+    <circle cx="23" cy="44" r="2.8" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+    <circle cx="41" cy="44" r="2.8" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Feet -->
+    <ellipse cx="25" cy="54" rx="3.5" ry="2" class="shiba-cream" stroke="#2E221F" stroke-width="1"/>
+    <ellipse cx="39" cy="54" rx="3.5" ry="2" class="shiba-cream" stroke="#2E221F" stroke-width="1"/>
+  </g>
+
+  <!-- Frame 0.3 (IDLE - Frame 3: Happy eyes closed ^ ^, sweet baker blush) -->
+  <g id="shiba-idle-f3" transform="translate(128, 0)">
+    <!-- Cinnamon Roll Tail (Joyful curl) -->
+    <path d="M44 46 C52 46, 56 40, 54 34 C52 30, 48 31, 49 35 C50 38, 47 41, 42 43 Z" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <circle cx="51" cy="35" r="2.5" class="shiba-cream"/>
+    <!-- Ears (Tilted comfortably) -->
+    <path d="M18 22 L14 10 L25 18 Z" class="shiba-gold" stroke="#2E221F" stroke-width="2"/>
+    <path d="M18 19 L15 13 L22 18 Z" class="ear-inner"/>
+    <path d="M38 18 L49 10 L45 22 Z" class="shiba-gold" stroke="#2E221F" stroke-width="2"/>
+    <path d="M41 18 L48 13 L45 19 Z" class="ear-inner"/>
+    <!-- Baker Hat -->
+    <path d="M22 17 C20 11, 24 6, 30 6 C34 5, 40 8, 38 16 Z" class="hat-white" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M24 16 C25 10, 29 9, 32 16" fill="none" stroke="#D8D2C9" stroke-width="1.2"/>
+    <path d="M32 16 C34 11, 37 11, 38 16" fill="none" stroke="#D8D2C9" stroke-width="1.2"/>
+    <rect x="23" y="16" width="16" height="3" rx="1" class="hat-shadow" stroke="#2E221F" stroke-width="1"/>
+    <!-- Head Base -->
+    <ellipse cx="32" cy="31" rx="15" ry="13" class="shiba-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="30" rx="15" ry="12" class="shiba-gold"/>
+    <!-- Cream Cheeks -->
+    <ellipse cx="23" cy="34" rx="6" ry="5" class="shiba-cream"/>
+    <ellipse cx="41" cy="34" rx="6" ry="5" class="shiba-cream"/>
+    <ellipse cx="32" cy="33" rx="7" ry="6" class="shiba-cream"/>
+    <!-- Eyebrow Dots -->
+    <circle cx="25" cy="24" r="1.8" class="shiba-cream"/>
+    <circle cx="39" cy="24" r="1.8" class="shiba-cream"/>
+    <!-- Joyful Closed Eyes (^ ^) -->
+    <path d="M24 29 Q26 26 28 29" fill="none" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M36 29 Q38 26 40 29" fill="none" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+    <!-- Nose & Smile -->
+    <polygon points="30.5,32 33.5,32 32,33.8" class="nose-dark"/>
+    <path d="M29 34.5 Q32 37.5 35 34.5" fill="none" stroke="#2E221F" stroke-width="1.3" stroke-linecap="round"/>
+    <!-- Cheerful Pink Blush -->
+    <circle cx="21" cy="33.5" r="2.5" class="cheek-blush"/>
+    <circle cx="43" cy="33.5" r="2.5" class="cheek-blush"/>
+    <!-- Body -->
+    <ellipse cx="32" cy="46" rx="13" ry="10" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="32" cy="47" rx="8" ry="7" class="shiba-cream"/>
+    <!-- Dough Ball hugged closer -->
+    <ellipse cx="32" cy="45" rx="10.5" ry="7.5" class="dough-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="32" cy="44" rx="10" ry="7" class="dough-beige"/>
+    <ellipse cx="30" cy="42" rx="4" ry="2" class="dough-highlight" opacity="0.7"/>
+    <!-- Paws -->
+    <circle cx="22.5" cy="44" r="2.8" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+    <circle cx="41.5" cy="44" r="2.8" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Feet -->
+    <ellipse cx="25" cy="54" rx="3.5" ry="2" class="shiba-cream" stroke="#2E221F" stroke-width="1"/>
+    <ellipse cx="39" cy="54" rx="3.5" ry="2" class="shiba-cream" stroke="#2E221F" stroke-width="1"/>
+  </g>
+
+  <!-- Frame 0.4 (IDLE - Frame 4: Satisfied bakery shiba smile, eyes open) -->
+  <g id="shiba-idle-f4" transform="translate(192, 0)">
+    <!-- Tail -->
+    <path d="M44 46 C52 46, 56 40, 54 34 C52 30, 48 31, 49 35 C50 38, 47 41, 42 43 Z" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <circle cx="51" cy="35" r="2.5" class="shiba-cream"/>
+    <!-- Ears -->
+    <path d="M18 22 L15 9 L26 18 Z" class="shiba-gold" stroke="#2E221F" stroke-width="2"/>
+    <path d="M18 19 L16 12 L23 18 Z" class="ear-inner"/>
+    <path d="M38 18 L49 9 L46 22 Z" class="shiba-gold" stroke="#2E221F" stroke-width="2"/>
+    <path d="M41 18 L48 12 L46 19 Z" class="ear-inner"/>
+    <!-- Baker Hat -->
+    <path d="M22 17 C20 11, 24 6, 30 6 C34 5, 40 8, 38 16 Z" class="hat-white" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M24 16 C25 10, 29 9, 32 16" fill="none" stroke="#D8D2C9" stroke-width="1.2"/>
+    <path d="M32 16 C34 11, 37 11, 38 16" fill="none" stroke="#D8D2C9" stroke-width="1.2"/>
+    <rect x="23" y="16" width="16" height="3" rx="1" class="hat-shadow" stroke="#2E221F" stroke-width="1"/>
+    <!-- Head Base -->
+    <ellipse cx="32" cy="31" rx="15" ry="13" class="shiba-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="30" rx="15" ry="12" class="shiba-gold"/>
+    <!-- Cream Cheeks -->
+    <ellipse cx="23" cy="34" rx="6" ry="5" class="shiba-cream"/>
+    <ellipse cx="41" cy="34" rx="6" ry="5" class="shiba-cream"/>
+    <ellipse cx="32" cy="33" rx="7" ry="6" class="shiba-cream"/>
+    <!-- Eyebrow Dots -->
+    <circle cx="25" cy="24" r="1.8" class="shiba-cream"/>
+    <circle cx="39" cy="24" r="1.8" class="shiba-cream"/>
+    <!-- Open Puppy Eyes -->
+    <ellipse cx="26" cy="29" rx="2.5" ry="3" class="eye-dark"/>
+    <circle cx="25.2" cy="28" r="0.9" fill="#FFFFFF"/>
+    <ellipse cx="38" cy="29" rx="2.5" ry="3" class="eye-dark"/>
+    <circle cx="37.2" cy="28" r="0.9" fill="#FFFFFF"/>
+    <!-- Nose & Shiba Grin -->
+    <polygon points="30.5,32 33.5,32 32,33.8" class="nose-dark"/>
+    <path d="M29 34.8 Q32 37 35 34.8" fill="none" stroke="#2E221F" stroke-width="1.2" stroke-linecap="round"/>
+    <!-- Blush -->
+    <circle cx="21" cy="34" r="2" class="cheek-blush" opacity="0.8"/>
+    <circle cx="43" cy="34" r="2" class="cheek-blush" opacity="0.8"/>
+    <!-- Body -->
+    <ellipse cx="32" cy="46" rx="13" ry="10" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="32" cy="47" rx="8" ry="7" class="shiba-cream"/>
+    <!-- Dough Ball -->
+    <ellipse cx="32" cy="46" rx="10" ry="7.5" class="dough-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="32" cy="45" rx="9.5" ry="7" class="dough-beige"/>
+    <ellipse cx="30" cy="43" rx="4" ry="2" class="dough-highlight" opacity="0.7"/>
+    <!-- Paws -->
+    <circle cx="23" cy="45" r="2.8" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+    <circle cx="41" cy="45" r="2.8" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Feet -->
+    <ellipse cx="25" cy="54" rx="3.5" ry="2" class="shiba-cream" stroke="#2E221F" stroke-width="1"/>
+    <ellipse cx="39" cy="54" rx="3.5" ry="2" class="shiba-cream" stroke="#2E221F" stroke-width="1"/>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- ROW 1 (Y: 64px) — FOCUS STATE (Kneading & pressing dough in beat rhythm)   -->
+  <!-- ========================================================================= -->
+
+  <!-- Frame 1.1 (FOCUS - Frame 1: Left paw pressing dough down, focused eyes) -->
+  <g id="shiba-focus-f1" transform="translate(0, 64)">
+    <!-- Tail (Attentive wag) -->
+    <path d="M44 46 C52 46, 55 41, 53 36 C51 32, 48 33, 49 37 C50 39, 47 42, 42 43 Z" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <circle cx="51" cy="36" r="2.2" class="shiba-cream"/>
+    <!-- Ears (Angled forward slightly) -->
+    <path d="M18 22 L16 9 L27 18 Z" class="shiba-gold" stroke="#2E221F" stroke-width="2"/>
+    <path d="M18 19 L17 12 L24 18 Z" class="ear-inner"/>
+    <path d="M37 18 L48 9 L46 22 Z" class="shiba-gold" stroke="#2E221F" stroke-width="2"/>
+    <path d="M40 18 L47 12 L45 19 Z" class="ear-inner"/>
+    <!-- Baker Hat -->
+    <path d="M22 17 C20 11, 24 6, 30 6 C34 5, 40 8, 38 16 Z" class="hat-white" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M24 16 C25 10, 29 9, 32 16" fill="none" stroke="#D8D2C9" stroke-width="1.2"/>
+    <path d="M32 16 C34 11, 37 11, 38 16" fill="none" stroke="#D8D2C9" stroke-width="1.2"/>
+    <rect x="23" y="16" width="16" height="3" rx="1" class="hat-shadow" stroke="#2E221F" stroke-width="1"/>
+    <!-- Head Base -->
+    <ellipse cx="32" cy="31" rx="15" ry="13" class="shiba-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="30" rx="15" ry="12" class="shiba-gold"/>
+    <!-- Cream Cheeks -->
+    <ellipse cx="23" cy="34" rx="6" ry="5" class="shiba-cream"/>
+    <ellipse cx="41" cy="34" rx="6" ry="5" class="shiba-cream"/>
+    <ellipse cx="32" cy="33" rx="7" ry="6" class="shiba-cream"/>
+    <!-- Eyebrow Dots -->
+    <circle cx="25" cy="24" r="1.8" class="shiba-cream"/>
+    <circle cx="39" cy="24" r="1.8" class="shiba-cream"/>
+    <!-- Focused Eyes looking down at kneading board -->
+    <ellipse cx="26" cy="30" rx="2.5" ry="2.8" class="eye-dark"/>
+    <circle cx="25.5" cy="30.2" r="0.8" fill="#FFFFFF"/>
+    <ellipse cx="38" cy="30" rx="2.5" ry="2.8" class="eye-dark"/>
+    <circle cx="37.5" cy="30.2" r="0.8" fill="#FFFFFF"/>
+    <!-- Nose & Determined Mouth -->
+    <polygon points="30.5,33 33.5,33 32,34.8" class="nose-dark"/>
+    <circle cx="32" cy="36" r="0.8" class="nose-dark"/>
+    <!-- Body -->
+    <ellipse cx="32" cy="46" rx="13" ry="10" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="32" cy="47" rx="8" ry="7" class="shiba-cream"/>
+    <!-- Kneading Board Base -->
+    <rect x="14" y="52" width="36" height="6" rx="1.5" class="sack-beige" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Dough (Left indented from press) -->
+    <path d="M20 48 C20 44, 25 46, 32 44 C39 44, 44 45, 44 49 C44 52, 38 53, 32 53 C25 53, 20 52, 20 48 Z" class="dough-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <path d="M21 47 C21 44, 25 45.5, 32 43.5 C39 43.5, 43 44.5, 43 48 C43 51, 38 52, 32 52 C25 52, 21 51, 21 47 Z" class="dough-beige"/>
+    <!-- Left Paw Pressing Down, Right Paw Up in air -->
+    <ellipse cx="25" cy="47" rx="3.5" ry="2.8" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+    <circle cx="38" cy="43" r="3" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+  </g>
+
+  <!-- Frame 1.2 (FOCUS - Frame 2: Both paws pressing dough center, dough expands) -->
+  <g id="shiba-focus-f2" transform="translate(64, 64)">
+    <!-- Tail -->
+    <path d="M44 45 C52 45, 55 40, 53 35 C51 31, 48 32, 49 36 C50 38, 47 41, 42 42 Z" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <circle cx="51" cy="35" r="2.2" class="shiba-cream"/>
+    <!-- Ears -->
+    <path d="M18 21 L16 8 L27 17 Z" class="shiba-gold" stroke="#2E221F" stroke-width="2"/>
+    <path d="M18 18 L17 11 L24 17 Z" class="ear-inner"/>
+    <path d="M37 17 L48 8 L46 21 Z" class="shiba-gold" stroke="#2E221F" stroke-width="2"/>
+    <path d="M40 17 L47 11 L45 18 Z" class="ear-inner"/>
+    <!-- Baker Hat -->
+    <path d="M22 16 C20 10, 24 5, 30 5 C34 4, 40 7, 38 15 Z" class="hat-white" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M24 15 C25 9, 29 8, 32 15" fill="none" stroke="#D8D2C9" stroke-width="1.2"/>
+    <path d="M32 15 C34 10, 37 10, 38 15" fill="none" stroke="#D8D2C9" stroke-width="1.2"/>
+    <rect x="23" y="15" width="16" height="3" rx="1" class="hat-shadow" stroke="#2E221F" stroke-width="1"/>
+    <!-- Head Base -->
+    <ellipse cx="32" cy="30" rx="15" ry="13" class="shiba-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="29" rx="15" ry="12" class="shiba-gold"/>
+    <!-- Cream Cheeks -->
+    <ellipse cx="23" cy="33" rx="6" ry="5" class="shiba-cream"/>
+    <ellipse cx="41" cy="33" rx="6" ry="5" class="shiba-cream"/>
+    <ellipse cx="32" cy="32" rx="7" ry="6" class="shiba-cream"/>
+    <!-- Eyebrow Dots -->
+    <circle cx="25" cy="23" r="1.8" class="shiba-cream"/>
+    <circle cx="39" cy="23" r="1.8" class="shiba-cream"/>
+    <!-- Eyes looking intently -->
+    <ellipse cx="26" cy="29" rx="2.5" ry="2.8" class="eye-dark"/>
+    <circle cx="25.5" cy="29.2" r="0.8" fill="#FFFFFF"/>
+    <ellipse cx="38" cy="29" rx="2.5" ry="2.8" class="eye-dark"/>
+    <circle cx="37.5" cy="29.2" r="0.8" fill="#FFFFFF"/>
+    <!-- Nose & Mouth -->
+    <polygon points="30.5,32 33.5,32 32,33.8" class="nose-dark"/>
+    <circle cx="32" cy="35" r="0.8" class="nose-dark"/>
+    <!-- Body -->
+    <ellipse cx="32" cy="45" rx="13" ry="10" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="32" cy="46" rx="8" ry="7" class="shiba-cream"/>
+    <!-- Kneading Board Base -->
+    <rect x="14" y="52" width="36" height="6" rx="1.5" class="sack-beige" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Dough (Flattened & widened from double press) -->
+    <ellipse cx="32" cy="48" rx="13" ry="5.5" class="dough-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="32" cy="47" rx="12.5" ry="5" class="dough-beige"/>
+    <!-- Both Paws Pressing Down Firmly -->
+    <ellipse cx="26" cy="47" rx="3.5" ry="2.8" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="38" cy="47" rx="3.5" ry="2.8" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+  </g>
+
+  <!-- Frame 1.3 (FOCUS - Frame 3: Right paw pressing dough down, left paw raised) -->
+  <g id="shiba-focus-f3" transform="translate(128, 64)">
+    <!-- Tail -->
+    <path d="M44 46 C52 46, 55 41, 53 36 C51 32, 48 33, 49 37 C50 39, 47 42, 42 43 Z" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <circle cx="51" cy="36" r="2.2" class="shiba-cream"/>
+    <!-- Ears -->
+    <path d="M18 22 L16 9 L27 18 Z" class="shiba-gold" stroke="#2E221F" stroke-width="2"/>
+    <path d="M18 19 L17 12 L24 18 Z" class="ear-inner"/>
+    <path d="M37 18 L48 9 L46 22 Z" class="shiba-gold" stroke="#2E221F" stroke-width="2"/>
+    <path d="M40 18 L47 12 L45 19 Z" class="ear-inner"/>
+    <!-- Baker Hat -->
+    <path d="M22 17 C20 11, 24 6, 30 6 C34 5, 40 8, 38 16 Z" class="hat-white" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M24 16 C25 10, 29 9, 32 16" fill="none" stroke="#D8D2C9" stroke-width="1.2"/>
+    <path d="M32 16 C34 11, 37 11, 38 16" fill="none" stroke="#D8D2C9" stroke-width="1.2"/>
+    <rect x="23" y="16" width="16" height="3" rx="1" class="hat-shadow" stroke="#2E221F" stroke-width="1"/>
+    <!-- Head Base -->
+    <ellipse cx="32" cy="31" rx="15" ry="13" class="shiba-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="30" rx="15" ry="12" class="shiba-gold"/>
+    <!-- Cream Cheeks -->
+    <ellipse cx="23" cy="34" rx="6" ry="5" class="shiba-cream"/>
+    <ellipse cx="41" cy="34" rx="6" ry="5" class="shiba-cream"/>
+    <ellipse cx="32" cy="33" rx="7" ry="6" class="shiba-cream"/>
+    <!-- Eyebrow Dots -->
+    <circle cx="25" cy="24" r="1.8" class="shiba-cream"/>
+    <circle cx="39" cy="24" r="1.8" class="shiba-cream"/>
+    <!-- Eyes -->
+    <ellipse cx="26" cy="30" rx="2.5" ry="2.8" class="eye-dark"/>
+    <circle cx="25.5" cy="30.2" r="0.8" fill="#FFFFFF"/>
+    <ellipse cx="38" cy="30" rx="2.5" ry="2.8" class="eye-dark"/>
+    <circle cx="37.5" cy="30.2" r="0.8" fill="#FFFFFF"/>
+    <!-- Nose & Mouth -->
+    <polygon points="30.5,33 33.5,33 32,34.8" class="nose-dark"/>
+    <circle cx="32" cy="36" r="0.8" class="nose-dark"/>
+    <!-- Body -->
+    <ellipse cx="32" cy="46" rx="13" ry="10" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="32" cy="47" rx="8" ry="7" class="shiba-cream"/>
+    <!-- Kneading Board Base -->
+    <rect x="14" y="52" width="36" height="6" rx="1.5" class="sack-beige" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Dough (Right indented from press) -->
+    <path d="M20 49 C20 45, 25 44, 32 44 C39 46, 44 44, 44 48 C44 52, 39 53, 32 53 C25 53, 20 52, 20 49 Z" class="dough-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <path d="M21 48 C21 44.5, 25 43.5, 32 43.5 C39 45.5, 43 44, 43 47 C43 51, 39 52, 32 52 C25 52, 21 51, 21 48 Z" class="dough-beige"/>
+    <!-- Left Paw Up in air, Right Paw Pressing Down -->
+    <circle cx="26" cy="43" r="3" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="39" cy="47" rx="3.5" ry="2.8" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+  </g>
+
+  <!-- Frame 1.4 (FOCUS - Frame 4: Head bob down 1px, rhythmic kneading rhythm) -->
+  <g id="shiba-focus-f4" transform="translate(192, 64)">
+    <!-- Tail -->
+    <path d="M44 47 C52 47, 55 42, 53 37 C51 33, 48 34, 49 38 C50 40, 47 43, 42 44 Z" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <circle cx="51" cy="37" r="2.2" class="shiba-cream"/>
+    <!-- Ears (Head bob down 1px) -->
+    <path d="M18 23 L16 10 L27 19 Z" class="shiba-gold" stroke="#2E221F" stroke-width="2"/>
+    <path d="M18 20 L17 13 L24 19 Z" class="ear-inner"/>
+    <path d="M37 19 L48 10 L46 23 Z" class="shiba-gold" stroke="#2E221F" stroke-width="2"/>
+    <path d="M40 19 L47 13 L45 20 Z" class="ear-inner"/>
+    <!-- Baker Hat -->
+    <path d="M22 18 C20 12, 24 7, 30 7 C34 6, 40 9, 38 17 Z" class="hat-white" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M24 17 C25 11, 29 10, 32 17" fill="none" stroke="#D8D2C9" stroke-width="1.2"/>
+    <path d="M32 17 C34 12, 37 12, 38 17" fill="none" stroke="#D8D2C9" stroke-width="1.2"/>
+    <rect x="23" y="17" width="16" height="3" rx="1" class="hat-shadow" stroke="#2E221F" stroke-width="1"/>
+    <!-- Head Base (Bobbed 1px) -->
+    <ellipse cx="32" cy="32" rx="15" ry="13" class="shiba-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="31" rx="15" ry="12" class="shiba-gold"/>
+    <!-- Cream Cheeks -->
+    <ellipse cx="23" cy="35" rx="6" ry="5" class="shiba-cream"/>
+    <ellipse cx="41" cy="35" rx="6" ry="5" class="shiba-cream"/>
+    <ellipse cx="32" cy="34" rx="7" ry="6" class="shiba-cream"/>
+    <!-- Eyebrow Dots -->
+    <circle cx="25" cy="25" r="1.8" class="shiba-cream"/>
+    <circle cx="39" cy="25" r="1.8" class="shiba-cream"/>
+    <!-- Eyes -->
+    <ellipse cx="26" cy="31" rx="2.5" ry="2.8" class="eye-dark"/>
+    <circle cx="25.5" cy="31.2" r="0.8" fill="#FFFFFF"/>
+    <ellipse cx="38" cy="31" rx="2.5" ry="2.8" class="eye-dark"/>
+    <circle cx="37.5" cy="31.2" r="0.8" fill="#FFFFFF"/>
+    <!-- Nose & Shiba Focus Smile -->
+    <polygon points="30.5,34 33.5,34 32,35.8" class="nose-dark"/>
+    <path d="M30 36.5 Q32 37.8 34 36.5" fill="none" stroke="#2E221F" stroke-width="1.1" stroke-linecap="round"/>
+    <!-- Body -->
+    <ellipse cx="32" cy="47" rx="13" ry="10" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="32" cy="48" rx="8" ry="7" class="shiba-cream"/>
+    <!-- Kneading Board Base -->
+    <rect x="14" y="52" width="36" height="6" rx="1.5" class="sack-beige" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Dough (Plump center fold) -->
+    <ellipse cx="32" cy="47" rx="11" ry="6" class="dough-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="32" cy="46" rx="10.5" ry="5.5" class="dough-beige"/>
+    <!-- Paws Rolling Fold -->
+    <circle cx="24" cy="46" r="3" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+    <circle cx="40" cy="46" r="3" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- ROW 2 (Y: 128px) — FRENZY STATE (Turbo dough kneading, oven smoke/dust)   -->
+  <!-- ========================================================================= -->
+
+  <!-- Frame 2.1 (FRENZY - Frame 1: Turbo kneading, flour dust bursting, determined) -->
+  <g id="shiba-frenzy-f1" transform="translate(0, 128)">
+    <!-- Oven Smoke Puff Left -->
+    <circle cx="12" cy="10" r="4.5" class="smoke-puff"/>
+    <circle cx="17" cy="6" r="3.5" class="smoke-puff"/>
+    <!-- Flour Dust Particles Left -->
+    <circle cx="10" cy="45" r="1.8" class="flour-dust"/>
+    <circle cx="14" cy="41" r="1.2" class="flour-dust"/>
+    <circle cx="12" cy="51" r="1.5" class="flour-dust"/>
+    <!-- Ears (Flattened sideways in intense speed) -->
+    <path d="M18 24 L7 18 L18 15 Z" class="shiba-gold" stroke="#2E221F" stroke-width="2"/>
+    <path d="M17 22 L9 18 L17 17 Z" class="ear-inner"/>
+    <path d="M46 15 L57 18 L46 24 Z" class="shiba-gold" stroke="#2E221F" stroke-width="2"/>
+    <path d="M47 17 L55 18 L47 22 Z" class="ear-inner"/>
+    <!-- Baker Hat (Shaking from speed) -->
+    <path d="M20 16 C18 10, 23 5, 29 5 C33 4, 39 7, 37 15 Z" class="hat-white" stroke="#2E221F" stroke-width="1.5"/>
+    <rect x="21" y="15" width="16" height="3" rx="1" class="hat-shadow" stroke="#2E221F" stroke-width="1"/>
+    <!-- Head Base -->
+    <ellipse cx="32" cy="30" rx="15" ry="13" class="shiba-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="29" rx="15" ry="12" class="shiba-gold"/>
+    <!-- Flying Sweat Droplet Left -->
+    <path d="M13 26 C11 26, 10 28, 10 29 C10 31, 13 32, 13 32 C13 32, 16 31, 16 29 C16 28, 15 26, 13 26 Z" class="sweat"/>
+    <!-- Cream Cheeks -->
+    <ellipse cx="23" cy="33" rx="6" ry="5" class="shiba-cream"/>
+    <ellipse cx="41" cy="33" rx="6" ry="5" class="shiba-cream"/>
+    <ellipse cx="32" cy="32" rx="7" ry="6" class="shiba-cream"/>
+    <!-- Eyebrows Slanted Fierce -->
+    <path d="M22 23 L28 25" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M42 23 L36 25" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+    <!-- Intense Wide Eyes -->
+    <ellipse cx="26" cy="28" rx="3" ry="3.2" class="eye-dark"/>
+    <circle cx="25" cy="27" r="1" fill="#FFFFFF"/>
+    <ellipse cx="38" cy="28" rx="3" ry="3.2" class="eye-dark"/>
+    <circle cx="37" cy="27" r="1" fill="#FFFFFF"/>
+    <!-- Nose & Determined Open Grin with cute fangs -->
+    <polygon points="30.5,31 33.5,31 32,32.8" class="nose-dark"/>
+    <path d="M29 33 Q32 36.5 35 33 Z" class="ear-inner" stroke="#2E221F" stroke-width="1"/>
+    <polygon points="30,33 31,34.5 32,33" fill="#FFFFFF"/>
+    <polygon points="32,33 33,34.5 34,33" fill="#FFFFFF"/>
+    <!-- Body -->
+    <ellipse cx="32" cy="45" rx="13" ry="10" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="32" cy="46" rx="8" ry="7" class="shiba-cream"/>
+    <!-- Kneading Board -->
+    <rect x="14" y="52" width="36" height="6" rx="1.5" class="sack-beige" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Dough (Deformed rapidly) -->
+    <ellipse cx="32" cy="47" rx="12" ry="5.5" class="dough-beige" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Ghost Paws (Afterimage speed effect) -->
+    <ellipse cx="19" cy="43" rx="3.5" ry="2.5" class="shiba-cream" opacity="0.6"/>
+    <ellipse cx="45" cy="43" rx="3.5" ry="2.5" class="shiba-cream" opacity="0.6"/>
+    <!-- Fast Kneading Paws Down -->
+    <circle cx="24" cy="47" r="3.2" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+    <circle cx="40" cy="47" r="3.2" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+  </g>
+
+  <!-- Frame 2.2 (FRENZY - Frame 2: Heavy oven smoke cloud, flour blast right) -->
+  <g id="shiba-frenzy-f2" transform="translate(64, 128)">
+    <!-- Oven Smoke Cloud Behind Head -->
+    <circle cx="32" cy="4" r="5" class="smoke-puff"/>
+    <circle cx="26" cy="6" r="4" class="smoke-puff"/>
+    <circle cx="38" cy="6" r="4" class="smoke-puff"/>
+    <!-- Oven Fire Sparks -->
+    <circle cx="48" cy="8" r="1.5" class="fire-spark"/>
+    <circle cx="50" cy="5" r="1" class="fire-core"/>
+    <!-- Flour Dust Blast Right -->
+    <circle cx="52" cy="45" r="2" class="flour-dust"/>
+    <circle cx="48" cy="40" r="1.5" class="flour-dust"/>
+    <circle cx="54" cy="51" r="1.2" class="flour-dust"/>
+    <!-- Airplane Ears -->
+    <path d="M18 24 L7 18 L18 15 Z" class="shiba-gold" stroke="#2E221F" stroke-width="2"/>
+    <path d="M17 22 L9 18 L17 17 Z" class="ear-inner"/>
+    <path d="M46 15 L57 18 L46 24 Z" class="shiba-gold" stroke="#2E221F" stroke-width="2"/>
+    <path d="M47 17 L55 18 L47 22 Z" class="ear-inner"/>
+    <!-- Baker Hat -->
+    <path d="M22 15 C20 9, 25 4, 31 4 C35 3, 41 6, 39 14 Z" class="hat-white" stroke="#2E221F" stroke-width="1.5"/>
+    <rect x="23" y="14" width="16" height="3" rx="1" class="hat-shadow" stroke="#2E221F" stroke-width="1"/>
+    <!-- Head Base -->
+    <ellipse cx="32" cy="30" rx="15" ry="13" class="shiba-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="29" rx="15" ry="12" class="shiba-gold"/>
+    <!-- Sweat Droplet Right -->
+    <path d="M51 26 C49 26, 48 28, 48 29 C48 31, 51 32, 51 32 C51 32, 54 31, 54 29 C54 28, 53 26, 51 26 Z" class="sweat"/>
+    <!-- Cream Cheeks -->
+    <ellipse cx="23" cy="33" rx="6" ry="5" class="shiba-cream"/>
+    <ellipse cx="41" cy="33" rx="6" ry="5" class="shiba-cream"/>
+    <ellipse cx="32" cy="32" rx="7" ry="6" class="shiba-cream"/>
+    <!-- Eyebrows Fierce -->
+    <path d="M22 23 L28 25" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M42 23 L36 25" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+    <!-- Intense Eyes -->
+    <ellipse cx="26" cy="28" rx="3" ry="3.2" class="eye-dark"/>
+    <circle cx="25" cy="27" r="1" fill="#FFFFFF"/>
+    <ellipse cx="38" cy="28" rx="3" ry="3.2" class="eye-dark"/>
+    <circle cx="37" cy="27" r="1" fill="#FFFFFF"/>
+    <!-- Nose & Shout Mouth -->
+    <polygon points="30.5,31 33.5,31 32,32.8" class="nose-dark"/>
+    <path d="M29 33 Q32 37 35 33 Z" class="ear-inner" stroke="#2E221F" stroke-width="1"/>
+    <!-- Body -->
+    <ellipse cx="32" cy="45" rx="13" ry="10" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="32" cy="46" rx="8" ry="7" class="shiba-cream"/>
+    <!-- Kneading Board -->
+    <rect x="14" y="52" width="36" height="6" rx="1.5" class="sack-beige" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Dough (Flattened under heavy turbo slam) -->
+    <ellipse cx="32" cy="48" rx="14" ry="5" class="dough-beige" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Slamming Paws -->
+    <circle cx="28" cy="47" r="3.5" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+    <circle cx="36" cy="47" r="3.5" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+  </g>
+
+  <!-- Frame 2.3 (FRENZY - Frame 3: Triple smoke cloud, double flour blast both sides) -->
+  <g id="shiba-frenzy-f3" transform="translate(128, 128)">
+    <!-- Triple Oven Smoke Clouds -->
+    <circle cx="16" cy="7" r="4.5" class="smoke-puff"/>
+    <circle cx="32" cy="3" r="5.5" class="smoke-puff"/>
+    <circle cx="48" cy="7" r="4.5" class="smoke-puff"/>
+    <!-- Fire Sparks -->
+    <circle cx="12" cy="4" r="1.5" class="fire-spark"/>
+    <circle cx="52" cy="4" r="1.5" class="fire-spark"/>
+    <!-- Double Flour Dust Clouds -->
+    <circle cx="10" cy="46" r="2.2" class="flour-dust"/>
+    <circle cx="14" cy="39" r="1.6" class="flour-dust"/>
+    <circle cx="54" cy="46" r="2.2" class="flour-dust"/>
+    <circle cx="50" cy="39" r="1.6" class="flour-dust"/>
+    <!-- Airplane Ears -->
+    <path d="M18 24 L7 18 L18 15 Z" class="shiba-gold" stroke="#2E221F" stroke-width="2"/>
+    <path d="M17 22 L9 18 L17 17 Z" class="ear-inner"/>
+    <path d="M46 15 L57 18 L46 24 Z" class="shiba-gold" stroke="#2E221F" stroke-width="2"/>
+    <path d="M47 17 L55 18 L47 22 Z" class="ear-inner"/>
+    <!-- Baker Hat -->
+    <path d="M21 16 C19 10, 24 5, 30 5 C34 4, 40 7, 38 15 Z" class="hat-white" stroke="#2E221F" stroke-width="1.5"/>
+    <rect x="22" y="15" width="16" height="3" rx="1" class="hat-shadow" stroke="#2E221F" stroke-width="1"/>
+    <!-- Head Base -->
+    <ellipse cx="32" cy="30" rx="15" ry="13" class="shiba-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="29" rx="15" ry="12" class="shiba-gold"/>
+    <!-- Sweat Drops Both Sides -->
+    <circle cx="11" cy="28" r="1.5" class="sweat"/>
+    <circle cx="53" cy="28" r="1.5" class="sweat"/>
+    <!-- Cream Cheeks -->
+    <ellipse cx="23" cy="33" rx="6" ry="5" class="shiba-cream"/>
+    <ellipse cx="41" cy="33" rx="6" ry="5" class="shiba-cream"/>
+    <ellipse cx="32" cy="32" rx="7" ry="6" class="shiba-cream"/>
+    <!-- Fierce Eyes -->
+    <path d="M22 23 L28 25" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M42 23 L36 25" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+    <ellipse cx="26" cy="28" rx="3" ry="3.2" class="eye-dark"/>
+    <circle cx="25" cy="27" r="1" fill="#FFFFFF"/>
+    <ellipse cx="38" cy="28" rx="3" ry="3.2" class="eye-dark"/>
+    <circle cx="37" cy="27" r="1" fill="#FFFFFF"/>
+    <!-- Nose & Fangs -->
+    <polygon points="30.5,31 33.5,31 32,32.8" class="nose-dark"/>
+    <path d="M29 33 Q32 36.5 35 33 Z" class="ear-inner" stroke="#2E221F" stroke-width="1"/>
+    <polygon points="30,33 31,34.5 32,33" fill="#FFFFFF"/>
+    <polygon points="32,33 33,34.5 34,33" fill="#FFFFFF"/>
+    <!-- Body -->
+    <ellipse cx="32" cy="45" rx="13" ry="10" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="32" cy="46" rx="8" ry="7" class="shiba-cream"/>
+    <!-- Kneading Board -->
+    <rect x="14" y="52" width="36" height="6" rx="1.5" class="sack-beige" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Dough (Twirling/Stretching high speed) -->
+    <path d="M19 48 Q32 41 45 48 Q32 54 19 48 Z" class="dough-beige" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Multi-paw Turbo Motion Blur -->
+    <ellipse cx="21" cy="47" rx="3.5" ry="2.5" class="shiba-cream" stroke="#2E221F" stroke-width="1"/>
+    <ellipse cx="43" cy="47" rx="3.5" ry="2.5" class="shiba-cream" stroke="#2E221F" stroke-width="1"/>
+    <ellipse cx="32" cy="43" rx="4" ry="2" fill="#FFF4E0" opacity="0.6"/>
+  </g>
+
+  <!-- Frame 2.4 (FRENZY - Frame 4: Smoke drifting, golden dough triumph, speed sparks) -->
+  <g id="shiba-frenzy-f4" transform="translate(192, 128)">
+    <!-- Smoke Drift Right -->
+    <circle cx="45" cy="8" r="5" class="smoke-puff"/>
+    <circle cx="51" cy="4" r="3.5" class="smoke-puff"/>
+    <!-- Flour Dust -->
+    <circle cx="16" cy="43" r="1.8" class="flour-dust"/>
+    <circle cx="48" cy="44" r="1.8" class="flour-dust"/>
+    <!-- Airplane Ears -->
+    <path d="M18 24 L7 18 L18 15 Z" class="shiba-gold" stroke="#2E221F" stroke-width="2"/>
+    <path d="M17 22 L9 18 L17 17 Z" class="ear-inner"/>
+    <path d="M46 15 L57 18 L46 24 Z" class="shiba-gold" stroke="#2E221F" stroke-width="2"/>
+    <path d="M47 17 L55 18 L47 22 Z" class="ear-inner"/>
+    <!-- Baker Hat -->
+    <path d="M22 16 C20 10, 25 5, 31 5 C35 4, 41 7, 39 15 Z" class="hat-white" stroke="#2E221F" stroke-width="1.5"/>
+    <rect x="23" y="15" width="16" height="3" rx="1" class="hat-shadow" stroke="#2E221F" stroke-width="1"/>
+    <!-- Head Base -->
+    <ellipse cx="32" cy="30" rx="15" ry="13" class="shiba-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="29" rx="15" ry="12" class="shiba-gold"/>
+    <!-- Cream Cheeks -->
+    <ellipse cx="23" cy="33" rx="6" ry="5" class="shiba-cream"/>
+    <ellipse cx="41" cy="33" rx="6" ry="5" class="shiba-cream"/>
+    <ellipse cx="32" cy="32" rx="7" ry="6" class="shiba-cream"/>
+    <!-- Fierce Eyes -->
+    <path d="M22 23 L28 25" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M42 23 L36 25" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+    <ellipse cx="26" cy="28" rx="3" ry="3.2" class="eye-dark"/>
+    <circle cx="25" cy="27" r="1" fill="#FFFFFF"/>
+    <ellipse cx="38" cy="28" rx="3" ry="3.2" class="eye-dark"/>
+    <circle cx="37" cy="27" r="1" fill="#FFFFFF"/>
+    <!-- Nose & Open Grin -->
+    <polygon points="30.5,31 33.5,31 32,32.8" class="nose-dark"/>
+    <path d="M29 33 Q32 37 35 33 Z" class="ear-inner" stroke="#2E221F" stroke-width="1"/>
+    <!-- Body -->
+    <ellipse cx="32" cy="45" rx="13" ry="10" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="32" cy="46" rx="8" ry="7" class="shiba-cream"/>
+    <!-- Kneading Board -->
+    <rect x="14" y="52" width="36" height="6" rx="1.5" class="sack-beige" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Dough (Smooth golden ready dome) -->
+    <ellipse cx="32" cy="47" rx="12" ry="6.5" class="dough-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="32" cy="46" rx="11.5" ry="6" class="dough-beige"/>
+    <!-- Paws on finish pose -->
+    <circle cx="26" cy="46" r="3.2" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+    <circle cx="38" cy="46" r="3.2" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- ROW 3 (Y: 192px) — DISK STATE (Vigorous digging in flour sack, dust flying) -->
+  <!-- ========================================================================= -->
+
+  <!-- Frame 3.1 (DISK - Frame 1: Left paw digging deep into flour sack, ears alert) -->
+  <g id="shiba-disk-f1" transform="translate(0, 192)">
+    <!-- Cinnamon Roll Tail (Straight up high & alert) -->
+    <path d="M45 43 C52 41, 56 35, 54 29 C52 25, 48 27, 49 31 C50 34, 48 38, 43 41 Z" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <circle cx="52" cy="30" r="2.2" class="shiba-cream"/>
+    <!-- Upright Alert Ears -->
+    <path d="M18 21 L15 8 L26 17 Z" class="shiba-gold" stroke="#2E221F" stroke-width="2"/>
+    <path d="M18 18 L16 11 L23 17 Z" class="ear-inner"/>
+    <path d="M38 17 L49 8 L46 21 Z" class="shiba-gold" stroke="#2E221F" stroke-width="2"/>
+    <path d="M41 17 L48 11 L46 18 Z" class="ear-inner"/>
+    <!-- Baker Hat (Slanted forward) -->
+    <path d="M23 16 C21 10, 25 5, 31 5 C35 4, 41 7, 39 15 Z" class="hat-white" stroke="#2E221F" stroke-width="1.5"/>
+    <rect x="24" y="15" width="16" height="3" rx="1" class="hat-shadow" stroke="#2E221F" stroke-width="1"/>
+    <!-- Head Base (Angled down towards sack) -->
+    <ellipse cx="32" cy="30" rx="15" ry="13" class="shiba-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="29" rx="15" ry="12" class="shiba-gold"/>
+    <!-- Cream Cheeks -->
+    <ellipse cx="23" cy="33" rx="6" ry="5" class="shiba-cream"/>
+    <ellipse cx="41" cy="33" rx="6" ry="5" class="shiba-cream"/>
+    <ellipse cx="32" cy="32" rx="7" ry="6" class="shiba-cream"/>
+    <!-- Eyebrow Dots -->
+    <circle cx="25" cy="23" r="1.8" class="shiba-cream"/>
+    <circle cx="39" cy="23" r="1.8" class="shiba-cream"/>
+    <!-- Eyes looking down eagerly at sack -->
+    <ellipse cx="26" cy="30" rx="2.5" ry="2.8" class="eye-dark"/>
+    <circle cx="26" cy="31" r="1" fill="#FFFFFF"/>
+    <ellipse cx="38" cy="30" rx="2.5" ry="2.8" class="eye-dark"/>
+    <circle cx="38" cy="31" r="1" fill="#FFFFFF"/>
+    <!-- Nose & Excited Digging Mouth -->
+    <polygon points="30.5,33 33.5,33 32,34.8" class="nose-dark"/>
+    <path d="M30 35.5 Q32 37.5 34 35.5" fill="none" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Body Base -->
+    <ellipse cx="32" cy="44" rx="13" ry="9" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <!-- Big Flour Sack / Mat Base -->
+    <path d="M12 59 L12 47 L52 47 L52 59 Z" class="sack-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M14 58 L14 48 L50 48 L50 58 Z" class="sack-beige"/>
+    <!-- Sack Rope Tie & Flour Crest -->
+    <line x1="14" y1="51" x2="50" y2="51" stroke="#B7A693" stroke-width="1.5" stroke-dasharray="3 2"/>
+    <!-- Flour Dust Splash Left -->
+    <circle cx="16" cy="42" r="2.2" class="flour-dust"/>
+    <circle cx="12" cy="40" r="1.5" class="flour-dust"/>
+    <circle cx="19" cy="38" r="1.2" class="flour-dust"/>
+    <!-- Left Paw Digging Deep, Right Paw Anchored -->
+    <circle cx="22" cy="48" r="3" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+    <circle cx="42" cy="44" r="3" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+  </g>
+
+  <!-- Frame 3.2 (DISK - Frame 2: Right paw scratching flour sack, dust spray right) -->
+  <g id="shiba-disk-f2" transform="translate(64, 192)">
+    <!-- Cinnamon Roll Tail -->
+    <path d="M45 42 C53 40, 57 34, 55 28 C53 24, 49 26, 50 30 C51 33, 49 37, 43 40 Z" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <circle cx="53" cy="29" r="2.2" class="shiba-cream"/>
+    <!-- Ears -->
+    <path d="M18 20 L15 7 L26 16 Z" class="shiba-gold" stroke="#2E221F" stroke-width="2"/>
+    <path d="M18 17 L16 10 L23 16 Z" class="ear-inner"/>
+    <path d="M38 16 L49 7 L46 20 Z" class="shiba-gold" stroke="#2E221F" stroke-width="2"/>
+    <path d="M41 16 L48 10 L46 17 Z" class="ear-inner"/>
+    <!-- Baker Hat -->
+    <path d="M23 15 C21 9, 25 4, 31 4 C35 3, 41 6, 39 14 Z" class="hat-white" stroke="#2E221F" stroke-width="1.5"/>
+    <rect x="24" y="14" width="16" height="3" rx="1" class="hat-shadow" stroke="#2E221F" stroke-width="1"/>
+    <!-- Head Base -->
+    <ellipse cx="32" cy="29" rx="15" ry="13" class="shiba-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="28" rx="15" ry="12" class="shiba-gold"/>
+    <!-- Cream Cheeks -->
+    <ellipse cx="23" cy="32" rx="6" ry="5" class="shiba-cream"/>
+    <ellipse cx="41" cy="32" rx="6" ry="5" class="shiba-cream"/>
+    <ellipse cx="32" cy="31" rx="7" ry="6" class="shiba-cream"/>
+    <!-- Eyebrow Dots -->
+    <circle cx="25" cy="22" r="1.8" class="shiba-cream"/>
+    <circle cx="39" cy="22" r="1.8" class="shiba-cream"/>
+    <!-- Eyes -->
+    <ellipse cx="26" cy="29" rx="2.5" ry="2.8" class="eye-dark"/>
+    <circle cx="26" cy="30" r="1" fill="#FFFFFF"/>
+    <ellipse cx="38" cy="29" rx="2.5" ry="2.8" class="eye-dark"/>
+    <circle cx="38" cy="30" r="1" fill="#FFFFFF"/>
+    <!-- Nose & Mouth -->
+    <polygon points="30.5,32 33.5,32 32,33.8" class="nose-dark"/>
+    <path d="M30 34.5 Q32 36.5 34 34.5" fill="none" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Body Base -->
+    <ellipse cx="32" cy="43" rx="13" ry="9" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <!-- Flour Sack -->
+    <path d="M12 59 L12 47 L52 47 L52 59 Z" class="sack-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M14 58 L14 48 L50 48 L50 58 Z" class="sack-beige"/>
+    <line x1="14" y1="51" x2="50" y2="51" stroke="#B7A693" stroke-width="1.5" stroke-dasharray="3 2"/>
+    <!-- Flour Dust Spray Right -->
+    <circle cx="48" cy="42" r="2.2" class="flour-dust"/>
+    <circle cx="52" cy="40" r="1.5" class="flour-dust"/>
+    <circle cx="45" cy="38" r="1.2" class="flour-dust"/>
+    <!-- Left Paw Anchored, Right Paw Digging Deep -->
+    <circle cx="22" cy="43" r="3" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+    <circle cx="42" cy="47" r="3" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+  </g>
+
+  <!-- Frame 3.3 (DISK - Frame 3: Dual-paw rapid digging, big flour burst) -->
+  <g id="shiba-disk-f3" transform="translate(128, 192)">
+    <!-- Cinnamon Roll Tail (Vibrating high) -->
+    <path d="M45 43 C52 41, 56 35, 54 29 C52 25, 48 27, 49 31 C50 34, 48 38, 43 41 Z" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <circle cx="52" cy="30" r="2.2" class="shiba-cream"/>
+    <!-- Ears -->
+    <path d="M18 21 L15 8 L26 17 Z" class="shiba-gold" stroke="#2E221F" stroke-width="2"/>
+    <path d="M18 18 L16 11 L23 17 Z" class="ear-inner"/>
+    <path d="M38 17 L49 8 L46 21 Z" class="shiba-gold" stroke="#2E221F" stroke-width="2"/>
+    <path d="M41 17 L48 11 L46 18 Z" class="ear-inner"/>
+    <!-- Baker Hat -->
+    <path d="M23 16 C21 10, 25 5, 31 5 C35 4, 41 7, 39 15 Z" class="hat-white" stroke="#2E221F" stroke-width="1.5"/>
+    <rect x="24" y="15" width="16" height="3" rx="1" class="hat-shadow" stroke="#2E221F" stroke-width="1"/>
+    <!-- Head Base -->
+    <ellipse cx="32" cy="30" rx="15" ry="13" class="shiba-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="29" rx="15" ry="12" class="shiba-gold"/>
+    <!-- Cream Cheeks -->
+    <ellipse cx="23" cy="33" rx="6" ry="5" class="shiba-cream"/>
+    <ellipse cx="41" cy="33" rx="6" ry="5" class="shiba-cream"/>
+    <ellipse cx="32" cy="32" rx="7" ry="6" class="shiba-cream"/>
+    <!-- Eyebrow Dots -->
+    <circle cx="25" cy="23" r="1.8" class="shiba-cream"/>
+    <circle cx="39" cy="23" r="1.8" class="shiba-cream"/>
+    <!-- Happy Digging Eyes (^ ^) -->
+    <path d="M24 28 Q26 25 28 28" fill="none" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M36 28 Q38 25 40 28" fill="none" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+    <!-- Nose & Smile -->
+    <polygon points="30.5,32 33.5,32 32,33.8" class="nose-dark"/>
+    <path d="M29.5 35 Q32 37 34.5 35" fill="none" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Body Base -->
+    <ellipse cx="32" cy="44" rx="13" ry="9" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <!-- Flour Sack -->
+    <path d="M12 59 L12 47 L52 47 L52 59 Z" class="sack-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M14 58 L14 48 L50 48 L50 58 Z" class="sack-beige"/>
+    <line x1="14" y1="51" x2="50" y2="51" stroke="#B7A693" stroke-width="1.5" stroke-dasharray="3 2"/>
+    <!-- Big Flour Dust Explosion -->
+    <circle cx="16" cy="41" r="2.5" class="flour-dust"/>
+    <circle cx="48" cy="41" r="2.5" class="flour-dust"/>
+    <circle cx="32" cy="38" r="2" class="flour-dust"/>
+    <!-- Dual Paws Scratching Rapidly -->
+    <ellipse cx="25" cy="47" rx="3.5" ry="2.8" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="39" cy="47" rx="3.5" ry="2.8" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+  </g>
+
+  <!-- Frame 3.4 (DISK - Frame 4: Head tucked down digging deep, flour cloud around) -->
+  <g id="shiba-disk-f4" transform="translate(192, 192)">
+    <!-- Cinnamon Roll Tail -->
+    <path d="M45 42 C53 40, 57 34, 55 28 C53 24, 49 26, 50 30 C51 33, 49 37, 43 40 Z" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <circle cx="53" cy="29" r="2.2" class="shiba-cream"/>
+    <!-- Ears -->
+    <path d="M18 22 L15 9 L26 18 Z" class="shiba-gold" stroke="#2E221F" stroke-width="2"/>
+    <path d="M18 19 L16 12 L23 18 Z" class="ear-inner"/>
+    <path d="M38 18 L49 9 L46 22 Z" class="shiba-gold" stroke="#2E221F" stroke-width="2"/>
+    <path d="M41 18 L48 12 L46 19 Z" class="ear-inner"/>
+    <!-- Baker Hat -->
+    <path d="M23 17 C21 11, 25 6, 31 6 C35 5, 41 8, 39 16 Z" class="hat-white" stroke="#2E221F" stroke-width="1.5"/>
+    <rect x="24" y="16" width="16" height="3" rx="1" class="hat-shadow" stroke="#2E221F" stroke-width="1"/>
+    <!-- Head Base (Lowered 2px into sack) -->
+    <ellipse cx="32" cy="32" rx="15" ry="13" class="shiba-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="31" rx="15" ry="12" class="shiba-gold"/>
+    <!-- Cream Cheeks -->
+    <ellipse cx="23" cy="35" rx="6" ry="5" class="shiba-cream"/>
+    <ellipse cx="41" cy="35" rx="6" ry="5" class="shiba-cream"/>
+    <ellipse cx="32" cy="34" rx="7" ry="6" class="shiba-cream"/>
+    <!-- Eyebrow Dots -->
+    <circle cx="25" cy="25" r="1.8" class="shiba-cream"/>
+    <circle cx="39" cy="25" r="1.8" class="shiba-cream"/>
+    <!-- Determined Eyes -->
+    <ellipse cx="26" cy="32" rx="2.5" ry="2.8" class="eye-dark"/>
+    <circle cx="26" cy="33" r="1" fill="#FFFFFF"/>
+    <ellipse cx="38" cy="32" rx="2.5" ry="2.8" class="eye-dark"/>
+    <circle cx="38" cy="33" r="1" fill="#FFFFFF"/>
+    <!-- Nose & Mouth -->
+    <polygon points="30.5,35 33.5,35 32,36.8" class="nose-dark"/>
+    <path d="M30 37.5 Q32 39 34 37.5" fill="none" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Body Base -->
+    <ellipse cx="32" cy="45" rx="13" ry="9" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <!-- Flour Sack -->
+    <path d="M12 59 L12 47 L52 47 L52 59 Z" class="sack-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M14 58 L14 48 L50 48 L50 58 Z" class="sack-beige"/>
+    <line x1="14" y1="51" x2="50" y2="51" stroke="#B7A693" stroke-width="1.5" stroke-dasharray="3 2"/>
+    <!-- Flour Dust Settling -->
+    <circle cx="20" cy="43" r="1.8" class="flour-dust"/>
+    <circle cx="44" cy="43" r="1.8" class="flour-dust"/>
+    <!-- Paws Deep in Sack -->
+    <circle cx="28" cy="49" r="3" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+    <circle cx="36" cy="49" r="3" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- ROW 4 (Y: 256px) — REST STATE (Lying on back, hat over eyes, belly bob)   -->
+  <!-- ========================================================================= -->
+
+  <!-- Frame 4.1 (REST - Frame 1: Lying on back, chef hat fallen over eyes, belly down) -->
+  <g id="shiba-rest-f1" transform="translate(0, 256)">
+    <!-- Fluffy Body Lying Flat on Back -->
+    <ellipse cx="32" cy="44" rx="16" ry="11" class="shiba-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="43" rx="16" ry="10" class="shiba-gold"/>
+    <!-- Round Cream Chubby Belly (Exhaled base) -->
+    <ellipse cx="32" cy="42" rx="10" ry="7" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Tail (Resting curled on right side) -->
+    <circle cx="48" cy="45" r="4.5" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <circle cx="48" cy="45" r="2" class="shiba-cream"/>
+    <!-- Left Back Foot Spread Out -->
+    <ellipse cx="16" cy="51" rx="4.5" ry="3" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+    <circle cx="16" cy="51" r="1.2" class="ear-inner"/>
+    <!-- Right Back Foot Spread Out -->
+    <ellipse cx="48" cy="51" rx="4.5" ry="3" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+    <circle cx="48" cy="51" r="1.2" class="ear-inner"/>
+    <!-- Paws Sticking Up in Relaxed Pose -->
+    <circle cx="21" cy="37" r="3.2" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+    <circle cx="21" cy="37" r="1.2" class="ear-inner"/>
+    <circle cx="43" cy="37" r="3.2" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+    <circle cx="43" cy="37" r="1.2" class="ear-inner"/>
+    <!-- Shiba Head (Resting on cozy pillow) -->
+    <ellipse cx="32" cy="25" rx="13" ry="10" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <!-- Relaxed Ears Slumped to Sides -->
+    <path d="M19 23 L11 17 L19 14 Z" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M18 21 L13 17 L18 15 Z" class="ear-inner"/>
+    <path d="M45 14 L53 17 L45 23 Z" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M46 15 L51 17 L46 21 Z" class="ear-inner"/>
+    <!-- Baker Hat Slid Down Covering Eyes Completely -->
+    <path d="M22 25 C20 18, 25 12, 32 12 C39 12, 44 18, 42 25 Z" class="hat-white" stroke="#2E221F" stroke-width="1.5"/>
+    <rect x="21" y="24" width="22" height="4" rx="1.5" class="hat-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Peeking Black Nose & Peaceful Sleeping Smile below hat -->
+    <polygon points="30.5,30 33.5,30 32,31.8" class="nose-dark"/>
+    <path d="M29.5 33 Q32 34.5 34.5 33" fill="none" stroke="#2E221F" stroke-width="1.2" stroke-linecap="round"/>
+    <!-- Soft Sleeping Blush -->
+    <circle cx="23" cy="30" r="2" class="cheek-blush" opacity="0.8"/>
+    <circle cx="41" cy="30" r="2" class="cheek-blush" opacity="0.8"/>
+  </g>
+
+  <!-- Frame 4.2 (REST - Frame 2: Belly rises 1.5px, 'z' floats up) -->
+  <g id="shiba-rest-f2" transform="translate(64, 256)">
+    <!-- Sleep 'z' Particle -->
+    <text x="44" y="16" class="text-z">z</text>
+    <!-- Fluffy Body Lying Flat -->
+    <ellipse cx="32" cy="44" rx="16" ry="11" class="shiba-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="43" rx="16" ry="10" class="shiba-gold"/>
+    <!-- Chubby Belly (Inhaling - Expanded 1.5px) -->
+    <ellipse cx="32" cy="41" rx="11" ry="8" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Tail -->
+    <circle cx="48" cy="45" r="4.5" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <circle cx="48" cy="45" r="2" class="shiba-cream"/>
+    <!-- Feet -->
+    <ellipse cx="16" cy="51" rx="4.5" ry="3" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+    <circle cx="16" cy="51" r="1.2" class="ear-inner"/>
+    <ellipse cx="48" cy="51" rx="4.5" ry="3" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+    <circle cx="48" cy="51" r="1.2" class="ear-inner"/>
+    <!-- Paws (Lifted slightly with breath) -->
+    <circle cx="21" cy="36" r="3.2" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+    <circle cx="21" cy="36" r="1.2" class="ear-inner"/>
+    <circle cx="43" cy="36" r="3.2" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+    <circle cx="43" cy="36" r="1.2" class="ear-inner"/>
+    <!-- Head Base -->
+    <ellipse cx="32" cy="25" rx="13" ry="10" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <!-- Ears -->
+    <path d="M19 23 L11 17 L19 14 Z" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M18 21 L13 17 L18 15 Z" class="ear-inner"/>
+    <path d="M45 14 L53 17 L45 23 Z" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M46 15 L51 17 L46 21 Z" class="ear-inner"/>
+    <!-- Baker Hat -->
+    <path d="M22 25 C20 18, 25 12, 32 12 C39 12, 44 18, 42 25 Z" class="hat-white" stroke="#2E221F" stroke-width="1.5"/>
+    <rect x="21" y="24" width="22" height="4" rx="1.5" class="hat-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Nose & Mouth -->
+    <polygon points="30.5,30 33.5,30 32,31.8" class="nose-dark"/>
+    <path d="M29.5 33 Q32 34.5 34.5 33" fill="none" stroke="#2E221F" stroke-width="1.2" stroke-linecap="round"/>
+    <!-- Blush -->
+    <circle cx="23" cy="30" r="2" class="cheek-blush" opacity="0.8"/>
+    <circle cx="41" cy="30" r="2" class="cheek-blush" opacity="0.8"/>
+  </g>
+
+  <!-- Frame 4.3 (REST - Frame 3: Belly at peak inhalation, bigger 'Z' floats higher) -->
+  <g id="shiba-rest-f3" transform="translate(128, 256)">
+    <!-- Sleep 'Z' Particles -->
+    <text x="42" y="18" class="text-z" font-size="6px">z</text>
+    <text x="48" y="10" class="text-z" font-size="10px">Z</text>
+    <!-- Cute Snot Bubble / Sleep Bubble -->
+    <circle cx="35" cy="31" r="2.2" fill="#A0E7E5" opacity="0.75"/>
+    <circle cx="34.5" cy="30.5" r="0.6" fill="#FFFFFF"/>
+    <!-- Fluffy Body Lying Flat -->
+    <ellipse cx="32" cy="44" rx="16" ry="11" class="shiba-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="43" rx="16" ry="10" class="shiba-gold"/>
+    <!-- Chubby Belly (Peak Inhalation - Big round tummy) -->
+    <ellipse cx="32" cy="40.5" rx="11.5" ry="8.5" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Tail -->
+    <circle cx="48" cy="45" r="4.5" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <circle cx="48" cy="45" r="2" class="shiba-cream"/>
+    <!-- Feet -->
+    <ellipse cx="16" cy="51" rx="4.5" ry="3" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+    <circle cx="16" cy="51" r="1.2" class="ear-inner"/>
+    <ellipse cx="48" cy="51" rx="4.5" ry="3" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+    <circle cx="48" cy="51" r="1.2" class="ear-inner"/>
+    <!-- Paws at Peak Height -->
+    <circle cx="21" cy="35.5" r="3.2" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+    <circle cx="21" cy="35.5" r="1.2" class="ear-inner"/>
+    <circle cx="43" cy="35.5" r="3.2" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+    <circle cx="43" cy="35.5" r="1.2" class="ear-inner"/>
+    <!-- Head Base -->
+    <ellipse cx="32" cy="25" rx="13" ry="10" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <!-- Ears -->
+    <path d="M19 23 L11 17 L19 14 Z" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M18 21 L13 17 L18 15 Z" class="ear-inner"/>
+    <path d="M45 14 L53 17 L45 23 Z" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M46 15 L51 17 L46 21 Z" class="ear-inner"/>
+    <!-- Baker Hat -->
+    <path d="M22 25 C20 18, 25 12, 32 12 C39 12, 44 18, 42 25 Z" class="hat-white" stroke="#2E221F" stroke-width="1.5"/>
+    <rect x="21" y="24" width="22" height="4" rx="1.5" class="hat-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Nose & Sleeping Mouth -->
+    <polygon points="30.5,30 33.5,30 32,31.8" class="nose-dark"/>
+    <path d="M29.5 33 Q32 34.5 34.5 33" fill="none" stroke="#2E221F" stroke-width="1.2" stroke-linecap="round"/>
+    <!-- Blush -->
+    <circle cx="23" cy="30" r="2" class="cheek-blush" opacity="0.8"/>
+    <circle cx="41" cy="30" r="2" class="cheek-blush" opacity="0.8"/>
+  </g>
+
+  <!-- Frame 4.4 (REST - Frame 4: Exhaling gently, belly slowly lowering) -->
+  <g id="shiba-rest-f4" transform="translate(192, 256)">
+    <!-- Sleep 'z' Particle drifting -->
+    <text x="47" y="12" class="text-z" font-size="7px">z</text>
+    <!-- Fluffy Body Flat -->
+    <ellipse cx="32" cy="44" rx="16" ry="11" class="shiba-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="43" rx="16" ry="10" class="shiba-gold"/>
+    <!-- Chubby Belly (Exhaling - Lowering back) -->
+    <ellipse cx="32" cy="41.5" rx="10.5" ry="7.5" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Tail -->
+    <circle cx="48" cy="45" r="4.5" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <circle cx="48" cy="45" r="2" class="shiba-cream"/>
+    <!-- Feet -->
+    <ellipse cx="16" cy="51" rx="4.5" ry="3" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+    <circle cx="16" cy="51" r="1.2" class="ear-inner"/>
+    <ellipse cx="48" cy="51" rx="4.5" ry="3" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+    <circle cx="48" cy="51" r="1.2" class="ear-inner"/>
+    <!-- Paws Lowering -->
+    <circle cx="21" cy="36.5" r="3.2" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+    <circle cx="21" cy="36.5" r="1.2" class="ear-inner"/>
+    <circle cx="43" cy="36.5" r="3.2" class="shiba-cream" stroke="#2E221F" stroke-width="1.2"/>
+    <circle cx="43" cy="36.5" r="1.2" class="ear-inner"/>
+    <!-- Head Base -->
+    <ellipse cx="32" cy="25" rx="13" ry="10" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <!-- Ears -->
+    <path d="M19 23 L11 17 L19 14 Z" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M18 21 L13 17 L18 15 Z" class="ear-inner"/>
+    <path d="M45 14 L53 17 L45 23 Z" class="shiba-gold" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M46 15 L51 17 L46 21 Z" class="ear-inner"/>
+    <!-- Baker Hat -->
+    <path d="M22 25 C20 18, 25 12, 32 12 C39 12, 44 18, 42 25 Z" class="hat-white" stroke="#2E221F" stroke-width="1.5"/>
+    <rect x="21" y="24" width="22" height="4" rx="1.5" class="hat-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Nose & Mouth -->
+    <polygon points="30.5,30 33.5,30 32,31.8" class="nose-dark"/>
+    <path d="M29.5 33 Q32 34.5 34.5 33" fill="none" stroke="#2E221F" stroke-width="1.2" stroke-linecap="round"/>
+    <!-- Blush -->
+    <circle cx="23" cy="30" r="2" class="cheek-blush" opacity="0.8"/>
+    <circle cx="41" cy="30" r="2" class="cheek-blush" opacity="0.8"/>
+  </g>
+</svg>

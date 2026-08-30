@@ -11,6 +11,7 @@
 import React from 'react';
 import { useCompanionStore } from './stores/companionStore';
 import { CompanionState } from './types/companion';
+import { getAllCompanions, getCompanion } from './data/companionRegistry';
 import { useTelemetry } from './telemetry/useTelemetry';
 import { MockMetricController } from './components/Controls/MockMetricController';
 import { PetSprite } from './components/Pet/PetSprite';
@@ -82,7 +83,12 @@ export const App: React.FC = () => {
   const activeCompanionId = useCompanionStore(
     (state) => state.activeCompanionId
   );
+  const setActiveCompanionId = useCompanionStore(
+    (state) => state.setActiveCompanionId
+  );
 
+  const companions = getAllCompanions();
+  const activeCompanion = getCompanion(activeCompanionId);
   const stateInfo = STATE_CONFIG[activeState] || STATE_CONFIG.IDLE;
 
   // Store subscriptions
@@ -140,7 +146,7 @@ export const App: React.FC = () => {
               aria-label="Bun Icon"
               data-tauri-drag-region
             >
-              🐰
+              {activeCompanion.emoji}
             </span>
             <div data-tauri-drag-region>
               <h1 className={styles.brandTitle} data-tauri-drag-region>
@@ -191,10 +197,11 @@ export const App: React.FC = () => {
             </span>
 
             <span className={styles.companionTag}>
-              Pet: {activeCompanionId.toUpperCase()} (Flagship)
+              Pet: {activeCompanion.displayName.toUpperCase()} (
+              {activeCompanion.id === 'bun' ? 'Flagship' : 'Multiverse'})
             </span>
             <span className={styles.versionBadge}>
-              v1.0.0 • Desktop Mascot Edition
+              v1.1.0 • Multiverse Edition
             </span>
           </div>
 
@@ -261,6 +268,48 @@ export const App: React.FC = () => {
             </button>
           </div>
         </header>
+
+        {/* Character Selector Ribbon */}
+        <section
+          className={styles.characterRibbon}
+          aria-label="Multiverse Character Selector"
+          data-testid="character-selector-ribbon"
+        >
+          <div className={styles.ribbonLabel}>
+            <span>🐾 Multiverse Companions</span>
+          </div>
+          <div className={styles.characterCardsRow}>
+            {companions.map((companion) => {
+              const isSelected = activeCompanionId === companion.id;
+              return (
+                <button
+                  key={companion.id}
+                  type="button"
+                  className={`${styles.characterCard} ${
+                    isSelected ? styles.characterCardActive : ''
+                  }`}
+                  onClick={() => setActiveCompanionId(companion.id)}
+                  aria-pressed={isSelected}
+                  data-testid={`character-card-${companion.id}`}
+                >
+                  <span className={styles.cardEmoji}>{companion.emoji}</span>
+                  <div className={styles.cardInfo}>
+                    <span className={styles.cardName}>
+                      {companion.displayName}
+                    </span>
+                    <span className={styles.cardRole}>{companion.role}</span>
+                  </div>
+                  {isSelected && (
+                    <span
+                      className={styles.activeDot}
+                      title="Active Companion"
+                    />
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        </section>
 
         {/* Responsive Showcase Split Grid */}
         <div className={styles.showcaseGrid}>

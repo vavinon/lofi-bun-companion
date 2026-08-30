@@ -49,7 +49,7 @@ describe('useTelemetry Hook', () => {
     await telemetryManager.stop();
   });
 
-  it('should initialize with MANUAL mode and mock provider by default', async () => {
+  it('should initialize with LIVE mode and active provider by default', async () => {
     let hookResult!: UseTelemetryResult;
 
     await act(async () => {
@@ -62,8 +62,10 @@ describe('useTelemetry Hook', () => {
       );
     });
 
-    expect(hookResult.mode).toBe('MANUAL');
-    expect(hookResult.providerName).toBe('Web Mock Telemetry Provider');
+    expect(hookResult.mode).toBe('LIVE');
+    expect(hookResult.providerName).toMatch(
+      /(Native Hardware Telemetry Provider|Web Mock Telemetry Provider)/
+    );
     expect(hookResult.status).toBe('POLLING');
   });
 
@@ -81,14 +83,15 @@ describe('useTelemetry Hook', () => {
     });
 
     expect(telemetryManager.isActive()).toBe(true);
-    expect(useCompanionStore.getState().metrics).toEqual({
-      cpuUsage: 10,
-      ramUsage: 30,
-      diskUsage: 5,
-    });
+    // In LIVE mode, telemetry metrics are polled and updated into store
+    const currentMetrics = useCompanionStore.getState().metrics;
+    expect(typeof currentMetrics.cpuUsage).toBe('number');
+    expect(typeof currentMetrics.ramUsage).toBe('number');
+    expect(typeof currentMetrics.diskUsage).toBe('number');
 
-    // Update manual metrics through hook helper
+    // Switch to MANUAL to update manual metrics through hook helper
     await act(async () => {
+      hookResult.setMode('MANUAL');
       hookResult.setManualMetrics({ cpuUsage: 65 });
     });
 
@@ -144,22 +147,22 @@ describe('useTelemetry Hook', () => {
       );
     });
 
-    expect(hookResult.mode).toBe('MANUAL');
+    expect(hookResult.mode).toBe('LIVE');
 
-    // Switch to LIVE mode
-    await act(async () => {
-      hookResult.setMode('LIVE');
-    });
-
-    expect(useCompanionStore.getState().telemetryMode).toBe('LIVE');
-    expect(telemetryManager.getMode()).toBe('LIVE');
-
-    // Switch back to MANUAL mode
+    // Switch to MANUAL mode
     await act(async () => {
       hookResult.setMode('MANUAL');
     });
 
     expect(useCompanionStore.getState().telemetryMode).toBe('MANUAL');
     expect(telemetryManager.getMode()).toBe('MANUAL');
+
+    // Switch back to LIVE mode
+    await act(async () => {
+      hookResult.setMode('LIVE');
+    });
+
+    expect(useCompanionStore.getState().telemetryMode).toBe('LIVE');
+    expect(telemetryManager.getMode()).toBe('LIVE');
   });
 });

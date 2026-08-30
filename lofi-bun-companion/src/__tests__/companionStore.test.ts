@@ -1,5 +1,10 @@
 import { beforeEach, describe, expect, it } from 'vitest';
 import { useCompanionStore } from '../stores/companionStore';
+import type { CompanionMetadata } from '../types/companion';
+
+// Enable React act environment in JSDOM
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+(globalThis as any).IS_REACT_ACT_ENVIRONMENT = true;
 
 describe('companionStore (Zustand State Store)', () => {
   beforeEach(() => {
@@ -17,11 +22,11 @@ describe('companionStore (Zustand State Store)', () => {
       });
     });
 
-    it('should initialize with forceRest as false, activeCompanionId as bun-01, and telemetryMode as MANUAL', () => {
+    it('should initialize with forceRest as false, activeCompanionId as bun, and telemetryMode as LIVE', () => {
       const state = useCompanionStore.getState();
       expect(state.forceRest).toBe(false);
-      expect(state.activeCompanionId).toBe('bun-01');
-      expect(state.telemetryMode).toBe('MANUAL');
+      expect(state.activeCompanionId).toBe('bun');
+      expect(state.telemetryMode).toBe('LIVE');
     });
 
     it('should initialize with default desktop window configuration (COMPACT view, opacity 1.0, always-on-top true)', () => {
@@ -103,15 +108,15 @@ describe('companionStore (Zustand State Store)', () => {
   });
 
   describe('setTelemetryMode Action', () => {
-    it('should update telemetryMode to LIVE and back to MANUAL', () => {
+    it('should update telemetryMode to MANUAL and back to LIVE', () => {
       const store = useCompanionStore.getState();
-      expect(store.telemetryMode).toBe('MANUAL');
-
-      store.setTelemetryMode('LIVE');
-      expect(useCompanionStore.getState().telemetryMode).toBe('LIVE');
+      expect(store.telemetryMode).toBe('LIVE');
 
       store.setTelemetryMode('MANUAL');
       expect(useCompanionStore.getState().telemetryMode).toBe('MANUAL');
+
+      store.setTelemetryMode('LIVE');
+      expect(useCompanionStore.getState().telemetryMode).toBe('LIVE');
     });
   });
 
@@ -149,9 +154,42 @@ describe('companionStore (Zustand State Store)', () => {
   describe('setActiveCompanionId Action', () => {
     it('should switch active companion id', () => {
       const store = useCompanionStore.getState();
-      store.setActiveCompanionId('cat-02');
+      store.setActiveCompanionId('neko');
 
-      expect(useCompanionStore.getState().activeCompanionId).toBe('cat-02');
+      expect(useCompanionStore.getState().activeCompanionId).toBe('neko');
+    });
+
+    it('should support switching across all 6 multiverse companion characters seamlessly', () => {
+      const store = useCompanionStore.getState();
+      const companions: (
+        'bun' | 'neko' | 'shiba' | 'capybara' | 'cockatiel' | 'dolphin'
+      )[] = ['shiba', 'capybara', 'cockatiel', 'dolphin', 'bun'];
+
+      for (const id of companions) {
+        store.setActiveCompanionId(id);
+        expect(useCompanionStore.getState().activeCompanionId).toBe(id);
+      }
+    });
+
+    it('should preserve resolved state and metrics intact during companion switches', () => {
+      const store = useCompanionStore.getState();
+      store.setMetrics({ cpuUsage: 85, ramUsage: 85, diskUsage: 10 });
+
+      expect(useCompanionStore.getState().resolvedState.activeState).toBe(
+        'FRENZY'
+      );
+      expect(useCompanionStore.getState().resolvedState.isHeavyRam).toBe(true);
+
+      // Switch to cocktail while high load
+      store.setActiveCompanionId('cockatiel');
+
+      expect(useCompanionStore.getState().activeCompanionId).toBe('cockatiel');
+      expect(useCompanionStore.getState().resolvedState.activeState).toBe(
+        'FRENZY'
+      );
+      expect(useCompanionStore.getState().resolvedState.isHeavyRam).toBe(true);
+      expect(useCompanionStore.getState().metrics.cpuUsage).toBe(85);
+      expect(useCompanionStore.getState().metrics.ramUsage).toBe(85);
     });
   });
 
@@ -214,7 +252,7 @@ describe('companionStore (Zustand State Store)', () => {
       store.setMetrics({ cpuUsage: 95, ramUsage: 92, diskUsage: 85 });
       store.setTelemetryMode('LIVE');
       store.setForceRest(true);
-      store.setActiveCompanionId('fox-03');
+      store.setActiveCompanionId('shiba');
       store.setViewMode('FULL');
       store.setWindowOpacity(0.5);
       store.setAlwaysOnTop(false);
@@ -228,14 +266,60 @@ describe('companionStore (Zustand State Store)', () => {
         ramUsage: 30,
         diskUsage: 5,
       });
-      expect(state.telemetryMode).toBe('MANUAL');
+      expect(state.telemetryMode).toBe('LIVE');
       expect(state.forceRest).toBe(false);
-      expect(state.activeCompanionId).toBe('bun-01');
+      expect(state.activeCompanionId).toBe('bun');
       expect(state.resolvedState.activeState).toBe('IDLE');
       expect(state.resolvedState.isHeavyRam).toBe(false);
       expect(state.viewMode).toBe('COMPACT');
       expect(state.windowOpacity).toBe(1.0);
       expect(state.isAlwaysOnTop).toBe(true);
+    });
+  });
+
+  describe('useActiveCompanionMetadata Selector', () => {
+    it('should retrieve metadata for active companion reactively', async () => {
+      const React = await import('react');
+      const { act } = React;
+      const { createRoot } = await import('react-dom/client');
+      const { useActiveCompanionMetadata } =
+        await import('../stores/companionStore');
+
+      const holder: { current: CompanionMetadata | null } = { current: null };
+      const TestComponent: React.FC = () => {
+        const metadata = useActiveCompanionMetadata();
+        React.useEffect(() => {
+          holder.current = metadata;
+        });
+        return null;
+      };
+
+      const container = document.createElement('div');
+      document.body.appendChild(container);
+      const root = createRoot(container);
+
+      await act(async () => {
+        root.render(React.createElement(TestComponent));
+      });
+
+      expect(holder.current).not.toBeNull();
+      expect(holder.current?.id).toBe('bun');
+      expect(holder.current?.displayName).toBe('Lo-fi Bun');
+      expect(holder.current?.emoji).toBe('🐰');
+
+      // Switch companion to capybara
+      await act(async () => {
+        useCompanionStore.getState().setActiveCompanionId('capybara');
+      });
+
+      expect(holder.current?.id).toBe('capybara');
+      expect(holder.current?.displayName).toBe('Onsen Capybara');
+      expect(holder.current?.emoji).toBe('🍊');
+
+      await act(async () => {
+        root.unmount();
+      });
+      container.remove();
     });
   });
 

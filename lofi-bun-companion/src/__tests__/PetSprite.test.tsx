@@ -3,6 +3,8 @@ import { act } from 'react';
 import { createRoot, Root } from 'react-dom/client';
 import { PetSprite } from '../components/Pet/PetSprite';
 import { useCompanionStore } from '../stores/companionStore';
+import { getAllCompanions } from '../data/companionRegistry';
+import { CompanionId } from '../types/companion';
 
 // Enable React act environment in JSDOM
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -33,78 +35,159 @@ describe('PetSprite Pure CSS Step Animator Component', () => {
     container.remove();
   };
 
-  it('renders initial IDLE sprite canvas and hides carrot prop overlay by default', async () => {
+  it('renders initial IDLE sprite canvas for flagship Bun and hides prop overlay by default', async () => {
     await renderComponent();
 
     const wrapper = container.querySelector(
       '[data-testid="pet-sprite-wrapper"]'
-    );
+    ) as HTMLElement;
     const spriteCanvas = container.querySelector('[role="img"]');
-    const carrotProp = container.querySelector(
-      '[data-testid="carrot-prop-layer"]'
+    const propLayer = container.querySelector(
+      '[data-testid="companion-prop-layer"]'
     );
 
     expect(wrapper).not.toBeNull();
-    expect(wrapper?.getAttribute('data-state')).toBe('IDLE');
-    expect(wrapper?.getAttribute('data-heavy-ram')).toBe('false');
+    expect(wrapper.getAttribute('data-companion-id')).toBe('bun');
+    expect(wrapper.getAttribute('data-state')).toBe('IDLE');
+    expect(wrapper.getAttribute('data-heavy-ram')).toBe('false');
     expect(spriteCanvas?.getAttribute('aria-label')).toBe(
       'Lo-fi Bun in IDLE state'
     );
-    expect(carrotProp).toBeNull();
+    expect(propLayer).toBeNull();
+
+    // Verify CSS Custom Properties
+    expect(wrapper.style.getPropertyValue('--sprite-url')).toBe(
+      'url("/sprites/bun-sprites.svg")'
+    );
+    expect(wrapper.style.getPropertyValue('--prop-url')).toBe(
+      'url("/sprites/prop-carrot.svg")'
+    );
+    expect(wrapper.style.getPropertyValue('--anim-duration')).toBe('0.8s');
 
     await cleanup();
   });
 
-  it('updates animation state dynamically when store changes to FOCUS and FRENZY', async () => {
+  it('updates animation state and duration dynamically when metrics change', async () => {
     await renderComponent();
-
-    // Change to FOCUS (CPU 30%)
-    await act(async () => {
-      useCompanionStore.getState().setMetrics({ cpuUsage: 30 });
-    });
 
     const wrapper = container.querySelector(
       '[data-testid="pet-sprite-wrapper"]'
-    );
-    expect(wrapper?.getAttribute('data-state')).toBe('FOCUS');
+    ) as HTMLElement;
 
-    // Change to FRENZY (CPU 80%)
+    // Change to FOCUS (CPU 30%) -> 600ms / 0.6s
+    await act(async () => {
+      useCompanionStore.getState().setMetrics({ cpuUsage: 30 });
+    });
+    expect(wrapper.getAttribute('data-state')).toBe('FOCUS');
+    expect(wrapper.style.getPropertyValue('--anim-duration')).toBe('0.6s');
+
+    // Change to FRENZY (CPU 80%) -> 300ms / 0.3s
     await act(async () => {
       useCompanionStore.getState().setMetrics({ cpuUsage: 80 });
     });
+    expect(wrapper.getAttribute('data-state')).toBe('FRENZY');
+    expect(wrapper.style.getPropertyValue('--anim-duration')).toBe('0.3s');
 
-    expect(wrapper?.getAttribute('data-state')).toBe('FRENZY');
+    // Change to DISK (CPU 10%, Disk 75%) -> 400ms / 0.4s
+    await act(async () => {
+      useCompanionStore.getState().setMetrics({ cpuUsage: 10, diskUsage: 75 });
+    });
+    expect(wrapper.getAttribute('data-state')).toBe('DISK');
+    expect(wrapper.style.getPropertyValue('--anim-duration')).toBe('0.4s');
 
     await cleanup();
   });
 
-  it('displays carrot prop layer overlay when RAM usage exceeds 80%', async () => {
+  it('switches sprite and prop URLs across all multiverse characters dynamically', async () => {
+    await renderComponent();
+
+    const wrapper = container.querySelector(
+      '[data-testid="pet-sprite-wrapper"]'
+    ) as HTMLElement;
+    const allCompanions = getAllCompanions();
+
+    for (const companion of allCompanions) {
+      await act(async () => {
+        useCompanionStore
+          .getState()
+          .setActiveCompanionId(companion.id as CompanionId);
+      });
+
+      expect(wrapper.getAttribute('data-companion-id')).toBe(companion.id);
+      expect(wrapper.style.getPropertyValue('--sprite-url')).toBe(
+        `url("${companion.spriteUrl}")`
+      );
+      expect(wrapper.style.getPropertyValue('--prop-url')).toBe(
+        `url("${companion.propUrl}")`
+      );
+
+      const spriteCanvas = container.querySelector('[role="img"]');
+      expect(spriteCanvas?.getAttribute('aria-label')).toContain(
+        companion.displayName
+      );
+    }
+
+    await cleanup();
+  });
+
+  it('displays companion signature prop layer overlay when RAM usage exceeds 80%', async () => {
     await renderComponent();
 
     expect(
-      container.querySelector('[data-testid="carrot-prop-layer"]')
+      container.querySelector('[data-testid="companion-prop-layer"]')
     ).toBeNull();
 
-    // Trigger Heavy RAM
+    // Trigger Heavy RAM on Bun
     await act(async () => {
       useCompanionStore.getState().setMetrics({ ramUsage: 85 });
     });
 
-    const carrotProp = container.querySelector(
-      '[data-testid="carrot-prop-layer"]'
+    let propLayer = container.querySelector(
+      '[data-testid="companion-prop-layer"]'
     );
-    expect(carrotProp).not.toBeNull();
-    expect(carrotProp?.getAttribute('aria-label')).toBe(
-      'Carrot stack prop on head'
+    expect(propLayer).not.toBeNull();
+    expect(propLayer?.getAttribute('aria-label')).toBe(
+      'Lo-fi Bun prop on head'
+    );
+    expect(propLayer?.getAttribute('data-prop-url')).toBe(
+      '/sprites/prop-carrot.svg'
     );
 
-    // Reset RAM back to normal
+    // Switch to Neko during heavy RAM
+    await act(async () => {
+      useCompanionStore.getState().setActiveCompanionId('neko');
+    });
+
+    propLayer = container.querySelector('[data-testid="companion-prop-layer"]');
+    expect(propLayer).not.toBeNull();
+    expect(propLayer?.getAttribute('aria-label')).toBe(
+      'Coffee Neko prop on head'
+    );
+    expect(propLayer?.getAttribute('data-prop-url')).toBe(
+      '/sprites/prop-fish.svg'
+    );
+
+    // Switch to Dolphin during heavy RAM
+    await act(async () => {
+      useCompanionStore.getState().setActiveCompanionId('dolphin');
+    });
+
+    propLayer = container.querySelector('[data-testid="companion-prop-layer"]');
+    expect(propLayer).not.toBeNull();
+    expect(propLayer?.getAttribute('aria-label')).toBe(
+      'Wave Dolphin prop on head'
+    );
+    expect(propLayer?.getAttribute('data-prop-url')).toBe(
+      '/sprites/prop-coral.svg'
+    );
+
+    // Reset RAM back to normal (<80%)
     await act(async () => {
       useCompanionStore.getState().setMetrics({ ramUsage: 40 });
     });
 
     expect(
-      container.querySelector('[data-testid="carrot-prop-layer"]')
+      container.querySelector('[data-testid="companion-prop-layer"]')
     ).toBeNull();
 
     await cleanup();
@@ -119,8 +202,20 @@ describe('PetSprite Pure CSS Step Animator Component', () => {
 
     const wrapper = container.querySelector(
       '[data-testid="pet-sprite-wrapper"]'
-    );
-    expect(wrapper?.getAttribute('data-state')).toBe('REST');
+    ) as HTMLElement;
+    expect(wrapper.getAttribute('data-state')).toBe('REST');
+    expect(wrapper.style.getPropertyValue('--anim-duration')).toBe('1s');
+
+    await cleanup();
+  });
+
+  it('applies custom scale transform correctly', async () => {
+    await renderComponent(4);
+
+    const wrapper = container.querySelector(
+      '[data-testid="pet-sprite-wrapper"]'
+    ) as HTMLElement;
+    expect(wrapper.style.transform).toBe('scale(4)');
 
     await cleanup();
   });

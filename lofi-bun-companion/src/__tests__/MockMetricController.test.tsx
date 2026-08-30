@@ -27,6 +27,7 @@ describe('MockMetricController Component', () => {
   beforeEach(() => {
     // Reset Zustand store state before each test
     useCompanionStore.getState().resetToDefaults();
+    useCompanionStore.getState().setTelemetryMode('MANUAL');
 
     container = document.createElement('div');
     document.body.appendChild(container);

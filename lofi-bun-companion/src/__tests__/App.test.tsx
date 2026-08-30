@@ -70,8 +70,8 @@ describe('App Showcase Container Component', () => {
 
     // Verify Title and Subtitle
     expect(container.textContent).toContain('Lo-fi Bun Companion');
-    expect(container.textContent).toContain('v1.0.0 • Desktop Mascot Edition');
-    expect(container.textContent).toContain('Pet: BUN-01 (Flagship)');
+    expect(container.textContent).toContain('v1.1.0 • Multiverse Edition');
+    expect(container.textContent).toContain('Pet: LO-FI BUN (Flagship)');
 
     // Verify View Mode Button in Full View
     const viewModeBtn = container.querySelector(
@@ -92,7 +92,7 @@ describe('App Showcase Container Component', () => {
     );
 
     expect(modeBadge).not.toBeNull();
-    expect(modeBadge?.textContent).toContain('MANUAL');
+    expect(modeBadge?.textContent).toContain('LIVE');
     expect(providerBadge).not.toBeNull();
     expect(providerBadge?.textContent).toMatch(
       /(Native|Web|Simulation|Provider)/i
@@ -111,14 +111,69 @@ describe('App Showcase Container Component', () => {
     );
 
     expect(stateBadge).not.toBeNull();
-    expect(stateBadge?.textContent).toContain('IDLE');
-    expect(ramIndicator?.textContent).toContain('RAM Prop: Normal');
+    expect(stateBadge?.textContent).toMatch(/(IDLE|FOCUS|FRENZY|DISK|REST)/);
+    expect(ramIndicator).not.toBeNull();
     expect(petSprite).not.toBeNull();
 
     // Verify Performance HUD
     expect(container.textContent).toContain(
       'Pure CSS GPU Step Animation (0.0% CPU)'
     );
+
+    await cleanup();
+  });
+
+  it('renders Multiverse Character Selector Ribbon and switches characters on card click', async () => {
+    useCompanionStore.getState().setViewMode('FULL');
+    await renderComponent();
+
+    const ribbon = container.querySelector(
+      '[data-testid="character-selector-ribbon"]'
+    );
+    expect(ribbon).not.toBeNull();
+
+    const bunCard = container.querySelector(
+      '[data-testid="character-card-bun"]'
+    );
+    const nekoCard = container.querySelector(
+      '[data-testid="character-card-neko"]'
+    );
+    const capyCard = container.querySelector(
+      '[data-testid="character-card-capybara"]'
+    );
+    const cockatielCard = container.querySelector(
+      '[data-testid="character-card-cockatiel"]'
+    );
+    const dolphinCard = container.querySelector(
+      '[data-testid="character-card-dolphin"]'
+    );
+
+    expect(bunCard).not.toBeNull();
+    expect(nekoCard).not.toBeNull();
+    expect(capyCard).not.toBeNull();
+    expect(cockatielCard).not.toBeNull();
+    expect(dolphinCard).not.toBeNull();
+
+    // Verify initial active state on Bun
+    expect(bunCard?.getAttribute('aria-pressed')).toBe('true');
+    expect(nekoCard?.getAttribute('aria-pressed')).toBe('false');
+
+    // Click DJ Cockatiel card
+    await act(async () => {
+      cockatielCard?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    });
+
+    expect(useCompanionStore.getState().activeCompanionId).toBe('cockatiel');
+    expect(cockatielCard?.getAttribute('aria-pressed')).toBe('true');
+    expect(bunCard?.getAttribute('aria-pressed')).toBe('false');
+
+    // Click Wave Dolphin card
+    await act(async () => {
+      dolphinCard?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    });
+
+    expect(useCompanionStore.getState().activeCompanionId).toBe('dolphin');
+    expect(dolphinCard?.getAttribute('aria-pressed')).toBe('true');
 
     await cleanup();
   });
@@ -173,6 +228,7 @@ describe('App Showcase Container Component', () => {
 
   it('updates Stage HUD and PetSprite when hardware sliders change', async () => {
     useCompanionStore.getState().setViewMode('FULL');
+    useCompanionStore.getState().setTelemetryMode('MANUAL');
     await renderComponent();
 
     // Find CPU slider
@@ -200,6 +256,7 @@ describe('App Showcase Container Component', () => {
 
   it('updates RAM Prop indicator and renders Carrot overlay on high RAM', async () => {
     useCompanionStore.getState().setViewMode('FULL');
+    useCompanionStore.getState().setTelemetryMode('MANUAL');
     await renderComponent();
 
     const ramInput = container.querySelector<HTMLInputElement>(
@@ -217,7 +274,7 @@ describe('App Showcase Container Component', () => {
     expect(ramIndicator?.textContent).toContain('Carrots Stack');
 
     const carrotProp = container.querySelector(
-      '[data-testid="carrot-prop-layer"]'
+      '[data-testid="companion-prop-layer"], [data-testid="carrot-prop-layer"]'
     );
     expect(carrotProp).not.toBeNull();
 
@@ -249,23 +306,86 @@ describe('App Showcase Container Component', () => {
     await cleanup();
   });
 
-  it('updates Telemetry HUD when switching to LIVE mode via controller', async () => {
+  it('updates Telemetry HUD when switching to MANUAL mode via controller', async () => {
     useCompanionStore.getState().setViewMode('FULL');
     await renderComponent();
 
-    const liveBtn = container.querySelector<HTMLButtonElement>(
-      '[data-testid="mode-btn-live"]'
+    const manualBtn = container.querySelector<HTMLButtonElement>(
+      '[data-testid="mode-btn-manual"]'
     );
-    expect(liveBtn).not.toBeNull();
+    expect(manualBtn).not.toBeNull();
 
     await act(async () => {
-      liveBtn?.click();
+      manualBtn?.click();
     });
 
     const modeBadge = container.querySelector(
       '[data-testid="telemetry-mode-badge"]'
     );
-    expect(modeBadge?.textContent).toContain('LIVE');
+    expect(modeBadge?.textContent).toContain('MANUAL');
+
+    await cleanup();
+  });
+
+  it('renders all 6 multiverse character cards in ribbon and switches active companion on click', async () => {
+    useCompanionStore.getState().setViewMode('FULL');
+    await renderComponent();
+
+    const ribbon = container.querySelector(
+      '[data-testid="character-selector-ribbon"]'
+    );
+    expect(ribbon).not.toBeNull();
+
+    // Check all 6 character cards exist
+    const bunCard = container.querySelector(
+      '[data-testid="character-card-bun"]'
+    );
+    const nekoCard = container.querySelector(
+      '[data-testid="character-card-neko"]'
+    );
+    const shibaCard = container.querySelector(
+      '[data-testid="character-card-shiba"]'
+    );
+    const capyCard = container.querySelector(
+      '[data-testid="character-card-capybara"]'
+    );
+    const tielCard = container.querySelector(
+      '[data-testid="character-card-cockatiel"]'
+    );
+    const dolphinCard = container.querySelector(
+      '[data-testid="character-card-dolphin"]'
+    );
+
+    expect(bunCard).not.toBeNull();
+    expect(nekoCard).not.toBeNull();
+    expect(shibaCard).not.toBeNull();
+    expect(capyCard).not.toBeNull();
+    expect(tielCard).not.toBeNull();
+    expect(dolphinCard).not.toBeNull();
+
+    // Initial state: bun selected
+    expect(bunCard?.getAttribute('aria-pressed')).toBe('true');
+    expect(shibaCard?.getAttribute('aria-pressed')).toBe('false');
+
+    // Click Shiba Card
+    await act(async () => {
+      shibaCard?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    });
+
+    expect(useCompanionStore.getState().activeCompanionId).toBe('shiba');
+    expect(shibaCard?.getAttribute('aria-pressed')).toBe('true');
+    expect(bunCard?.getAttribute('aria-pressed')).toBe('false');
+    expect(container.textContent).toContain('BAKERY SHIBA');
+
+    // Click Wave Dolphin Card
+    await act(async () => {
+      dolphinCard?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    });
+
+    expect(useCompanionStore.getState().activeCompanionId).toBe('dolphin');
+    expect(dolphinCard?.getAttribute('aria-pressed')).toBe('true');
+    expect(shibaCard?.getAttribute('aria-pressed')).toBe('false');
+    expect(container.textContent).toContain('WAVE DOLPHIN');
 
     await cleanup();
   });

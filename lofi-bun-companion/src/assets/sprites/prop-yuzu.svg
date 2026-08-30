@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 20" width="28" height="20" shape-rendering="crispEdges">
+  <defs>
+    <style>
+      .yuzu-yellow { fill: #FFD13B; }
+      .yuzu-shadow { fill: #E5A524; }
+      .yuzu-highlight { fill: #FFE680; }
+      .yuzu-leaf { fill: #5B8A3C; }
+      .leaf-shadow { fill: #3E6328; }
+      .dew-drop { fill: #C3F0F7; stroke: #5EAEBA; stroke-width: 0.5; opacity: 0.9; }
+      .steam-glow { fill: #FFFFFF; opacity: 0.8; }
+      .prop-outline { stroke: #2E221F; stroke-width: 1.2; stroke-linecap: square; stroke-linejoin: miter; }
+      .prop-outline-thin { stroke: #2E221F; stroke-width: 0.8; stroke-linecap: square; }
+    </style>
+  </defs>
+
+  <!-- ========================================================================= -->
+  <!-- GOLDEN YUZU PYRAMID STACK PROP (Heavy RAM >80% Overlay for Onsen Capybara) -->
+  <!-- Size: 28 x 20 px                                                          -->
+  <!-- ========================================================================= -->
+
+  <!-- Top Apex Garnish: Fresh Green Yuzu Leaves & Twig -->
+  <g id="apex-leaves">
+    <!-- Center Green Stem -->
+    <line x1="14" y1="5.5" x2="14" y2="3.5" stroke="#2E221F" stroke-width="1" stroke-linecap="round"/>
+    <line x1="14" y1="4.5" x2="14" y2="3.5" stroke="#5B8A3C" stroke-width="0.8"/>
+    <!-- Left Leaf -->
+    <path d="M14 4 C11 2.5, 9 4.5, 11 6.5 C12.5 6.5, 13.5 5.5, 14 4 Z" class="leaf-shadow prop-outline-thin"/>
+    <path d="M13.5 4.2 C11.5 3.2, 10 4.8, 11.5 6.2 Z" class="yuzu-leaf"/>
+    <!-- Right Leaf -->
+    <path d="M14 4 C17 2.5, 19 4.5, 17 6.5 C15.5 6.5, 14.5 5.5, 14 4 Z" class="leaf-shadow prop-outline-thin"/>
+    <path d="M14.5 4.2 C16.5 3.2, 18 4.8, 16.5 6.2 Z" class="yuzu-leaf"/>
+    <!-- Dewdrop on leaf tip -->
+    <circle cx="10" cy="3.5" r="0.6" class="dew-drop"/>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- TIER 1: Bottom Base Layer (3 Golden Yuzus)                                -->
+  <!-- ========================================================================= -->
+
+  <!-- Bottom-Left Yuzu (Position: 5.5, 15) -->
+  <g id="bottom-left-yuzu">
+    <ellipse cx="5.5" cy="15" rx="4.5" ry="4" class="yuzu-shadow prop-outline"/>
+    <ellipse cx="5.5" cy="14.5" rx="4.2" ry="3.6" class="yuzu-yellow"/>
+    <ellipse cx="4" cy="13.2" rx="1.6" ry="1.1" class="yuzu-highlight"/>
+    <!-- Cute Dimple & Stem Spot -->
+    <circle cx="5.5" cy="11.8" r="0.6" class="leaf-shadow"/>
+    <!-- Side Leaf Accenting Bottom Left -->
+    <path d="M1.5 16 C0.5 14.5, 1.5 13, 3 14 Z" class="yuzu-leaf prop-outline-thin"/>
+  </g>
+
+  <!-- Bottom-Right Yuzu (Position: 22.5, 15) -->
+  <g id="bottom-right-yuzu">
+    <ellipse cx="22.5" cy="15" rx="4.5" ry="4" class="yuzu-shadow prop-outline"/>
+    <ellipse cx="22.5" cy="14.5" rx="4.2" ry="3.6" class="yuzu-yellow"/>
+    <ellipse cx="21" cy="13.2" rx="1.6" ry="1.1" class="yuzu-highlight"/>
+    <!-- Dimple -->
+    <circle cx="22.5" cy="11.8" r="0.6" class="leaf-shadow"/>
+    <!-- Side Leaf Accenting Bottom Right -->
+    <path d="M26.5 16 C27.5 14.5, 26.5 13, 25 14 Z" class="yuzu-leaf prop-outline-thin"/>
+  </g>
+
+  <!-- Bottom-Center Yuzu (Position: 14, 15.5) - Slightly Lower & Forward -->
+  <g id="bottom-center-yuzu">
+    <ellipse cx="14" cy="15.5" rx="4.8" ry="4.2" class="yuzu-shadow prop-outline"/>
+    <ellipse cx="14" cy="15" rx="4.5" ry="3.8" class="yuzu-yellow"/>
+    <ellipse cx="12.5" cy="13.5" rx="1.8" ry="1.2" class="yuzu-highlight"/>
+    <circle cx="14" cy="12" r="0.7" class="leaf-shadow"/>
+    <!-- Little Water Glistening Drop -->
+    <circle cx="15.5" cy="16.5" r="0.7" class="dew-drop"/>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- TIER 2: Upper Stack Layer (2 Golden Yuzus)                                -->
+  <!-- ========================================================================= -->
+
+  <!-- Top-Left Yuzu (Position: 9.5, 9) -->
+  <g id="top-left-yuzu">
+    <ellipse cx="9.5" cy="9" rx="4.5" ry="4" class="yuzu-shadow prop-outline"/>
+    <ellipse cx="9.5" cy="8.5" rx="4.2" ry="3.6" class="yuzu-yellow"/>
+    <ellipse cx="8" cy="7.2" rx="1.6" ry="1.1" class="yuzu-highlight"/>
+    <circle cx="9.5" cy="5.8" r="0.6" class="leaf-shadow"/>
+    <!-- Little Fresh Leaf -->
+    <path d="M6 7.5 C4.8 6.5, 5.5 5, 7 6 Z" class="yuzu-leaf prop-outline-thin"/>
+  </g>
+
+  <!-- Top-Right Yuzu (Position: 18.5, 9) -->
+  <g id="top-right-yuzu">
+    <ellipse cx="18.5" cy="9" rx="4.5" ry="4" class="yuzu-shadow prop-outline"/>
+    <ellipse cx="18.5" cy="8.5" rx="4.2" ry="3.6" class="yuzu-yellow"/>
+    <ellipse cx="17" cy="7.2" rx="1.6" ry="1.1" class="yuzu-highlight"/>
+    <circle cx="18.5" cy="5.8" r="0.6" class="leaf-shadow"/>
+    <!-- Little Water Drop -->
+    <circle cx="20.5" cy="9.5" r="0.6" class="dew-drop"/>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- GLISTENING SPARKLES & SPRING MIST DEWDROPS                                 -->
+  <!-- ========================================================================= -->
+  <g id="glistening-accents">
+    <circle cx="14" cy="9.5" r="0.8" class="steam-glow"/>
+    <circle cx="2" cy="18" r="0.5" class="dew-drop"/>
+    <circle cx="26" cy="18" r="0.5" class="dew-drop"/>
+  </g>
+</svg>

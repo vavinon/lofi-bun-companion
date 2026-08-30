@@ -115,10 +115,10 @@ A cozy, lightweight Virtual Desk Companion featuring an animated bunny character
 
 ### Core Modules & Lean Phased Delivery
 - **Phase 1 (v0.1.0 - Done 🟢)**: Hardware-Reactive Bunny State Machine (Idle, Focus, Frenzy, Disk, Rest, Heavy RAM carrot prop, pure CSS step animator).
-- **Phase 2 (v0.2.0 - Next 🎯)**: Windows Real Hardware Telemetry Engine (CPU, RAM, Disk OS polling with zero main-thread overhead).
-- **Phase 3 (v1.0.0 - Official Launch 📦)**: The Hardware Desk Pet (.exe / Tauri Desktop Mascot with transparent, frameless floating window & context menu).
-- **Phase 4 (v1.1.0 - Character Expansion 🐾)**: Bun & Friends Multiverse (Unlocking 5 companions: Neko, Shiba, Capybara, Cockatiel, Dolphin).
-- **Phase 5 (v2.0.0 - Productivity 🍅)**: Pomodoro Focus Suite (Configurable 25/5 intervals, daily focus streak, automated companion sleep hooks on break).
+- **Phase 2 (v0.2.0 - Done 🟢)**: Windows Real Hardware Telemetry Engine (CPU, RAM, Disk OS polling with zero main-thread overhead).
+- **Phase 3 (v1.0.0 - Done 🟢)**: The Hardware Desk Pet (.exe / Tauri Desktop Mascot with transparent, frameless floating window & context menu).
+- **Phase 4 (v1.1.0 - Done 🟢)**: Bun & Friends Multiverse (Unlocking 5 companions: Neko, Shiba, Capybara, Cockatiel, Dolphin).
+- **Phase 5 (v2.0.0 - Next 🎯)**: Pomodoro Focus Suite (Configurable 25/5 intervals, daily focus streak, automated companion sleep hooks on break).
 - **Phase 6 (v3.0.0 - Soundscape 🎧)**: Ambient Lo-fi Audio Mixer (Multi-channel independent audio channels: beats, rain, keyboard clicks, cafe murmur).
 
 ### Tech Stack & Principles
