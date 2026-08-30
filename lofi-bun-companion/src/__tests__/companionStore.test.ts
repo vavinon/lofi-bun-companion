@@ -2,6 +2,10 @@ import { beforeEach, describe, expect, it } from 'vitest';
 import { useCompanionStore } from '../stores/companionStore';
 import type { CompanionMetadata } from '../types/companion';
 
+// Enable React act environment in JSDOM
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+(globalThis as any).IS_REACT_ACT_ENVIRONMENT = true;
+
 describe('companionStore (Zustand State Store)', () => {
   beforeEach(() => {
     // Reset store to default state before each test run
@@ -153,6 +157,39 @@ describe('companionStore (Zustand State Store)', () => {
       store.setActiveCompanionId('neko');
 
       expect(useCompanionStore.getState().activeCompanionId).toBe('neko');
+    });
+
+    it('should support switching across all 6 multiverse companion characters seamlessly', () => {
+      const store = useCompanionStore.getState();
+      const companions: (
+        'bun' | 'neko' | 'shiba' | 'capybara' | 'cockatiel' | 'dolphin'
+      )[] = ['shiba', 'capybara', 'cockatiel', 'dolphin', 'bun'];
+
+      for (const id of companions) {
+        store.setActiveCompanionId(id);
+        expect(useCompanionStore.getState().activeCompanionId).toBe(id);
+      }
+    });
+
+    it('should preserve resolved state and metrics intact during companion switches', () => {
+      const store = useCompanionStore.getState();
+      store.setMetrics({ cpuUsage: 85, ramUsage: 85, diskUsage: 10 });
+
+      expect(useCompanionStore.getState().resolvedState.activeState).toBe(
+        'FRENZY'
+      );
+      expect(useCompanionStore.getState().resolvedState.isHeavyRam).toBe(true);
+
+      // Switch to cocktail while high load
+      store.setActiveCompanionId('cockatiel');
+
+      expect(useCompanionStore.getState().activeCompanionId).toBe('cockatiel');
+      expect(useCompanionStore.getState().resolvedState.activeState).toBe(
+        'FRENZY'
+      );
+      expect(useCompanionStore.getState().resolvedState.isHeavyRam).toBe(true);
+      expect(useCompanionStore.getState().metrics.cpuUsage).toBe(85);
+      expect(useCompanionStore.getState().metrics.ramUsage).toBe(85);
     });
   });
 

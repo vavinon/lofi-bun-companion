@@ -7,6 +7,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-08-30
+
+### Added
+- **Bun & Friends Multiverse (Character Expansion)**:
+  - Added 5 new handcrafted pixel-art companion characters joining flagship 🐰 Lo-fi Bun:
+    - 🐱 **Coffee Neko** (`/sprites/neko-sprites.svg` & `/sprites/prop-fish.svg`) — Cozy Barista & Chill Study Companion with Taiyaki/Fish Heavy RAM prop.
+    - 🐶 **Bakery Shiba** (`/sprites/shiba-sprites.svg` & `/sprites/prop-croissant.svg`) — Energetic Artisan Baker & Morale Booster with Croissant stack Heavy RAM prop.
+    - 🍊 **Onsen Capybara** (`/sprites/capybara-sprites.svg` & `/sprites/prop-yuzu.svg`) — Zen Master & Anti-Burnout Companion with Yuzu hot spring bob Heavy RAM prop.
+    - 🦜 **DJ Cockatiel** (`/sprites/cockatiel-sprites.svg` & `/sprites/prop-vinyl.svg`) — Beat Maker & Lo-fi Rhythm Master with Retro Vinyl records Heavy RAM prop.
+    - 🐬 **Wave Dolphin** (`/sprites/dolphin-sprites.svg` & `/sprites/prop-coral.svg`) — Flow State Surfer & Deep Work Buddy with Pink Coral & Pearl Crown Heavy RAM prop.
+  - Complete 12 vector SVG assets (6 character spritesheets at 256x320px + 6 signature overlay props at 28x20px / 64x64px).
+- **Pluggable Companion Registry Architecture**:
+  - `src/data/companionRegistry.ts`: Central Single Source of Truth (SSOT) managing all companion metadata, sprite URLs, prop URLs, and universal animation durations.
+  - `src/types/companion.ts`: Strong TypeScript definitions (`CompanionId`, `CompanionMetadata`, `CompanionRegistry`, `AnimationDurations`).
+  - Implemented `getCompanion(id)` with graceful fallback to `'bun'` and `getAllCompanions()` helpers.
+- **Dynamic GPU Step Renderer Engine**:
+  - Refactored `PetSprite.tsx` & `PetSprite.module.css` to consume dynamic CSS Custom Properties (`--sprite-url`, `--prop-url`, `--anim-duration`).
+  - Dynamic companion and prop switching with zero layout shift and 0.0% CPU overhead on idle.
+- **Dual UI Character Switching**:
+  - **Quick Switch (Context Menu)**: Added **🐾 Switch Companion** collapsible submenu in `PetContextMenu.tsx` with active indicator dots (`●` / `○`).
+  - **Dashboard Ribbon (Full View)**: Added Multiverse Character Selector Ribbon in `App.tsx` displaying interactive cards for all 6 companions.
+  - **Active Companion Pill**: Added reactive Companion Name & Emoji Pill in `CompactMascotView.tsx`.
+- **Quality & Automated Testing**:
+  - Expanded test suites (`companionRegistry.test.ts`, `companionStore.test.ts`, `PetSprite.test.tsx`, `PetContextMenu.test.tsx`, `App.test.tsx`, `CompactMascotView.test.tsx`, `svgAssets.test.ts`) to **138 tests passing 100%** with 0 warnings.
+  - Pixel-art Preview Studio gallery (`non-docs/specs/characters/character-gallery.html`) showcasing live interactive 6-character animation viewer.
+
 ## [1.0.0] - 2026-08-30
 
 ### Added

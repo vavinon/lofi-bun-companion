@@ -230,4 +230,26 @@ describe('PetContextMenu Component', () => {
 
     await cleanup();
   });
+
+  it('updates companion active indicators when companionStore activeCompanionId changes', async () => {
+    // Set active companion to capybara
+    useCompanionStore.getState().setActiveCompanionId('capybara');
+    await renderMenu({ isOpen: true });
+
+    const bunBtn = container.querySelector(
+      '[data-testid="menu-companion-bun"]'
+    );
+    const capyBtn = container.querySelector(
+      '[data-testid="menu-companion-capybara"]'
+    );
+    const dolphinBtn = container.querySelector(
+      '[data-testid="menu-companion-dolphin"]'
+    );
+
+    expect(bunBtn?.textContent).toContain('○');
+    expect(capyBtn?.textContent).toContain('●');
+    expect(dolphinBtn?.textContent).toContain('○');
+
+    await cleanup();
+  });
 });

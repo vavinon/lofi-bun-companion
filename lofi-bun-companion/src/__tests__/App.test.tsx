@@ -326,4 +326,67 @@ describe('App Showcase Container Component', () => {
 
     await cleanup();
   });
+
+  it('renders all 6 multiverse character cards in ribbon and switches active companion on click', async () => {
+    useCompanionStore.getState().setViewMode('FULL');
+    await renderComponent();
+
+    const ribbon = container.querySelector(
+      '[data-testid="character-selector-ribbon"]'
+    );
+    expect(ribbon).not.toBeNull();
+
+    // Check all 6 character cards exist
+    const bunCard = container.querySelector(
+      '[data-testid="character-card-bun"]'
+    );
+    const nekoCard = container.querySelector(
+      '[data-testid="character-card-neko"]'
+    );
+    const shibaCard = container.querySelector(
+      '[data-testid="character-card-shiba"]'
+    );
+    const capyCard = container.querySelector(
+      '[data-testid="character-card-capybara"]'
+    );
+    const tielCard = container.querySelector(
+      '[data-testid="character-card-cockatiel"]'
+    );
+    const dolphinCard = container.querySelector(
+      '[data-testid="character-card-dolphin"]'
+    );
+
+    expect(bunCard).not.toBeNull();
+    expect(nekoCard).not.toBeNull();
+    expect(shibaCard).not.toBeNull();
+    expect(capyCard).not.toBeNull();
+    expect(tielCard).not.toBeNull();
+    expect(dolphinCard).not.toBeNull();
+
+    // Initial state: bun selected
+    expect(bunCard?.getAttribute('aria-pressed')).toBe('true');
+    expect(shibaCard?.getAttribute('aria-pressed')).toBe('false');
+
+    // Click Shiba Card
+    await act(async () => {
+      shibaCard?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    });
+
+    expect(useCompanionStore.getState().activeCompanionId).toBe('shiba');
+    expect(shibaCard?.getAttribute('aria-pressed')).toBe('true');
+    expect(bunCard?.getAttribute('aria-pressed')).toBe('false');
+    expect(container.textContent).toContain('BAKERY SHIBA');
+
+    // Click Wave Dolphin Card
+    await act(async () => {
+      dolphinCard?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    });
+
+    expect(useCompanionStore.getState().activeCompanionId).toBe('dolphin');
+    expect(dolphinCard?.getAttribute('aria-pressed')).toBe('true');
+    expect(shibaCard?.getAttribute('aria-pressed')).toBe('false');
+    expect(container.textContent).toContain('WAVE DOLPHIN');
+
+    await cleanup();
+  });
 });
