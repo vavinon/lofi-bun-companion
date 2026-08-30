@@ -19,37 +19,37 @@
 
 ---
 
-## 2. 📐 Universal 5-State Contract (สัญญา 5 สถานะกลาง)
+## 2. 📐 Universal 6-State & Action Contract (สัญญา 6 สถานะและเลเยอร์กลาง)
 
-เพื่อให้ระบบ Sprite Engine และ Registry สลับตัวละครได้ทันทีแบบ **Plug & Play Zero-Code Change** ทุกตัวละครจะต้องถูกออกแบบและมี Asset ครบตาม 5 สถานะหลักดังนี้:
+เพื่อให้ระบบ Sprite Engine และ Registry สลับตัวละครได้ทันทีแบบ **Plug & Play Zero-Code Change** ทุกตัวละครจะต้องถูกออกแบบและมี Asset ครบตาม 6 สถานะ/เลเยอร์หลักดังนี้:
 
 ```mermaid
 stateDiagram-v2
-    [*] --> IDLE : CPU 0-20%
+    [*] --> IDLE : Default (CPU 0-20%)
     IDLE --> FOCUS : CPU 20-60%
     FOCUS --> FRENZY : CPU 60-100%
-    FRENZY --> FOCUS : CPU <57% (Hysteresis Buffer)
-    FOCUS --> IDLE : CPU <17% (Hysteresis Buffer)
-    IDLE --> REST : Rest Mode / Inactive AFK
+    FRENZY --> FOCUS : CPU <57% (Hysteresis)
+    FOCUS --> IDLE : CPU <17% (Hysteresis)
+    IDLE --> DISK : Disk >75% (High I/O)
+    FOCUS --> DISK : Disk >75% (High I/O)
+    FRENZY --> DISK : Disk >75% (High I/O)
+    DISK --> IDLE : Disk <72% & CPU <17%
+    DISK --> FOCUS : Disk <72% & CPU 20-60%
+    DISK --> FRENZY : Disk <72% & CPU >60%
+    IDLE --> REST : Rest Mode / Pomodoro Break (Priority 1)
+    FOCUS --> REST : Rest Mode / Pomodoro Break (Priority 1)
+    FRENZY --> REST : Rest Mode / Pomodoro Break (Priority 1)
+    DISK --> REST : Rest Mode / Pomodoro Break (Priority 1)
     REST --> IDLE : Wake Up
-    
-    note right of HEAVY_RAM
-      HEAVY_RAM (>80% RAM)
-      ทำงานเป็น Sprite Prop Overlay
-      สามารถซ้อนทับบนท่า IDLE/FOCUS/FRENZY ได้
-    end note
 ```
 
-### รายละเอียดเกณฑ์มาตรฐานของ 5 สถานะ:
+### รายละเอียดเกณฑ์มาตรฐานของ 6 สถานะ:
 1. **`IDLE` (CPU 0–20%)**: ความเร็ว 800ms / loop (4 Frames) — อารมณ์สบายๆ ผ่อนคลาย จิบเครื่องดื่ม ขยับหายใจ
 2. **`FOCUS` (CPU 20–60%)**: ความเร็ว 600ms / loop (4 Frames) — อารมณ์มีสมาธิ ทำงานจังหวะคงที่ Lo-fi Beat
 3. **`FRENZY` (CPU 60–100%)**: ความเร็ว 300ms / loop (4 Frames) — สปีดรัวเร็ว มีเอฟเฟกต์ไฟ/เหงื่อ/ควันสู้ชีวิต
-4. **`HEAVY_RAM` (RAM >80%)**: Sprite Overlay Layer — กองสิ่งของตามเอกลักษณ์ของแต่ละตัวซ้อนทับ (ไม่ต้องวาดสไปรต์ตัวละครใหม่)
+4. **`DISK` (Disk >75% I/O)**: ความเร็ว 400ms / loop (4 Frames) — แอ็กชันค้นหา/อ่าน/ขุด/โต้ตอบข้อมูลอย่างรวดเร็ว
 5. **`REST` (โหมดพักผ่อน / AFK)**: ความเร็ว 1000ms / loop (4 Frames) — ท่านอน หลับตาพริ้ม สัปหงก หรือพักผ่อน
-
-> [!NOTE]
-> **⚡ Transient Micro-Burst (`DISK_ACTIVE`)**:
-> เมื่อมีการอ่าน/เขียนดิสก์หนักๆ สัตว์เลี้ยงจะแสดง Action พิเศษสั้นๆ **1.5 วินาที** (เช่น เปิดหนังสือรัวๆ / เคลื่อนไหวรวดเร็ว) ซ้อนทับ แล้วกลับสู่สถานะ Base เดิมทันที ไม่ถือเป็น Base Body Loop ถาวร
+6. **`HEAVY_RAM` (RAM >80%)**: Sprite Overlay Layer บนหัว/ข้างตัว — กองสิ่งของตามเอกลักษณ์ของแต่ละตัวซ้อนทับ (ไม่ต้องวาดสไปรต์ตัวละครใหม่)
 
 ---
 

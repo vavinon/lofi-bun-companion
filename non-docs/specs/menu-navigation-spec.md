@@ -122,25 +122,23 @@ graph TD
 
 ## 4. 📅 Release Phasing Matrix (แผนการปล่อยเมนูในแต่ละ Version)
 
-ตารางแสดงความพร้อมของแต่ละเมนูตาม **SemVer Roadmap**:
+ตารางแสดงความพร้อมของแต่ละเมนูตาม **Lean SemVer Roadmap**:
 
-| ฟังก์ชัน / เมนู | `0.1.0` (PoC) | `0.2.0` (Pet) | `0.3.0` (Tauri) | `0.4.0` (Pomo/Mixer) | `1.0.0` (Stable) | `1.1.0+` (Multiverse) |
+| ฟังก์ชัน / เมนู | `0.1.0` (Core) | `0.2.0` (Telemetry) | `1.0.0` (Desktop Mascot) | `1.1.0` (Friends) | `2.0.0` (Productivity) | `3.0.0` (Soundscape) |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
 | **Pixel Art CSS Sprite Renderer** | 🟢 มี | 🟢 มี | 🟢 มี | 🟢 มี | 🟢 มี | 🟢 มี |
 | **Interactive Mock Sliders (Lab)** | 🟢 มี | 🟢 มี | 🟢 มี | 🟢 มี | 🟢 มี | 🟢 มี |
-| **Tactile Petting (Heart FX)** | ⚪ | 🟢 มี | 🟢 มี | 🟢 มี | 🟢 มี | 🟢 มี |
-| **AFK Sleep & Time-of-Day Tint** | ⚪ | 🟢 มี | 🟢 มี | 🟢 มี | 🟢 มี | 🟢 มี |
-| **Desktop Transparent Floating Window** | ⚪ | ⚪ | 🟢 มี | 🟢 มี | 🟢 มี | 🟢 มี |
-| **Real Hardware Polling (Rust sysinfo)** | ⚪ | ⚪ | 🟢 มี | 🟢 มี | 🟢 มี | 🟢 มี |
-| **Right-Click Context Menu (Base)** | ⚪ | ⚪ | 🟢 มี | 🟢 มี | 🟢 มี | 🟢 มี |
-| **Window Controls (Snap, Scale, Opacity)**| ⚪ | ⚪ | 🟢 มี | 🟢 มี | 🟢 มี | 🟢 มี |
-| **Pomodoro Timer Suite (25/5m)** | ⚪ | ⚪ | ⚪ | 🟢 มี | 🟢 มี | 🟢 มี |
-| **Soundscape Mixer (Rain/Cafe/Lo-fi)** | ⚪ | ⚪ | ⚪ | 🟢 มี | 🟢 มี | 🟢 มี |
-| **Preferences Modal & Global Hotkeys** | ⚪ | ⚪ | ⚪ | 🟢 มี | 🟢 มี | 🟢 มี |
-| **Auto-Start with OS & System Tray** | ⚪ | ⚪ | ⚪ | ⚪ | 🟢 มี | 🟢 มี |
-| **6 Companions Roster Switcher** | 🟡 (Registry) | 🟡 | 🟡 | 🟡 | 🟡 | 🟢 มี (Full Roster) |
-| **Custom Skins & Modding Drop-in** | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | 🟢 มี (`skins/` folder) |
-| **P2P Study Cafe (Silent Co-Working)** | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | 🟢 มี (`v1.4.0`) |
+| **Windows Hardware Polling** | ⚪ | 🟢 มี | 🟢 มี | 🟢 มี | 🟢 มี | 🟢 มี |
+| **Desktop Transparent Floating Window** | ⚪ | ⚪ | 🟢 มี (.exe) | 🟢 มี | 🟢 มี | 🟢 มี |
+| **Window Controls (Always on Top, Scale, Drag)** | ⚪ | ⚪ | 🟢 มี | 🟢 มี | 🟢 มี | 🟢 มี |
+| **Right-Click Context Menu (Base & Stats)** | ⚪ | ⚪ | 🟢 มี | 🟢 มี | 🟢 มี | 🟢 มี |
+| **6 Companions Roster Switcher** | 🟡 (Registry) | 🟡 (Registry) | 🟡 (Registry) | 🟢 มี (Full 6 Pets) | 🟢 มี | 🟢 มี |
+| **Tactile Petting & Heart Animations** | ⚪ | ⚪ | ⚪ | 🟢 มี | 🟢 มี | 🟢 มี |
+| **Pomodoro Focus Suite (25/5m & Auto-Rest)** | ⚪ | ⚪ | ⚪ | ⚪ | 🟢 มี | 🟢 มี |
+| **Focus Streak Tracker & Reminders** | ⚪ | ⚪ | ⚪ | ⚪ | 🟢 มี | 🟢 มี |
+| **Soundscape Mixer (Rain/Cafe/Lo-fi Beats)** | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | 🟢 มี |
+| **Multi-Channel Audio Volume Controls** | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | 🟢 มี |
+| **Preferences Modal & Custom Hotkeys** | ⚪ | ⚪ | ⚪ | ⚪ | 🟢 มี | 🟢 มี |
 
 ---
 

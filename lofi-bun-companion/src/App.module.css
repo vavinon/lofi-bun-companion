@@ -1,0 +1,320 @@
+/**
+ * App Layout & Showcase Container Styles.
+ *
+ * Theme: Dark Espresso (#1C1614), Cozy Warm Cafe & Glassmorphism Panels.
+ * Responsive split layout for Desk Mat Canvas, Pet Stage Viewport, and Controller Dashboard.
+ */
+
+.appContainer {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #15100e;
+  background-image:
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(255, 154, 60, 0.08) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(141, 163, 153, 0.05) 0%,
+      transparent 50%
+    ),
+    radial-gradient(circle, rgba(255, 248, 240, 0.04) 1px, transparent 1px);
+  background-size:
+    100% 100%,
+    100% 100%,
+    28px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1.5rem 1rem 3rem;
+  color: #fff8f0;
+  box-sizing: border-box;
+}
+
+/* Master Desk Mat Workspace */
+.deskMat {
+  width: 100%;
+  max-width: 1080px;
+  background: rgba(28, 22, 20, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 248, 240, 0.12);
+  border-radius: 28px;
+  box-shadow:
+    0 24px 56px rgba(0, 0, 0, 0.55),
+    0 2px 6px rgba(255, 248, 240, 0.05) inset;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+/* Header Navigation Bar */
+.headerBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(255, 248, 240, 0.08);
+}
+
+.brandGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brandIcon {
+  font-size: 2rem;
+  filter: drop-shadow(0 2px 8px rgba(255, 154, 60, 0.3));
+}
+
+.brandTitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #fff8f0 30%, #ff9a3c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.brandSubtitle {
+  font-size: 0.8125rem;
+  color: #a3b899;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.headerBadges {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  flex-wrap: wrap;
+}
+
+.versionBadge {
+  font-family: 'Inter', monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.625rem;
+  border-radius: 999px;
+  background: rgba(255, 154, 60, 0.12);
+  color: #ff9a3c;
+  border: 1px solid rgba(255, 154, 60, 0.25);
+}
+
+.companionTag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.625rem;
+  border-radius: 999px;
+  background: rgba(141, 163, 153, 0.15);
+  color: #8da399;
+  border: 1px solid rgba(141, 163, 153, 0.3);
+}
+
+/* Responsive Split Grid Layout */
+.showcaseGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 1.75rem;
+  align-items: stretch;
+}
+
+@media (max-width: 880px) {
+  .showcaseGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Left Panel: Pet Stage Viewport */
+.stageCard {
+  background: rgba(46, 34, 31, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 248, 240, 0.12);
+  border-radius: 20px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.stageCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 248, 240, 0.25),
+    transparent
+  );
+}
+
+/* Top Stage HUD & Status Bar */
+.stageHudHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.activeStatePill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 0.875rem;
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.stateDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  animation: pulseDot 2s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.85);
+  }
+}
+
+.propIndicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.3125rem 0.625rem;
+  border-radius: 999px;
+  transition: all 0.3s ease;
+}
+
+.propActive {
+  background: rgba(255, 154, 60, 0.2);
+  color: #ff9a3c;
+  border: 1px solid rgba(255, 154, 60, 0.4);
+}
+
+.propInactive {
+  background: rgba(255, 248, 240, 0.05);
+  color: #8a7e78;
+  border: 1px solid rgba(255, 248, 240, 0.08);
+}
+
+/* Center Stage Canvas & Desk Rug */
+.stageArena {
+  position: relative;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+/* Ambient Radial Glow */
+.stageGlow {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.35;
+  transition: background 0.5s ease;
+  pointer-events: none;
+}
+
+/* Wooden Desk Pedestal / Tatami Coaster */
+.stagePedestal {
+  position: absolute;
+  bottom: 12px;
+  width: 140px;
+  height: 24px;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(139, 90, 43, 0.45) 0%,
+    rgba(74, 46, 28, 0.6) 70%,
+    transparent 100%
+  );
+  border-bottom: 2px solid rgba(255, 154, 60, 0.15);
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.6),
+    0 0 16px rgba(139, 90, 43, 0.2);
+}
+
+/* Stage Bottom Performance HUD */
+.stageFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.875rem;
+  border-top: 1px solid rgba(255, 248, 240, 0.08);
+  font-size: 0.75rem;
+  color: #a09ba8;
+}
+
+.perfBadge {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  color: #a3b899;
+  font-weight: 500;
+}
+
+.perfDot {
+  width: 6px;
+  height: 6px;
+  background-color: #a3b899;
+  border-radius: 50%;
+}
+
+/* Right Panel: Controls & Metrics Dashboard */
+.controlsPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Footer Credits & Notes */
+.appFooter {
+  margin-top: 1.5rem;
+  font-size: 0.75rem;
+  color: #7a706b;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.appFooter a {
+  color: #ff9a3c;
+  text-decoration: none;
+}
