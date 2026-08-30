@@ -158,20 +158,31 @@ npm run verify
 
 ## 🗺️ Roadmap & Milestones
 
-- [x] **v0.1.0 — Core Sprite Engine & State Machine** *(Current)*
-  - [x] Pure CSS Step Animator (`steps(4)`) & Vector Spritesheets
-  - [x] Hardware-Reactive State Resolver with $\pm 3\%$ Hysteresis
-  - [x] Zustand State Store with selective reactive subscriptions
+- [x] **v0.1.0 — Core Sprite Engine & State Machine** *(Completed)*
+  - [x] Pure CSS GPU Step Animator (`steps(4)`) & Crisp SVG Vector Spritesheets
+  - [x] Hardware-Reactive State Resolver with $\pm 3\%$ Asymmetric Hysteresis
+  - [x] Zustand State Store with selective reactive subscriptions (0% CPU Idle)
   - [x] Interactive Simulation Controls & Showcase HUD
   - [x] 59/59 Automated Vitest Suites & Mutation Verification
-- [ ] **v0.2.0 — Pomodoro Focus Timer & Ambient Soundscape Mixer**
-  - [ ] Configurable 25/5 Pomodoro interval timer with visual pet rest hooks
-  - [ ] Multi-channel Web Audio Mixer (Lo-fi Beats, Rain, Keyboard Clicks, Cafe Ambience)
-- [ ] **v0.3.0 — Real System Metrics Hook & Desktop Widget Mode**
-  - [ ] Real-time hardware telemetry integration
-  - [ ] Floating draggable companion badge with Always-on-Top support
-- [ ] **v1.0.0 — Production Packaging (Tauri Desktop App)**
-  - [ ] Cross-platform desktop release for Windows / macOS / Linux
+- [ ] **v0.2.0 — Real Hardware Telemetry Engine** *(Next Up)*
+  - [ ] Real Windows OS hardware metrics polling (CPU Utilization, RAM, Disk I/O)
+  - [ ] Pluggable Telemetry Provider architecture (Native OS vs Web Mock Fallback)
+  - [ ] Background polling throttling (1.5s - 2.0s) with zero main-thread overhead
+  - [ ] Automated provider unit tests and store integration verification
+- [ ] **v1.0.0 — 📦 The Hardware Desk Pet (Official Desktop Release)**
+  - [ ] Lightweight Tauri Desktop Mascot package (.exe single-file on Windows)
+  - [ ] Frameless, transparent, draggable floating pet window with Always-on-Top
+  - [ ] Quick Context Menu (Window scaling 1x-4x, live metrics tooltip, quit)
+  - [ ] Under 35MB RAM footprint and near-zero idle CPU usage
+- [ ] **v1.1.0 — 🐾 Bun & Friends Multiverse (Character Expansion)**
+  - [ ] Unlock 5 additional companion characters (*🐱 Neko, 🐶 Shiba, 🍊 Capybara, 🦜 Cockatiel, 🐬 Dolphin*)
+  - [ ] Character switcher via Quick Context Menu
+- [ ] **v2.0.0 — 🍅 The Productivity Update (Pomodoro Focus Suite)**
+  - [ ] Configurable 25/5 Pomodoro interval timer with auto-rest hooks for companion
+  - [ ] Daily focus streak tracker and break reminder cues
+- [ ] **v3.0.0 — 🎧 The Soundscape Update (Ambient Lo-fi Audio Mixer)**
+  - [ ] Multi-channel Web Audio soundscape mixer (Lo-fi beats, rain, mechanical keyboard clicks, cafe murmur)
+  - [ ] Independent audio channel volume controls and mute presets
 
 ---
 
