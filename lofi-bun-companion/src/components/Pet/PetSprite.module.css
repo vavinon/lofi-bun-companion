@@ -1,0 +1,95 @@
+/**
+ * CSS Modules for PetSprite Pure CSS Step Animator.
+ *
+ * Spritesheet Dimensions: 256x320 px (4 frames x 64px, 5 states x 64px)
+ * Employs crisp-edges/pixelated rendering and GPU-accelerated steps() keyframes.
+ */
+
+.spriteWrapper {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center bottom;
+  user-select: none;
+}
+
+.spriteCanvas {
+  width: 64px;
+  height: 64px;
+  background-repeat: no-repeat;
+  background-size: 256px 320px;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  position: relative;
+  will-change: background-position;
+}
+
+/* 4-Frame Horizontal Translation Keyframe */
+@keyframes playFrames {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: -256px;
+  }
+}
+
+/* Row 1 (Y: 0px) — IDLE: Tea sipping & gentle ear twitches (800ms) */
+.idle {
+  background-position-y: 0;
+  animation: playFrames 0.8s steps(4) infinite;
+}
+
+/* Row 2 (Y: -64px) — FOCUS: Steady keyboard typing & rhythmic head bobs (600ms) */
+.focus {
+  background-position-y: -64px;
+  animation: playFrames 0.6s steps(4) infinite;
+}
+
+/* Row 3 (Y: -128px) — FRENZY: Turbo typing & flame bursts (300ms) */
+.frenzy {
+  background-position-y: -128px;
+  animation: playFrames 0.3s steps(4) infinite;
+}
+
+/* Row 4 (Y: -192px) — DISK: Fast notebook page-flipping (400ms) */
+.disk {
+  background-position-y: -192px;
+  animation: playFrames 0.4s steps(4) infinite;
+}
+
+/* Row 5 (Y: -256px) — REST: Hugging lavender pillow & sleep bubbles (1000ms) */
+.rest {
+  background-position-y: -256px;
+  animation: playFrames 1s steps(4) infinite;
+}
+
+/* Independent Carrot Stack Prop Layer (RAM > 80%) */
+@keyframes propBob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+.propCarrot {
+  position: absolute;
+  top: -8px;
+  left: 18px;
+  width: 28px;
+  height: 20px;
+  background-repeat: no-repeat;
+  background-size: 28px 20px;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  animation: propBob 0.8s steps(2) infinite;
+  pointer-events: none;
+}
