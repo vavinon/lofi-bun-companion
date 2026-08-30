@@ -15,16 +15,16 @@
 ```mermaid
 graph TD
     subgraph PreRelease["0.x.x — Prototype & Hardware Hook"]
-        v010["0.1.0: Core Sprite & State Engine (Flagship PoC) 🟢"] --> v020["0.2.0: Real Hardware Telemetry (Windows CPU/RAM/Disk) ⚡"]
+        v010["0.1.0: Core Sprite & State Engine (Flagship PoC) 🟢"] --> v020["0.2.0: Real Hardware Telemetry (Windows CPU/RAM/Disk) 🟢"]
     end
 
     subgraph Major1["1.x.x — Stable Desktop Mascot & Friends"]
-        v020 --> v100["1.0.0: The Hardware Desk Pet (.exe / Tauri Desktop Launch) 📦🎉"]
-        v100 --> v110["1.1.0: Bun & Friends Multiverse (+5 Companion Roster) 🐾"]
+        v020 --> v100["1.0.0: The Hardware Desk Pet (.exe / Tauri Desktop Launch) 🟢"]
+        v100 --> v110["1.1.0: Bun & Friends Multiverse (+5 Companion Roster) 🟢"]
     end
 
     subgraph Major2_3["Major Feature Ecosystems"]
-        v110 --> v200["2.0.0: The Productivity Update (Pomodoro Focus Suite) 🍅"]
+        v110 --> v200["2.0.0: The Productivity Update (Pomodoro Focus Suite) 🎯"]
         v200 --> v300["3.0.0: The Soundscape Update (Ambient Lo-fi Audio Mixer) 🎧"]
     end
 ```
@@ -43,7 +43,7 @@ graph TD
   - Interactive Mock Hardware Slider Lab Showcase (`App.tsx`)
   - ผ่าน 5-Pillar Automated Quality Gates (59 Vitest tests 100%)
 
-* **0.2.0 — Real Hardware Telemetry Engine** *(Next Up 🎯)*:
+* **0.2.0 — Real Hardware Telemetry Engine** *(Completed 🟢)*:
   - Windows OS Hardware Telemetry Provider: ดึงค่า CPU Utilization, RAM Usage, และ Disk I/O จริง
   - Dual-Provider Pattern:
     - `NativeWindowsTelemetryProvider` (อ่านค่าจริงในสภาพแวดล้อม Desktop)
@@ -54,7 +54,7 @@ graph TD
 ---
 
 ### 🎉 1.0.0 — Official First Stable Production Release
-* **1.0.0 — 📦 The Hardware Desk Pet (Tauri Desktop App)**:
+* **1.0.0 — 📦 The Hardware Desk Pet (Tauri Desktop App)** *(Completed 🟢)*:
   - First Official Desktop Release (.exe Single-File Installer & Portable บน Windows)
   - Floating Pet Mascot Mode: หน้าต่าง Frameless ไร้ขอบ, พื้นหลังโปร่งใส, ปักหมุด Always-on-Top
   - ลากย้ายน้องต่ายวางบนหน้าจอทำงานได้อย่างอิสระ (Draggable Floating Mascot)
@@ -68,7 +68,7 @@ graph TD
 ---
 
 ### 🎨 1.x.x — Feature Expansions (Minor Releases)
-* **1.1.0 — 🐾 Bun & Friends Multiverse (Character Expansion)**:
+* **1.1.0 — 🐾 Bun & Friends Multiverse (Character Expansion)** *(Completed 🟢)*:
   - ปลดล็อกเพื่อนใหม่อีก **5 ตัวละคร** สลับเล่นได้ทันที:
     - 🐱 **Neko**: แมวส้มจิบลาเต้อุ่นๆ / พิมพ์งานสลับอุ้งเท้า
     - 🐶 **Shiba**: ชิบะจิบชาโฮจิฉะ / วิ่งบนลู่วิ่งไฟฟ้า
@@ -81,7 +81,7 @@ graph TD
 ---
 
 ### 🍅 2.0.0 — The Productivity Update (Major Release)
-* **2.0.0 — Pomodoro Focus Suite & Rest Automation**:
+* **2.0.0 — Pomodoro Focus Suite & Rest Automation** *(Next Up 🎯)*:
   - Classic 25/5 Pomodoro Timer พร้อมโหมด Deep Work (50/10) และ Custom Timer
   - Rest Automation Hook: เมื่อหมดเวลาทำงาน น้องสัตว์เลี้ยงจะเข้าสู่โหมดพักผ่อน (`REST`) กอดหมอนนอนหลับอัตโนมัติ เพื่อเตือนให้ผู้ใช้พักสายตา
   - Daily Focus Streak Tracker & Break Reminders

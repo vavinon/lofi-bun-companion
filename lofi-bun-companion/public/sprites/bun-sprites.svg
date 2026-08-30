@@ -1,0 +1,685 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 320" width="256" height="320" shape-rendering="crispEdges">
+  <defs>
+    <!-- Shared Filter & Style Tokens -->
+    <style>
+      .outline { stroke: #2E221F; stroke-width: 2; stroke-linecap: square; stroke-linejoin: miter; }
+      .outline-thin { stroke: #2E221F; stroke-width: 1; stroke-linecap: square; }
+      .fur-base { fill: #FFF8F0; }
+      .fur-shadow { fill: #EADBC8; }
+      .fur-light { fill: #FFFFFF; }
+      .blush { fill: #FFB5B5; }
+      .eye-dark { fill: #3D2B27; }
+      .scarf { fill: #8DA399; }
+      .scarf-shadow { fill: #6A8076; }
+      .tea-cup { fill: #A3B899; }
+      .tea-liquid { fill: #6B8E23; }
+      .keyboard-base { fill: #E3DAC9; }
+      .keyboard-shadow { fill: #C8BEAC; }
+      .keycap { fill: #FFFDF0; }
+      .keycap-pressed { fill: #B8ADA0; }
+      .fire-main { fill: #FF7A59; }
+      .fire-core { fill: #FFD166; }
+      .sweat { fill: #A0E7E5; }
+      .book-cover { fill: #8B5A2B; }
+      .book-pages { fill: #FFFDF0; }
+      .book-shadow { fill: #6F431B; }
+      .pillow-base { fill: #DDD5E9; }
+      .pillow-shadow { fill: #C5B9D8; }
+      .steam-bubble { fill: #FFFFFF; opacity: 0.85; }
+      .text-z { fill: #9D8BB5; font-family: monospace; font-size: 8px; font-weight: bold; }
+    </style>
+  </defs>
+
+  <!-- ========================================================================= -->
+  <!-- ROW 1 (Y: 0px) — IDLE STATE (Matcha sipping & gentle breathing)           -->
+  <!-- ========================================================================= -->
+  
+  <!-- Frame 1.1 (IDLE - Frame 1: Holding tea cup, steam rising) -->
+  <g id="idle-f1" transform="translate(0, 0)">
+    <!-- Left Ear (Upright) -->
+    <rect x="22" y="10" width="7" height="15" rx="3" fill="#FFF8F0" class="outline"/>
+    <rect x="24" y="13" width="3" height="9" rx="1" class="blush"/>
+    <!-- Right Floppy Ear -->
+    <path d="M37 14 C42 14, 46 18, 44 24 C43 27, 39 27, 37 22 Z" fill="#FFF8F0" class="outline"/>
+    <path d="M38 16 C41 16, 43 19, 42 22 C41 24, 39 23, 38 19 Z" class="blush"/>
+    <!-- Bun Body & Head -->
+    <ellipse cx="32" cy="37" rx="16" ry="14" fill="#EADBC8" class="outline"/>
+    <ellipse cx="32" cy="36" rx="16" ry="13" class="fur-base"/>
+    <!-- Cheeks Blush -->
+    <circle cx="23" cy="39" r="3" class="blush"/>
+    <circle cx="41" cy="39" r="3" class="blush"/>
+    <!-- Sparkling Eyes -->
+    <ellipse cx="27" cy="34" rx="2.5" ry="3" class="eye-dark"/>
+    <circle cx="26" cy="33" r="1" fill="#FFFFFF"/>
+    <ellipse cx="37" cy="34" rx="2.5" ry="3" class="eye-dark"/>
+    <circle cx="36" cy="33" r="1" fill="#FFFFFF"/>
+    <!-- Glasses Frame Bridge -->
+    <line x1="29.5" y1="34" x2="34.5" y2="34" class="outline-thin"/>
+    <!-- Nose & Cute Mouth -->
+    <path d="M31 38 L32 39 L33 38" fill="none" class="outline-thin"/>
+    <!-- Sage Knit Scarf -->
+    <path d="M20 43 C24 46, 40 46, 44 43 C45 47, 41 49, 32 49 C23 49, 19 47, 20 43 Z" class="scarf" stroke="#2E221F" stroke-width="1.5"/>
+    <rect x="23" y="46" width="6" height="8" rx="1" class="scarf-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Matcha Cup & Paws -->
+    <rect x="26" y="46" width="12" height="9" rx="2" class="tea-cup" stroke="#2E221F" stroke-width="1.5"/>
+    <rect x="28" y="46" width="8" height="2" class="tea-liquid"/>
+    <!-- Cute Paws holding cup -->
+    <circle cx="26" cy="50" r="2.5" class="fur-base" stroke="#2E221F" stroke-width="1"/>
+    <circle cx="38" cy="50" r="2.5" class="fur-base" stroke="#2E221F" stroke-width="1"/>
+    <!-- Steam Curl 1 -->
+    <path d="M31 43 C30 40, 33 39, 32 36" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-linecap="round" opacity="0.75"/>
+  </g>
+
+  <!-- Frame 1.2 (IDLE - Frame 2: Ear twitches up, inhale breath) -->
+  <g id="idle-f2" transform="translate(64, 0)">
+    <!-- Left Ear -->
+    <rect x="22" y="9" width="7" height="15" rx="3" fill="#FFF8F0" class="outline"/>
+    <rect x="24" y="12" width="3" height="9" rx="1" class="blush"/>
+    <!-- Right Floppy Ear (Twitched higher) -->
+    <path d="M37 12 C43 12, 47 16, 45 22 C44 25, 40 25, 37 20 Z" fill="#FFF8F0" class="outline"/>
+    <path d="M38 14 C42 14, 44 17, 43 20 C42 22, 40 21, 38 17 Z" class="blush"/>
+    <!-- Bun Body (Lifted 1px) -->
+    <ellipse cx="32" cy="36" rx="16.5" ry="14" fill="#EADBC8" class="outline"/>
+    <ellipse cx="32" cy="35" rx="16.5" ry="13" class="fur-base"/>
+    <!-- Cheeks -->
+    <circle cx="23" cy="38" r="3.2" class="blush"/>
+    <circle cx="41" cy="38" r="3.2" class="blush"/>
+    <!-- Eyes (Slightly relaxed) -->
+    <ellipse cx="27" cy="33" rx="2.5" ry="3" class="eye-dark"/>
+    <circle cx="26" cy="32" r="1" fill="#FFFFFF"/>
+    <ellipse cx="37" cy="33" rx="2.5" ry="3" class="eye-dark"/>
+    <circle cx="36" cy="32" r="1" fill="#FFFFFF"/>
+    <line x1="29.5" y1="33" x2="34.5" y2="33" class="outline-thin"/>
+    <path d="M31 37 L32 38 L33 37" fill="none" class="outline-thin"/>
+    <!-- Scarf -->
+    <path d="M20 42 C24 45, 40 45, 44 42 C45 46, 41 48, 32 48 C23 48, 19 46, 20 42 Z" class="scarf" stroke="#2E221F" stroke-width="1.5"/>
+    <rect x="23" y="45" width="6" height="8" rx="1" class="scarf-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Matcha Cup -->
+    <rect x="26" y="45" width="12" height="9" rx="2" class="tea-cup" stroke="#2E221F" stroke-width="1.5"/>
+    <rect x="28" y="45" width="8" height="2" class="tea-liquid"/>
+    <circle cx="26" cy="49" r="2.5" class="fur-base" stroke="#2E221F" stroke-width="1"/>
+    <circle cx="38" cy="49" r="2.5" class="fur-base" stroke="#2E221F" stroke-width="1"/>
+    <!-- Steam Heart -->
+    <path d="M31 40 C29 38, 31 36, 32 37 C33 36, 35 38, 33 40 Z" fill="#FFFFFF" opacity="0.8"/>
+  </g>
+
+  <!-- Frame 1.3 (IDLE - Frame 3: Sips matcha cup, happy closed eyes ^ ^) -->
+  <g id="idle-f3" transform="translate(128, 0)">
+    <!-- Left Ear (Relaxed) -->
+    <rect x="21" y="11" width="7" height="15" rx="3" fill="#FFF8F0" class="outline"/>
+    <rect x="23" y="14" width="3" height="9" rx="1" class="blush"/>
+    <!-- Right Floppy Ear -->
+    <path d="M37 15 C42 15, 46 19, 44 25 C43 28, 39 28, 37 23 Z" fill="#FFF8F0" class="outline"/>
+    <path d="M38 17 C41 17, 43 20, 42 23 C41 25, 39 24, 38 20 Z" class="blush"/>
+    <!-- Bun Body -->
+    <ellipse cx="32" cy="37" rx="16" ry="14" fill="#EADBC8" class="outline"/>
+    <ellipse cx="32" cy="36" rx="16" ry="13" class="fur-base"/>
+    <!-- Cheeks (Blushing extra) -->
+    <circle cx="22" cy="38" r="3.5" class="blush"/>
+    <circle cx="42" cy="38" r="3.5" class="blush"/>
+    <!-- Happy Closed Eyes (^ ^) -->
+    <path d="M25 35 Q27 32 29 35" fill="none" stroke="#3D2B27" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M35 35 Q37 32 39 35" fill="none" stroke="#3D2B27" stroke-width="1.8" stroke-linecap="round"/>
+    <!-- Scarf -->
+    <path d="M20 43 C24 46, 40 46, 44 43 C45 47, 41 49, 32 49 C23 49, 19 47, 20 43 Z" class="scarf" stroke="#2E221F" stroke-width="1.5"/>
+    <rect x="23" y="46" width="6" height="8" rx="1" class="scarf-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Cup Raised to Mouth -->
+    <rect x="26" y="40" width="12" height="9" rx="2" class="tea-cup" stroke="#2E221F" stroke-width="1.5"/>
+    <rect x="28" y="40" width="8" height="2" class="tea-liquid"/>
+    <circle cx="25" cy="44" r="2.5" class="fur-base" stroke="#2E221F" stroke-width="1"/>
+    <circle cx="39" cy="44" r="2.5" class="fur-base" stroke="#2E221F" stroke-width="1"/>
+    <!-- Sweet Sip Sound Dots -->
+    <circle cx="43" cy="34" r="1" fill="#A3B899"/>
+    <circle cx="45" cy="32" r="0.8" fill="#A3B899"/>
+  </g>
+
+  <!-- Frame 1.4 (IDLE - Frame 4: Cup lowered, warm satisfied smile) -->
+  <g id="idle-f4" transform="translate(192, 0)">
+    <!-- Left Ear -->
+    <rect x="22" y="10" width="7" height="15" rx="3" fill="#FFF8F0" class="outline"/>
+    <rect x="24" y="13" width="3" height="9" rx="1" class="blush"/>
+    <!-- Right Floppy Ear -->
+    <path d="M37 14 C42 14, 46 18, 44 24 C43 27, 39 27, 37 22 Z" fill="#FFF8F0" class="outline"/>
+    <path d="M38 16 C41 16, 43 19, 42 22 C41 24, 39 23, 38 19 Z" class="blush"/>
+    <!-- Bun Body -->
+    <ellipse cx="32" cy="37" rx="16" ry="14" fill="#EADBC8" class="outline"/>
+    <ellipse cx="32" cy="36" rx="16" ry="13" class="fur-base"/>
+    <!-- Cheeks -->
+    <circle cx="23" cy="39" r="3" class="blush"/>
+    <circle cx="41" cy="39" r="3" class="blush"/>
+    <!-- Eyes Content & Blinking Happy -->
+    <ellipse cx="27" cy="34" rx="2.5" ry="3" class="eye-dark"/>
+    <circle cx="26" cy="33" r="1" fill="#FFFFFF"/>
+    <ellipse cx="37" cy="34" rx="2.5" ry="3" class="eye-dark"/>
+    <circle cx="36" cy="33" r="1" fill="#FFFFFF"/>
+    <line x1="29.5" y1="34" x2="34.5" y2="34" class="outline-thin"/>
+    <!-- Big Sweet Smile -->
+    <path d="M30 38 Q32 41 34 38" fill="none" stroke="#2E221F" stroke-width="1.3" stroke-linecap="round"/>
+    <!-- Scarf -->
+    <path d="M20 43 C24 46, 40 46, 44 43 C45 47, 41 49, 32 49 C23 49, 19 47, 20 43 Z" class="scarf" stroke="#2E221F" stroke-width="1.5"/>
+    <rect x="23" y="46" width="6" height="8" rx="1" class="scarf-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Cup -->
+    <rect x="26" y="47" width="12" height="9" rx="2" class="tea-cup" stroke="#2E221F" stroke-width="1.5"/>
+    <rect x="28" y="47" width="8" height="2" class="tea-liquid"/>
+    <circle cx="26" cy="51" r="2.5" class="fur-base" stroke="#2E221F" stroke-width="1"/>
+    <circle cx="38" cy="51" r="2.5" class="fur-base" stroke="#2E221F" stroke-width="1"/>
+    <!-- Soft Steam -->
+    <path d="M33 43 C34 40, 31 39, 33 37" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- ROW 2 (Y: 64px) — FOCUS STATE (Steady keyboard typing & head bobbing)     -->
+  <!-- ========================================================================= -->
+
+  <!-- Frame 2.1 (FOCUS - Frame 1: Left paw tapping key down, determined focus) -->
+  <g id="focus-f1" transform="translate(0, 64)">
+    <!-- Ears (Slanted slightly back in focus) -->
+    <rect x="21" y="11" width="7" height="15" rx="3" fill="#FFF8F0" class="outline"/>
+    <rect x="23" y="14" width="3" height="9" rx="1" class="blush"/>
+    <path d="M38 15 C43 15, 47 19, 45 25 C44 28, 40 28, 38 23 Z" fill="#FFF8F0" class="outline"/>
+    <path d="M39 17 C42 17, 44 20, 43 23 C42 25, 40 24, 39 20 Z" class="blush"/>
+    <!-- Bun Body -->
+    <ellipse cx="32" cy="37" rx="16" ry="14" fill="#EADBC8" class="outline"/>
+    <ellipse cx="32" cy="36" rx="16" ry="13" class="fur-base"/>
+    <circle cx="22" cy="39" r="2.5" class="blush"/>
+    <circle cx="42" cy="39" r="2.5" class="blush"/>
+    <!-- Focused Eyes (Looking at screen) -->
+    <ellipse cx="27" cy="34" rx="2.5" ry="2.8" class="eye-dark"/>
+    <circle cx="28" cy="33" r="0.8" fill="#FFFFFF"/>
+    <ellipse cx="37" cy="34" rx="2.5" ry="2.8" class="eye-dark"/>
+    <circle cx="38" cy="33" r="0.8" fill="#FFFFFF"/>
+    <line x1="29.5" y1="34" x2="34.5" y2="34" class="outline-thin"/>
+    <!-- Small focused mouth -->
+    <circle cx="32" cy="38" r="0.8" class="eye-dark"/>
+    <!-- Scarf -->
+    <path d="M20 43 C24 46, 40 46, 44 43 C45 47, 41 49, 32 49 C23 49, 19 47, 20 43 Z" class="scarf" stroke="#2E221F" stroke-width="1.5"/>
+    <!-- Keyboard Deck -->
+    <rect x="16" y="50" width="32" height="11" rx="2" class="keyboard-base" stroke="#2E221F" stroke-width="1.5"/>
+    <rect x="18" y="52" width="6" height="3" rx="1" class="keycap-pressed"/>
+    <rect x="26" y="52" width="6" height="3" rx="1" class="keycap"/>
+    <rect x="34" y="52" width="6" height="3" rx="1" class="keycap"/>
+    <rect x="42" y="52" width="4" height="3" rx="1" class="keycap"/>
+    <!-- Left Paw Down, Right Paw Up -->
+    <circle cx="21" cy="53" r="2.5" class="fur-base" stroke="#2E221F" stroke-width="1"/>
+    <circle cx="36" cy="48" r="2.5" class="fur-base" stroke="#2E221F" stroke-width="1"/>
+  </g>
+
+  <!-- Frame 2.2 (FOCUS - Frame 2: Right paw tapping key down) -->
+  <g id="focus-f2" transform="translate(64, 64)">
+    <!-- Ears -->
+    <rect x="22" y="10" width="7" height="15" rx="3" fill="#FFF8F0" class="outline"/>
+    <rect x="24" y="13" width="3" height="9" rx="1" class="blush"/>
+    <path d="M37 14 C42 14, 46 18, 44 24 C43 27, 39 27, 37 22 Z" fill="#FFF8F0" class="outline"/>
+    <path d="M38 16 C41 16, 43 19, 42 22 C41 24, 39 23, 38 19 Z" class="blush"/>
+    <!-- Bun Body -->
+    <ellipse cx="32" cy="37" rx="16" ry="14" fill="#EADBC8" class="outline"/>
+    <ellipse cx="32" cy="36" rx="16" ry="13" class="fur-base"/>
+    <circle cx="22" cy="39" r="2.5" class="blush"/>
+    <circle cx="42" cy="39" r="2.5" class="blush"/>
+    <!-- Focused Eyes -->
+    <ellipse cx="27" cy="34" rx="2.5" ry="2.8" class="eye-dark"/>
+    <circle cx="28" cy="33" r="0.8" fill="#FFFFFF"/>
+    <ellipse cx="37" cy="34" rx="2.5" ry="2.8" class="eye-dark"/>
+    <circle cx="38" cy="33" r="0.8" fill="#FFFFFF"/>
+    <line x1="29.5" y1="34" x2="34.5" y2="34" class="outline-thin"/>
+    <circle cx="32" cy="38" r="0.8" class="eye-dark"/>
+    <!-- Scarf -->
+    <path d="M20 43 C24 46, 40 46, 44 43 C45 47, 41 49, 32 49 C23 49, 19 47, 20 43 Z" class="scarf" stroke="#2E221F" stroke-width="1.5"/>
+    <!-- Keyboard Deck -->
+    <rect x="16" y="50" width="32" height="11" rx="2" class="keyboard-base" stroke="#2E221F" stroke-width="1.5"/>
+    <rect x="18" y="52" width="6" height="3" rx="1" class="keycap"/>
+    <rect x="26" y="52" width="6" height="3" rx="1" class="keycap"/>
+    <rect x="34" y="52" width="6" height="3" rx="1" class="keycap-pressed"/>
+    <rect x="42" y="52" width="4" height="3" rx="1" class="keycap"/>
+    <!-- Left Paw Up, Right Paw Down -->
+    <circle cx="21" cy="48" r="2.5" class="fur-base" stroke="#2E221F" stroke-width="1"/>
+    <circle cx="37" cy="53" r="2.5" class="fur-base" stroke="#2E221F" stroke-width="1"/>
+  </g>
+
+  <!-- Frame 2.3 (FOCUS - Frame 3: Left paw tapping again, screen glow) -->
+  <g id="focus-f3" transform="translate(128, 64)">
+    <!-- Ears -->
+    <rect x="21" y="11" width="7" height="15" rx="3" fill="#FFF8F0" class="outline"/>
+    <rect x="23" y="14" width="3" height="9" rx="1" class="blush"/>
+    <path d="M38 15 C43 15, 47 19, 45 25 C44 28, 40 28, 38 23 Z" fill="#FFF8F0" class="outline"/>
+    <path d="M39 17 C42 17, 44 20, 43 23 C42 25, 40 24, 39 20 Z" class="blush"/>
+    <!-- Bun Body -->
+    <ellipse cx="32" cy="37" rx="16" ry="14" fill="#EADBC8" class="outline"/>
+    <ellipse cx="32" cy="36" rx="16" ry="13" class="fur-base"/>
+    <circle cx="22" cy="39" r="2.5" class="blush"/>
+    <circle cx="42" cy="39" r="2.5" class="blush"/>
+    <!-- Focused Eyes -->
+    <ellipse cx="27" cy="34" rx="2.5" ry="2.8" class="eye-dark"/>
+    <circle cx="28" cy="33" r="0.8" fill="#FFFFFF"/>
+    <ellipse cx="37" cy="34" rx="2.5" ry="2.8" class="eye-dark"/>
+    <circle cx="38" cy="33" r="0.8" fill="#FFFFFF"/>
+    <line x1="29.5" y1="34" x2="34.5" y2="34" class="outline-thin"/>
+    <circle cx="32" cy="38" r="0.8" class="eye-dark"/>
+    <!-- Scarf -->
+    <path d="M20 43 C24 46, 40 46, 44 43 C45 47, 41 49, 32 49 C23 49, 19 47, 20 43 Z" class="scarf" stroke="#2E221F" stroke-width="1.5"/>
+    <!-- Keyboard Deck -->
+    <rect x="16" y="50" width="32" height="11" rx="2" class="keyboard-base" stroke="#2E221F" stroke-width="1.5"/>
+    <rect x="18" y="52" width="6" height="3" rx="1" class="keycap"/>
+    <rect x="26" y="52" width="6" height="3" rx="1" class="keycap-pressed"/>
+    <rect x="34" y="52" width="6" height="3" rx="1" class="keycap"/>
+    <rect x="42" y="52" width="4" height="3" rx="1" class="keycap"/>
+    <!-- Left Paw Down on Middle, Right Paw Up -->
+    <circle cx="28" cy="53" r="2.5" class="fur-base" stroke="#2E221F" stroke-width="1"/>
+    <circle cx="39" cy="48" r="2.5" class="fur-base" stroke="#2E221F" stroke-width="1"/>
+  </g>
+
+  <!-- Frame 2.4 (FOCUS - Frame 4: Head bobbing micro-movement, right paw tap) -->
+  <g id="focus-f4" transform="translate(192, 64)">
+    <!-- Ears (Head bob down 1px) -->
+    <rect x="22" y="11" width="7" height="15" rx="3" fill="#FFF8F0" class="outline"/>
+    <rect x="24" y="14" width="3" height="9" rx="1" class="blush"/>
+    <path d="M37 15 C42 15, 46 19, 44 25 C43 28, 39 28, 37 23 Z" fill="#FFF8F0" class="outline"/>
+    <path d="M38 17 C41 17, 43 20, 42 23 C41 25, 39 24, 38 20 Z" class="blush"/>
+    <!-- Bun Body (Bobbed 1px) -->
+    <ellipse cx="32" cy="38" rx="16.5" ry="14" fill="#EADBC8" class="outline"/>
+    <ellipse cx="32" cy="37" rx="16.5" ry="13" class="fur-base"/>
+    <circle cx="22" cy="40" r="2.5" class="blush"/>
+    <circle cx="42" cy="40" r="2.5" class="blush"/>
+    <!-- Eyes -->
+    <ellipse cx="27" cy="35" rx="2.5" ry="2.8" class="eye-dark"/>
+    <circle cx="28" cy="34" r="0.8" fill="#FFFFFF"/>
+    <ellipse cx="37" cy="35" rx="2.5" ry="2.8" class="eye-dark"/>
+    <circle cx="38" cy="34" r="0.8" fill="#FFFFFF"/>
+    <line x1="29.5" y1="35" x2="34.5" y2="35" class="outline-thin"/>
+    <circle cx="32" cy="39" r="0.8" class="eye-dark"/>
+    <!-- Scarf -->
+    <path d="M20 44 C24 47, 40 47, 44 44 C45 48, 41 50, 32 50 C23 50, 19 48, 20 44 Z" class="scarf" stroke="#2E221F" stroke-width="1.5"/>
+    <!-- Keyboard Deck -->
+    <rect x="16" y="50" width="32" height="11" rx="2" class="keyboard-base" stroke="#2E221F" stroke-width="1.5"/>
+    <rect x="18" y="52" width="6" height="3" rx="1" class="keycap"/>
+    <rect x="26" y="52" width="6" height="3" rx="1" class="keycap"/>
+    <rect x="34" y="52" width="6" height="3" rx="1" class="keycap"/>
+    <rect x="42" y="52" width="4" height="3" rx="1" class="keycap-pressed"/>
+    <!-- Right Paw Down -->
+    <circle cx="22" cy="49" r="2.5" class="fur-base" stroke="#2E221F" stroke-width="1"/>
+    <circle cx="43" cy="53" r="2.5" class="fur-base" stroke="#2E221F" stroke-width="1"/>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- ROW 3 (Y: 128px) — FRENZY STATE (Blazing typing, fire flames & sweat)     -->
+  <!-- ========================================================================= -->
+
+  <!-- Frame 3.1 (FRENZY - Frame 1: Speed ghosting typing, sweat drop) -->
+  <g id="frenzy-f1" transform="translate(0, 128)">
+    <!-- Small Fire Spark Behind Left Ear -->
+    <path d="M17 12 C15 7, 20 5, 21 2 C23 6, 21 10, 17 12 Z" class="fire-main"/>
+    <path d="M18 10 C17 7, 19 6, 20 4 C21 6, 20 8, 18 10 Z" class="fire-core"/>
+    <!-- Left Ear (Erect) -->
+    <rect x="22" y="9" width="7" height="15" rx="3" fill="#FFF8F0" class="outline"/>
+    <rect x="24" y="12" width="3" height="9" rx="1" class="blush"/>
+    <!-- Right Floppy Ear (Whipped up) -->
+    <path d="M37 11 C43 11, 48 15, 46 21 C45 24, 41 24, 38 19 Z" fill="#FFF8F0" class="outline"/>
+    <path d="M38 13 C42 13, 45 16, 44 19 C43 21, 41 20, 39 16 Z" class="blush"/>
+    <!-- Bun Body -->
+    <ellipse cx="32" cy="36" rx="16" ry="14" fill="#EADBC8" class="outline"/>
+    <ellipse cx="32" cy="35" rx="16" ry="13" class="fur-base"/>
+    <circle cx="21" cy="38" r="2.5" class="blush"/>
+    <circle cx="43" cy="38" r="2.5" class="blush"/>
+    <!-- Sweat Drop flying left -->
+    <path d="M14 30 C12 30, 11 32, 11 33 C11 35, 14 36, 14 36 C14 36, 17 35, 17 33 C17 32, 16 30, 14 30 Z" class="sweat"/>
+    <!-- Determined Wide Eyes & Sharp Eyebrows -->
+    <ellipse cx="27" cy="33" rx="3" ry="3.2" class="eye-dark"/>
+    <circle cx="28" cy="32" r="1.2" fill="#FFFFFF"/>
+    <path d="M23 29 L29 31" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+    <ellipse cx="37" cy="33" rx="3" ry="3.2" class="eye-dark"/>
+    <circle cx="38" cy="32" r="1.2" fill="#FFFFFF"/>
+    <path d="M41 29 L35 31" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+    <!-- Gritted Teeth / Shouting Mouth -->
+    <rect x="30" y="38" width="4" height="2" rx="1" fill="#FFFFFF" stroke="#2E221F" stroke-width="1"/>
+    <!-- Scarf -->
+    <path d="M20 42 C24 45, 40 45, 44 42 C45 46, 41 48, 32 48 C23 48, 19 46, 20 42 Z" class="scarf" stroke="#2E221F" stroke-width="1.5"/>
+    <!-- Keyboard Deck -->
+    <rect x="16" y="50" width="32" height="11" rx="2" class="keyboard-base" stroke="#2E221F" stroke-width="1.5"/>
+    <!-- Blazing Ghosted Paws (Afterimage) -->
+    <ellipse cx="20" cy="48" rx="3.5" ry="2.5" fill="#FFF8F0" opacity="0.6"/>
+    <ellipse cx="23" cy="53" rx="3" ry="2.5" class="fur-base" stroke="#2E221F" stroke-width="1"/>
+    <ellipse cx="41" cy="48" rx="3.5" ry="2.5" fill="#FFF8F0" opacity="0.6"/>
+    <ellipse cx="38" cy="53" rx="3" ry="2.5" class="fur-base" stroke="#2E221F" stroke-width="1"/>
+  </g>
+
+  <!-- Frame 3.2 (FRENZY - Frame 2: Blazing Fire flares up behind head) -->
+  <g id="frenzy-f2" transform="translate(64, 128)">
+    <!-- Big Fire Flame Behind Head -->
+    <path d="M25 15 C20 8, 24 2, 32 0 C40 2, 44 8, 39 15 Z" class="fire-main"/>
+    <path d="M27 13 C23 9, 27 5, 32 3 C37 5, 41 9, 37 13 Z" class="fire-core"/>
+    <!-- Left Ear -->
+    <rect x="20" y="10" width="7" height="15" rx="3" fill="#FFF8F0" class="outline"/>
+    <rect x="22" y="13" width="3" height="9" rx="1" class="blush"/>
+    <!-- Right Ear -->
+    <rect x="37" y="10" width="7" height="15" rx="3" fill="#FFF8F0" class="outline"/>
+    <rect x="39" y="13" width="3" height="9" rx="1" class="blush"/>
+    <!-- Bun Body -->
+    <ellipse cx="32" cy="36" rx="16" ry="14" fill="#EADBC8" class="outline"/>
+    <ellipse cx="32" cy="35" rx="16" ry="13" class="fur-base"/>
+    <circle cx="21" cy="38" r="2.5" class="blush"/>
+    <circle cx="43" cy="38" r="2.5" class="blush"/>
+    <!-- Sweat flying right -->
+    <path d="M50 30 C48 30, 47 32, 47 33 C47 35, 50 36, 50 36 C50 36, 53 35, 53 33 C53 32, 52 30, 50 30 Z" class="sweat"/>
+    <!-- Eyes Fierce -->
+    <ellipse cx="27" cy="33" rx="3" ry="3.2" class="eye-dark"/>
+    <circle cx="28" cy="32" r="1.2" fill="#FFFFFF"/>
+    <path d="M23 29 L29 31" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+    <ellipse cx="37" cy="33" rx="3" ry="3.2" class="eye-dark"/>
+    <circle cx="38" cy="32" r="1.2" fill="#FFFFFF"/>
+    <path d="M41 29 L35 31" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+    <!-- Open Shout Mouth -->
+    <path d="M30 38 Q32 41 34 38 Z" class="blush" stroke="#2E221F" stroke-width="1"/>
+    <!-- Scarf -->
+    <path d="M20 42 C24 45, 40 45, 44 42 C45 46, 41 48, 32 48 C23 48, 19 46, 20 42 Z" class="scarf" stroke="#2E221F" stroke-width="1.5"/>
+    <!-- Keyboard Deck -->
+    <rect x="16" y="50" width="32" height="11" rx="2" class="keyboard-base" stroke="#2E221F" stroke-width="1.5"/>
+    <!-- Paws Turbo Smashing -->
+    <ellipse cx="26" cy="52" rx="3" ry="2.5" class="fur-base" stroke="#2E221F" stroke-width="1"/>
+    <ellipse cx="35" cy="52" rx="3" ry="2.5" class="fur-base" stroke="#2E221F" stroke-width="1"/>
+    <!-- Speed Sparks -->
+    <circle cx="18" cy="52" r="1" class="fire-core"/>
+    <circle cx="46" cy="52" r="1" class="fire-core"/>
+  </g>
+
+  <!-- Frame 3.3 (FRENZY - Frame 3: Flame peaks, double typing speed streaks) -->
+  <g id="frenzy-f3" transform="translate(128, 128)">
+    <!-- Triple Fire Flame -->
+    <path d="M18 14 C15 7, 20 1, 25 5 C28 0, 36 0, 39 5 C44 1, 49 7, 46 14 Z" class="fire-main"/>
+    <path d="M21 12 C18 8, 22 4, 26 7 C29 3, 35 3, 38 7 C42 4, 46 8, 43 12 Z" class="fire-core"/>
+    <!-- Left Ear -->
+    <rect x="21" y="9" width="7" height="15" rx="3" fill="#FFF8F0" class="outline"/>
+    <rect x="23" y="12" width="3" height="9" rx="1" class="blush"/>
+    <!-- Right Ear -->
+    <rect x="36" y="9" width="7" height="15" rx="3" fill="#FFF8F0" class="outline"/>
+    <rect x="38" y="12" width="3" height="9" rx="1" class="blush"/>
+    <!-- Bun Body -->
+    <ellipse cx="32" cy="36" rx="16" ry="14" fill="#EADBC8" class="outline"/>
+    <ellipse cx="32" cy="35" rx="16" ry="13" class="fur-base"/>
+    <circle cx="21" cy="38" r="2.5" class="blush"/>
+    <circle cx="43" cy="38" r="2.5" class="blush"/>
+    <!-- Sweat Droplets both sides -->
+    <circle cx="12" cy="32" r="1.5" class="sweat"/>
+    <circle cx="52" cy="32" r="1.5" class="sweat"/>
+    <!-- Eyes -->
+    <ellipse cx="27" cy="33" rx="3" ry="3.2" class="eye-dark"/>
+    <circle cx="28" cy="32" r="1.2" fill="#FFFFFF"/>
+    <path d="M23 29 L29 31" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+    <ellipse cx="37" cy="33" rx="3" ry="3.2" class="eye-dark"/>
+    <circle cx="38" cy="32" r="1.2" fill="#FFFFFF"/>
+    <path d="M41 29 L35 31" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+    <rect x="30" y="38" width="4" height="2" rx="1" fill="#FFFFFF" stroke="#2E221F" stroke-width="1"/>
+    <!-- Scarf -->
+    <path d="M20 42 C24 45, 40 45, 44 42 C45 46, 41 48, 32 48 C23 48, 19 46, 20 42 Z" class="scarf" stroke="#2E221F" stroke-width="1.5"/>
+    <!-- Keyboard Deck -->
+    <rect x="16" y="50" width="32" height="11" rx="2" class="keyboard-base" stroke="#2E221F" stroke-width="1.5"/>
+    <!-- Paws in Motion -->
+    <ellipse cx="20" cy="52" rx="3" ry="2.5" class="fur-base" stroke="#2E221F" stroke-width="1"/>
+    <ellipse cx="44" cy="52" rx="3" ry="2.5" class="fur-base" stroke="#2E221F" stroke-width="1"/>
+    <ellipse cx="32" cy="48" rx="4" ry="2" fill="#FFF8F0" opacity="0.6"/>
+  </g>
+
+  <!-- Frame 3.4 (FRENZY - Frame 4: Fire flickers right, smoke puff from keyboard) -->
+  <g id="frenzy-f4" transform="translate(192, 128)">
+    <!-- Fire Flame Flickered to Right -->
+    <path d="M37 12 C43 7, 48 4, 45 0 C41 4, 38 8, 35 12 Z" class="fire-main"/>
+    <path d="M38 10 C42 6, 45 4, 43 2 C41 4, 39 7, 37 10 Z" class="fire-core"/>
+    <!-- Left Ear -->
+    <rect x="22" y="9" width="7" height="15" rx="3" fill="#FFF8F0" class="outline"/>
+    <rect x="24" y="12" width="3" height="9" rx="1" class="blush"/>
+    <!-- Right Floppy Ear -->
+    <path d="M37 11 C43 11, 48 15, 46 21 C45 24, 41 24, 38 19 Z" fill="#FFF8F0" class="outline"/>
+    <path d="M38 13 C42 13, 45 16, 44 19 C43 21, 41 20, 39 16 Z" class="blush"/>
+    <!-- Bun Body -->
+    <ellipse cx="32" cy="36" rx="16" ry="14" fill="#EADBC8" class="outline"/>
+    <ellipse cx="32" cy="35" rx="16" ry="13" class="fur-base"/>
+    <circle cx="21" cy="38" r="2.5" class="blush"/>
+    <circle cx="43" cy="38" r="2.5" class="blush"/>
+    <!-- Eyes -->
+    <ellipse cx="27" cy="33" rx="3" ry="3.2" class="eye-dark"/>
+    <circle cx="28" cy="32" r="1.2" fill="#FFFFFF"/>
+    <path d="M23 29 L29 31" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+    <ellipse cx="37" cy="33" rx="3" ry="3.2" class="eye-dark"/>
+    <circle cx="38" cy="32" r="1.2" fill="#FFFFFF"/>
+    <path d="M41 29 L35 31" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+    <!-- Shouting Mouth -->
+    <path d="M30 38 Q32 41 34 38 Z" class="blush" stroke="#2E221F" stroke-width="1"/>
+    <!-- Scarf -->
+    <path d="M20 42 C24 45, 40 45, 44 42 C45 46, 41 48, 32 48 C23 48, 19 46, 20 42 Z" class="scarf" stroke="#2E221F" stroke-width="1.5"/>
+    <!-- Keyboard Deck -->
+    <rect x="16" y="50" width="32" height="11" rx="2" class="keyboard-base" stroke="#2E221F" stroke-width="1.5"/>
+    <!-- Smoke Puff from keyboard -->
+    <circle cx="24" cy="46" r="2" fill="#EADBC8" opacity="0.8"/>
+    <circle cx="28" cy="44" r="2.5" fill="#FFF8F0" opacity="0.8"/>
+    <!-- Paws -->
+    <ellipse cx="30" cy="52" rx="3" ry="2.5" class="fur-base" stroke="#2E221F" stroke-width="1"/>
+    <ellipse cx="38" cy="52" rx="3" ry="2.5" class="fur-base" stroke="#2E221F" stroke-width="1"/>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- ROW 4 (Y: 192px) — DISK STATE (Caramel notebook, fast page flipping)      -->
+  <!-- ========================================================================= -->
+
+  <!-- Frame 4.1 (DISK - Frame 1: Looking down at open book, scanning pages) -->
+  <g id="disk-f1" transform="translate(0, 192)">
+    <!-- Ears -->
+    <rect x="22" y="11" width="7" height="15" rx="3" fill="#FFF8F0" class="outline"/>
+    <rect x="24" y="14" width="3" height="9" rx="1" class="blush"/>
+    <path d="M37 15 C42 15, 46 19, 44 25 C43 28, 39 28, 37 23 Z" fill="#FFF8F0" class="outline"/>
+    <path d="M38 17 C41 17, 43 20, 42 23 C41 25, 39 24, 38 20 Z" class="blush"/>
+    <!-- Bun Body -->
+    <ellipse cx="32" cy="37" rx="16" ry="14" fill="#EADBC8" class="outline"/>
+    <ellipse cx="32" cy="36" rx="16" ry="13" class="fur-base"/>
+    <circle cx="22" cy="39" r="2.5" class="blush"/>
+    <circle cx="42" cy="39" r="2.5" class="blush"/>
+    <!-- Eyes looking down intently at book -->
+    <ellipse cx="27" cy="36" rx="2.5" ry="2.8" class="eye-dark"/>
+    <circle cx="27" cy="37" r="0.8" fill="#FFFFFF"/>
+    <ellipse cx="37" cy="36" rx="2.5" ry="2.8" class="eye-dark"/>
+    <circle cx="37" cy="37" r="0.8" fill="#FFFFFF"/>
+    <line x1="29.5" y1="35" x2="34.5" y2="35" class="outline-thin"/>
+    <!-- Scarf -->
+    <path d="M20 43 C24 46, 40 46, 44 43 C45 47, 41 49, 32 49 C23 49, 19 47, 20 43 Z" class="scarf" stroke="#2E221F" stroke-width="1.5"/>
+    <!-- Caramel Leather Book Base -->
+    <path d="M14 58 L14 48 Q32 49 50 48 L50 58 Q32 59 14 58 Z" class="book-cover" stroke="#2E221F" stroke-width="1.5"/>
+    <!-- Cream Pages -->
+    <path d="M16 56 L16 48 Q32 50 48 48 L48 56 Q32 58 16 56 Z" class="book-pages" stroke="#2E221F" stroke-width="1"/>
+    <line x1="32" y1="49" x2="32" y2="58" stroke="#8B5A2B" stroke-width="1.2"/>
+    <!-- Paws holding pages -->
+    <circle cx="17" cy="50" r="2.5" class="fur-base" stroke="#2E221F" stroke-width="1"/>
+    <circle cx="47" cy="50" r="2.5" class="fur-base" stroke="#2E221F" stroke-width="1"/>
+  </g>
+
+  <!-- Frame 4.2 (DISK - Frame 2: Page flipped upward in mid-air) -->
+  <g id="disk-f2" transform="translate(64, 192)">
+    <!-- Ears -->
+    <rect x="22" y="10" width="7" height="15" rx="3" fill="#FFF8F0" class="outline"/>
+    <rect x="24" y="13" width="3" height="9" rx="1" class="blush"/>
+    <path d="M37 13 C43 13, 47 17, 45 23 C44 26, 40 26, 37 21 Z" fill="#FFF8F0" class="outline"/>
+    <path d="M38 15 C42 15, 44 18, 43 21 C42 23, 40 22, 38 18 Z" class="blush"/>
+    <!-- Bun Body -->
+    <ellipse cx="32" cy="37" rx="16" ry="14" fill="#EADBC8" class="outline"/>
+    <ellipse cx="32" cy="36" rx="16" ry="13" class="fur-base"/>
+    <circle cx="22" cy="39" r="2.5" class="blush"/>
+    <circle cx="42" cy="39" r="2.5" class="blush"/>
+    <!-- Eyes Tracking Page -->
+    <ellipse cx="27" cy="35" rx="2.5" ry="2.8" class="eye-dark"/>
+    <circle cx="28" cy="34" r="0.8" fill="#FFFFFF"/>
+    <ellipse cx="37" cy="35" rx="2.5" ry="2.8" class="eye-dark"/>
+    <circle cx="38" cy="34" r="0.8" fill="#FFFFFF"/>
+    <!-- Scarf -->
+    <path d="M20 43 C24 46, 40 46, 44 43 C45 47, 41 49, 32 49 C23 49, 19 47, 20 43 Z" class="scarf" stroke="#2E221F" stroke-width="1.5"/>
+    <!-- Book Base -->
+    <path d="M14 58 L14 48 Q32 49 50 48 L50 58 Q32 59 14 58 Z" class="book-cover" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M16 56 L16 48 Q32 50 48 48 L48 56 Q32 58 16 56 Z" class="book-pages" stroke="#2E221F" stroke-width="1"/>
+    <line x1="32" y1="49" x2="32" y2="58" stroke="#8B5A2B" stroke-width="1.2"/>
+    <!-- Flipping Page Curved Up -->
+    <path d="M32 57 Q38 46 44 42 L42 40 Q35 44 32 57 Z" class="book-pages" stroke="#2E221F" stroke-width="1"/>
+    <!-- Motion Arc -->
+    <path d="M46 44 C48 46, 48 49, 47 51" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round"/>
+    <!-- Paws -->
+    <circle cx="17" cy="50" r="2.5" class="fur-base" stroke="#2E221F" stroke-width="1"/>
+    <circle cx="43" cy="42" r="2.5" class="fur-base" stroke="#2E221F" stroke-width="1"/>
+  </g>
+
+  <!-- Frame 4.3 (DISK - Frame 3: Page swooshes to left side, ear flutters in breeze) -->
+  <g id="disk-f3" transform="translate(128, 192)">
+    <!-- Ears (Floppy ear blown slightly by wind) -->
+    <rect x="22" y="10" width="7" height="15" rx="3" fill="#FFF8F0" class="outline"/>
+    <rect x="24" y="13" width="3" height="9" rx="1" class="blush"/>
+    <path d="M37 12 C44 10, 49 14, 47 20 C46 23, 42 24, 38 20 Z" fill="#FFF8F0" class="outline"/>
+    <path d="M39 14 C43 12, 46 15, 45 18 C44 20, 41 21, 39 17 Z" class="blush"/>
+    <!-- Bun Body -->
+    <ellipse cx="32" cy="37" rx="16" ry="14" fill="#EADBC8" class="outline"/>
+    <ellipse cx="32" cy="36" rx="16" ry="13" class="fur-base"/>
+    <circle cx="22" cy="39" r="2.5" class="blush"/>
+    <circle cx="42" cy="39" r="2.5" class="blush"/>
+    <!-- Eyes Looking Left -->
+    <ellipse cx="27" cy="35" rx="2.5" ry="2.8" class="eye-dark"/>
+    <circle cx="26" cy="34" r="0.8" fill="#FFFFFF"/>
+    <ellipse cx="37" cy="35" rx="2.5" ry="2.8" class="eye-dark"/>
+    <circle cx="36" cy="34" r="0.8" fill="#FFFFFF"/>
+    <!-- Scarf Flutter -->
+    <path d="M19 43 C23 46, 39 46, 45 42 C46 46, 42 48, 32 48 C22 48, 18 46, 19 43 Z" class="scarf" stroke="#2E221F" stroke-width="1.5"/>
+    <!-- Book Base -->
+    <path d="M14 58 L14 48 Q32 49 50 48 L50 58 Q32 59 14 58 Z" class="book-cover" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M16 56 L16 48 Q32 50 48 48 L48 56 Q32 58 16 56 Z" class="book-pages" stroke="#2E221F" stroke-width="1"/>
+    <line x1="32" y1="49" x2="32" y2="58" stroke="#8B5A2B" stroke-width="1.2"/>
+    <!-- Page Landing Left -->
+    <path d="M32 57 Q26 46 20 42 L22 40 Q29 44 32 57 Z" class="book-pages" stroke="#2E221F" stroke-width="1"/>
+    <path d="M18 44 C16 46, 16 49, 17 51" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round"/>
+    <!-- Paws -->
+    <circle cx="21" cy="42" r="2.5" class="fur-base" stroke="#2E221F" stroke-width="1"/>
+    <circle cx="47" cy="50" r="2.5" class="fur-base" stroke="#2E221F" stroke-width="1"/>
+  </g>
+
+  <!-- Frame 4.4 (DISK - Frame 4: Page settled, paw reaches for next flip) -->
+  <g id="disk-f4" transform="translate(192, 192)">
+    <!-- Ears -->
+    <rect x="22" y="11" width="7" height="15" rx="3" fill="#FFF8F0" class="outline"/>
+    <rect x="24" y="14" width="3" height="9" rx="1" class="blush"/>
+    <path d="M37 14 C42 14, 46 18, 44 24 C43 27, 39 27, 37 22 Z" fill="#FFF8F0" class="outline"/>
+    <path d="M38 16 C41 16, 43 19, 42 22 C41 24, 39 23, 38 19 Z" class="blush"/>
+    <!-- Bun Body -->
+    <ellipse cx="32" cy="37" rx="16" ry="14" fill="#EADBC8" class="outline"/>
+    <ellipse cx="32" cy="36" rx="16" ry="13" class="fur-base"/>
+    <circle cx="22" cy="39" r="2.5" class="blush"/>
+    <circle cx="42" cy="39" r="2.5" class="blush"/>
+    <!-- Eyes Scanning Fast -->
+    <ellipse cx="27" cy="36" rx="2.5" ry="2.8" class="eye-dark"/>
+    <circle cx="28" cy="36" r="0.8" fill="#FFFFFF"/>
+    <ellipse cx="37" cy="36" rx="2.5" ry="2.8" class="eye-dark"/>
+    <circle cx="38" cy="36" r="0.8" fill="#FFFFFF"/>
+    <!-- Scarf -->
+    <path d="M20 43 C24 46, 40 46, 44 43 C45 47, 41 49, 32 49 C23 49, 19 47, 20 43 Z" class="scarf" stroke="#2E221F" stroke-width="1.5"/>
+    <!-- Book Base -->
+    <path d="M14 58 L14 48 Q32 49 50 48 L50 58 Q32 59 14 58 Z" class="book-cover" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M16 56 L16 48 Q32 50 48 48 L48 56 Q32 58 16 56 Z" class="book-pages" stroke="#2E221F" stroke-width="1"/>
+    <line x1="32" y1="49" x2="32" y2="58" stroke="#8B5A2B" stroke-width="1.2"/>
+    <!-- Paws Ready -->
+    <circle cx="17" cy="51" r="2.5" class="fur-base" stroke="#2E221F" stroke-width="1"/>
+    <circle cx="45" cy="46" r="2.5" class="fur-base" stroke="#2E221F" stroke-width="1"/>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- ROW 5 (Y: 256px) — REST STATE (Sleeping with lavender pillow & Zzz)       -->
+  <!-- ========================================================================= -->
+
+  <!-- Frame 5.1 (REST - Frame 1: Curled up sleeping, hugging lavender pillow) -->
+  <g id="rest-f1" transform="translate(0, 256)">
+    <!-- Big Lavender Pillow -->
+    <path d="M8 44 C8 34, 18 30, 32 30 C46 30, 56 34, 56 44 C56 54, 46 58, 32 58 C18 58, 8 54, 8 44 Z" class="pillow-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M10 42 C10 33, 20 29, 32 29 C44 29, 54 33, 54 42 C54 51, 44 55, 32 55 C20 55, 10 51, 10 42 Z" class="pillow-base"/>
+    <!-- Pillow Tuft Corner Details -->
+    <circle cx="12" cy="42" r="1.5" fill="#C5B9D8"/>
+    <circle cx="52" cy="42" r="1.5" fill="#C5B9D8"/>
+    <!-- Sleeping Bun Body (Curled Sideways) -->
+    <ellipse cx="30" cy="42" rx="14" ry="11" fill="#EADBC8" class="outline"/>
+    <ellipse cx="30" cy="41" rx="14" ry="10" class="fur-base"/>
+    <!-- Floppy Ears relaxed along pillow -->
+    <path d="M18 36 C13 36, 11 40, 14 43 C16 45, 20 44, 21 40 Z" fill="#FFF8F0" class="outline"/>
+    <path d="M17 38 C14 38, 13 40, 15 42 C17 43, 19 42, 19 39 Z" class="blush"/>
+    <path d="M25 33 C22 31, 21 27, 24 25 C27 24, 29 27, 28 31 Z" fill="#FFF8F0" class="outline"/>
+    <!-- Scarf tucked cozily -->
+    <path d="M26 43 C29 45, 36 45, 39 43 C39 46, 36 48, 30 48 C26 48, 25 45, 26 43 Z" class="scarf" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Peaceful Closed Eye Line (- -) & Blush -->
+    <path d="M23 39 L27 39" stroke="#3D2B27" stroke-width="1.6" stroke-linecap="round"/>
+    <circle cx="21" cy="42" r="2" class="blush"/>
+    <!-- Paws hugging pillow -->
+    <circle cx="34" cy="44" r="2.5" class="fur-base" stroke="#2E221F" stroke-width="1"/>
+    <!-- Tiny Sleep Bubble emerging -->
+    <circle cx="16" cy="34" r="2" class="steam-bubble" stroke="#9D8BB5" stroke-width="0.8"/>
+  </g>
+
+  <!-- Frame 5.2 (REST - Frame 2: Tummy expands on inhale, bubble floats) -->
+  <g id="rest-f2" transform="translate(64, 256)">
+    <!-- Pillow -->
+    <path d="M8 44 C8 34, 18 30, 32 30 C46 30, 56 34, 56 44 C56 54, 46 58, 32 58 C18 58, 8 54, 8 44 Z" class="pillow-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M10 42 C10 33, 20 29, 32 29 C44 29, 54 33, 54 42 C54 51, 44 55, 32 55 C20 55, 10 51, 10 42 Z" class="pillow-base"/>
+    <!-- Bun Body (Tummy expanded 1px) -->
+    <ellipse cx="30" cy="41" rx="14.5" ry="11.5" fill="#EADBC8" class="outline"/>
+    <ellipse cx="30" cy="40" rx="14.5" ry="10.5" class="fur-base"/>
+    <!-- Ears -->
+    <path d="M18 35 C13 35, 11 39, 14 42 C16 44, 20 43, 21 39 Z" fill="#FFF8F0" class="outline"/>
+    <path d="M17 37 C14 37, 13 39, 15 41 C17 42, 19 41, 19 38 Z" class="blush"/>
+    <path d="M25 32 C22 30, 21 26, 24 24 C27 23, 29 26, 28 30 Z" fill="#FFF8F0" class="outline"/>
+    <!-- Scarf -->
+    <path d="M26 42 C29 44, 36 44, 39 42 C39 45, 36 47, 30 47 C26 47, 25 44, 26 42 Z" class="scarf" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Eye & Blush -->
+    <path d="M23 38 L27 38" stroke="#3D2B27" stroke-width="1.6" stroke-linecap="round"/>
+    <circle cx="21" cy="41" r="2.2" class="blush"/>
+    <!-- Paw -->
+    <circle cx="34" cy="43" r="2.5" class="fur-base" stroke="#2E221F" stroke-width="1"/>
+    <!-- Sleep Bubble Floating Up -->
+    <circle cx="15" cy="28" r="2.5" class="steam-bubble" stroke="#9D8BB5" stroke-width="0.8"/>
+  </g>
+
+  <!-- Frame 5.3 (REST - Frame 3: Sleep bubble turns to cute pixel "z") -->
+  <g id="rest-f3" transform="translate(128, 256)">
+    <!-- Pillow -->
+    <path d="M8 44 C8 34, 18 30, 32 30 C46 30, 56 34, 56 44 C56 54, 46 58, 32 58 C18 58, 8 54, 8 44 Z" class="pillow-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M10 42 C10 33, 20 29, 32 29 C44 29, 54 33, 54 42 C54 51, 44 55, 32 55 C20 55, 10 51, 10 42 Z" class="pillow-base"/>
+    <!-- Bun Body -->
+    <ellipse cx="30" cy="42" rx="14" ry="11" fill="#EADBC8" class="outline"/>
+    <ellipse cx="30" cy="41" rx="14" ry="10" class="fur-base"/>
+    <!-- Ears -->
+    <path d="M18 36 C13 36, 11 40, 14 43 C16 45, 20 44, 21 40 Z" fill="#FFF8F0" class="outline"/>
+    <path d="M17 38 C14 38, 13 40, 15 42 C17 43, 19 42, 19 39 Z" class="blush"/>
+    <path d="M25 33 C22 31, 21 27, 24 25 C27 24, 29 27, 28 31 Z" fill="#FFF8F0" class="outline"/>
+    <!-- Scarf -->
+    <path d="M26 43 C29 45, 36 45, 39 43 C39 46, 36 48, 30 48 C26 48, 25 45, 26 43 Z" class="scarf" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Eye & Blush -->
+    <path d="M23 39 L27 39" stroke="#3D2B27" stroke-width="1.6" stroke-linecap="round"/>
+    <circle cx="21" cy="42" r="2" class="blush"/>
+    <!-- Paw -->
+    <circle cx="34" cy="44" r="2.5" class="fur-base" stroke="#2E221F" stroke-width="1"/>
+    <!-- Pixel 'z' floating -->
+    <text x="14" y="24" class="text-z">z</text>
+    <circle cx="18" cy="30" r="1.5" class="steam-bubble" stroke="#9D8BB5" stroke-width="0.8"/>
+  </g>
+
+  <!-- Frame 5.4 (REST - Frame 4: Tummy relaxes, bigger 'Z' floats with tiny sparkles) -->
+  <g id="rest-f4" transform="translate(192, 256)">
+    <!-- Pillow -->
+    <path d="M8 44 C8 34, 18 30, 32 30 C46 30, 56 34, 56 44 C56 54, 46 58, 32 58 C18 58, 8 54, 8 44 Z" class="pillow-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M10 42 C10 33, 20 29, 32 29 C44 29, 54 33, 54 42 C54 51, 44 55, 32 55 C20 55, 10 51, 10 42 Z" class="pillow-base"/>
+    <!-- Bun Body -->
+    <ellipse cx="30" cy="42" rx="14" ry="11" fill="#EADBC8" class="outline"/>
+    <ellipse cx="30" cy="41" rx="14" ry="10" class="fur-base"/>
+    <!-- Ears -->
+    <path d="M18 36 C13 36, 11 40, 14 43 C16 45, 20 44, 21 40 Z" fill="#FFF8F0" class="outline"/>
+    <path d="M17 38 C14 38, 13 40, 15 42 C17 43, 19 42, 19 39 Z" class="blush"/>
+    <path d="M25 33 C22 31, 21 27, 24 25 C27 24, 29 27, 28 31 Z" fill="#FFF8F0" class="outline"/>
+    <!-- Scarf -->
+    <path d="M26 43 C29 45, 36 45, 39 43 C39 46, 36 48, 30 48 C26 48, 25 45, 26 43 Z" class="scarf" stroke="#2E221F" stroke-width="1.2"/>
+    <!-- Eye & Blush -->
+    <path d="M23 39 L27 39" stroke="#3D2B27" stroke-width="1.6" stroke-linecap="round"/>
+    <circle cx="21" cy="42" r="2" class="blush"/>
+    <!-- Paw -->
+    <circle cx="34" cy="44" r="2.5" class="fur-base" stroke="#2E221F" stroke-width="1"/>
+    <!-- Big 'Z' and sparkle -->
+    <text x="16" y="16" class="text-z" font-size="11px">Z</text>
+    <circle cx="26" cy="14" r="0.8" fill="#DDD5E9"/>
+    <circle cx="12" cy="18" r="0.6" fill="#DDD5E9"/>
+    <circle cx="15" cy="32" r="1.5" class="steam-bubble" stroke="#9D8BB5" stroke-width="0.8"/>
+  </g>
+</svg>

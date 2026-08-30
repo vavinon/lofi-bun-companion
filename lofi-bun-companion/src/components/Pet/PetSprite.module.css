@@ -3,6 +3,8 @@
  *
  * Spritesheet Dimensions: 256x320 px (4 frames x 64px, 5 states x 64px)
  * Employs crisp-edges/pixelated rendering and GPU-accelerated steps() keyframes.
+ * Uses CSS Custom Properties (--sprite-url, --prop-url, --anim-duration)
+ * for dynamic multiverse companion switching with zero JS animation overhead.
  */
 
 .spriteWrapper {
@@ -14,11 +16,13 @@
   justify-content: center;
   transform-origin: center bottom;
   user-select: none;
+  transition: opacity 0.15s ease-in-out;
 }
 
 .spriteCanvas {
   width: 64px;
   height: 64px;
+  background-image: var(--sprite-url);
   background-repeat: no-repeat;
   background-size: 256px 320px;
   image-rendering: pixelated;
@@ -38,37 +42,37 @@
   }
 }
 
-/* Row 1 (Y: 0px) — IDLE: Tea sipping & gentle ear twitches (800ms) */
+/* Row 1 (Y: 0px) — IDLE: Relaxed resting & gentle idle animation (Default: 800ms) */
 .idle {
   background-position-y: 0;
-  animation: playFrames 0.8s steps(4) infinite;
+  animation: playFrames var(--anim-duration, 0.8s) steps(4) infinite;
 }
 
-/* Row 2 (Y: -64px) — FOCUS: Steady keyboard typing & rhythmic head bobs (600ms) */
+/* Row 2 (Y: -64px) — FOCUS: Steady keyboard typing & rhythmic movement (Default: 600ms) */
 .focus {
   background-position-y: -64px;
-  animation: playFrames 0.6s steps(4) infinite;
+  animation: playFrames var(--anim-duration, 0.6s) steps(4) infinite;
 }
 
-/* Row 3 (Y: -128px) — FRENZY: Turbo typing & flame bursts (300ms) */
+/* Row 3 (Y: -128px) — FRENZY: High-speed turbo mode (Default: 300ms) */
 .frenzy {
   background-position-y: -128px;
-  animation: playFrames 0.3s steps(4) infinite;
+  animation: playFrames var(--anim-duration, 0.3s) steps(4) infinite;
 }
 
-/* Row 4 (Y: -192px) — DISK: Fast notebook page-flipping (400ms) */
+/* Row 4 (Y: -192px) — DISK: Fast data reading / processing (Default: 400ms) */
 .disk {
   background-position-y: -192px;
-  animation: playFrames 0.4s steps(4) infinite;
+  animation: playFrames var(--anim-duration, 0.4s) steps(4) infinite;
 }
 
-/* Row 5 (Y: -256px) — REST: Hugging lavender pillow & sleep bubbles (1000ms) */
+/* Row 5 (Y: -256px) — REST: Deep sleep / relaxation (Default: 1000ms) */
 .rest {
   background-position-y: -256px;
-  animation: playFrames 1s steps(4) infinite;
+  animation: playFrames var(--anim-duration, 1s) steps(4) infinite;
 }
 
-/* Independent Carrot Stack Prop Layer (RAM > 80%) */
+/* Independent Prop Layer (RAM > 80%) */
 @keyframes propBob {
   0%,
   100% {
@@ -79,12 +83,13 @@
   }
 }
 
-.propCarrot {
+.propLayer {
   position: absolute;
   top: -8px;
   left: 18px;
   width: 28px;
   height: 20px;
+  background-image: var(--prop-url);
   background-repeat: no-repeat;
   background-size: 28px 20px;
   image-rendering: pixelated;

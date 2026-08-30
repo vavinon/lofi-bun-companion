@@ -1,15 +1,16 @@
 /**
- * Pure CSS Step Animator for Lo-fi Bun Sprites.
+ * Pure CSS Step Animator for Multiverse Companions.
  *
  * Implements 0.0% CPU GPU-accelerated frame animation using CSS `steps(4)`
- * and background-position translation over the 256x320 px vector spritesheet.
- * Selectively subscribes to Zustand store to react to resolved states and RAM overlays.
+ * and background-position translation over 256x320 px vector spritesheets.
+ * Dynamically loads active companion sprite sheets, signature props, and
+ * animation timings from the companion registry with zero JS animation overhead.
  */
 
 import React from 'react';
 import { useCompanionStore } from '../../stores/companionStore';
-import bunSpritesUrl from '../../assets/sprites/bun-sprites.svg';
-import propCarrotUrl from '../../assets/sprites/prop-carrot.svg';
+import { getCompanion } from '../../data/companionRegistry';
+import { AnimationDurations } from '../../types/companion';
 import styles from './PetSprite.module.css';
 
 export interface PetSpriteProps {
@@ -24,12 +25,18 @@ export const PetSprite: React.FC<PetSpriteProps> = ({
   className = '',
 }) => {
   // Selective Zustand Subscriptions
+  const activeCompanionId = useCompanionStore(
+    (state) => state.activeCompanionId
+  );
   const activeState = useCompanionStore(
     (state) => state.resolvedState.activeState
   );
   const isHeavyRam = useCompanionStore(
     (state) => state.resolvedState.isHeavyRam
   );
+
+  // Retrieve active companion metadata from SSOT registry
+  const companion = getCompanion(activeCompanionId);
 
   // Map companion state to corresponding CSS animation class
   const stateClassMap: Record<string, string> = {
@@ -42,28 +49,41 @@ export const PetSprite: React.FC<PetSpriteProps> = ({
 
   const currentAnimClass = stateClassMap[activeState] || styles.idle;
 
+  // Derive dynamic animation duration based on character contract
+  const stateKey = activeState.toLowerCase() as keyof AnimationDurations;
+  const durationMs = companion.animationDurations[stateKey] ?? 800;
+  const durationSec = `${durationMs / 1000}s`;
+
+  // Dynamic CSS variables passed to GPU styling
+  const customCssVars = {
+    transform: `scale(${scale})`,
+    '--sprite-url': `url("${companion.spriteUrl}")`,
+    '--prop-url': `url("${companion.propUrl}")`,
+    '--anim-duration': durationSec,
+  } as React.CSSProperties;
+
   return (
     <div
       className={`${styles.spriteWrapper} ${className}`}
-      style={{ transform: `scale(${scale})` }}
+      style={customCssVars}
       data-testid="pet-sprite-wrapper"
+      data-companion-id={activeCompanionId}
       data-state={activeState}
       data-heavy-ram={isHeavyRam ? 'true' : 'false'}
     >
       {/* 64x64 Base Sprite Canvas with Pure CSS Step Keyframes */}
       <div
         className={`${styles.spriteCanvas} ${currentAnimClass}`}
-        style={{ backgroundImage: `url(${bunSpritesUrl})` }}
         role="img"
-        aria-label={`Lo-fi Bun in ${activeState} state`}
+        aria-label={`${companion.displayName} in ${activeState} state`}
       >
-        {/* Dynamic Head Prop Layer (Carrot Stack when RAM > 80%) */}
+        {/* Dynamic Head Prop Layer (Signature item when RAM > 80%) */}
         {isHeavyRam && (
           <div
-            className={styles.propCarrot}
-            style={{ backgroundImage: `url(${propCarrotUrl})` }}
-            data-testid="carrot-prop-layer"
-            aria-label="Carrot stack prop on head"
+            className={styles.propLayer}
+            data-testid="companion-prop-layer"
+            data-prop-url={companion.propUrl}
+            aria-label={`${companion.displayName} prop on head`}
           />
         )}
       </div>

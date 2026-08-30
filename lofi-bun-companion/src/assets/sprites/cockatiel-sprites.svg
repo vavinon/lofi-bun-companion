@@ -1,0 +1,1149 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 320" width="256" height="320" shape-rendering="crispEdges">
+  <defs>
+    <!-- Shared Style Tokens for DJ Cockatiel -->
+    <style>
+      .outline { stroke: #2E221F; stroke-width: 2; stroke-linecap: square; stroke-linejoin: miter; }
+      .outline-thin { stroke: #2E221F; stroke-width: 1; stroke-linecap: square; }
+      .tiel-body { fill: #ECEFF1; }
+      .tiel-grey { fill: #B0BEC5; }
+      .tiel-shadow { fill: #78909C; }
+      .tiel-yellow { fill: #FFF176; }
+      .tiel-yellow-shadow { fill: #FBC02D; }
+      .tiel-crest-tip { fill: #FFEE58; }
+      .cheek-orange { fill: #FF7043; }
+      .cheek-shadow { fill: #E64A19; }
+      .beak-dark { fill: #546E7A; }
+      .beak-light { fill: #90A4AE; }
+      .eye-dark { fill: #2E221F; }
+      .eye-shine { fill: #FFFFFF; }
+      .wing-patch { fill: #FFFFFF; }
+      .gear-teal { fill: #4DB6AC; }
+      .gear-dark { fill: #00796B; }
+      .gear-light { fill: #80CBC4; }
+      .gear-cushion { fill: #37474F; }
+      .vinyl-dark { fill: #212121; }
+      .vinyl-groove { fill: #37474F; }
+      .vinyl-label { fill: #FF7043; }
+      .vinyl-center { fill: #FFF176; }
+      .seed-gold { fill: #F4D03F; }
+      .seed-shadow { fill: #D4AC0D; }
+      .seed-shell { fill: #4E342E; }
+      .spark-fire { fill: #FF7043; }
+      .note-teal { fill: #4DB6AC; }
+      .note-gold { fill: #FBC02D; }
+      .wood-perch { fill: #8D6E63; }
+      .wood-shadow { fill: #5D4037; }
+      .text-z { fill: #80CBC4; font-family: monospace; font-size: 8px; font-weight: bold; }
+    </style>
+  </defs>
+
+  <!-- ========================================================================= -->
+  <!-- ROW 0 (Y: 0px) — IDLE STATE (Standing, rhythmic head-bob, waving crest)   -->
+  <!-- ========================================================================= -->
+
+  <!-- Frame 0.1 (IDLE - Frame 1: Perched tall, crest gently swaying, bright orange cheeks) -->
+  <g id="tiel-idle-f1" transform="translate(0, 0)">
+    <!-- Tail Feathers (Tilted long grey rects trailing behind) -->
+    <path d="M22 46 L14 60 L18 60 L26 48 Z" class="tiel-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <path d="M24 47 L18 61 L21 61 L27 49 Z" class="tiel-grey"/>
+
+    <!-- Left / Right Feet Perched on Base -->
+    <ellipse cx="28" cy="56" rx="3.5" ry="2" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="38" cy="56" rx="3.5" ry="2" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+
+    <!-- Cockatiel Plump Body (Grey-White gradient/layers) -->
+    <ellipse cx="33" cy="44" rx="14" ry="12" class="tiel-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="33" cy="43.5" rx="13.5" ry="11.5" class="tiel-body"/>
+    <!-- Soft Grey Chest Contour -->
+    <path d="M24 40 Q33 48 42 40 Q33 52 24 40 Z" class="tiel-grey" opacity="0.8"/>
+
+    <!-- Wing Layer with Distinctive White Cockatiel Wing Stripe -->
+    <ellipse cx="25" cy="42" rx="6" ry="9" class="tiel-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="25" cy="41.5" rx="5.5" ry="8.5" class="tiel-grey"/>
+    <!-- Iconic White Wing Flash -->
+    <path d="M22 37 C22 34, 25 34, 26 38 C27 42, 24 46, 22 47 Z" class="wing-patch"/>
+
+    <!-- Head Base (Warm Yellow Face Mask) -->
+    <ellipse cx="34" cy="27" rx="11" ry="10" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="34" cy="26.5" rx="10.5" ry="9.5" class="tiel-yellow"/>
+
+    <!-- Iconic Yellow Feather Crest (Tall expressive Mohawk plumes) -->
+    <g id="crest-f1">
+      <path d="M34 18 C33 12, 30 7, 26 3 C29 8, 33 13, 36 17 Z" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="1.5"/>
+      <path d="M34 17.5 C33 12.5, 30.5 8, 27 4 C29.5 8.5, 33 13.5, 35.5 17 Z" class="tiel-crest-tip"/>
+      <path d="M36 18 C36 11, 35 6, 32 1 C35 7, 37 12, 38 18 Z" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="1.5"/>
+      <path d="M36 17.5 C36 11.5, 35.5 7, 33 2 C35.5 7.5, 37 12.5, 37.5 17.5 Z" class="tiel-crest-tip"/>
+      <path d="M38 19 C40 14, 41 10, 40 5 C41 10, 41 15, 39 19 Z" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    </g>
+
+    <!-- Beak (Cute curved hook beak) -->
+    <path d="M40 27 C43 27, 45 29, 43 32 C41 33, 39 31, 39 28 Z" class="beak-dark" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M40 27.5 C42 27.5, 43.5 29, 42 31 Z" class="beak-light"/>
+
+    <!-- Large Bright Orange Cheek Dot (Blush Dot) -->
+    <ellipse cx="31" cy="29" rx="3.5" ry="3.5" class="cheek-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="31" cy="28.8" rx="3.2" ry="3.2" class="cheek-orange"/>
+
+    <!-- Sparkling Curious Bead Eye -->
+    <ellipse cx="36" cy="24" rx="2.2" ry="2.5" class="eye-dark"/>
+    <circle cx="35.5" cy="23.2" r="0.8" class="eye-shine"/>
+    <circle cx="37" cy="25" r="0.4" class="eye-shine"/>
+  </g>
+
+  <!-- Frame 0.2 (IDLE - Frame 2: Body bobs down 1px into groove, crest perking up) -->
+  <g id="tiel-idle-f2" transform="translate(64, 0)">
+    <!-- Tail Feathers -->
+    <path d="M22 47 L14 61 L18 61 L26 49 Z" class="tiel-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <path d="M24 48 L18 62 L21 62 L27 50 Z" class="tiel-grey"/>
+
+    <!-- Feet Perched -->
+    <ellipse cx="28" cy="56" rx="3.8" ry="1.8" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="38" cy="56" rx="3.8" ry="1.8" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+
+    <!-- Cockatiel Body (Squashed down 1px) -->
+    <ellipse cx="33" cy="45" rx="14.5" ry="11.5" class="tiel-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="33" cy="44.5" rx="14" ry="11" class="tiel-body"/>
+    <path d="M23 41 Q33 49 43 41 Q33 53 23 41 Z" class="tiel-grey" opacity="0.8"/>
+
+    <!-- Wing Layer -->
+    <ellipse cx="25" cy="43" rx="6" ry="8.5" class="tiel-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="25" cy="42.5" rx="5.5" ry="8" class="tiel-grey"/>
+    <path d="M22 38 C22 35, 25 35, 26 39 C27 43, 24 47, 22 48 Z" class="wing-patch"/>
+
+    <!-- Head Base (Bobs down 1px) -->
+    <ellipse cx="34" cy="28" rx="11" ry="10" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="34" cy="27.5" rx="10.5" ry="9.5" class="tiel-yellow"/>
+
+    <!-- Crest (Springs higher on the down-beat) -->
+    <g id="crest-f2">
+      <path d="M34 19 C32 12, 28 6, 23 2 C27 7, 32 13, 35 18 Z" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="1.5"/>
+      <path d="M34 18.5 C32 12.5, 28.5 7, 24 3 C27.5 8, 32 13.5, 34.5 18 Z" class="tiel-crest-tip"/>
+      <path d="M36 19 C35 11, 33 5, 29 0 C33 6, 36 12, 37 19 Z" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="1.5"/>
+      <path d="M36 18.5 C35 11.5, 33.5 6, 30 1 C33.5 7, 36 12.5, 36.5 18.5 Z" class="tiel-crest-tip"/>
+      <path d="M38 20 C40 14, 42 9, 41 4 C41.5 9.5, 41 15, 39 20 Z" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    </g>
+
+    <!-- Beak -->
+    <path d="M40 28 C43 28, 45 30, 43 33 C41 34, 39 32, 39 29 Z" class="beak-dark" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M40 28.5 C42 28.5, 43.5 30, 42 32 Z" class="beak-light"/>
+
+    <!-- Orange Cheek Dot -->
+    <ellipse cx="31" cy="30" rx="3.5" ry="3.5" class="cheek-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="31" cy="29.8" rx="3.2" ry="3.2" class="cheek-orange"/>
+
+    <!-- Eye (Half-lidded happy beat gaze) -->
+    <ellipse cx="36" cy="25" rx="2.2" ry="2.2" class="eye-dark"/>
+    <circle cx="35.5" cy="24.3" r="0.8" class="eye-shine"/>
+  </g>
+
+  <!-- Frame 0.3 (IDLE - Frame 3: Head nods forward, crest flips forward with groove) -->
+  <g id="tiel-idle-f3" transform="translate(128, 0)">
+    <!-- Tail Feathers -->
+    <path d="M22 46 L14 60 L18 60 L26 48 Z" class="tiel-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <path d="M24 47 L18 61 L21 61 L27 49 Z" class="tiel-grey"/>
+
+    <!-- Feet -->
+    <ellipse cx="28" cy="56" rx="3.5" ry="2" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="38" cy="56" rx="3.5" ry="2" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+
+    <!-- Body Base -->
+    <ellipse cx="33" cy="44" rx="14" ry="12" class="tiel-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="33" cy="43.5" rx="13.5" ry="11.5" class="tiel-body"/>
+    <path d="M24 40 Q33 48 42 40 Q33 52 24 40 Z" class="tiel-grey" opacity="0.8"/>
+
+    <!-- Wing Layer -->
+    <ellipse cx="25" cy="42" rx="6" ry="9" class="tiel-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="25" cy="41.5" rx="5.5" ry="8.5" class="tiel-grey"/>
+    <path d="M22 37 C22 34, 25 34, 26 38 C27 42, 24 46, 22 47 Z" class="wing-patch"/>
+
+    <!-- Head Base (Nods slightly forward X: 35) -->
+    <ellipse cx="35" cy="27" rx="11" ry="10" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="35" cy="26.5" rx="10.5" ry="9.5" class="tiel-yellow"/>
+
+    <!-- Crest (Curved rhythmically forward) -->
+    <g id="crest-f3">
+      <path d="M35 18 C36 12, 35 7, 33 3 C36 8, 38 13, 38 17 Z" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="1.5"/>
+      <path d="M35 17.5 C36 12.5, 35.5 8, 34 4 C36.5 8.5, 38 13.5, 37.5 17 Z" class="tiel-crest-tip"/>
+      <path d="M37 18 C39 12, 40 7, 39 2 C40 7, 41 12, 40 18 Z" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="1.5"/>
+      <path d="M37 17.5 C39 12.5, 39.5 8, 39 3 C39.8 7.5, 40.5 12.5, 39.5 17.5 Z" class="tiel-crest-tip"/>
+      <path d="M39 19 C42 15, 44 11, 44 6 C43.5 11, 42 15, 40 19 Z" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    </g>
+
+    <!-- Beak -->
+    <path d="M41 27 C44 27, 46 29, 44 32 C42 33, 40 31, 40 28 Z" class="beak-dark" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M41 27.5 C43 27.5, 44.5 29, 43 31 Z" class="beak-light"/>
+
+    <!-- Orange Cheek Dot -->
+    <ellipse cx="32" cy="29" rx="3.5" ry="3.5" class="cheek-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="32" cy="28.8" rx="3.2" ry="3.2" class="cheek-orange"/>
+
+    <!-- Sparkling Bead Eye -->
+    <ellipse cx="37" cy="24" rx="2.2" ry="2.5" class="eye-dark"/>
+    <circle cx="36.5" cy="23.2" r="0.8" class="eye-shine"/>
+    <circle cx="38" cy="25" r="0.4" class="eye-shine"/>
+  </g>
+
+  <!-- Frame 0.4 (IDLE - Frame 4: Smooth return beat, cheerful wink) -->
+  <g id="tiel-idle-f4" transform="translate(192, 0)">
+    <!-- Tail Feathers -->
+    <path d="M22 46 L14 60 L18 60 L26 48 Z" class="tiel-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <path d="M24 47 L18 61 L21 61 L27 49 Z" class="tiel-grey"/>
+
+    <!-- Feet -->
+    <ellipse cx="28" cy="56" rx="3.5" ry="2" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="38" cy="56" rx="3.5" ry="2" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+
+    <!-- Body Base -->
+    <ellipse cx="33" cy="44" rx="14" ry="12" class="tiel-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="33" cy="43.5" rx="13.5" ry="11.5" class="tiel-body"/>
+    <path d="M24 40 Q33 48 42 40 Q33 52 24 40 Z" class="tiel-grey" opacity="0.8"/>
+
+    <!-- Wing Layer -->
+    <ellipse cx="25" cy="42" rx="6" ry="9" class="tiel-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="25" cy="41.5" rx="5.5" ry="8.5" class="tiel-grey"/>
+    <path d="M22 37 C22 34, 25 34, 26 38 C27 42, 24 46, 22 47 Z" class="wing-patch"/>
+
+    <!-- Head Base -->
+    <ellipse cx="34" cy="27" rx="11" ry="10" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="34" cy="26.5" rx="10.5" ry="9.5" class="tiel-yellow"/>
+
+    <!-- Crest -->
+    <g id="crest-f4">
+      <path d="M34 18 C33 12, 30 7, 26 3 C29 8, 33 13, 36 17 Z" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="1.5"/>
+      <path d="M34 17.5 C33 12.5, 30.5 8, 27 4 C29.5 8.5, 33 13.5, 35.5 17 Z" class="tiel-crest-tip"/>
+      <path d="M36 18 C36 11, 35 6, 32 1 C35 7, 37 12, 38 18 Z" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="1.5"/>
+      <path d="M36 17.5 C36 11.5, 35.5 7, 33 2 C35.5 7.5, 37 12.5, 37.5 17.5 Z" class="tiel-crest-tip"/>
+      <path d="M38 19 C40 14, 41 10, 40 5 C41 10, 41 15, 39 19 Z" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    </g>
+
+    <!-- Beak -->
+    <path d="M40 27 C43 27, 45 29, 43 32 C41 33, 39 31, 39 28 Z" class="beak-dark" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M40 27.5 C42 27.5, 43.5 29, 42 31 Z" class="beak-light"/>
+
+    <!-- Orange Cheek Dot -->
+    <ellipse cx="31" cy="29" rx="3.5" ry="3.5" class="cheek-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="31" cy="28.8" rx="3.2" ry="3.2" class="cheek-orange"/>
+
+    <!-- Cheerful Wink Eye (^ ^ curve) -->
+    <path d="M34 25 Q36.5 22 39 25" fill="none" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- ROW 1 (Y: 64px) — FOCUS STATE (DJ Headphones, scratching vinyl turntable) -->
+  <!-- ========================================================================= -->
+
+  <!-- Frame 1.1 (FOCUS - Frame 1: Hands/claws on vinyl, turntable ready, DJ headphones on) -->
+  <g id="tiel-focus-f1" transform="translate(0, 64)">
+    <!-- DJ Turntable Deck Base (Bottom-Front) -->
+    <rect x="8" y="48" width="48" height="14" rx="3" class="vinyl-groove" stroke="#2E221F" stroke-width="1.5"/>
+    <rect x="10" y="49" width="44" height="4" rx="1" fill="#455A64"/>
+    <!-- Pitch Slider & Knobs -->
+    <rect x="44" y="54" width="3" height="6" rx="0.5" fill="#212121"/>
+    <line x1="45.5" y1="55" x2="45.5" y2="59" stroke="#80CBC4" stroke-width="1"/>
+    <circle cx="14" cy="56" r="1.5" class="vinyl-label"/>
+    <circle cx="19" cy="56" r="1.5" class="vinyl-center"/>
+
+    <!-- Turntable Vinyl Platter (Spinning disc) -->
+    <ellipse cx="32" cy="50" rx="15" ry="5.5" class="vinyl-dark" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="32" cy="50" rx="11" ry="3.8" fill="none" stroke="#37474F" stroke-width="1"/>
+    <!-- Vinyl Center Label -->
+    <ellipse cx="32" cy="50" rx="4.5" ry="1.8" class="vinyl-label"/>
+    <circle cx="32" cy="50" r="0.7" fill="#FFF176"/>
+
+    <!-- Cockatiel Plump Body Behind Deck -->
+    <ellipse cx="32" cy="40" rx="13" ry="10" class="tiel-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="39.5" rx="12.5" ry="9.5" class="tiel-body"/>
+
+    <!-- Head Base (Focus tilt) -->
+    <ellipse cx="32" cy="26" rx="10" ry="9" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="25.5" rx="9.5" ry="8.5" class="tiel-yellow"/>
+
+    <!-- DJ Studio Headphones (Retro Teal Headband + Ear Cushions) -->
+    <path d="M21 25 C21 16, 43 16, 43 25" fill="none" stroke="#2E221F" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M21 25 C21 16.5, 43 16.5, 43 25" fill="none" stroke="#4DB6AC" stroke-width="2" stroke-linecap="round"/>
+    <!-- Left / Right Earcups -->
+    <rect x="19" y="22" width="4" height="8" rx="2" class="gear-dark" stroke="#2E221F" stroke-width="1.2"/>
+    <rect x="19.5" y="22.5" width="3" height="7" rx="1.5" class="gear-teal"/>
+    <rect x="41" y="22" width="4" height="8" rx="2" class="gear-dark" stroke="#2E221F" stroke-width="1.2"/>
+    <rect x="41.5" y="22.5" width="3" height="7" rx="1.5" class="gear-teal"/>
+
+    <!-- Crest (Emerging between headphones) -->
+    <path d="M32 16 C30 11, 28 6, 25 2 C28 6, 31 11, 33 15 Z" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <path d="M34 16 C34 10, 33 5, 31 1 C33 5, 35 10, 35 15 Z" class="tiel-crest-tip"/>
+
+    <!-- Beak (Tilted down toward vinyl) -->
+    <path d="M31 29 C33 32, 35 32, 33 34 C31 34, 30 31, 31 29 Z" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+
+    <!-- Cheeks -->
+    <ellipse cx="26" cy="27" rx="3" ry="3" class="cheek-orange"/>
+    <ellipse cx="38" cy="27" rx="3" ry="3" class="cheek-orange"/>
+
+    <!-- Focused Eyes (Determined DJ gaze) -->
+    <circle cx="28" cy="23.5" r="1.5" class="eye-dark"/>
+    <circle cx="27.5" cy="23" r="0.5" class="eye-shine"/>
+    <circle cx="36" cy="23.5" r="1.5" class="eye-dark"/>
+    <circle cx="35.5" cy="23" r="0.5" class="eye-shine"/>
+
+    <!-- Scratching Claws / Wings Touching Vinyl (Left Scratch) -->
+    <ellipse cx="26" cy="49" rx="3.5" ry="2" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="38" cy="50" rx="3.5" ry="2" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+  </g>
+
+  <!-- Frame 1.2 (FOCUS - Frame 2: Scratch forward! Disc spins, subtle sound wave pulse) -->
+  <g id="tiel-focus-f2" transform="translate(64, 64)">
+    <!-- Turntable Deck -->
+    <rect x="8" y="48" width="48" height="14" rx="3" class="vinyl-groove" stroke="#2E221F" stroke-width="1.5"/>
+    <rect x="10" y="49" width="44" height="4" rx="1" fill="#455A64"/>
+    <rect x="44" y="54" width="3" height="6" rx="0.5" fill="#212121"/>
+    <line x1="45.5" y1="56" x2="45.5" y2="60" stroke="#80CBC4" stroke-width="1"/>
+    <circle cx="14" cy="56" r="1.5" class="vinyl-label"/>
+    <circle cx="19" cy="56" r="1.5" class="vinyl-center"/>
+
+    <!-- Vinyl Platter (Rotated angle groove) -->
+    <ellipse cx="32" cy="50" rx="15" ry="5.5" class="vinyl-dark" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="32" cy="50" rx="11" ry="3.8" fill="none" stroke="#37474F" stroke-width="1"/>
+    <ellipse cx="32" cy="50" rx="4.5" ry="1.8" class="vinyl-center"/>
+    <circle cx="32" cy="50" r="0.7" fill="#FF7043"/>
+    <!-- Scratch Motion Lines -->
+    <line x1="18" y1="48" x2="15" y2="47" stroke="#4DB6AC" stroke-width="1" stroke-linecap="round"/>
+    <line x1="46" y1="52" x2="49" y2="53" stroke="#4DB6AC" stroke-width="1" stroke-linecap="round"/>
+
+    <!-- Body Base -->
+    <ellipse cx="32" cy="39" rx="13" ry="10" class="tiel-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="38.5" rx="12.5" ry="9.5" class="tiel-body"/>
+
+    <!-- Head Base (Bobs down into beat) -->
+    <ellipse cx="32" cy="25" rx="10" ry="9" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="24.5" rx="9.5" ry="8.5" class="tiel-yellow"/>
+
+    <!-- Headphones -->
+    <path d="M21 24 C21 15, 43 15, 43 24" fill="none" stroke="#2E221F" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M21 24 C21 15.5, 43 15.5, 43 24" fill="none" stroke="#4DB6AC" stroke-width="2" stroke-linecap="round"/>
+    <rect x="19" y="21" width="4" height="8" rx="2" class="gear-dark" stroke="#2E221F" stroke-width="1.2"/>
+    <rect x="19.5" y="21.5" width="3" height="7" rx="1.5" class="gear-teal"/>
+    <rect x="41" y="21" width="4" height="8" rx="2" class="gear-dark" stroke="#2E221F" stroke-width="1.2"/>
+    <rect x="41.5" y="21.5" width="3" height="7" rx="1.5" class="gear-teal"/>
+
+    <!-- Crest -->
+    <path d="M32 15 C29 10, 27 5, 23 1 C27 5, 30 10, 33 14 Z" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <path d="M34 15 C33 9, 31 4, 29 0 C32 4, 34 9, 35 14 Z" class="tiel-crest-tip"/>
+
+    <!-- Beak -->
+    <path d="M31 28 C33 31, 35 31, 33 33 C31 33, 30 30, 31 28 Z" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+
+    <!-- Cheeks -->
+    <ellipse cx="26" cy="26" rx="3" ry="3" class="cheek-orange"/>
+    <ellipse cx="38" cy="26" rx="3" ry="3" class="cheek-orange"/>
+
+    <!-- Eyes (Focused intensity) -->
+    <circle cx="28" cy="22.5" r="1.6" class="eye-dark"/>
+    <circle cx="27.5" cy="22" r="0.6" class="eye-shine"/>
+    <circle cx="36" cy="22.5" r="1.6" class="eye-dark"/>
+    <circle cx="35.5" cy="22" r="0.6" class="eye-shine"/>
+
+    <!-- Scratching Claws (Pulled back) -->
+    <ellipse cx="24" cy="48" rx="3.5" ry="2" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="40" cy="51" rx="3.5" ry="2" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+  </g>
+
+  <!-- Frame 1.3 (FOCUS - Frame 3: Scratch back! Sound note ♪ floats up) -->
+  <g id="tiel-focus-f3" transform="translate(128, 64)">
+    <!-- Floating Music Note ♪ -->
+    <g id="note-f3" transform="translate(48, 12)">
+      <ellipse cx="4" cy="8" rx="2" ry="1.5" class="note-teal" transform="rotate(-20 4 8)"/>
+      <line x1="5.5" y1="7" x2="5.5" y2="1" stroke="#4DB6AC" stroke-width="1.2"/>
+      <path d="M5.5 1 C7 2, 8 3, 9 2" fill="none" stroke="#4DB6AC" stroke-width="1.2" stroke-linecap="round"/>
+    </g>
+
+    <!-- Turntable Deck -->
+    <rect x="8" y="48" width="48" height="14" rx="3" class="vinyl-groove" stroke="#2E221F" stroke-width="1.5"/>
+    <rect x="10" y="49" width="44" height="4" rx="1" fill="#455A64"/>
+    <rect x="44" y="54" width="3" height="6" rx="0.5" fill="#212121"/>
+    <line x1="45.5" y1="54" x2="45.5" y2="58" stroke="#80CBC4" stroke-width="1"/>
+    <circle cx="14" cy="56" r="1.5" class="vinyl-label"/>
+    <circle cx="19" cy="56" r="1.5" class="vinyl-center"/>
+
+    <!-- Vinyl Platter -->
+    <ellipse cx="32" cy="50" rx="15" ry="5.5" class="vinyl-dark" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="32" cy="50" rx="11" ry="3.8" fill="none" stroke="#37474F" stroke-width="1"/>
+    <ellipse cx="32" cy="50" rx="4.5" ry="1.8" class="vinyl-label"/>
+    <circle cx="32" cy="50" r="0.7" fill="#FFF176"/>
+
+    <!-- Body Base -->
+    <ellipse cx="32" cy="40" rx="13" ry="10" class="tiel-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="39.5" rx="12.5" ry="9.5" class="tiel-body"/>
+
+    <!-- Head Base -->
+    <ellipse cx="32" cy="26" rx="10" ry="9" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="25.5" rx="9.5" ry="8.5" class="tiel-yellow"/>
+
+    <!-- Headphones -->
+    <path d="M21 25 C21 16, 43 16, 43 25" fill="none" stroke="#2E221F" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M21 25 C21 16.5, 43 16.5, 43 25" fill="none" stroke="#4DB6AC" stroke-width="2" stroke-linecap="round"/>
+    <rect x="19" y="22" width="4" height="8" rx="2" class="gear-dark" stroke="#2E221F" stroke-width="1.2"/>
+    <rect x="19.5" y="22.5" width="3" height="7" rx="1.5" class="gear-teal"/>
+    <rect x="41" y="22" width="4" height="8" rx="2" class="gear-dark" stroke="#2E221F" stroke-width="1.2"/>
+    <rect x="41.5" y="22.5" width="3" height="7" rx="1.5" class="gear-teal"/>
+
+    <!-- Crest -->
+    <path d="M32 16 C30 11, 28 6, 25 2 C28 6, 31 11, 33 15 Z" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <path d="M34 16 C34 10, 33 5, 31 1 C33 5, 35 10, 35 15 Z" class="tiel-crest-tip"/>
+
+    <!-- Beak -->
+    <path d="M31 29 C33 32, 35 32, 33 34 C31 34, 30 31, 31 29 Z" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+
+    <!-- Cheeks -->
+    <ellipse cx="26" cy="27" rx="3" ry="3" class="cheek-orange"/>
+    <ellipse cx="38" cy="27" rx="3" ry="3" class="cheek-orange"/>
+
+    <!-- Eyes (Confident groove) -->
+    <circle cx="28" cy="23.5" r="1.5" class="eye-dark"/>
+    <circle cx="27.5" cy="23" r="0.5" class="eye-shine"/>
+    <circle cx="36" cy="23.5" r="1.5" class="eye-dark"/>
+    <circle cx="35.5" cy="23" r="0.5" class="eye-shine"/>
+
+    <!-- Scratching Claws (Right Scratch) -->
+    <ellipse cx="28" cy="51" rx="3.5" ry="2" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="36" cy="48" rx="3.5" ry="2" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+  </g>
+
+  <!-- Frame 1.4 (FOCUS - Frame 4: Dual hand tap, rhythmic sound flare) -->
+  <g id="tiel-focus-f4" transform="translate(192, 64)">
+    <!-- Floating Music Note ♫ -->
+    <g id="note-f4" transform="translate(8, 10)">
+      <ellipse cx="2" cy="7" rx="1.8" ry="1.3" class="note-gold" transform="rotate(-20 2 7)"/>
+      <ellipse cx="7" cy="6" rx="1.8" ry="1.3" class="note-gold" transform="rotate(-20 7 6)"/>
+      <line x1="3.2" y1="6" x2="3.2" y2="1" stroke="#FBC02D" stroke-width="1"/>
+      <line x1="8.2" y1="5" x2="8.2" y2="0" stroke="#FBC02D" stroke-width="1"/>
+      <polygon points="3.2,1 8.2,0 8.2,1.8 3.2,2.8" fill="#FBC02D"/>
+    </g>
+
+    <!-- Turntable Deck -->
+    <rect x="8" y="48" width="48" height="14" rx="3" class="vinyl-groove" stroke="#2E221F" stroke-width="1.5"/>
+    <rect x="10" y="49" width="44" height="4" rx="1" fill="#455A64"/>
+    <rect x="44" y="54" width="3" height="6" rx="0.5" fill="#212121"/>
+    <line x1="45.5" y1="55" x2="45.5" y2="59" stroke="#80CBC4" stroke-width="1"/>
+    <circle cx="14" cy="56" r="1.5" class="vinyl-label"/>
+    <circle cx="19" cy="56" r="1.5" class="vinyl-center"/>
+
+    <!-- Vinyl Platter -->
+    <ellipse cx="32" cy="50" rx="15" ry="5.5" class="vinyl-dark" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="32" cy="50" rx="11" ry="3.8" fill="none" stroke="#37474F" stroke-width="1"/>
+    <ellipse cx="32" cy="50" rx="4.5" ry="1.8" class="vinyl-center"/>
+    <circle cx="32" cy="50" r="0.7" fill="#FF7043"/>
+
+    <!-- Body Base -->
+    <ellipse cx="32" cy="39.5" rx="13" ry="10" class="tiel-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="39" rx="12.5" ry="9.5" class="tiel-body"/>
+
+    <!-- Head Base -->
+    <ellipse cx="32" cy="25.5" rx="10" ry="9" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="25" rx="9.5" ry="8.5" class="tiel-yellow"/>
+
+    <!-- Headphones -->
+    <path d="M21 24.5 C21 15.5, 43 15.5, 43 24.5" fill="none" stroke="#2E221F" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M21 24.5 C21 16, 43 16, 43 24.5" fill="none" stroke="#4DB6AC" stroke-width="2" stroke-linecap="round"/>
+    <rect x="19" y="21.5" width="4" height="8" rx="2" class="gear-dark" stroke="#2E221F" stroke-width="1.2"/>
+    <rect x="19.5" y="22" width="3" height="7" rx="1.5" class="gear-teal"/>
+    <rect x="41" y="21.5" width="4" height="8" rx="2" class="gear-dark" stroke="#2E221F" stroke-width="1.2"/>
+    <rect x="41.5" y="22" width="3" height="7" rx="1.5" class="gear-teal"/>
+
+    <!-- Crest -->
+    <path d="M32 15.5 C30 10.5, 28 5.5, 25 1.5 C28 5.5, 31 10.5, 33 14.5 Z" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <path d="M34 15.5 C34 9.5, 33 4.5, 31 0.5 C33 4.5, 35 9.5, 35 14.5 Z" class="tiel-crest-tip"/>
+
+    <!-- Beak -->
+    <path d="M31 28.5 C33 31.5, 35 31.5, 33 33.5 C31 33.5, 30 30.5, 31 28.5 Z" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+
+    <!-- Cheeks -->
+    <ellipse cx="26" cy="26.5" rx="3" ry="3" class="cheek-orange"/>
+    <ellipse cx="38" cy="26.5" rx="3" ry="3" class="cheek-orange"/>
+
+    <!-- Eyes (Sparkling beat satisfaction) -->
+    <circle cx="28" cy="23" r="1.5" class="eye-dark"/>
+    <circle cx="27.5" cy="22.5" r="0.5" class="eye-shine"/>
+    <circle cx="36" cy="23" r="1.5" class="eye-dark"/>
+    <circle cx="35.5" cy="22.5" r="0.5" class="eye-shine"/>
+
+    <!-- Scratching Claws (Dual Tap) -->
+    <ellipse cx="26" cy="49" rx="3.5" ry="2" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="38" cy="49" rx="3.5" ry="2" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- ROW 2 (Y: 128px) — FRENZY STATE (Extreme Headbang, friction fire, flying notes) -->
+  <!-- ========================================================================= -->
+
+  <!-- Frame 2.1 (FRENZY - Frame 1: Extreme Headbang Down, crest whips forward, sparks fly) -->
+  <g id="tiel-frenzy-f1" transform="translate(0, 128)">
+    <!-- Flying Musical Notes & DJ Sparks Left/Right -->
+    <circle cx="6" cy="18" r="1.8" class="spark-fire"/>
+    <circle cx="10" cy="12" r="1.2" class="note-gold"/>
+    <circle cx="56" cy="16" r="1.8" class="spark-fire"/>
+    <circle cx="52" cy="10" r="1.5" class="note-teal"/>
+
+    <!-- Turntable Deck (Overdriven glow) -->
+    <rect x="8" y="48" width="48" height="14" rx="3" class="vinyl-groove" stroke="#2E221F" stroke-width="1.5"/>
+    <rect x="10" y="49" width="44" height="4" rx="1" fill="#FF7043"/>
+
+    <!-- Vinyl Platter (Spinning fast with friction glow) -->
+    <ellipse cx="32" cy="50" rx="15" ry="5.5" class="vinyl-dark" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="32" cy="50" rx="12" ry="4.2" fill="none" stroke="#FF7043" stroke-width="1.2"/>
+    <ellipse cx="32" cy="50" rx="4.5" ry="1.8" class="spark-fire"/>
+    <!-- Friction Spark Bursts -->
+    <polygon points="18,48 22,46 20,49 24,48 20,51" fill="#FF7043"/>
+    <polygon points="46,48 42,46 44,49 40,48 44,51" fill="#FF7043"/>
+
+    <!-- Cockatiel Body (Pushed low into headbang) -->
+    <ellipse cx="32" cy="42" rx="14" ry="10" class="tiel-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="41.5" rx="13.5" ry="9.5" class="tiel-body"/>
+
+    <!-- Head Base (Slammed down X: 32, Y: 30) -->
+    <ellipse cx="32" cy="30" rx="10.5" ry="9" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="29.5" rx="10" ry="8.5" class="tiel-yellow"/>
+
+    <!-- Wild Whipping Crest (Forward whipped Mohawk) -->
+    <g id="frenzy-crest-f1">
+      <path d="M30 22 C24 16, 16 12, 8 10 C16 14, 24 20, 28 24 Z" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="1.5"/>
+      <path d="M30 21.5 C24 16, 17 12.5, 9 10.5 C16.5 14.5, 24 20, 28 23.5 Z" class="tiel-crest-tip"/>
+      <path d="M34 22 C30 14, 24 8, 16 4 C23 9, 30 16, 33 23 Z" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="1.5"/>
+      <path d="M34 21.5 C30 14.5, 24.5 8.5, 17 4.5 C23.5 9.5, 30 16, 33 22.5 Z" class="tiel-crest-tip"/>
+      <!-- Motion Speed Lines -->
+      <line x1="12" y1="6" x2="6" y2="4" stroke="#FFF176" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="20" y1="2" x2="14" y2="0" stroke="#FFF176" stroke-width="1.2" stroke-linecap="round"/>
+    </g>
+
+    <!-- Headphones Tilted with Head -->
+    <path d="M19 30 C19 20, 45 20, 45 30" fill="none" stroke="#2E221F" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M19 30 C19 20.5, 45 20.5, 45 30" fill="none" stroke="#4DB6AC" stroke-width="2" stroke-linecap="round"/>
+    <rect x="17" y="26" width="4" height="8" rx="2" class="gear-dark" stroke="#2E221F" stroke-width="1.2"/>
+    <rect x="43" y="26" width="4" height="8" rx="2" class="gear-dark" stroke="#2E221F" stroke-width="1.2"/>
+
+    <!-- Beak Slammed Near Vinyl -->
+    <path d="M31 34 C33 37, 35 37, 33 39 C31 39, 30 36, 31 34 Z" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+
+    <!-- Cheeks (Blazing bright) -->
+    <ellipse cx="25" cy="31" rx="3.5" ry="3" class="cheek-orange"/>
+    <ellipse cx="39" cy="31" rx="3.5" ry="3" class="cheek-orange"/>
+
+    <!-- Intense Frenzy Eyes (> < style extreme rock face) -->
+    <path d="M25 27 L28 29 L25 31" fill="none" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M39 27 L36 29 L39 31" fill="none" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Turbo Claws Scratching Rapidly -->
+    <ellipse cx="24" cy="49" rx="4" ry="2.2" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="40" cy="49" rx="4" ry="2.2" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+  </g>
+
+  <!-- Frame 2.2 (FRENZY - Frame 2: Extreme Headbang Up/Back, crest flips skyward, sound explosion) -->
+  <g id="tiel-frenzy-f2" transform="translate(64, 128)">
+    <!-- Exploding Floating Notes & Light Streaks -->
+    <circle cx="4" cy="14" r="1.5" class="note-teal"/>
+    <circle cx="58" cy="12" r="1.8" class="spark-fire"/>
+    <g transform="translate(46, 4)">
+      <ellipse cx="3" cy="7" rx="1.8" ry="1.3" class="spark-fire" transform="rotate(-20 3 7)"/>
+      <line x1="4.5" y1="6" x2="4.5" y2="1" stroke="#FF7043" stroke-width="1.2"/>
+    </g>
+
+    <!-- Turntable Deck -->
+    <rect x="8" y="48" width="48" height="14" rx="3" class="vinyl-groove" stroke="#2E221F" stroke-width="1.5"/>
+    <rect x="10" y="49" width="44" height="4" rx="1" fill="#FF7043"/>
+
+    <!-- Vinyl Platter (Super fast blurred rotation) -->
+    <ellipse cx="32" cy="50" rx="15" ry="5.5" class="vinyl-dark" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="32" cy="50" rx="12" ry="4.2" fill="none" stroke="#FBC02D" stroke-width="1.2"/>
+    <ellipse cx="32" cy="50" rx="4.5" ry="1.8" class="vinyl-center"/>
+    <!-- Friction Spark Bursts -->
+    <polygon points="16,50 20,47 19,51 23,50 18,53" fill="#FBC02D"/>
+    <polygon points="48,50 44,47 45,51 41,50 46,53" fill="#FBC02D"/>
+
+    <!-- Cockatiel Body Pulled Up -->
+    <ellipse cx="32" cy="38" rx="13" ry="11" class="tiel-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="37.5" rx="12.5" ry="10.5" class="tiel-body"/>
+
+    <!-- Head Base (Thrown back skyward X: 32, Y: 22) -->
+    <ellipse cx="32" cy="22" rx="10.5" ry="9.5" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="21.5" rx="10" ry="9" class="tiel-yellow"/>
+
+    <!-- Crest Thrown High Skyward -->
+    <g id="frenzy-crest-f2">
+      <path d="M31 12 C28 6, 23 1, 18 -4 C24 0, 30 7, 32 13 Z" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="1.5"/>
+      <path d="M31 11.5 C28 6, 23.5 1.5, 19 -3.5 C24.5 0.5, 30 7, 31.5 12.5 Z" class="tiel-crest-tip"/>
+      <path d="M34 12 C34 5, 33 -1, 31 -7 C34 -1, 36 6, 36 13 Z" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="1.5"/>
+      <path d="M34 11.5 C34 5.5, 33.5 0, 31.5 -6 C34 -0.5, 35.5 6, 35.5 12.5 Z" class="tiel-crest-tip"/>
+      <path d="M37 13 C40 6, 45 1, 50 -4 C44 0, 39 7, 37 14 Z" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="1.5"/>
+      <path d="M37 12.5 C40 6, 44.5 1.5, 49 -3.5 C43.5 0.5, 39 7, 37.5 13.5 Z" class="tiel-crest-tip"/>
+    </g>
+
+    <!-- Headphones -->
+    <path d="M19 22 C19 12, 45 12, 45 22" fill="none" stroke="#2E221F" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M19 22 C19 12.5, 45 12.5, 45 22" fill="none" stroke="#4DB6AC" stroke-width="2" stroke-linecap="round"/>
+    <rect x="17" y="18" width="4" height="8" rx="2" class="gear-dark" stroke="#2E221F" stroke-width="1.2"/>
+    <rect x="43" y="18" width="4" height="8" rx="2" class="gear-dark" stroke="#2E221F" stroke-width="1.2"/>
+
+    <!-- Beak Pointing Up High (Rocking roar!) -->
+    <path d="M30 22 C32 19, 34 19, 32 17 C30 17, 29 20, 30 22 Z" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+
+    <!-- Cheeks -->
+    <ellipse cx="25" cy="23" rx="3.5" ry="3" class="cheek-orange"/>
+    <ellipse cx="39" cy="23" rx="3.5" ry="3" class="cheek-orange"/>
+
+    <!-- Open Rock Eyes (Wide and ecstatic) -->
+    <circle cx="27" cy="19.5" r="1.8" class="eye-dark"/>
+    <circle cx="26.5" cy="19" r="0.7" class="eye-shine"/>
+    <circle cx="37" cy="19.5" r="1.8" class="eye-dark"/>
+    <circle cx="36.5" cy="19" r="0.7" class="eye-shine"/>
+
+    <!-- Turbo Claws Tap -->
+    <ellipse cx="22" cy="48" rx="4" ry="2.2" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="42" cy="48" rx="4" ry="2.2" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+  </g>
+
+  <!-- Frame 2.3 (FRENZY - Frame 3: Extreme Headbang Down Left, wild crest whip) -->
+  <g id="tiel-frenzy-f3" transform="translate(128, 128)">
+    <!-- Flying Sparks & Notes -->
+    <circle cx="8" cy="10" r="1.8" class="spark-fire"/>
+    <circle cx="54" cy="8" r="1.5" class="note-gold"/>
+    <g transform="translate(6, 4)">
+      <ellipse cx="3" cy="7" rx="1.8" ry="1.3" class="note-teal" transform="rotate(-20 3 7)"/>
+      <line x1="4.5" y1="6" x2="4.5" y2="1" stroke="#4DB6AC" stroke-width="1.2"/>
+    </g>
+
+    <!-- Turntable Deck -->
+    <rect x="8" y="48" width="48" height="14" rx="3" class="vinyl-groove" stroke="#2E221F" stroke-width="1.5"/>
+    <rect x="10" y="49" width="44" height="4" rx="1" fill="#FF7043"/>
+
+    <!-- Vinyl Platter (Blazing rotation) -->
+    <ellipse cx="32" cy="50" rx="15" ry="5.5" class="vinyl-dark" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="32" cy="50" rx="12" ry="4.2" fill="none" stroke="#FF7043" stroke-width="1.2"/>
+    <ellipse cx="32" cy="50" rx="4.5" ry="1.8" class="spark-fire"/>
+    <!-- Friction Spark Bursts -->
+    <polygon points="17,49 21,46 20,50 24,49 19,52" fill="#FF7043"/>
+    <polygon points="47,49 43,46 44,50 40,49 45,52" fill="#FF7043"/>
+
+    <!-- Cockatiel Body -->
+    <ellipse cx="32" cy="42" rx="14" ry="10" class="tiel-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="41.5" rx="13.5" ry="9.5" class="tiel-body"/>
+
+    <!-- Head Base (Slammed down right tilt X: 34, Y: 30) -->
+    <ellipse cx="34" cy="30" rx="10.5" ry="9" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="34" cy="29.5" rx="10" ry="8.5" class="tiel-yellow"/>
+
+    <!-- Wild Whipping Crest (Right whip) -->
+    <g id="frenzy-crest-f3">
+      <path d="M34 22 C40 16, 48 12, 56 10 C48 14, 40 20, 36 24 Z" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="1.5"/>
+      <path d="M34 21.5 C40 16, 47 12.5, 55 10.5 C47.5 14.5, 40 20, 36 23.5 Z" class="tiel-crest-tip"/>
+      <path d="M32 22 C36 14, 42 8, 50 4 C43 9, 36 16, 33 23 Z" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="1.5"/>
+      <path d="M32 21.5 C36 14.5, 41.5 8.5, 49 4.5 C42.5 9.5, 36 16, 33 22.5 Z" class="tiel-crest-tip"/>
+      <!-- Motion Speed Lines -->
+      <line x1="52" y1="6" x2="58" y2="4" stroke="#FFF176" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="44" y1="2" x2="50" y2="0" stroke="#FFF176" stroke-width="1.2" stroke-linecap="round"/>
+    </g>
+
+    <!-- Headphones -->
+    <path d="M21 30 C21 20, 47 20, 47 30" fill="none" stroke="#2E221F" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M21 30 C21 20.5, 47 20.5, 47 30" fill="none" stroke="#4DB6AC" stroke-width="2" stroke-linecap="round"/>
+    <rect x="19" y="26" width="4" height="8" rx="2" class="gear-dark" stroke="#2E221F" stroke-width="1.2"/>
+    <rect x="45" y="26" width="4" height="8" rx="2" class="gear-dark" stroke="#2E221F" stroke-width="1.2"/>
+
+    <!-- Beak -->
+    <path d="M33 34 C35 37, 37 37, 35 39 C33 39, 32 36, 33 34 Z" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+
+    <!-- Cheeks -->
+    <ellipse cx="27" cy="31" rx="3.5" ry="3" class="cheek-orange"/>
+    <ellipse cx="41" cy="31" rx="3.5" ry="3" class="cheek-orange"/>
+
+    <!-- Intense Eyes (> < style) -->
+    <path d="M27 27 L30 29 L27 31" fill="none" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M41 27 L38 29 L41 31" fill="none" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Turbo Claws Scratching -->
+    <ellipse cx="26" cy="49" rx="4" ry="2.2" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="38" cy="49" rx="4" ry="2.2" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+  </g>
+
+  <!-- Frame 2.4 (FRENZY - Frame 4: Double Beat Drop climax! Sparks & notes bursting) -->
+  <g id="tiel-frenzy-f4" transform="translate(192, 128)">
+    <!-- Climax Soundburst Notes -->
+    <circle cx="6" cy="12" r="2" class="spark-fire"/>
+    <circle cx="56" cy="14" r="2" class="spark-fire"/>
+    <g transform="translate(24, 0)">
+      <ellipse cx="2" cy="7" rx="1.8" ry="1.3" class="note-gold" transform="rotate(-20 2 7)"/>
+      <ellipse cx="7" cy="6" rx="1.8" ry="1.3" class="note-gold" transform="rotate(-20 7 6)"/>
+      <line x1="3.2" y1="6" x2="3.2" y2="1" stroke="#FBC02D" stroke-width="1"/>
+      <line x1="8.2" y1="5" x2="8.2" y2="0" stroke="#FBC02D" stroke-width="1"/>
+      <polygon points="3.2,1 8.2,0 8.2,1.8 3.2,2.8" fill="#FBC02D"/>
+    </g>
+
+    <!-- Turntable Deck -->
+    <rect x="8" y="48" width="48" height="14" rx="3" class="vinyl-groove" stroke="#2E221F" stroke-width="1.5"/>
+    <rect x="10" y="49" width="44" height="4" rx="1" fill="#FF7043"/>
+
+    <!-- Vinyl Platter -->
+    <ellipse cx="32" cy="50" rx="15" ry="5.5" class="vinyl-dark" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="32" cy="50" rx="12" ry="4.2" fill="none" stroke="#FFF176" stroke-width="1.2"/>
+    <ellipse cx="32" cy="50" rx="4.5" ry="1.8" class="vinyl-center"/>
+    <!-- Climax Sparks -->
+    <polygon points="15,48 20,45 18,50 23,48 18,53" fill="#FFF176"/>
+    <polygon points="49,48 44,45 46,50 41,48 46,53" fill="#FFF176"/>
+
+    <!-- Body Base -->
+    <ellipse cx="32" cy="39" rx="13" ry="11" class="tiel-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="38.5" rx="12.5" ry="10.5" class="tiel-body"/>
+
+    <!-- Head Base (Centered high rock pose) -->
+    <ellipse cx="32" cy="24" rx="10.5" ry="9.5" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="23.5" rx="10" ry="9" class="tiel-yellow"/>
+
+    <!-- Crest Centered Super Saiyan Flare -->
+    <g id="frenzy-crest-f4">
+      <path d="M30 13 C26 7, 21 2, 16 -3 C22 1, 28 8, 31 14 Z" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="1.5"/>
+      <path d="M30 12.5 C26 7, 21.5 2.5, 17 -2.5 C22.5 1.5, 28 8, 30.5 13.5 Z" class="tiel-crest-tip"/>
+      <path d="M34 13 C34 6, 33 0, 31 -6 C34 0, 36 7, 36 14 Z" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="1.5"/>
+      <path d="M34 12.5 C34 6.5, 33.5 1, 31.5 -5 C34 0.5, 35.5 7, 35.5 13.5 Z" class="tiel-crest-tip"/>
+      <path d="M38 14 C42 7, 47 2, 52 -3 C46 1, 40 8, 38 15 Z" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="1.5"/>
+      <path d="M38 13.5 C42 7, 46.5 2.5, 51 -2.5 C45.5 1.5, 40 8, 38.5 14.5 Z" class="tiel-crest-tip"/>
+    </g>
+
+    <!-- Headphones -->
+    <path d="M19 23 C19 13, 45 13, 45 23" fill="none" stroke="#2E221F" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M19 23 C19 13.5, 45 13.5, 45 23" fill="none" stroke="#4DB6AC" stroke-width="2" stroke-linecap="round"/>
+    <rect x="17" y="19" width="4" height="8" rx="2" class="gear-dark" stroke="#2E221F" stroke-width="1.2"/>
+    <rect x="43" y="19" width="4" height="8" rx="2" class="gear-dark" stroke="#2E221F" stroke-width="1.2"/>
+
+    <!-- Beak -->
+    <path d="M31 27 C33 29, 35 29, 33 31 C31 31, 30 28, 31 27 Z" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+
+    <!-- Cheeks -->
+    <ellipse cx="25" cy="25" rx="3.5" ry="3" class="cheek-orange"/>
+    <ellipse cx="39" cy="25" rx="3.5" ry="3" class="cheek-orange"/>
+
+    <!-- Climax Eyes (Ecstatic Sparkling Rock Stars) -->
+    <circle cx="27" cy="21" r="1.8" class="eye-dark"/>
+    <circle cx="26.5" cy="20.5" r="0.7" class="eye-shine"/>
+    <circle cx="37" cy="21" r="1.8" class="eye-dark"/>
+    <circle cx="36.5" cy="20.5" r="0.7" class="eye-shine"/>
+
+    <!-- Claws on Deck -->
+    <ellipse cx="24" cy="48" rx="4" ry="2.2" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="40" cy="48" rx="4" ry="2.2" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- ROW 3 (Y: 192px) — DISK STATE (Rapid Sunflower Seed Cracking & Scattering) -->
+  <!-- ========================================================================= -->
+
+  <!-- Frame 3.1 (DISK - Frame 1: Grasping golden sunflower seed, beak poised to crack) -->
+  <g id="tiel-disk-f1" transform="translate(0, 192)">
+    <!-- Wooden Food Bowl / Desk Surface -->
+    <ellipse cx="32" cy="56" rx="20" ry="6" class="wood-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="32" cy="55" rx="19" ry="5.2" class="wood-perch"/>
+    <!-- Seed Pile in Bowl -->
+    <ellipse cx="22" cy="54" rx="4" ry="2.5" class="seed-gold" stroke="#2E221F" stroke-width="0.8"/>
+    <ellipse cx="42" cy="54" rx="4" ry="2.5" class="seed-gold" stroke="#2E221F" stroke-width="0.8"/>
+
+    <!-- Tail Feathers -->
+    <path d="M20 46 L12 60 L16 60 L24 48 Z" class="tiel-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <path d="M22 47 L16 61 L19 61 L25 49 Z" class="tiel-grey"/>
+
+    <!-- Body Base (Leaning forward toward feast) -->
+    <ellipse cx="32" cy="42" rx="14" ry="11" class="tiel-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="41.5" rx="13.5" ry="10.5" class="tiel-body"/>
+
+    <!-- Head Base (Tilted down eagerly) -->
+    <ellipse cx="34" cy="27" rx="11" ry="10" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="34" cy="26.5" rx="10.5" ry="9.5" class="tiel-yellow"/>
+
+    <!-- Crest (Erect & excited) -->
+    <g id="disk-crest-f1">
+      <path d="M34 18 C33 11, 30 6, 26 1 C29 6, 33 12, 36 17 Z" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="1.5"/>
+      <path d="M34 17.5 C33 11.5, 30.5 7, 27 2 C29.5 7.5, 33 12.5, 35.5 17 Z" class="tiel-crest-tip"/>
+      <path d="M37 18 C38 11, 39 6, 37 0 C38 6, 39 11, 39 18 Z" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="1.5"/>
+      <path d="M37 17.5 C38 11.5, 39 7, 37.5 1 C38.5 7, 39 11.5, 38.5 17.5 Z" class="tiel-crest-tip"/>
+    </g>
+
+    <!-- Beak Open Grasping Big Sunflower Seed -->
+    <path d="M40 26 C43 25, 46 27, 44 29 L39 28 Z" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+    <path d="M39 29 L44 32 C42 34, 40 33, 38 31 Z" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+
+    <!-- Big Plump Sunflower Seed in Beak -->
+    <path d="M42 27 C46 26, 48 29, 47 32 C45 34, 42 32, 42 27 Z" class="seed-gold" stroke="#2E221F" stroke-width="1"/>
+    <!-- Seed Husk Dark Striping -->
+    <line x1="43" y1="28" x2="46" y2="31" stroke="#4E342E" stroke-width="0.8"/>
+
+    <!-- Orange Cheek Dot -->
+    <ellipse cx="31" cy="29" rx="3.5" ry="3.5" class="cheek-orange"/>
+
+    <!-- Eager Sparkle Eye -->
+    <ellipse cx="36" cy="23" rx="2.2" ry="2.5" class="eye-dark"/>
+    <circle cx="35.5" cy="22.2" r="0.8" class="eye-shine"/>
+
+    <!-- Claws Grasping Food Edge -->
+    <ellipse cx="28" cy="52" rx="3.5" ry="2" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="38" cy="52" rx="3.5" ry="2" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+  </g>
+
+  <!-- Frame 3.2 (DISK - Frame 2: CRACK! Beak snaps seed, golden kernels & husks burst!) -->
+  <g id="tiel-disk-f2" transform="translate(64, 192)">
+    <!-- Food Bowl -->
+    <ellipse cx="32" cy="56" rx="20" ry="6" class="wood-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="32" cy="55" rx="19" ry="5.2" class="wood-perch"/>
+    <ellipse cx="22" cy="54" rx="4" ry="2.5" class="seed-gold" stroke="#2E221F" stroke-width="0.8"/>
+    <ellipse cx="42" cy="54" rx="4" ry="2.5" class="seed-gold" stroke="#2E221F" stroke-width="0.8"/>
+
+    <!-- Flying Scattered Seed Shells & Kernels (CRACK Burst) -->
+    <path d="M48 24 C50 22, 53 23, 52 25 Z" class="seed-shell" stroke="#2E221F" stroke-width="0.8"/>
+    <circle cx="50" cy="33" r="1.5" class="seed-gold"/>
+    <path d="M46 38 C49 39, 51 38, 49 36 Z" class="seed-shell" stroke="#2E221F" stroke-width="0.8"/>
+    <circle cx="44" cy="20" r="1.2" class="seed-gold"/>
+    <!-- Crack Impact Lines -->
+    <line x1="43" y1="26" x2="47" y2="24" stroke="#F4D03F" stroke-width="1.2" stroke-linecap="round"/>
+    <line x1="44" y1="33" x2="48" y2="35" stroke="#F4D03F" stroke-width="1.2" stroke-linecap="round"/>
+
+    <!-- Tail Feathers -->
+    <path d="M20 46 L12 60 L16 60 L24 48 Z" class="tiel-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <path d="M22 47 L16 61 L19 61 L25 49 Z" class="tiel-grey"/>
+
+    <!-- Body Base -->
+    <ellipse cx="32" cy="42" rx="14" ry="11" class="tiel-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="41.5" rx="13.5" ry="10.5" class="tiel-body"/>
+
+    <!-- Head Base (Bites down with force) -->
+    <ellipse cx="34" cy="28" rx="11" ry="10" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="34" cy="27.5" rx="10.5" ry="9.5" class="tiel-yellow"/>
+
+    <!-- Crest (Springs slightly forward) -->
+    <g id="disk-crest-f2">
+      <path d="M34 19 C34 12, 33 7, 30 2 C32 7, 35 13, 36 18 Z" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="1.5"/>
+      <path d="M34 18.5 C34 12.5, 33.5 8, 31 3 C32.5 8, 35 13.5, 35.5 18 Z" class="tiel-crest-tip"/>
+      <path d="M37 19 C39 12, 41 7, 40 1 C40.5 7, 40 12, 39 19 Z" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    </g>
+
+    <!-- Beak Snapped Shut Chewing Golden Kernel -->
+    <path d="M39 28 C42 28, 44 30, 42 33 C40 34, 38 32, 38 29 Z" class="beak-dark" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M39 28.5 C41 28.5, 42.5 30, 41 32 Z" class="beak-light"/>
+
+    <!-- Orange Cheek Dot -->
+    <ellipse cx="31" cy="30" rx="3.5" ry="3.5" class="cheek-orange"/>
+
+    <!-- Satisfied Closed Munching Eye (> < curve) -->
+    <path d="M34 25 Q36.5 22 39 25" fill="none" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+
+    <!-- Claws -->
+    <ellipse cx="28" cy="52" rx="3.5" ry="2" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="38" cy="52" rx="3.5" ry="2" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+  </g>
+
+  <!-- Frame 3.3 (DISK - Frame 3: Rapid Munch & Head Shake, shells spinning away) -->
+  <g id="tiel-disk-f3" transform="translate(128, 192)">
+    <!-- Food Bowl -->
+    <ellipse cx="32" cy="56" rx="20" ry="6" class="wood-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="32" cy="55" rx="19" ry="5.2" class="wood-perch"/>
+    <ellipse cx="22" cy="54" rx="4" ry="2.5" class="seed-gold" stroke="#2E221F" stroke-width="0.8"/>
+    <ellipse cx="42" cy="54" rx="4" ry="2.5" class="seed-gold" stroke="#2E221F" stroke-width="0.8"/>
+
+    <!-- Shells Flying Further Away -->
+    <path d="M52 20 C54 18, 57 19, 56 21 Z" class="seed-shell" stroke="#2E221F" stroke-width="0.8"/>
+    <circle cx="55" cy="35" r="1.3" class="seed-gold"/>
+    <path d="M50 42 C53 43, 55 42, 53 40 Z" class="seed-shell" stroke="#2E221F" stroke-width="0.8"/>
+    <circle cx="48" cy="16" r="1.5" class="seed-gold"/>
+
+    <!-- Tail Feathers -->
+    <path d="M20 46 L12 60 L16 60 L24 48 Z" class="tiel-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <path d="M22 47 L16 61 L19 61 L25 49 Z" class="tiel-grey"/>
+
+    <!-- Body Base -->
+    <ellipse cx="32" cy="42" rx="14" ry="11" class="tiel-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="41.5" rx="13.5" ry="10.5" class="tiel-body"/>
+
+    <!-- Head Base (Tilted up chewing deliciously) -->
+    <ellipse cx="34" cy="26" rx="11" ry="10" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="34" cy="25.5" rx="10.5" ry="9.5" class="tiel-yellow"/>
+
+    <!-- Crest (Bobs high) -->
+    <g id="disk-crest-f3">
+      <path d="M34 17 C33 10, 30 5, 26 0 C29 5, 33 11, 36 16 Z" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="1.5"/>
+      <path d="M34 16.5 C33 10.5, 30.5 6, 27 1 C29.5 6.5, 33 11.5, 35.5 16 Z" class="tiel-crest-tip"/>
+      <path d="M37 17 C38 10, 39 5, 37 -1 C38 5, 39 10, 39 17 Z" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    </g>
+
+    <!-- Beak Chewing Nom Nom -->
+    <path d="M40 26 C43 26, 45 28, 43 31 C41 32, 39 30, 39 27 Z" class="beak-dark" stroke="#2E221F" stroke-width="1.5"/>
+    <path d="M40 26.5 C42 26.5, 43.5 28, 42 30 Z" class="beak-light"/>
+    <!-- Little Crumb at Beak Tip -->
+    <circle cx="44" cy="30" r="0.8" class="seed-gold"/>
+
+    <!-- Orange Cheek Dot -->
+    <ellipse cx="31" cy="28" rx="3.5" ry="3.5" class="cheek-orange"/>
+
+    <!-- Sparkling Happy Eyes -->
+    <ellipse cx="36" cy="23" rx="2.2" ry="2.5" class="eye-dark"/>
+    <circle cx="35.5" cy="22.2" r="0.8" class="eye-shine"/>
+    <circle cx="37" cy="24" r="0.4" class="eye-shine"/>
+
+    <!-- Claws -->
+    <ellipse cx="28" cy="52" rx="3.5" ry="2" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="38" cy="52" rx="3.5" ry="2" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+  </g>
+
+  <!-- Frame 3.4 (DISK - Frame 4: Snatching next seed in bowl, endless loop!) -->
+  <g id="tiel-disk-f4" transform="translate(192, 192)">
+    <!-- Food Bowl -->
+    <ellipse cx="32" cy="56" rx="20" ry="6" class="wood-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="32" cy="55" rx="19" ry="5.2" class="wood-perch"/>
+    <ellipse cx="22" cy="54" rx="4" ry="2.5" class="seed-gold" stroke="#2E221F" stroke-width="0.8"/>
+    <ellipse cx="42" cy="54" rx="4" ry="2.5" class="seed-gold" stroke="#2E221F" stroke-width="0.8"/>
+
+    <!-- Tail Feathers -->
+    <path d="M20 46 L12 60 L16 60 L24 48 Z" class="tiel-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <path d="M22 47 L16 61 L19 61 L25 49 Z" class="tiel-grey"/>
+
+    <!-- Body Base -->
+    <ellipse cx="32" cy="42" rx="14" ry="11" class="tiel-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="41.5" rx="13.5" ry="10.5" class="tiel-body"/>
+
+    <!-- Head Base (Dipping down to pick next seed) -->
+    <ellipse cx="34" cy="28" rx="11" ry="10" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="34" cy="27.5" rx="10.5" ry="9.5" class="tiel-yellow"/>
+
+    <!-- Crest -->
+    <g id="disk-crest-f4">
+      <path d="M34 19 C33 12, 30 7, 26 2 C29 7, 33 13, 36 18 Z" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="1.5"/>
+      <path d="M34 18.5 C33 12.5, 30.5 8, 27 3 C29.5 8.5, 33 13.5, 35.5 18 Z" class="tiel-crest-tip"/>
+      <path d="M37 19 C38 12, 39 7, 37 1 C38 7, 39 12, 39 19 Z" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    </g>
+
+    <!-- Beak Dipping into Bowl for next Seed -->
+    <path d="M40 28 C43 27, 46 29, 44 31 L39 30 Z" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+    <path d="M39 31 L44 34 C42 36, 40 35, 38 33 Z" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="44" cy="31" rx="3" ry="1.8" class="seed-gold"/>
+
+    <!-- Orange Cheek Dot -->
+    <ellipse cx="31" cy="30" rx="3.5" ry="3.5" class="cheek-orange"/>
+
+    <!-- Eye (Excited look) -->
+    <ellipse cx="36" cy="24" rx="2.2" ry="2.5" class="eye-dark"/>
+    <circle cx="35.5" cy="23.2" r="0.8" class="eye-shine"/>
+
+    <!-- Claws -->
+    <ellipse cx="28" cy="52" rx="3.5" ry="2" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="38" cy="52" rx="3.5" ry="2" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- ROW 4 (Y: 256px) — REST STATE (Sleeping on perch/desk, headphones on neck) -->
+  <!-- ========================================================================= -->
+
+  <!-- Frame 4.1 (REST - Frame 1: Head tucked into fluffy wing, headphones resting around neck, cozy sleep) -->
+  <g id="tiel-rest-f1" transform="translate(0, 256)">
+    <!-- Floating Cozy Sleep Z's -->
+    <text x="48" y="16" class="text-z" opacity="0.6">z</text>
+
+    <!-- Wooden Perch / Desk Resting Base -->
+    <rect x="6" y="52" width="52" height="10" rx="3" class="wood-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <rect x="8" y="53" width="48" height="4" rx="1" class="wood-perch"/>
+
+    <!-- Tail Feathers Resting Along Perch -->
+    <path d="M18 46 L8 54 L12 56 L22 48 Z" class="tiel-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <path d="M20 47 L12 55 L15 56 L23 49 Z" class="tiel-grey"/>
+
+    <!-- Relaxed Claws Gripping Perch -->
+    <ellipse cx="26" cy="53" rx="3.5" ry="1.8" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="38" cy="53" rx="3.5" ry="1.8" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+
+    <!-- Plump Fluffy Loaf Body (Loafed down comfortably) -->
+    <ellipse cx="32" cy="44" rx="15" ry="11" class="tiel-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="43.5" rx="14.5" ry="10.5" class="tiel-body"/>
+
+    <!-- Soft Wing Layer Covering Body with White Stripe -->
+    <ellipse cx="28" cy="42" rx="9" ry="8" class="tiel-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="28" cy="41.5" rx="8.5" ry="7.5" class="tiel-grey"/>
+    <path d="M24 37 C24 34, 28 34, 29 38 C30 42, 27 45, 24 46 Z" class="wing-patch"/>
+
+    <!-- Head Tucked In Softly (X: 36, Y: 32) -->
+    <ellipse cx="36" cy="32" rx="10" ry="9" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="36" cy="31.5" rx="9.5" ry="8.5" class="tiel-yellow"/>
+
+    <!-- Drooped Relaxed Crest (Resting flat & cozy along back) -->
+    <g id="rest-crest-f1">
+      <path d="M34 23 C30 20, 24 18, 18 18 C24 20, 29 23, 33 25 Z" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="1.2"/>
+      <path d="M34 22.5 C30 19.5, 24.5 18, 19 18 C24.5 20, 29.5 23, 33 24.5 Z" class="tiel-crest-tip"/>
+      <path d="M36 24 C33 21, 28 19, 22 20 C27 21, 32 24, 35 26 Z" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    </g>
+
+    <!-- Headphones Slipped Down Comfortably Around Neck -->
+    <path d="M22 39 C22 46, 42 46, 42 39" fill="none" stroke="#2E221F" stroke-width="3" stroke-linecap="round"/>
+    <path d="M22 39 C22 45.5, 42 45.5, 42 39" fill="none" stroke="#4DB6AC" stroke-width="1.8" stroke-linecap="round"/>
+    <rect x="20" y="36" width="3.5" height="6" rx="1.5" class="gear-dark" stroke="#2E221F" stroke-width="1"/>
+    <rect x="40.5" y="36" width="3.5" height="6" rx="1.5" class="gear-dark" stroke="#2E221F" stroke-width="1"/>
+
+    <!-- Beak Tucked Under Feathers -->
+    <path d="M42 34 C44 34, 45 36, 43 37 L40 36 Z" class="beak-dark" stroke="#2E221F" stroke-width="1"/>
+
+    <!-- Orange Cheek Dot Glowing Softly -->
+    <ellipse cx="34" cy="33" rx="3.2" ry="3.2" class="cheek-orange" opacity="0.9"/>
+
+    <!-- Peaceful Sleeping Curved Eye (U_U shape) -->
+    <path d="M36 29 Q38.5 32 41 29" fill="none" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+  </g>
+
+  <!-- Frame 4.2 (REST - Frame 2: Deep gentle inhale, body rises 1px, bigger Z rises) -->
+  <g id="tiel-rest-f2" transform="translate(64, 256)">
+    <!-- Floating Cozy Sleep Z's Rising -->
+    <text x="50" y="12" class="text-z" opacity="0.8">Z</text>
+
+    <!-- Wooden Perch -->
+    <rect x="6" y="52" width="52" height="10" rx="3" class="wood-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <rect x="8" y="53" width="48" height="4" rx="1" class="wood-perch"/>
+
+    <!-- Tail Feathers -->
+    <path d="M18 45 L8 53 L12 55 L22 47 Z" class="tiel-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <path d="M20 46 L12 54 L15 55 L23 48 Z" class="tiel-grey"/>
+
+    <!-- Claws -->
+    <ellipse cx="26" cy="53" rx="3.5" ry="1.8" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="38" cy="53" rx="3.5" ry="1.8" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+
+    <!-- Fluffy Loaf Body (Rises 1px on inhale) -->
+    <ellipse cx="32" cy="43" rx="15" ry="11.5" class="tiel-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="42.5" rx="14.5" ry="11" class="tiel-body"/>
+
+    <!-- Wing Layer -->
+    <ellipse cx="28" cy="41" rx="9" ry="8" class="tiel-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="28" cy="40.5" rx="8.5" ry="7.5" class="tiel-grey"/>
+    <path d="M24 36 C24 33, 28 33, 29 37 C30 41, 27 44, 24 45 Z" class="wing-patch"/>
+
+    <!-- Head Base (Up 1px) -->
+    <ellipse cx="36" cy="31" rx="10" ry="9" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="36" cy="30.5" rx="9.5" ry="8.5" class="tiel-yellow"/>
+
+    <!-- Crest -->
+    <g id="rest-crest-f2">
+      <path d="M34 22 C30 19, 24 17, 18 17 C24 19, 29 22, 33 24 Z" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="1.2"/>
+      <path d="M34 21.5 C30 18.5, 24.5 17, 19 17 C24.5 19, 29.5 22, 33 23.5 Z" class="tiel-crest-tip"/>
+      <path d="M36 23 C33 20, 28 18, 22 19 C27 20, 32 23, 35 25 Z" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    </g>
+
+    <!-- Headphones Around Neck -->
+    <path d="M22 38 C22 45, 42 45, 42 38" fill="none" stroke="#2E221F" stroke-width="3" stroke-linecap="round"/>
+    <path d="M22 38 C22 44.5, 42 44.5, 42 38" fill="none" stroke="#4DB6AC" stroke-width="1.8" stroke-linecap="round"/>
+    <rect x="20" y="35" width="3.5" height="6" rx="1.5" class="gear-dark" stroke="#2E221F" stroke-width="1"/>
+    <rect x="40.5" y="35" width="3.5" height="6" rx="1.5" class="gear-dark" stroke="#2E221F" stroke-width="1"/>
+
+    <!-- Beak -->
+    <path d="M42 33 C44 33, 45 35, 43 36 L40 35 Z" class="beak-dark" stroke="#2E221F" stroke-width="1"/>
+
+    <!-- Orange Cheek Dot -->
+    <ellipse cx="34" cy="32" rx="3.2" ry="3.2" class="cheek-orange" opacity="0.9"/>
+
+    <!-- Sleeping Eye -->
+    <path d="M36 28 Q38.5 31 41 28" fill="none" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+  </g>
+
+  <!-- Frame 4.3 (REST - Frame 3: Deep gentle exhale, little sleeping bubble) -->
+  <g id="tiel-rest-f3" transform="translate(128, 256)">
+    <!-- Sleep Snot Bubble / Dream Glow -->
+    <circle cx="44" cy="32" r="2.2" fill="#80CBC4" stroke="#00796B" stroke-width="0.8" opacity="0.75"/>
+    <circle cx="43.2" cy="31.2" r="0.6" fill="#FFFFFF"/>
+
+    <!-- Wooden Perch -->
+    <rect x="6" y="52" width="52" height="10" rx="3" class="wood-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <rect x="8" y="53" width="48" height="4" rx="1" class="wood-perch"/>
+
+    <!-- Tail Feathers -->
+    <path d="M18 46 L8 54 L12 56 L22 48 Z" class="tiel-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <path d="M20 47 L12 55 L15 56 L23 49 Z" class="tiel-grey"/>
+
+    <!-- Claws -->
+    <ellipse cx="26" cy="53" rx="3.5" ry="1.8" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="38" cy="53" rx="3.5" ry="1.8" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+
+    <!-- Fluffy Loaf Body -->
+    <ellipse cx="32" cy="44" rx="15" ry="11" class="tiel-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="43.5" rx="14.5" ry="10.5" class="tiel-body"/>
+
+    <!-- Wing Layer -->
+    <ellipse cx="28" cy="42" rx="9" ry="8" class="tiel-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="28" cy="41.5" rx="8.5" ry="7.5" class="tiel-grey"/>
+    <path d="M24 37 C24 34, 28 34, 29 38 C30 42, 27 45, 24 46 Z" class="wing-patch"/>
+
+    <!-- Head Base -->
+    <ellipse cx="36" cy="32" rx="10" ry="9" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="36" cy="31.5" rx="9.5" ry="8.5" class="tiel-yellow"/>
+
+    <!-- Crest -->
+    <g id="rest-crest-f3">
+      <path d="M34 23 C30 20, 24 18, 18 18 C24 20, 29 23, 33 25 Z" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="1.2"/>
+      <path d="M34 22.5 C30 19.5, 24.5 18, 19 18 C24.5 20, 29.5 23, 33 24.5 Z" class="tiel-crest-tip"/>
+      <path d="M36 24 C33 21, 28 19, 22 20 C27 21, 32 24, 35 26 Z" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    </g>
+
+    <!-- Headphones Around Neck -->
+    <path d="M22 39 C22 46, 42 46, 42 39" fill="none" stroke="#2E221F" stroke-width="3" stroke-linecap="round"/>
+    <path d="M22 39 C22 45.5, 42 45.5, 42 39" fill="none" stroke="#4DB6AC" stroke-width="1.8" stroke-linecap="round"/>
+    <rect x="20" y="36" width="3.5" height="6" rx="1.5" class="gear-dark" stroke="#2E221F" stroke-width="1"/>
+    <rect x="40.5" y="36" width="3.5" height="6" rx="1.5" class="gear-dark" stroke="#2E221F" stroke-width="1"/>
+
+    <!-- Beak -->
+    <path d="M42 34 C44 34, 45 36, 43 37 L40 36 Z" class="beak-dark" stroke="#2E221F" stroke-width="1"/>
+
+    <!-- Orange Cheek Dot -->
+    <ellipse cx="34" cy="33" rx="3.2" ry="3.2" class="cheek-orange" opacity="0.9"/>
+
+    <!-- Sleeping Eye -->
+    <path d="M36 29 Q38.5 32 41 29" fill="none" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+  </g>
+
+  <!-- Frame 4.4 (REST - Frame 4: Bubble pops softly, sweet dreaming, slow rhythmic loop) -->
+  <g id="tiel-rest-f4" transform="translate(192, 256)">
+    <!-- Floating Cozy Sleep Z's Drifting -->
+    <text x="46" y="20" class="text-z" opacity="0.5">z</text>
+
+    <!-- Wooden Perch -->
+    <rect x="6" y="52" width="52" height="10" rx="3" class="wood-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <rect x="8" y="53" width="48" height="4" rx="1" class="wood-perch"/>
+
+    <!-- Tail Feathers -->
+    <path d="M18 46 L8 54 L12 56 L22 48 Z" class="tiel-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <path d="M20 47 L12 55 L15 56 L23 49 Z" class="tiel-grey"/>
+
+    <!-- Claws -->
+    <ellipse cx="26" cy="53" rx="3.5" ry="1.8" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="38" cy="53" rx="3.5" ry="1.8" class="beak-dark" stroke="#2E221F" stroke-width="1.2"/>
+
+    <!-- Fluffy Loaf Body -->
+    <ellipse cx="32" cy="44" rx="15" ry="11" class="tiel-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="43.5" rx="14.5" ry="10.5" class="tiel-body"/>
+
+    <!-- Wing Layer -->
+    <ellipse cx="28" cy="42" rx="9" ry="8" class="tiel-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="28" cy="41.5" rx="8.5" ry="7.5" class="tiel-grey"/>
+    <path d="M24 37 C24 34, 28 34, 29 38 C30 42, 27 45, 24 46 Z" class="wing-patch"/>
+
+    <!-- Head Base -->
+    <ellipse cx="36" cy="32" rx="10" ry="9" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="36" cy="31.5" rx="9.5" ry="8.5" class="tiel-yellow"/>
+
+    <!-- Crest -->
+    <g id="rest-crest-f4">
+      <path d="M34 23 C30 20, 24 18, 18 18 C24 20, 29 23, 33 25 Z" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="1.2"/>
+      <path d="M34 22.5 C30 19.5, 24.5 18, 19 18 C24.5 20, 29.5 23, 33 24.5 Z" class="tiel-crest-tip"/>
+      <path d="M36 24 C33 21, 28 19, 22 20 C27 21, 32 24, 35 26 Z" class="tiel-yellow-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    </g>
+
+    <!-- Headphones Around Neck -->
+    <path d="M22 39 C22 46, 42 46, 42 39" fill="none" stroke="#2E221F" stroke-width="3" stroke-linecap="round"/>
+    <path d="M22 39 C22 45.5, 42 45.5, 42 39" fill="none" stroke="#4DB6AC" stroke-width="1.8" stroke-linecap="round"/>
+    <rect x="20" y="36" width="3.5" height="6" rx="1.5" class="gear-dark" stroke="#2E221F" stroke-width="1"/>
+    <rect x="40.5" y="36" width="3.5" height="6" rx="1.5" class="gear-dark" stroke="#2E221F" stroke-width="1"/>
+
+    <!-- Beak -->
+    <path d="M42 34 C44 34, 45 36, 43 37 L40 36 Z" class="beak-dark" stroke="#2E221F" stroke-width="1"/>
+
+    <!-- Orange Cheek Dot -->
+    <ellipse cx="34" cy="33" rx="3.2" ry="3.2" class="cheek-orange" opacity="0.9"/>
+
+    <!-- Sleeping Eye -->
+    <path d="M36 29 Q38.5 32 41 29" fill="none" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+  </g>
+</svg>

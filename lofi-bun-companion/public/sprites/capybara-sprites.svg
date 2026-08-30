@@ -1,0 +1,1268 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 320" width="256" height="320" shape-rendering="crispEdges">
+  <defs>
+    <!-- Shared Style Tokens for Onsen Capybara -->
+    <style>
+      .outline { stroke: #2E221F; stroke-width: 2; stroke-linecap: square; stroke-linejoin: miter; }
+      .outline-thin { stroke: #2E221F; stroke-width: 1; stroke-linecap: square; }
+      .capy-brown { fill: #8C6239; }
+      .capy-shadow { fill: #6E4924; }
+      .capy-light { fill: #A9825A; }
+      .capy-snout { fill: #543820; }
+      .capy-ear-inner { fill: #724A28; }
+      .eye-dark { fill: #2E221F; }
+      .yuzu-yellow { fill: #FFD13B; }
+      .yuzu-shadow { fill: #E5A524; }
+      .yuzu-highlight { fill: #FFE680; }
+      .yuzu-leaf { fill: #5B8A3C; }
+      .leaf-shadow { fill: #3E6328; }
+      .wood-cypress { fill: #D1A774; }
+      .wood-shadow { fill: #A87D4D; }
+      .wood-band { fill: #8C5F35; }
+      .spring-aqua { fill: #8BD3DD; }
+      .spring-deep { fill: #5EAEBA; }
+      .spring-highlight { fill: #C3F0F7; opacity: 0.8; }
+      .steam-puff { fill: #FFFFFF; opacity: 0.75; }
+      .twig-brown { fill: #6F4E37; }
+      .twig-light { fill: #9E7455; }
+      .wood-chip { fill: #BF966E; }
+      .bubble { fill: #C3F0F7; stroke: #5EAEBA; stroke-width: 0.8; opacity: 0.85; }
+      .water-splash { fill: #8BD3DD; stroke: #2E221F; stroke-width: 1; }
+      .text-z { fill: #8BD3DD; font-family: monospace; font-size: 8px; font-weight: bold; }
+    </style>
+  </defs>
+
+  <!-- ========================================================================= -->
+  <!-- ROW 0 (Y: 0px) — IDLE STATE (Soaking in cypress tub, yuzu crown, steam)    -->
+  <!-- ========================================================================= -->
+
+  <!-- Frame 0.1 (IDLE - Frame 1: Serene stoic gaze, gentle rising steam) -->
+  <g id="capybara-idle-f1" transform="translate(0, 0)">
+    <!-- Steam Puffs Left & Right -->
+    <path d="M12 18 C10 14, 14 10, 12 6" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.6" stroke-linecap="round"/>
+    <path d="M52 16 C54 12, 50 8, 52 4" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.6" stroke-linecap="round"/>
+
+    <!-- Left & Right Capybara Ears (Small round tabs) -->
+    <ellipse cx="19" cy="22" rx="3.5" ry="3" class="capy-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="19" cy="22" rx="2" ry="1.8" class="capy-ear-inner"/>
+    <ellipse cx="45" cy="22" rx="3.5" ry="3" class="capy-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="45" cy="22" rx="2" ry="1.8" class="capy-ear-inner"/>
+
+    <!-- Yuzu Crown on Head Summit -->
+    <ellipse cx="32" cy="14" rx="5" ry="4.5" class="yuzu-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="32" cy="13.5" rx="4.8" ry="4" class="yuzu-yellow"/>
+    <ellipse cx="30.5" cy="12" rx="1.8" ry="1.2" class="yuzu-highlight"/>
+    <!-- Yuzu Leaf -->
+    <path d="M33 9.5 C36 8, 38 10, 36 12 C34 12, 33 10.5, 33 9.5 Z" class="yuzu-leaf" stroke="#2E221F" stroke-width="0.8"/>
+
+    <!-- Capybara Head Base (Chubby rectangular stoic shape) -->
+    <rect x="20" y="18" width="24" height="22" rx="6" class="capy-shadow" stroke="#2E221F" stroke-width="2"/>
+    <rect x="20.5" y="17.5" width="23" height="21" rx="5.5" class="capy-brown"/>
+    <!-- Brow & Cheeks Highlights -->
+    <rect x="22" y="20" width="20" height="8" rx="3" class="capy-light"/>
+
+    <!-- Distinctive Large Dark Snout / Muzzle -->
+    <rect x="23" y="27" width="18" height="12" rx="3.5" class="capy-snout" stroke="#2E221F" stroke-width="1.5"/>
+    <!-- Nostrils (Two calm dots) -->
+    <ellipse cx="28" cy="31" rx="1.2" ry="1.5" fill="#2E221F"/>
+    <ellipse cx="36" cy="31" rx="1.2" ry="1.5" fill="#2E221F"/>
+    <!-- Stoic Mouth Line -->
+    <line x1="30" y1="36" x2="34" y2="36" stroke="#2E221F" stroke-width="1.2" stroke-linecap="round"/>
+
+    <!-- Stoic Half-Closed Eyes -->
+    <line x1="23" y1="24" x2="27" y2="24.5" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="37" y1="24.5" x2="41" y2="24" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+
+    <!-- Chubby Body in Water -->
+    <ellipse cx="32" cy="46" rx="16" ry="10" class="capy-brown" stroke="#2E221F" stroke-width="1.5"/>
+
+    <!-- Cypress Wood Tub (Back Rim) -->
+    <rect x="8" y="38" width="48" height="20" rx="4" class="wood-shadow" stroke="#2E221F" stroke-width="2"/>
+
+    <!-- Hot Spring Water Layer -->
+    <ellipse cx="32" cy="42" rx="21" ry="5.5" class="spring-deep"/>
+    <ellipse cx="32" cy="41.5" rx="20" ry="4.8" class="spring-aqua"/>
+    <path d="M16 42 Q32 44 48 42" fill="none" stroke="#C3F0F7" stroke-width="1.2" opacity="0.8"/>
+
+    <!-- Front Paws resting on Tub Edge -->
+    <ellipse cx="23" cy="42" rx="3.5" ry="2.2" class="capy-snout" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="41" cy="42" rx="3.5" ry="2.2" class="capy-snout" stroke="#2E221F" stroke-width="1.2"/>
+
+    <!-- Cypress Wood Tub (Front Body & Iron Hoops) -->
+    <path d="M8 43 L10 58 L54 58 L56 43 Z" class="wood-cypress" stroke="#2E221F" stroke-width="1.8"/>
+    <!-- Tub Vertical Slats -->
+    <line x1="18" y1="43" x2="19" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <line x1="32" y1="43" x2="32" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <line x1="46" y1="43" x2="45" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <!-- Metal Bands -->
+    <rect x="8.5" y="47" width="47" height="2" class="wood-band"/>
+    <rect x="9.5" y="54" width="45" height="2" class="wood-band"/>
+  </g>
+
+  <!-- Frame 0.2 (IDLE - Frame 2: Body breathes up 1px, steam curls higher) -->
+  <g id="capybara-idle-f2" transform="translate(64, 0)">
+    <!-- Steam Puffs Rising -->
+    <path d="M14 16 C12 11, 16 7, 13 3" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.7" stroke-linecap="round"/>
+    <path d="M50 14 C52 9, 48 5, 51 2" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.7" stroke-linecap="round"/>
+
+    <!-- Ears -->
+    <ellipse cx="19" cy="21" rx="3.5" ry="3" class="capy-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="19" cy="21" rx="2" ry="1.8" class="capy-ear-inner"/>
+    <ellipse cx="45" cy="21" rx="3.5" ry="3" class="capy-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="45" cy="21" rx="2" ry="1.8" class="capy-ear-inner"/>
+
+    <!-- Yuzu Crown (Up 1px) -->
+    <ellipse cx="32" cy="13" rx="5" ry="4.5" class="yuzu-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="32" cy="12.5" rx="4.8" ry="4" class="yuzu-yellow"/>
+    <ellipse cx="30.5" cy="11" rx="1.8" ry="1.2" class="yuzu-highlight"/>
+    <!-- Yuzu Leaf Bobbing -->
+    <path d="M33 8.5 C36.5 7.5, 38.5 9.5, 36.5 11.5 C34.5 11.5, 33 9.5, 33 8.5 Z" class="yuzu-leaf" stroke="#2E221F" stroke-width="0.8"/>
+
+    <!-- Capybara Head Base (Up 1px) -->
+    <rect x="20" y="17" width="24" height="22" rx="6" class="capy-shadow" stroke="#2E221F" stroke-width="2"/>
+    <rect x="20.5" y="16.5" width="23" height="21" rx="5.5" class="capy-brown"/>
+    <rect x="22" y="19" width="20" height="8" rx="3" class="capy-light"/>
+
+    <!-- Snout / Muzzle -->
+    <rect x="23" y="26" width="18" height="12" rx="3.5" class="capy-snout" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="28" cy="30" rx="1.2" ry="1.5" fill="#2E221F"/>
+    <ellipse cx="36" cy="30" rx="1.2" ry="1.5" fill="#2E221F"/>
+    <line x1="30" y1="35" x2="34" y2="35" stroke="#2E221F" stroke-width="1.2" stroke-linecap="round"/>
+
+    <!-- Eyes -->
+    <line x1="23" y1="23" x2="27" y2="23.5" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="37" y1="23.5" x2="41" y2="23" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+
+    <!-- Chubby Body in Water -->
+    <ellipse cx="32" cy="45" rx="16" ry="10" class="capy-brown" stroke="#2E221F" stroke-width="1.5"/>
+
+    <!-- Cypress Wood Tub (Back Rim) -->
+    <rect x="8" y="38" width="48" height="20" rx="4" class="wood-shadow" stroke="#2E221F" stroke-width="2"/>
+
+    <!-- Hot Spring Water Ripple -->
+    <ellipse cx="32" cy="42" rx="21" ry="5.5" class="spring-deep"/>
+    <ellipse cx="32" cy="41.5" rx="20" ry="4.8" class="spring-aqua"/>
+    <path d="M15 41.5 Q32 43 49 41.5" fill="none" stroke="#C3F0F7" stroke-width="1.2" opacity="0.8"/>
+
+    <!-- Front Paws -->
+    <ellipse cx="23" cy="41.5" rx="3.5" ry="2.2" class="capy-snout" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="41" cy="41.5" rx="3.5" ry="2.2" class="capy-snout" stroke="#2E221F" stroke-width="1.2"/>
+
+    <!-- Cypress Tub Front -->
+    <path d="M8 43 L10 58 L54 58 L56 43 Z" class="wood-cypress" stroke="#2E221F" stroke-width="1.8"/>
+    <line x1="18" y1="43" x2="19" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <line x1="32" y1="43" x2="32" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <line x1="46" y1="43" x2="45" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <rect x="8.5" y="47" width="47" height="2" class="wood-band"/>
+    <rect x="9.5" y="54" width="45" height="2" class="wood-band"/>
+  </g>
+
+  <!-- Frame 0.3 (IDLE - Frame 3: Deep Zen state, steam swirl, leaf float) -->
+  <g id="capybara-idle-f3" transform="translate(128, 0)">
+    <!-- Steam Swirls Peak -->
+    <path d="M15 14 C13 9, 18 5, 14 1" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.75" stroke-linecap="round"/>
+    <path d="M49 13 C53 8, 47 4, 50 1" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.75" stroke-linecap="round"/>
+
+    <!-- Floating Leaf on Spring Surface -->
+    <path d="M12 40 C14 38, 16 39, 15 41 C13 41.5, 12 41, 12 40 Z" class="yuzu-leaf" stroke="#2E221F" stroke-width="0.6"/>
+
+    <!-- Ears -->
+    <ellipse cx="19" cy="22" rx="3.5" ry="3" class="capy-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="19" cy="22" rx="2" ry="1.8" class="capy-ear-inner"/>
+    <ellipse cx="45" cy="22" rx="3.5" ry="3" class="capy-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="45" cy="22" rx="2" ry="1.8" class="capy-ear-inner"/>
+
+    <!-- Yuzu Crown -->
+    <ellipse cx="32" cy="14" rx="5" ry="4.5" class="yuzu-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="32" cy="13.5" rx="4.8" ry="4" class="yuzu-yellow"/>
+    <ellipse cx="30.5" cy="12" rx="1.8" ry="1.2" class="yuzu-highlight"/>
+    <path d="M33 9.5 C36 8, 38 10, 36 12 C34 12, 33 10.5, 33 9.5 Z" class="yuzu-leaf" stroke="#2E221F" stroke-width="0.8"/>
+
+    <!-- Capybara Head Base -->
+    <rect x="20" y="18" width="24" height="22" rx="6" class="capy-shadow" stroke="#2E221F" stroke-width="2"/>
+    <rect x="20.5" y="17.5" width="23" height="21" rx="5.5" class="capy-brown"/>
+    <rect x="22" y="20" width="20" height="8" rx="3" class="capy-light"/>
+
+    <!-- Snout / Muzzle -->
+    <rect x="23" y="27" width="18" height="12" rx="3.5" class="capy-snout" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="28" cy="31" rx="1.2" ry="1.5" fill="#2E221F"/>
+    <ellipse cx="36" cy="31" rx="1.2" ry="1.5" fill="#2E221F"/>
+    <line x1="30" y1="36" x2="34" y2="36" stroke="#2E221F" stroke-width="1.2" stroke-linecap="round"/>
+
+    <!-- Eyes (Slightly more relaxed) -->
+    <line x1="23" y1="24.2" x2="27" y2="24.8" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="37" y1="24.8" x2="41" y2="24.2" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+
+    <!-- Body in Water -->
+    <ellipse cx="32" cy="46" rx="16" ry="10" class="capy-brown" stroke="#2E221F" stroke-width="1.5"/>
+
+    <!-- Cypress Wood Tub (Back Rim) -->
+    <rect x="8" y="38" width="48" height="20" rx="4" class="wood-shadow" stroke="#2E221F" stroke-width="2"/>
+
+    <!-- Hot Spring Water Layer -->
+    <ellipse cx="32" cy="42" rx="21" ry="5.5" class="spring-deep"/>
+    <ellipse cx="32" cy="41.5" rx="20" ry="4.8" class="spring-aqua"/>
+    <path d="M16 42.5 Q32 44.5 48 42.5" fill="none" stroke="#C3F0F7" stroke-width="1.2" opacity="0.8"/>
+
+    <!-- Front Paws -->
+    <ellipse cx="23" cy="42" rx="3.5" ry="2.2" class="capy-snout" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="41" cy="42" rx="3.5" ry="2.2" class="capy-snout" stroke="#2E221F" stroke-width="1.2"/>
+
+    <!-- Tub Front -->
+    <path d="M8 43 L10 58 L54 58 L56 43 Z" class="wood-cypress" stroke="#2E221F" stroke-width="1.8"/>
+    <line x1="18" y1="43" x2="19" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <line x1="32" y1="43" x2="32" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <line x1="46" y1="43" x2="45" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <rect x="8.5" y="47" width="47" height="2" class="wood-band"/>
+    <rect x="9.5" y="54" width="45" height="2" class="wood-band"/>
+  </g>
+
+  <!-- Frame 0.4 (IDLE - Frame 4: Soft exhale, warm mist settling) -->
+  <g id="capybara-idle-f4" transform="translate(192, 0)">
+    <!-- Steam Puffs Dispersing -->
+    <path d="M13 17 C11 13, 15 9, 13 5" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.6" stroke-linecap="round"/>
+    <path d="M51 15 C53 11, 49 7, 51 3" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.6" stroke-linecap="round"/>
+
+    <!-- Floating Leaf Bobbing -->
+    <path d="M13 40.5 C15 38.5, 17 39.5, 16 41.5 C14 42, 13 41.5, 13 40.5 Z" class="yuzu-leaf" stroke="#2E221F" stroke-width="0.6"/>
+
+    <!-- Ears -->
+    <ellipse cx="19" cy="22" rx="3.5" ry="3" class="capy-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="19" cy="22" rx="2" ry="1.8" class="capy-ear-inner"/>
+    <ellipse cx="45" cy="22" rx="3.5" ry="3" class="capy-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="45" cy="22" rx="2" ry="1.8" class="capy-ear-inner"/>
+
+    <!-- Yuzu Crown -->
+    <ellipse cx="32" cy="14" rx="5" ry="4.5" class="yuzu-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="32" cy="13.5" rx="4.8" ry="4" class="yuzu-yellow"/>
+    <ellipse cx="30.5" cy="12" rx="1.8" ry="1.2" class="yuzu-highlight"/>
+    <path d="M33 9.5 C36 8, 38 10, 36 12 C34 12, 33 10.5, 33 9.5 Z" class="yuzu-leaf" stroke="#2E221F" stroke-width="0.8"/>
+
+    <!-- Capybara Head Base -->
+    <rect x="20" y="18" width="24" height="22" rx="6" class="capy-shadow" stroke="#2E221F" stroke-width="2"/>
+    <rect x="20.5" y="17.5" width="23" height="21" rx="5.5" class="capy-brown"/>
+    <rect x="22" y="20" width="20" height="8" rx="3" class="capy-light"/>
+
+    <!-- Snout / Muzzle -->
+    <rect x="23" y="27" width="18" height="12" rx="3.5" class="capy-snout" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="28" cy="31" rx="1.2" ry="1.5" fill="#2E221F"/>
+    <ellipse cx="36" cy="31" rx="1.2" ry="1.5" fill="#2E221F"/>
+    <line x1="30" y1="36" x2="34" y2="36" stroke="#2E221F" stroke-width="1.2" stroke-linecap="round"/>
+
+    <!-- Eyes -->
+    <line x1="23" y1="24" x2="27" y2="24.5" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="37" y1="24.5" x2="41" y2="24" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+
+    <!-- Body in Water -->
+    <ellipse cx="32" cy="46" rx="16" ry="10" class="capy-brown" stroke="#2E221F" stroke-width="1.5"/>
+
+    <!-- Cypress Wood Tub (Back Rim) -->
+    <rect x="8" y="38" width="48" height="20" rx="4" class="wood-shadow" stroke="#2E221F" stroke-width="2"/>
+
+    <!-- Hot Spring Water Layer -->
+    <ellipse cx="32" cy="42" rx="21" ry="5.5" class="spring-deep"/>
+    <ellipse cx="32" cy="41.5" rx="20" ry="4.8" class="spring-aqua"/>
+    <path d="M16 42 Q32 44 48 42" fill="none" stroke="#C3F0F7" stroke-width="1.2" opacity="0.8"/>
+
+    <!-- Front Paws -->
+    <ellipse cx="23" cy="42" rx="3.5" ry="2.2" class="capy-snout" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="41" cy="42" rx="3.5" ry="2.2" class="capy-snout" stroke="#2E221F" stroke-width="1.2"/>
+
+    <!-- Tub Front -->
+    <path d="M8 43 L10 58 L54 58 L56 43 Z" class="wood-cypress" stroke="#2E221F" stroke-width="1.8"/>
+    <line x1="18" y1="43" x2="19" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <line x1="32" y1="43" x2="32" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <line x1="46" y1="43" x2="45" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <rect x="8.5" y="47" width="47" height="2" class="wood-band"/>
+    <rect x="9.5" y="54" width="45" height="2" class="wood-band"/>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- ROW 1 (Y: 64px) — FOCUS STATE (Mindful alternating wink, swirling leaves)  -->
+  <!-- ========================================================================= -->
+
+  <!-- Frame 1.1 (FOCUS - Frame 1: Left eye winks mindfully, leaf drifts clockwise) -->
+  <g id="capybara-focus-f1" transform="translate(0, 64)">
+    <!-- Rhythmic Steam -->
+    <path d="M13 15 C11 11, 15 7, 13 3" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.7"/>
+    <path d="M51 14 C53 10, 49 6, 51 2" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.7"/>
+
+    <!-- Floating Leaf Left -->
+    <path d="M12 40 C14 38, 17 39, 15 41 C13 41.5, 12 41, 12 40 Z" class="yuzu-leaf" stroke="#2E221F" stroke-width="0.6"/>
+
+    <!-- Ears -->
+    <ellipse cx="19" cy="22" rx="3.5" ry="3" class="capy-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="19" cy="22" rx="2" ry="1.8" class="capy-ear-inner"/>
+    <ellipse cx="45" cy="22" rx="3.5" ry="3" class="capy-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="45" cy="22" rx="2" ry="1.8" class="capy-ear-inner"/>
+
+    <!-- Yuzu Crown -->
+    <ellipse cx="32" cy="14" rx="5" ry="4.5" class="yuzu-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="32" cy="13.5" rx="4.8" ry="4" class="yuzu-yellow"/>
+    <ellipse cx="30.5" cy="12" rx="1.8" ry="1.2" class="yuzu-highlight"/>
+    <path d="M33 9.5 C36.5 8, 38.5 10, 36.5 12 Z" class="yuzu-leaf" stroke="#2E221F" stroke-width="0.8"/>
+
+    <!-- Capybara Head Base -->
+    <rect x="20" y="18" width="24" height="22" rx="6" class="capy-shadow" stroke="#2E221F" stroke-width="2"/>
+    <rect x="20.5" y="17.5" width="23" height="21" rx="5.5" class="capy-brown"/>
+    <rect x="22" y="20" width="20" height="8" rx="3" class="capy-light"/>
+
+    <!-- Snout / Muzzle -->
+    <rect x="23" y="27" width="18" height="12" rx="3.5" class="capy-snout" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="28" cy="31" rx="1.2" ry="1.5" fill="#2E221F"/>
+    <ellipse cx="36" cy="31" rx="1.2" ry="1.5" fill="#2E221F"/>
+    <line x1="30" y1="36" x2="34" y2="36" stroke="#2E221F" stroke-width="1.2" stroke-linecap="round"/>
+
+    <!-- Eyes: Left eye winks (>_< style curve), Right eye focused open bead -->
+    <path d="M23 25 Q25 23 27 25" fill="none" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+    <circle cx="39" cy="24.5" r="1.6" class="eye-dark"/>
+    <circle cx="38.5" cy="24" r="0.6" fill="#FFFFFF"/>
+
+    <!-- Body in Water -->
+    <ellipse cx="32" cy="46" rx="16" ry="10" class="capy-brown" stroke="#2E221F" stroke-width="1.5"/>
+
+    <!-- Tub Back -->
+    <rect x="8" y="38" width="48" height="20" rx="4" class="wood-shadow" stroke="#2E221F" stroke-width="2"/>
+
+    <!-- Water Ripples -->
+    <ellipse cx="32" cy="42" rx="21" ry="5.5" class="spring-deep"/>
+    <ellipse cx="32" cy="41.5" rx="20" ry="4.8" class="spring-aqua"/>
+    <circle cx="16" cy="42" r="1.5" class="bubble"/>
+
+    <!-- Front Paws -->
+    <ellipse cx="23" cy="42" rx="3.5" ry="2.2" class="capy-snout" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="41" cy="42" rx="3.5" ry="2.2" class="capy-snout" stroke="#2E221F" stroke-width="1.2"/>
+
+    <!-- Tub Front -->
+    <path d="M8 43 L10 58 L54 58 L56 43 Z" class="wood-cypress" stroke="#2E221F" stroke-width="1.8"/>
+    <line x1="18" y1="43" x2="19" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <line x1="32" y1="43" x2="32" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <line x1="46" y1="43" x2="45" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <rect x="8.5" y="47" width="47" height="2" class="wood-band"/>
+    <rect x="9.5" y="54" width="45" height="2" class="wood-band"/>
+  </g>
+
+  <!-- Frame 1.2 (FOCUS - Frame 2: Both eyes focused, leaf swirls center) -->
+  <g id="capybara-focus-f2" transform="translate(64, 64)">
+    <!-- Rhythmic Steam Up -->
+    <path d="M14 13 C12 8, 16 5, 14 1" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.8"/>
+    <path d="M50 12 C52 7, 48 4, 51 1" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.8"/>
+
+    <!-- Floating Leaf Swirling Center-Right -->
+    <path d="M22 43 C24 41, 27 42, 25 44 C23 44.5, 22 44, 22 43 Z" class="yuzu-leaf" stroke="#2E221F" stroke-width="0.6"/>
+
+    <!-- Ears -->
+    <ellipse cx="19" cy="21" rx="3.5" ry="3" class="capy-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="19" cy="21" rx="2" ry="1.8" class="capy-ear-inner"/>
+    <ellipse cx="45" cy="21" rx="3.5" ry="3" class="capy-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="45" cy="21" rx="2" ry="1.8" class="capy-ear-inner"/>
+
+    <!-- Yuzu Crown Bob -->
+    <ellipse cx="32" cy="13" rx="5" ry="4.5" class="yuzu-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="32" cy="12.5" rx="4.8" ry="4" class="yuzu-yellow"/>
+    <ellipse cx="30.5" cy="11" rx="1.8" ry="1.2" class="yuzu-highlight"/>
+    <path d="M33 8.5 C37 7.5, 39 9.5, 37 11.5 Z" class="yuzu-leaf" stroke="#2E221F" stroke-width="0.8"/>
+
+    <!-- Capybara Head Base (Up 1px) -->
+    <rect x="20" y="17" width="24" height="22" rx="6" class="capy-shadow" stroke="#2E221F" stroke-width="2"/>
+    <rect x="20.5" y="16.5" width="23" height="21" rx="5.5" class="capy-brown"/>
+    <rect x="22" y="19" width="20" height="8" rx="3" class="capy-light"/>
+
+    <!-- Snout / Muzzle -->
+    <rect x="23" y="26" width="18" height="12" rx="3.5" class="capy-snout" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="28" cy="30" rx="1.2" ry="1.5" fill="#2E221F"/>
+    <ellipse cx="36" cy="30" rx="1.2" ry="1.5" fill="#2E221F"/>
+    <line x1="30" y1="35" x2="34" y2="35" stroke="#2E221F" stroke-width="1.2" stroke-linecap="round"/>
+
+    <!-- Eyes: Both eyes alert & glowing with zen focus -->
+    <circle cx="25" cy="23.5" r="1.6" class="eye-dark"/>
+    <circle cx="24.5" cy="23" r="0.6" fill="#FFFFFF"/>
+    <circle cx="39" cy="23.5" r="1.6" class="eye-dark"/>
+    <circle cx="38.5" cy="23" r="0.6" fill="#FFFFFF"/>
+
+    <!-- Body in Water -->
+    <ellipse cx="32" cy="45" rx="16" ry="10" class="capy-brown" stroke="#2E221F" stroke-width="1.5"/>
+
+    <!-- Tub Back -->
+    <rect x="8" y="38" width="48" height="20" rx="4" class="wood-shadow" stroke="#2E221F" stroke-width="2"/>
+
+    <!-- Water Ripples -->
+    <ellipse cx="32" cy="42" rx="21" ry="5.5" class="spring-deep"/>
+    <ellipse cx="32" cy="41.5" rx="20" ry="4.8" class="spring-aqua"/>
+    <circle cx="48" cy="41" r="1.5" class="bubble"/>
+
+    <!-- Front Paws -->
+    <ellipse cx="23" cy="41.5" rx="3.5" ry="2.2" class="capy-snout" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="41" cy="41.5" rx="3.5" ry="2.2" class="capy-snout" stroke="#2E221F" stroke-width="1.2"/>
+
+    <!-- Tub Front -->
+    <path d="M8 43 L10 58 L54 58 L56 43 Z" class="wood-cypress" stroke="#2E221F" stroke-width="1.8"/>
+    <line x1="18" y1="43" x2="19" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <line x1="32" y1="43" x2="32" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <line x1="46" y1="43" x2="45" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <rect x="8.5" y="47" width="47" height="2" class="wood-band"/>
+    <rect x="9.5" y="54" width="45" height="2" class="wood-band"/>
+  </g>
+
+  <!-- Frame 1.3 (FOCUS - Frame 3: Right eye winks mindfully, leaf drifts right) -->
+  <g id="capybara-focus-f3" transform="translate(128, 64)">
+    <!-- Rhythmic Steam -->
+    <path d="M12 15 C10 11, 14 7, 12 3" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.7"/>
+    <path d="M52 14 C54 10, 50 6, 52 2" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.7"/>
+
+    <!-- Floating Leaf Right -->
+    <path d="M46 41 C48 39, 51 40, 49 42 C47 42.5, 46 42, 46 41 Z" class="yuzu-leaf" stroke="#2E221F" stroke-width="0.6"/>
+
+    <!-- Ears -->
+    <ellipse cx="19" cy="22" rx="3.5" ry="3" class="capy-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="19" cy="22" rx="2" ry="1.8" class="capy-ear-inner"/>
+    <ellipse cx="45" cy="22" rx="3.5" ry="3" class="capy-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="45" cy="22" rx="2" ry="1.8" class="capy-ear-inner"/>
+
+    <!-- Yuzu Crown -->
+    <ellipse cx="32" cy="14" rx="5" ry="4.5" class="yuzu-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="32" cy="13.5" rx="4.8" ry="4" class="yuzu-yellow"/>
+    <ellipse cx="30.5" cy="12" rx="1.8" ry="1.2" class="yuzu-highlight"/>
+    <path d="M33 9.5 C36 8, 38 10, 36 12 Z" class="yuzu-leaf" stroke="#2E221F" stroke-width="0.8"/>
+
+    <!-- Capybara Head Base -->
+    <rect x="20" y="18" width="24" height="22" rx="6" class="capy-shadow" stroke="#2E221F" stroke-width="2"/>
+    <rect x="20.5" y="17.5" width="23" height="21" rx="5.5" class="capy-brown"/>
+    <rect x="22" y="20" width="20" height="8" rx="3" class="capy-light"/>
+
+    <!-- Snout / Muzzle -->
+    <rect x="23" y="27" width="18" height="12" rx="3.5" class="capy-snout" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="28" cy="31" rx="1.2" ry="1.5" fill="#2E221F"/>
+    <ellipse cx="36" cy="31" rx="1.2" ry="1.5" fill="#2E221F"/>
+    <line x1="30" y1="36" x2="34" y2="36" stroke="#2E221F" stroke-width="1.2" stroke-linecap="round"/>
+
+    <!-- Eyes: Left eye focused open bead, Right eye winks (>_< style curve) -->
+    <circle cx="25" cy="24.5" r="1.6" class="eye-dark"/>
+    <circle cx="24.5" cy="24" r="0.6" fill="#FFFFFF"/>
+    <path d="M37 25 Q39 23 41 25" fill="none" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+
+    <!-- Body in Water -->
+    <ellipse cx="32" cy="46" rx="16" ry="10" class="capy-brown" stroke="#2E221F" stroke-width="1.5"/>
+
+    <!-- Tub Back -->
+    <rect x="8" y="38" width="48" height="20" rx="4" class="wood-shadow" stroke="#2E221F" stroke-width="2"/>
+
+    <!-- Water Ripples -->
+    <ellipse cx="32" cy="42" rx="21" ry="5.5" class="spring-deep"/>
+    <ellipse cx="32" cy="41.5" rx="20" ry="4.8" class="spring-aqua"/>
+    <circle cx="32" cy="43" r="1.3" class="bubble"/>
+
+    <!-- Front Paws -->
+    <ellipse cx="23" cy="42" rx="3.5" ry="2.2" class="capy-snout" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="41" cy="42" rx="3.5" ry="2.2" class="capy-snout" stroke="#2E221F" stroke-width="1.2"/>
+
+    <!-- Tub Front -->
+    <path d="M8 43 L10 58 L54 58 L56 43 Z" class="wood-cypress" stroke="#2E221F" stroke-width="1.8"/>
+    <line x1="18" y1="43" x2="19" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <line x1="32" y1="43" x2="32" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <line x1="46" y1="43" x2="45" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <rect x="8.5" y="47" width="47" height="2" class="wood-band"/>
+    <rect x="9.5" y="54" width="45" height="2" class="wood-band"/>
+  </g>
+
+  <!-- Frame 1.4 (FOCUS - Frame 4: Harmonious deep focus, leaf completes orbit) -->
+  <g id="capybara-focus-f4" transform="translate(192, 64)">
+    <!-- Rhythmic Steam -->
+    <path d="M15 14 C13 9, 17 6, 15 2" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.75"/>
+    <path d="M49 13 C51 9, 47 5, 50 1" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.75"/>
+
+    <!-- Floating Leaf Returning Left -->
+    <path d="M18 42 C20 40, 23 41, 21 43 C19 43.5, 18 43, 18 42 Z" class="yuzu-leaf" stroke="#2E221F" stroke-width="0.6"/>
+
+    <!-- Ears -->
+    <ellipse cx="19" cy="22" rx="3.5" ry="3" class="capy-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="19" cy="22" rx="2" ry="1.8" class="capy-ear-inner"/>
+    <ellipse cx="45" cy="22" rx="3.5" ry="3" class="capy-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="45" cy="22" rx="2" ry="1.8" class="capy-ear-inner"/>
+
+    <!-- Yuzu Crown -->
+    <ellipse cx="32" cy="14" rx="5" ry="4.5" class="yuzu-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="32" cy="13.5" rx="4.8" ry="4" class="yuzu-yellow"/>
+    <ellipse cx="30.5" cy="12" rx="1.8" ry="1.2" class="yuzu-highlight"/>
+    <path d="M33 9.5 C36 8, 38 10, 36 12 Z" class="yuzu-leaf" stroke="#2E221F" stroke-width="0.8"/>
+
+    <!-- Capybara Head Base -->
+    <rect x="20" y="18" width="24" height="22" rx="6" class="capy-shadow" stroke="#2E221F" stroke-width="2"/>
+    <rect x="20.5" y="17.5" width="23" height="21" rx="5.5" class="capy-brown"/>
+    <rect x="22" y="20" width="20" height="8" rx="3" class="capy-light"/>
+
+    <!-- Snout / Muzzle -->
+    <rect x="23" y="27" width="18" height="12" rx="3.5" class="capy-snout" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="28" cy="31" rx="1.2" ry="1.5" fill="#2E221F"/>
+    <ellipse cx="36" cy="31" rx="1.2" ry="1.5" fill="#2E221F"/>
+    <line x1="30" y1="36" x2="34" y2="36" stroke="#2E221F" stroke-width="1.2" stroke-linecap="round"/>
+
+    <!-- Eyes: Dual stoic focus -->
+    <circle cx="25" cy="24.5" r="1.6" class="eye-dark"/>
+    <circle cx="24.5" cy="24" r="0.6" fill="#FFFFFF"/>
+    <circle cx="39" cy="24.5" r="1.6" class="eye-dark"/>
+    <circle cx="38.5" cy="24" r="0.6" fill="#FFFFFF"/>
+
+    <!-- Body in Water -->
+    <ellipse cx="32" cy="46" rx="16" ry="10" class="capy-brown" stroke="#2E221F" stroke-width="1.5"/>
+
+    <!-- Tub Back -->
+    <rect x="8" y="38" width="48" height="20" rx="4" class="wood-shadow" stroke="#2E221F" stroke-width="2"/>
+
+    <!-- Water Ripples -->
+    <ellipse cx="32" cy="42" rx="21" ry="5.5" class="spring-deep"/>
+    <ellipse cx="32" cy="41.5" rx="20" ry="4.8" class="spring-aqua"/>
+    <circle cx="28" cy="41" r="1.2" class="bubble"/>
+
+    <!-- Front Paws -->
+    <ellipse cx="23" cy="42" rx="3.5" ry="2.2" class="capy-snout" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="41" cy="42" rx="3.5" ry="2.2" class="capy-snout" stroke="#2E221F" stroke-width="1.2"/>
+
+    <!-- Tub Front -->
+    <path d="M8 43 L10 58 L54 58 L56 43 Z" class="wood-cypress" stroke="#2E221F" stroke-width="1.8"/>
+    <line x1="18" y1="43" x2="19" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <line x1="32" y1="43" x2="32" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <line x1="46" y1="43" x2="45" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <rect x="8.5" y="47" width="47" height="2" class="wood-band"/>
+    <rect x="9.5" y="54" width="45" height="2" class="wood-band"/>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- ROW 2 (Y: 128px) — FRENZY STATE (Boiling onsen, spinning yuzu, zen face)   -->
+  <!-- ========================================================================= -->
+
+  <!-- Frame 2.1 (FRENZY - Frame 1: Boiling bubbles surge, yuzu spins left, splashes) -->
+  <g id="capybara-frenzy-f1" transform="translate(0, 128)">
+    <!-- Violent Boiling Steam Clouds -->
+    <circle cx="10" cy="14" r="5" class="steam-puff"/>
+    <circle cx="14" cy="9" r="6" class="steam-puff"/>
+    <circle cx="54" cy="14" r="5" class="steam-puff"/>
+    <circle cx="50" cy="9" r="6" class="steam-puff"/>
+
+    <!-- Flying Water Drops Left & Right -->
+    <circle cx="6" cy="30" r="1.5" class="spring-deep"/>
+    <circle cx="4" cy="24" r="1.2" class="spring-aqua"/>
+    <circle cx="58" cy="28" r="1.5" class="spring-deep"/>
+    <circle cx="60" cy="22" r="1.2" class="spring-aqua"/>
+
+    <!-- Ears -->
+    <ellipse cx="19" cy="23" rx="3.5" ry="3" class="capy-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="19" cy="23" rx="2" ry="1.8" class="capy-ear-inner"/>
+    <ellipse cx="45" cy="23" rx="3.5" ry="3" class="capy-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="45" cy="23" rx="2" ry="1.8" class="capy-ear-inner"/>
+
+    <!-- Yuzu Crown Spinning Left (Tilted -12deg) -->
+    <g transform="translate(32, 12) rotate(-12)">
+      <ellipse cx="0" cy="0" rx="5" ry="4.5" class="yuzu-shadow" stroke="#2E221F" stroke-width="1.2"/>
+      <ellipse cx="0" cy="-0.5" rx="4.8" ry="4" class="yuzu-yellow"/>
+      <ellipse cx="-1.5" cy="-2" rx="1.8" ry="1.2" class="yuzu-highlight"/>
+      <path d="M1 -4 C4 -5, 6 -3, 4 -1 Z" class="yuzu-leaf" stroke="#2E221F" stroke-width="0.8"/>
+      <!-- Speed Lines around Yuzu -->
+      <line x1="-7" y1="-2" x2="-9" y2="-1" stroke="#FFD13B" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="7" y1="-2" x2="9" y2="-3" stroke="#FFD13B" stroke-width="1.2" stroke-linecap="round"/>
+    </g>
+
+    <!-- Capybara Head Base (Completely Zen & Stoic amidst chaos) -->
+    <rect x="20" y="18" width="24" height="22" rx="6" class="capy-shadow" stroke="#2E221F" stroke-width="2"/>
+    <rect x="20.5" y="17.5" width="23" height="21" rx="5.5" class="capy-brown"/>
+    <rect x="22" y="20" width="20" height="8" rx="3" class="capy-light"/>
+
+    <!-- Snout / Muzzle -->
+    <rect x="23" y="27" width="18" height="12" rx="3.5" class="capy-snout" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="28" cy="31" rx="1.2" ry="1.5" fill="#2E221F"/>
+    <ellipse cx="36" cy="31" rx="1.2" ry="1.5" fill="#2E221F"/>
+    <line x1="30" y1="36" x2="34" y2="36" stroke="#2E221F" stroke-width="1.2" stroke-linecap="round"/>
+
+    <!-- Unbothered Zen Closed Curved Eyes -->
+    <path d="M23 24 Q25 26 27 24" fill="none" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M37 24 Q39 26 41 24" fill="none" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+
+    <!-- Body in Water -->
+    <ellipse cx="32" cy="46" rx="16" ry="10" class="capy-brown" stroke="#2E221F" stroke-width="1.5"/>
+
+    <!-- Tub Back -->
+    <rect x="8" y="38" width="48" height="20" rx="4" class="wood-shadow" stroke="#2E221F" stroke-width="2"/>
+
+    <!-- Boiling Water with Big Bubbles -->
+    <ellipse cx="32" cy="42" rx="21" ry="5.5" class="spring-deep"/>
+    <ellipse cx="32" cy="41.5" rx="20" ry="4.8" class="spring-aqua"/>
+    <!-- Boiling Froth & Bubbles -->
+    <circle cx="14" cy="41" r="3" class="bubble"/>
+    <circle cx="20" cy="43" r="2.2" class="bubble"/>
+    <circle cx="44" cy="40" r="3.2" class="bubble"/>
+    <circle cx="50" cy="42" r="2.5" class="bubble"/>
+    <circle cx="32" cy="44" r="2" class="bubble"/>
+
+    <!-- Front Paws Resting Firmly -->
+    <ellipse cx="23" cy="42" rx="3.5" ry="2.2" class="capy-snout" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="41" cy="42" rx="3.5" ry="2.2" class="capy-snout" stroke="#2E221F" stroke-width="1.2"/>
+
+    <!-- Tub Front -->
+    <path d="M8 43 L10 58 L54 58 L56 43 Z" class="wood-cypress" stroke="#2E221F" stroke-width="1.8"/>
+    <line x1="18" y1="43" x2="19" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <line x1="32" y1="43" x2="32" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <line x1="46" y1="43" x2="45" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <rect x="8.5" y="47" width="47" height="2" class="wood-band"/>
+    <rect x="9.5" y="54" width="45" height="2" class="wood-band"/>
+  </g>
+
+  <!-- Frame 2.2 (FRENZY - Frame 2: Yuzu hops up into air, huge bubble pops) -->
+  <g id="capybara-frenzy-f2" transform="translate(64, 128)">
+    <!-- Violent Boiling Steam Clouds -->
+    <circle cx="12" cy="11" r="6" class="steam-puff"/>
+    <circle cx="16" cy="6" r="7" class="steam-puff"/>
+    <circle cx="52" cy="11" r="6" class="steam-puff"/>
+    <circle cx="48" cy="6" r="7" class="steam-puff"/>
+
+    <!-- Flying Water Drops -->
+    <circle cx="4" cy="20" r="1.8" class="spring-deep"/>
+    <circle cx="8" cy="16" r="1.2" class="spring-aqua"/>
+    <circle cx="60" cy="18" r="1.8" class="spring-deep"/>
+    <circle cx="56" cy="14" r="1.2" class="spring-aqua"/>
+
+    <!-- Ears -->
+    <ellipse cx="19" cy="22" rx="3.5" ry="3" class="capy-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="19" cy="22" rx="2" ry="1.8" class="capy-ear-inner"/>
+    <ellipse cx="45" cy="22" rx="3.5" ry="3" class="capy-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="45" cy="22" rx="2" ry="1.8" class="capy-ear-inner"/>
+
+    <!-- Yuzu Crown Hopping Upward (Y: 9px) -->
+    <g transform="translate(32, 9)">
+      <ellipse cx="0" cy="0" rx="5" ry="4.5" class="yuzu-shadow" stroke="#2E221F" stroke-width="1.2"/>
+      <ellipse cx="0" cy="-0.5" rx="4.8" ry="4" class="yuzu-yellow"/>
+      <ellipse cx="-1.5" cy="-2" rx="1.8" ry="1.2" class="yuzu-highlight"/>
+      <path d="M1 -4 C4 -6, 6 -4, 4 -2 Z" class="yuzu-leaf" stroke="#2E221F" stroke-width="0.8"/>
+      <!-- Hop Action Lines underneath -->
+      <line x1="-3" y1="5.5" x2="-3" y2="8" stroke="#FFE680" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="3" y1="5.5" x2="3" y2="8" stroke="#FFE680" stroke-width="1.2" stroke-linecap="round"/>
+    </g>
+
+    <!-- Capybara Head Base (Stoic) -->
+    <rect x="20" y="18" width="24" height="22" rx="6" class="capy-shadow" stroke="#2E221F" stroke-width="2"/>
+    <rect x="20.5" y="17.5" width="23" height="21" rx="5.5" class="capy-brown"/>
+    <rect x="22" y="20" width="20" height="8" rx="3" class="capy-light"/>
+
+    <!-- Snout / Muzzle -->
+    <rect x="23" y="27" width="18" height="12" rx="3.5" class="capy-snout" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="28" cy="31" rx="1.2" ry="1.5" fill="#2E221F"/>
+    <ellipse cx="36" cy="31" rx="1.2" ry="1.5" fill="#2E221F"/>
+    <line x1="30" y1="36" x2="34" y2="36" stroke="#2E221F" stroke-width="1.2" stroke-linecap="round"/>
+
+    <!-- Eyes: Zen straight lines -->
+    <line x1="23" y1="24.5" x2="27" y2="24.5" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="37" y1="24.5" x2="41" y2="24.5" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+
+    <!-- Body in Water -->
+    <ellipse cx="32" cy="46" rx="16" ry="10" class="capy-brown" stroke="#2E221F" stroke-width="1.5"/>
+
+    <!-- Tub Back -->
+    <rect x="8" y="38" width="48" height="20" rx="4" class="wood-shadow" stroke="#2E221F" stroke-width="2"/>
+
+    <!-- Boiling Water Froth -->
+    <ellipse cx="32" cy="42" rx="21" ry="5.5" class="spring-deep"/>
+    <ellipse cx="32" cy="41.5" rx="20" ry="4.8" class="spring-aqua"/>
+    <circle cx="16" cy="43" r="3.5" class="bubble"/>
+    <circle cx="26" cy="41" r="2.8" class="bubble"/>
+    <circle cx="38" cy="41" r="3" class="bubble"/>
+    <circle cx="48" cy="43" r="3.8" class="bubble"/>
+
+    <!-- Front Paws -->
+    <ellipse cx="23" cy="42" rx="3.5" ry="2.2" class="capy-snout" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="41" cy="42" rx="3.5" ry="2.2" class="capy-snout" stroke="#2E221F" stroke-width="1.2"/>
+
+    <!-- Tub Front -->
+    <path d="M8 43 L10 58 L54 58 L56 43 Z" class="wood-cypress" stroke="#2E221F" stroke-width="1.8"/>
+    <line x1="18" y1="43" x2="19" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <line x1="32" y1="43" x2="32" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <line x1="46" y1="43" x2="45" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <rect x="8.5" y="47" width="47" height="2" class="wood-band"/>
+    <rect x="9.5" y="54" width="45" height="2" class="wood-band"/>
+  </g>
+
+  <!-- Frame 2.3 (FRENZY - Frame 3: Yuzu spins right, splashing geyserlets) -->
+  <g id="capybara-frenzy-f3" transform="translate(128, 128)">
+    <!-- Violent Boiling Steam Clouds -->
+    <circle cx="8" cy="13" r="5.5" class="steam-puff"/>
+    <circle cx="15" cy="8" r="6.5" class="steam-puff"/>
+    <circle cx="56" cy="13" r="5.5" class="steam-puff"/>
+    <circle cx="49" cy="8" r="6.5" class="steam-puff"/>
+
+    <!-- Flying Water Drops -->
+    <circle cx="5" cy="26" r="1.5" class="spring-deep"/>
+    <circle cx="9" cy="20" r="1.3" class="spring-aqua"/>
+    <circle cx="59" cy="24" r="1.5" class="spring-deep"/>
+    <circle cx="55" cy="18" r="1.3" class="spring-aqua"/>
+
+    <!-- Ears -->
+    <ellipse cx="19" cy="23" rx="3.5" ry="3" class="capy-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="19" cy="23" rx="2" ry="1.8" class="capy-ear-inner"/>
+    <ellipse cx="45" cy="23" rx="3.5" ry="3" class="capy-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="45" cy="23" rx="2" ry="1.8" class="capy-ear-inner"/>
+
+    <!-- Yuzu Crown Spinning Right (Tilted +12deg) -->
+    <g transform="translate(32, 12) rotate(12)">
+      <ellipse cx="0" cy="0" rx="5" ry="4.5" class="yuzu-shadow" stroke="#2E221F" stroke-width="1.2"/>
+      <ellipse cx="0" cy="-0.5" rx="4.8" ry="4" class="yuzu-yellow"/>
+      <ellipse cx="-1.5" cy="-2" rx="1.8" ry="1.2" class="yuzu-highlight"/>
+      <path d="M-1 -4 C-4 -5, -6 -3, -4 -1 Z" class="yuzu-leaf" stroke="#2E221F" stroke-width="0.8"/>
+      <!-- Speed Lines -->
+      <line x1="-7" y1="-2" x2="-9" y2="-3" stroke="#FFD13B" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="7" y1="-2" x2="9" y2="-1" stroke="#FFD13B" stroke-width="1.2" stroke-linecap="round"/>
+    </g>
+
+    <!-- Capybara Head Base -->
+    <rect x="20" y="18" width="24" height="22" rx="6" class="capy-shadow" stroke="#2E221F" stroke-width="2"/>
+    <rect x="20.5" y="17.5" width="23" height="21" rx="5.5" class="capy-brown"/>
+    <rect x="22" y="20" width="20" height="8" rx="3" class="capy-light"/>
+
+    <!-- Snout / Muzzle -->
+    <rect x="23" y="27" width="18" height="12" rx="3.5" class="capy-snout" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="28" cy="31" rx="1.2" ry="1.5" fill="#2E221F"/>
+    <ellipse cx="36" cy="31" rx="1.2" ry="1.5" fill="#2E221F"/>
+    <line x1="30" y1="36" x2="34" y2="36" stroke="#2E221F" stroke-width="1.2" stroke-linecap="round"/>
+
+    <!-- Eyes: Zen Closed Curved Eyes -->
+    <path d="M23 24 Q25 26 27 24" fill="none" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M37 24 Q39 26 41 24" fill="none" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+
+    <!-- Body in Water -->
+    <ellipse cx="32" cy="46" rx="16" ry="10" class="capy-brown" stroke="#2E221F" stroke-width="1.5"/>
+
+    <!-- Tub Back -->
+    <rect x="8" y="38" width="48" height="20" rx="4" class="wood-shadow" stroke="#2E221F" stroke-width="2"/>
+
+    <!-- Boiling Water -->
+    <ellipse cx="32" cy="42" rx="21" ry="5.5" class="spring-deep"/>
+    <ellipse cx="32" cy="41.5" rx="20" ry="4.8" class="spring-aqua"/>
+    <circle cx="12" cy="42" r="2.8" class="bubble"/>
+    <circle cx="22" cy="41" r="3.2" class="bubble"/>
+    <circle cx="42" cy="43" r="2.6" class="bubble"/>
+    <circle cx="52" cy="41" r="3.4" class="bubble"/>
+
+    <!-- Front Paws -->
+    <ellipse cx="23" cy="42" rx="3.5" ry="2.2" class="capy-snout" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="41" cy="42" rx="3.5" ry="2.2" class="capy-snout" stroke="#2E221F" stroke-width="1.2"/>
+
+    <!-- Tub Front -->
+    <path d="M8 43 L10 58 L54 58 L56 43 Z" class="wood-cypress" stroke="#2E221F" stroke-width="1.8"/>
+    <line x1="18" y1="43" x2="19" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <line x1="32" y1="43" x2="32" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <line x1="46" y1="43" x2="45" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <rect x="8.5" y="47" width="47" height="2" class="wood-band"/>
+    <rect x="9.5" y="54" width="45" height="2" class="wood-band"/>
+  </g>
+
+  <!-- Frame 2.4 (FRENZY - Frame 4: Yuzu lands with a soft squash, water roils) -->
+  <g id="capybara-frenzy-f4" transform="translate(192, 128)">
+    <!-- Steam Clouds -->
+    <circle cx="11" cy="12" r="5.5" class="steam-puff"/>
+    <circle cx="17" cy="7" r="6.5" class="steam-puff"/>
+    <circle cx="53" cy="12" r="5.5" class="steam-puff"/>
+    <circle cx="47" cy="7" r="6.5" class="steam-puff"/>
+
+    <!-- Drops -->
+    <circle cx="6" cy="22" r="1.6" class="spring-deep"/>
+    <circle cx="58" cy="20" r="1.6" class="spring-deep"/>
+
+    <!-- Ears -->
+    <ellipse cx="19" cy="23" rx="3.5" ry="3" class="capy-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="19" cy="23" rx="2" ry="1.8" class="capy-ear-inner"/>
+    <ellipse cx="45" cy="23" rx="3.5" ry="3" class="capy-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="45" cy="23" rx="2" ry="1.8" class="capy-ear-inner"/>
+
+    <!-- Yuzu Crown Squashed Softly (rx: 5.5, ry: 4) -->
+    <g transform="translate(32, 14)">
+      <ellipse cx="0" cy="0" rx="5.5" ry="4" class="yuzu-shadow" stroke="#2E221F" stroke-width="1.2"/>
+      <ellipse cx="0" cy="-0.3" rx="5.2" ry="3.6" class="yuzu-yellow"/>
+      <ellipse cx="-1.5" cy="-1.5" rx="2" ry="1" class="yuzu-highlight"/>
+      <path d="M1 -3.5 C4 -5, 6 -3, 4 -1 Z" class="yuzu-leaf" stroke="#2E221F" stroke-width="0.8"/>
+    </g>
+
+    <!-- Capybara Head Base -->
+    <rect x="20" y="18" width="24" height="22" rx="6" class="capy-shadow" stroke="#2E221F" stroke-width="2"/>
+    <rect x="20.5" y="17.5" width="23" height="21" rx="5.5" class="capy-brown"/>
+    <rect x="22" y="20" width="20" height="8" rx="3" class="capy-light"/>
+
+    <!-- Snout / Muzzle -->
+    <rect x="23" y="27" width="18" height="12" rx="3.5" class="capy-snout" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="28" cy="31" rx="1.2" ry="1.5" fill="#2E221F"/>
+    <ellipse cx="36" cy="31" rx="1.2" ry="1.5" fill="#2E221F"/>
+    <line x1="30" y1="36" x2="34" y2="36" stroke="#2E221F" stroke-width="1.2" stroke-linecap="round"/>
+
+    <!-- Eyes: Calm straight lines -->
+    <line x1="23" y1="24.5" x2="27" y2="24.5" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="37" y1="24.5" x2="41" y2="24.5" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+
+    <!-- Body in Water -->
+    <ellipse cx="32" cy="46" rx="16" ry="10" class="capy-brown" stroke="#2E221F" stroke-width="1.5"/>
+
+    <!-- Tub Back -->
+    <rect x="8" y="38" width="48" height="20" rx="4" class="wood-shadow" stroke="#2E221F" stroke-width="2"/>
+
+    <!-- Water Froth -->
+    <ellipse cx="32" cy="42" rx="21" ry="5.5" class="spring-deep"/>
+    <ellipse cx="32" cy="41.5" rx="20" ry="4.8" class="spring-aqua"/>
+    <circle cx="15" cy="41" r="3.2" class="bubble"/>
+    <circle cx="32" cy="42" r="3.5" class="bubble"/>
+    <circle cx="49" cy="41" r="3" class="bubble"/>
+
+    <!-- Front Paws -->
+    <ellipse cx="23" cy="42" rx="3.5" ry="2.2" class="capy-snout" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="41" cy="42" rx="3.5" ry="2.2" class="capy-snout" stroke="#2E221F" stroke-width="1.2"/>
+
+    <!-- Tub Front -->
+    <path d="M8 43 L10 58 L54 58 L56 43 Z" class="wood-cypress" stroke="#2E221F" stroke-width="1.8"/>
+    <line x1="18" y1="43" x2="19" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <line x1="32" y1="43" x2="32" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <line x1="46" y1="43" x2="45" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <rect x="8.5" y="47" width="47" height="2" class="wood-band"/>
+    <rect x="9.5" y="54" width="45" height="2" class="wood-band"/>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- ROW 3 (Y: 192px) — DISK STATE (Rapid twig munching, wood chips flying)     -->
+  <!-- ========================================================================= -->
+
+  <!-- Frame 3.1 (DISK - Frame 1: Paws hold fresh cypress twig, mouth bites left) -->
+  <g id="capybara-disk-f1" transform="translate(0, 192)">
+    <!-- Steam -->
+    <path d="M12 16 C10 12, 14 8, 12 4" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.6"/>
+    <path d="M52 15 C54 11, 50 7, 52 3" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.6"/>
+
+    <!-- Ears -->
+    <ellipse cx="19" cy="22" rx="3.5" ry="3" class="capy-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="19" cy="22" rx="2" ry="1.8" class="capy-ear-inner"/>
+    <ellipse cx="45" cy="22" rx="3.5" ry="3" class="capy-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="45" cy="22" rx="2" ry="1.8" class="capy-ear-inner"/>
+
+    <!-- Yuzu Crown -->
+    <ellipse cx="32" cy="14" rx="5" ry="4.5" class="yuzu-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="32" cy="13.5" rx="4.8" ry="4" class="yuzu-yellow"/>
+    <ellipse cx="30.5" cy="12" rx="1.8" ry="1.2" class="yuzu-highlight"/>
+    <path d="M33 9.5 C36 8, 38 10, 36 12 Z" class="yuzu-leaf" stroke="#2E221F" stroke-width="0.8"/>
+
+    <!-- Capybara Head Base -->
+    <rect x="20" y="18" width="24" height="22" rx="6" class="capy-shadow" stroke="#2E221F" stroke-width="2"/>
+    <rect x="20.5" y="17.5" width="23" height="21" rx="5.5" class="capy-brown"/>
+    <rect x="22" y="20" width="20" height="8" rx="3" class="capy-light"/>
+
+    <!-- Snout / Muzzle (Chewing Left: Snout tilted slightly) -->
+    <rect x="22" y="27" width="18" height="12" rx="3.5" class="capy-snout" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="27" cy="31" rx="1.2" ry="1.5" fill="#2E221F"/>
+    <ellipse cx="35" cy="31" rx="1.2" ry="1.5" fill="#2E221F"/>
+    <!-- Chewing Mouth (Open 'om' bite) -->
+    <ellipse cx="30" cy="36" rx="2.5" ry="1.5" fill="#2E221F"/>
+
+    <!-- Happy Munching Eyes (^^ curved happy squint) -->
+    <path d="M23 25 Q25 22.5 27 25" fill="none" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M37 25 Q39 22.5 41 25" fill="none" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+
+    <!-- Delicious Cypress Twig held in Paws -->
+    <rect x="18" y="34" width="28" height="3" rx="1" class="twig-brown" stroke="#2E221F" stroke-width="1" transform="rotate(-6, 32, 35)"/>
+    <rect x="22" y="34.5" width="12" height="1" class="twig-light" transform="rotate(-6, 32, 35)"/>
+    <!-- Twig Leaf Accent -->
+    <path d="M43 31 C45 29, 47 30, 46 32 Z" class="yuzu-leaf" stroke="#2E221F" stroke-width="0.6"/>
+
+    <!-- Paws Holding Twig -->
+    <ellipse cx="24" cy="37" rx="3" ry="2.5" class="capy-snout" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="40" cy="37" rx="3" ry="2.5" class="capy-snout" stroke="#2E221F" stroke-width="1.2"/>
+
+    <!-- Flying Wood Chips (Munch munch!) -->
+    <rect x="16" y="31" width="1.8" height="1.8" class="wood-chip" transform="rotate(25, 17, 32)"/>
+    <rect x="14" y="35" width="1.5" height="1.5" class="wood-chip" transform="rotate(45, 15, 36)"/>
+
+    <!-- Tub Back & Water -->
+    <rect x="8" y="38" width="48" height="20" rx="4" class="wood-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="42" rx="21" ry="5.5" class="spring-deep"/>
+    <ellipse cx="32" cy="41.5" rx="20" ry="4.8" class="spring-aqua"/>
+
+    <!-- Tub Front -->
+    <path d="M8 43 L10 58 L54 58 L56 43 Z" class="wood-cypress" stroke="#2E221F" stroke-width="1.8"/>
+    <line x1="18" y1="43" x2="19" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <line x1="32" y1="43" x2="32" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <line x1="46" y1="43" x2="45" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <rect x="8.5" y="47" width="47" height="2" class="wood-band"/>
+    <rect x="9.5" y="54" width="45" height="2" class="wood-band"/>
+  </g>
+
+  <!-- Frame 3.2 (DISK - Frame 2: Twig shifts, crunching bite center, bark flings) -->
+  <g id="capybara-disk-f2" transform="translate(64, 192)">
+    <!-- Steam -->
+    <path d="M14 14 C12 10, 16 6, 14 2" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.65"/>
+    <path d="M50 13 C52 9, 48 5, 51 1" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.65"/>
+
+    <!-- Ears -->
+    <ellipse cx="19" cy="21" rx="3.5" ry="3" class="capy-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="19" cy="21" rx="2" ry="1.8" class="capy-ear-inner"/>
+    <ellipse cx="45" cy="21" rx="3.5" ry="3" class="capy-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="45" cy="21" rx="2" ry="1.8" class="capy-ear-inner"/>
+
+    <!-- Yuzu Crown Bob -->
+    <ellipse cx="32" cy="13" rx="5" ry="4.5" class="yuzu-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="32" cy="12.5" rx="4.8" ry="4" class="yuzu-yellow"/>
+    <ellipse cx="30.5" cy="11" rx="1.8" ry="1.2" class="yuzu-highlight"/>
+    <path d="M33 8.5 C36 7, 38 9, 36 11 Z" class="yuzu-leaf" stroke="#2E221F" stroke-width="0.8"/>
+
+    <!-- Capybara Head Base (Up 1px) -->
+    <rect x="20" y="17" width="24" height="22" rx="6" class="capy-shadow" stroke="#2E221F" stroke-width="2"/>
+    <rect x="20.5" y="16.5" width="23" height="21" rx="5.5" class="capy-brown"/>
+    <rect x="22" y="19" width="20" height="8" rx="3" class="capy-light"/>
+
+    <!-- Snout / Muzzle (Chewing Center: Snout straight, crunch!) -->
+    <rect x="23" y="26" width="18" height="12" rx="3.5" class="capy-snout" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="28" cy="30" rx="1.2" ry="1.5" fill="#2E221F"/>
+    <ellipse cx="36" cy="30" rx="1.2" ry="1.5" fill="#2E221F"/>
+    <!-- Closed Chew Mouth -->
+    <line x1="29" y1="35" x2="35" y2="35" stroke="#2E221F" stroke-width="1.6" stroke-linecap="round"/>
+
+    <!-- Happy Munching Eyes -->
+    <path d="M23 24 Q25 21.5 27 24" fill="none" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M37 24 Q39 21.5 41 24" fill="none" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+
+    <!-- Cypress Twig (Level) -->
+    <rect x="18" y="34" width="28" height="3" rx="1" class="twig-brown" stroke="#2E221F" stroke-width="1"/>
+    <rect x="22" y="34.5" width="14" height="1" class="twig-light"/>
+    <path d="M44 32 C46 30, 48 31, 47 33 Z" class="yuzu-leaf" stroke="#2E221F" stroke-width="0.6"/>
+
+    <!-- Paws Holding Twig (Up 1px) -->
+    <ellipse cx="24" cy="36" rx="3" ry="2.5" class="capy-snout" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="40" cy="36" rx="3" ry="2.5" class="capy-snout" stroke="#2E221F" stroke-width="1.2"/>
+
+    <!-- Flying Wood Chips -->
+    <rect x="17" y="29" width="1.8" height="1.8" class="wood-chip" transform="rotate(60, 18, 30)"/>
+    <rect x="46" y="29" width="1.6" height="1.6" class="wood-chip" transform="rotate(30, 47, 30)"/>
+    <rect x="31" y="28" width="1.5" height="1.5" class="wood-chip" transform="rotate(45, 32, 29)"/>
+
+    <!-- Tub Back & Water -->
+    <rect x="8" y="38" width="48" height="20" rx="4" class="wood-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="42" rx="21" ry="5.5" class="spring-deep"/>
+    <ellipse cx="32" cy="41.5" rx="20" ry="4.8" class="spring-aqua"/>
+
+    <!-- Tub Front -->
+    <path d="M8 43 L10 58 L54 58 L56 43 Z" class="wood-cypress" stroke="#2E221F" stroke-width="1.8"/>
+    <line x1="18" y1="43" x2="19" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <line x1="32" y1="43" x2="32" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <line x1="46" y1="43" x2="45" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <rect x="8.5" y="47" width="47" height="2" class="wood-band"/>
+    <rect x="9.5" y="54" width="45" height="2" class="wood-band"/>
+  </g>
+
+  <!-- Frame 3.3 (DISK - Frame 3: Twig tilted right, mouth bites right, fast chew) -->
+  <g id="capybara-disk-f3" transform="translate(128, 192)">
+    <!-- Steam -->
+    <path d="M12 16 C10 12, 14 8, 12 4" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.6"/>
+    <path d="M52 15 C54 11, 50 7, 52 3" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.6"/>
+
+    <!-- Ears -->
+    <ellipse cx="19" cy="22" rx="3.5" ry="3" class="capy-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="19" cy="22" rx="2" ry="1.8" class="capy-ear-inner"/>
+    <ellipse cx="45" cy="22" rx="3.5" ry="3" class="capy-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="45" cy="22" rx="2" ry="1.8" class="capy-ear-inner"/>
+
+    <!-- Yuzu Crown -->
+    <ellipse cx="32" cy="14" rx="5" ry="4.5" class="yuzu-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="32" cy="13.5" rx="4.8" ry="4" class="yuzu-yellow"/>
+    <ellipse cx="30.5" cy="12" rx="1.8" ry="1.2" class="yuzu-highlight"/>
+    <path d="M33 9.5 C36 8, 38 10, 36 12 Z" class="yuzu-leaf" stroke="#2E221F" stroke-width="0.8"/>
+
+    <!-- Capybara Head Base -->
+    <rect x="20" y="18" width="24" height="22" rx="6" class="capy-shadow" stroke="#2E221F" stroke-width="2"/>
+    <rect x="20.5" y="17.5" width="23" height="21" rx="5.5" class="capy-brown"/>
+    <rect x="22" y="20" width="20" height="8" rx="3" class="capy-light"/>
+
+    <!-- Snout / Muzzle (Chewing Right: Snout shifted right) -->
+    <rect x="24" y="27" width="18" height="12" rx="3.5" class="capy-snout" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="29" cy="31" rx="1.2" ry="1.5" fill="#2E221F"/>
+    <ellipse cx="37" cy="31" rx="1.2" ry="1.5" fill="#2E221F"/>
+    <!-- Chewing Mouth (Open bite right) -->
+    <ellipse cx="34" cy="36" rx="2.5" ry="1.5" fill="#2E221F"/>
+
+    <!-- Happy Munching Eyes -->
+    <path d="M23 25 Q25 22.5 27 25" fill="none" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M37 25 Q39 22.5 41 25" fill="none" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+
+    <!-- Cypress Twig (Tilted Right +6deg) -->
+    <rect x="18" y="34" width="28" height="3" rx="1" class="twig-brown" stroke="#2E221F" stroke-width="1" transform="rotate(6, 32, 35)"/>
+    <rect x="22" y="34.5" width="12" height="1" class="twig-light" transform="rotate(6, 32, 35)"/>
+    <path d="M45 35 C47 33, 49 34, 48 36 Z" class="yuzu-leaf" stroke="#2E221F" stroke-width="0.6"/>
+
+    <!-- Paws Holding Twig -->
+    <ellipse cx="24" cy="37" rx="3" ry="2.5" class="capy-snout" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="40" cy="37" rx="3" ry="2.5" class="capy-snout" stroke="#2E221F" stroke-width="1.2"/>
+
+    <!-- Flying Wood Chips -->
+    <rect x="47" y="32" width="1.8" height="1.8" class="wood-chip" transform="rotate(35, 48, 33)"/>
+    <rect x="49" y="36" width="1.5" height="1.5" class="wood-chip" transform="rotate(70, 50, 37)"/>
+
+    <!-- Tub Back & Water -->
+    <rect x="8" y="38" width="48" height="20" rx="4" class="wood-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="42" rx="21" ry="5.5" class="spring-deep"/>
+    <ellipse cx="32" cy="41.5" rx="20" ry="4.8" class="spring-aqua"/>
+
+    <!-- Tub Front -->
+    <path d="M8 43 L10 58 L54 58 L56 43 Z" class="wood-cypress" stroke="#2E221F" stroke-width="1.8"/>
+    <line x1="18" y1="43" x2="19" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <line x1="32" y1="43" x2="32" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <line x1="46" y1="43" x2="45" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <rect x="8.5" y="47" width="47" height="2" class="wood-band"/>
+    <rect x="9.5" y="54" width="45" height="2" class="wood-band"/>
+  </g>
+
+  <!-- Frame 3.4 (DISK - Frame 4: Satisfied swallow, eyes closed bliss, crumb settle) -->
+  <g id="capybara-disk-f4" transform="translate(192, 192)">
+    <!-- Steam -->
+    <path d="M13 15 C11 11, 15 7, 13 3" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.6"/>
+    <path d="M51 14 C53 10, 49 6, 51 2" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.6"/>
+
+    <!-- Ears -->
+    <ellipse cx="19" cy="22" rx="3.5" ry="3" class="capy-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="19" cy="22" rx="2" ry="1.8" class="capy-ear-inner"/>
+    <ellipse cx="45" cy="22" rx="3.5" ry="3" class="capy-shadow" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="45" cy="22" rx="2" ry="1.8" class="capy-ear-inner"/>
+
+    <!-- Yuzu Crown -->
+    <ellipse cx="32" cy="14" rx="5" ry="4.5" class="yuzu-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="32" cy="13.5" rx="4.8" ry="4" class="yuzu-yellow"/>
+    <ellipse cx="30.5" cy="12" rx="1.8" ry="1.2" class="yuzu-highlight"/>
+    <path d="M33 9.5 C36 8, 38 10, 36 12 Z" class="yuzu-leaf" stroke="#2E221F" stroke-width="0.8"/>
+
+    <!-- Capybara Head Base -->
+    <rect x="20" y="18" width="24" height="22" rx="6" class="capy-shadow" stroke="#2E221F" stroke-width="2"/>
+    <rect x="20.5" y="17.5" width="23" height="21" rx="5.5" class="capy-brown"/>
+    <rect x="22" y="20" width="20" height="8" rx="3" class="capy-light"/>
+
+    <!-- Snout / Muzzle -->
+    <rect x="23" y="27" width="18" height="12" rx="3.5" class="capy-snout" stroke="#2E221F" stroke-width="1.5"/>
+    <ellipse cx="28" cy="31" rx="1.2" ry="1.5" fill="#2E221F"/>
+    <ellipse cx="36" cy="31" rx="1.2" ry="1.5" fill="#2E221F"/>
+    <!-- Satisfied Smile after munching -->
+    <path d="M29 35 Q32 37.5 35 35" fill="none" stroke="#2E221F" stroke-width="1.4" stroke-linecap="round"/>
+
+    <!-- Blissful Squint Eyes -->
+    <path d="M23 24.5 Q25 22 27 24.5" fill="none" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M37 24.5 Q39 22 41 24.5" fill="none" stroke="#2E221F" stroke-width="1.8" stroke-linecap="round"/>
+
+    <!-- Cypress Twig in Paws -->
+    <rect x="18" y="35" width="28" height="3" rx="1" class="twig-brown" stroke="#2E221F" stroke-width="1"/>
+    <rect x="22" y="35.5" width="14" height="1" class="twig-light"/>
+    <path d="M44 33 C46 31, 48 32, 47 34 Z" class="yuzu-leaf" stroke="#2E221F" stroke-width="0.6"/>
+
+    <!-- Paws Holding Twig -->
+    <ellipse cx="24" cy="37" rx="3" ry="2.5" class="capy-snout" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="40" cy="37" rx="3" ry="2.5" class="capy-snout" stroke="#2E221F" stroke-width="1.2"/>
+
+    <!-- Settling Crumbs -->
+    <circle cx="16" cy="38" r="0.8" class="wood-chip"/>
+    <circle cx="48" cy="38" r="0.8" class="wood-chip"/>
+
+    <!-- Tub Back & Water -->
+    <rect x="8" y="38" width="48" height="20" rx="4" class="wood-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="42" rx="21" ry="5.5" class="spring-deep"/>
+    <ellipse cx="32" cy="41.5" rx="20" ry="4.8" class="spring-aqua"/>
+
+    <!-- Tub Front -->
+    <path d="M8 43 L10 58 L54 58 L56 43 Z" class="wood-cypress" stroke="#2E221F" stroke-width="1.8"/>
+    <line x1="18" y1="43" x2="19" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <line x1="32" y1="43" x2="32" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <line x1="46" y1="43" x2="45" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <rect x="8.5" y="47" width="47" height="2" class="wood-band"/>
+    <rect x="9.5" y="54" width="45" height="2" class="wood-band"/>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- ROW 4 (Y: 256px) — REST STATE (Submerged in onsen, floating snout & yuzu)  -->
+  <!-- ========================================================================= -->
+
+  <!-- Frame 4.1 (REST - Frame 1: Submerged low, sleepy eyes, gentle Z rising) -->
+  <g id="capybara-rest-f1" transform="translate(0, 256)">
+    <!-- Sleep Letter Z floating up -->
+    <text x="44" y="16" class="text-z">z</text>
+
+    <!-- Tiny Steam Tendril -->
+    <path d="M16 22 C14 18, 18 15, 16 12" fill="none" stroke="#FFFFFF" stroke-width="1.2" opacity="0.5"/>
+
+    <!-- Ears Submerged Tip only -->
+    <ellipse cx="20" cy="30" rx="2.5" ry="2" class="capy-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="44" cy="30" rx="2.5" ry="2" class="capy-shadow" stroke="#2E221F" stroke-width="1.2"/>
+
+    <!-- Yuzu Crown Resting on Head Surface -->
+    <ellipse cx="32" cy="22" rx="5" ry="4.5" class="yuzu-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="32" cy="21.5" rx="4.8" ry="4" class="yuzu-yellow"/>
+    <ellipse cx="30.5" cy="20" rx="1.8" ry="1.2" class="yuzu-highlight"/>
+    <path d="M33 17.5 C36 16, 38 18, 36 20 Z" class="yuzu-leaf" stroke="#2E221F" stroke-width="0.8"/>
+
+    <!-- Capybara Head (Submerged down to nose level) -->
+    <rect x="21" y="26" width="22" height="15" rx="5" class="capy-shadow" stroke="#2E221F" stroke-width="1.8"/>
+    <rect x="21.5" y="25.5" width="21" height="14" rx="4.5" class="capy-brown"/>
+    <rect x="23" y="27" width="18" height="6" rx="2.5" class="capy-light"/>
+
+    <!-- Peaceful Sleeping Eyes (Curved low lashes) -->
+    <path d="M24 30 Q26 32 28 30" fill="none" stroke="#2E221F" stroke-width="1.6" stroke-linecap="round"/>
+    <path d="M36 30 Q38 32 40 30" fill="none" stroke="#2E221F" stroke-width="1.6" stroke-linecap="round"/>
+
+    <!-- Exposed Snout / Nostrils right above water line -->
+    <rect x="24" y="32" width="16" height="8" rx="3" class="capy-snout" stroke="#2E221F" stroke-width="1.4"/>
+    <ellipse cx="29" cy="35" rx="1.2" ry="1.3" fill="#2E221F"/>
+    <ellipse cx="35" cy="35" rx="1.2" ry="1.3" fill="#2E221F"/>
+
+    <!-- High Warm Water Line Covering Body -->
+    <rect x="8" y="38" width="48" height="20" rx="4" class="wood-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="38" rx="21" ry="5.5" class="spring-deep"/>
+    <ellipse cx="32" cy="37.5" rx="20" ry="4.8" class="spring-aqua"/>
+
+    <!-- Little Rest Bubble from Nostril -->
+    <circle cx="28" cy="33" r="1.2" class="bubble"/>
+
+    <!-- Tub Front -->
+    <path d="M8 43 L10 58 L54 58 L56 43 Z" class="wood-cypress" stroke="#2E221F" stroke-width="1.8"/>
+    <line x1="18" y1="43" x2="19" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <line x1="32" y1="43" x2="32" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <line x1="46" y1="43" x2="45" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <rect x="8.5" y="47" width="47" height="2" class="wood-band"/>
+    <rect x="9.5" y="54" width="45" height="2" class="wood-band"/>
+  </g>
+
+  <!-- Frame 4.2 (REST - Frame 2: Deeper sink 1px, bigger Z, bubble pops) -->
+  <g id="capybara-rest-f2" transform="translate(64, 256)">
+    <!-- Sleep Letter Z Higher -->
+    <text x="46" y="12" class="text-z" style="font-size: 9px;">Z</text>
+
+    <!-- Steam -->
+    <path d="M17 20 C15 16, 19 13, 17 10" fill="none" stroke="#FFFFFF" stroke-width="1.2" opacity="0.55"/>
+
+    <!-- Ears -->
+    <ellipse cx="20" cy="31" rx="2.5" ry="2" class="capy-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="44" cy="31" rx="2.5" ry="2" class="capy-shadow" stroke="#2E221F" stroke-width="1.2"/>
+
+    <!-- Yuzu Crown (Down 1px into water) -->
+    <ellipse cx="32" cy="23" rx="5" ry="4.5" class="yuzu-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="32" cy="22.5" rx="4.8" ry="4" class="yuzu-yellow"/>
+    <ellipse cx="30.5" cy="21" rx="1.8" ry="1.2" class="yuzu-highlight"/>
+    <path d="M33 18.5 C36 17, 38 19, 36 21 Z" class="yuzu-leaf" stroke="#2E221F" stroke-width="0.8"/>
+
+    <!-- Capybara Head (Down 1px) -->
+    <rect x="21" y="27" width="22" height="15" rx="5" class="capy-shadow" stroke="#2E221F" stroke-width="1.8"/>
+    <rect x="21.5" y="26.5" width="21" height="14" rx="4.5" class="capy-brown"/>
+    <rect x="23" y="28" width="18" height="6" rx="2.5" class="capy-light"/>
+
+    <!-- Sleeping Eyes -->
+    <path d="M24 31 Q26 33 28 31" fill="none" stroke="#2E221F" stroke-width="1.6" stroke-linecap="round"/>
+    <path d="M36 31 Q38 33 40 31" fill="none" stroke="#2E221F" stroke-width="1.6" stroke-linecap="round"/>
+
+    <!-- Snout / Nostrils -->
+    <rect x="24" y="33" width="16" height="8" rx="3" class="capy-snout" stroke="#2E221F" stroke-width="1.4"/>
+    <ellipse cx="29" cy="36" rx="1.2" ry="1.3" fill="#2E221F"/>
+    <ellipse cx="35" cy="36" rx="1.2" ry="1.3" fill="#2E221F"/>
+
+    <!-- Water Line -->
+    <rect x="8" y="38" width="48" height="20" rx="4" class="wood-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="38" rx="21" ry="5.5" class="spring-deep"/>
+    <ellipse cx="32" cy="37.5" rx="20" ry="4.8" class="spring-aqua"/>
+
+    <!-- Expanding Rest Bubble -->
+    <circle cx="28" cy="31.5" r="2" class="bubble"/>
+
+    <!-- Tub Front -->
+    <path d="M8 43 L10 58 L54 58 L56 43 Z" class="wood-cypress" stroke="#2E221F" stroke-width="1.8"/>
+    <line x1="18" y1="43" x2="19" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <line x1="32" y1="43" x2="32" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <line x1="46" y1="43" x2="45" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <rect x="8.5" y="47" width="47" height="2" class="wood-band"/>
+    <rect x="9.5" y="54" width="45" height="2" class="wood-band"/>
+  </g>
+
+  <!-- Frame 4.3 (REST - Frame 3: Soft float upward 1px, second Z bubble) -->
+  <g id="capybara-rest-f3" transform="translate(128, 256)">
+    <!-- Sleep Letter Z Floating -->
+    <text x="48" y="8" class="text-z" style="font-size: 10px;">Z</text>
+    <text x="42" y="18" class="text-z" style="font-size: 7px;">z</text>
+
+    <!-- Steam -->
+    <path d="M15 22 C13 18, 17 15, 15 12" fill="none" stroke="#FFFFFF" stroke-width="1.2" opacity="0.5"/>
+
+    <!-- Ears -->
+    <ellipse cx="20" cy="30" rx="2.5" ry="2" class="capy-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="44" cy="30" rx="2.5" ry="2" class="capy-shadow" stroke="#2E221F" stroke-width="1.2"/>
+
+    <!-- Yuzu Crown -->
+    <ellipse cx="32" cy="22" rx="5" ry="4.5" class="yuzu-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="32" cy="21.5" rx="4.8" ry="4" class="yuzu-yellow"/>
+    <ellipse cx="30.5" cy="20" rx="1.8" ry="1.2" class="yuzu-highlight"/>
+    <path d="M33 17.5 C36 16, 38 18, 36 20 Z" class="yuzu-leaf" stroke="#2E221F" stroke-width="0.8"/>
+
+    <!-- Capybara Head Base -->
+    <rect x="21" y="26" width="22" height="15" rx="5" class="capy-shadow" stroke="#2E221F" stroke-width="1.8"/>
+    <rect x="21.5" y="25.5" width="21" height="14" rx="4.5" class="capy-brown"/>
+    <rect x="23" y="27" width="18" height="6" rx="2.5" class="capy-light"/>
+
+    <!-- Sleeping Eyes -->
+    <path d="M24 30 Q26 32 28 30" fill="none" stroke="#2E221F" stroke-width="1.6" stroke-linecap="round"/>
+    <path d="M36 30 Q38 32 40 30" fill="none" stroke="#2E221F" stroke-width="1.6" stroke-linecap="round"/>
+
+    <!-- Snout / Nostrils -->
+    <rect x="24" y="32" width="16" height="8" rx="3" class="capy-snout" stroke="#2E221F" stroke-width="1.4"/>
+    <ellipse cx="29" cy="35" rx="1.2" ry="1.3" fill="#2E221F"/>
+    <ellipse cx="35" cy="35" rx="1.2" ry="1.3" fill="#2E221F"/>
+
+    <!-- Water Line -->
+    <rect x="8" y="38" width="48" height="20" rx="4" class="wood-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="38" rx="21" ry="5.5" class="spring-deep"/>
+    <ellipse cx="32" cy="37.5" rx="20" ry="4.8" class="spring-aqua"/>
+
+    <!-- Bubble Floating Away -->
+    <circle cx="28" cy="28" r="1.5" class="bubble"/>
+
+    <!-- Tub Front -->
+    <path d="M8 43 L10 58 L54 58 L56 43 Z" class="wood-cypress" stroke="#2E221F" stroke-width="1.8"/>
+    <line x1="18" y1="43" x2="19" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <line x1="32" y1="43" x2="32" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <line x1="46" y1="43" x2="45" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <rect x="8.5" y="47" width="47" height="2" class="wood-band"/>
+    <rect x="9.5" y="54" width="45" height="2" class="wood-band"/>
+  </g>
+
+  <!-- Frame 4.4 (REST - Frame 4: Complete calm slumber, water ripples gently) -->
+  <g id="capybara-rest-f4" transform="translate(192, 256)">
+    <!-- Sleep Letter Z Fading Out High -->
+    <text x="50" y="5" class="text-z" style="font-size: 8px;" opacity="0.6">z</text>
+
+    <!-- Steam -->
+    <path d="M16 21 C14 17, 18 14, 16 11" fill="none" stroke="#FFFFFF" stroke-width="1.2" opacity="0.5"/>
+
+    <!-- Ears -->
+    <ellipse cx="20" cy="30" rx="2.5" ry="2" class="capy-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="44" cy="30" rx="2.5" ry="2" class="capy-shadow" stroke="#2E221F" stroke-width="1.2"/>
+
+    <!-- Yuzu Crown -->
+    <ellipse cx="32" cy="22" rx="5" ry="4.5" class="yuzu-shadow" stroke="#2E221F" stroke-width="1.2"/>
+    <ellipse cx="32" cy="21.5" rx="4.8" ry="4" class="yuzu-yellow"/>
+    <ellipse cx="30.5" cy="20" rx="1.8" ry="1.2" class="yuzu-highlight"/>
+    <path d="M33 17.5 C36 16, 38 18, 36 20 Z" class="yuzu-leaf" stroke="#2E221F" stroke-width="0.8"/>
+
+    <!-- Capybara Head Base -->
+    <rect x="21" y="26" width="22" height="15" rx="5" class="capy-shadow" stroke="#2E221F" stroke-width="1.8"/>
+    <rect x="21.5" y="25.5" width="21" height="14" rx="4.5" class="capy-brown"/>
+    <rect x="23" y="27" width="18" height="6" rx="2.5" class="capy-light"/>
+
+    <!-- Sleeping Eyes -->
+    <path d="M24 30 Q26 32 28 30" fill="none" stroke="#2E221F" stroke-width="1.6" stroke-linecap="round"/>
+    <path d="M36 30 Q38 32 40 30" fill="none" stroke="#2E221F" stroke-width="1.6" stroke-linecap="round"/>
+
+    <!-- Snout / Nostrils -->
+    <rect x="24" y="32" width="16" height="8" rx="3" class="capy-snout" stroke="#2E221F" stroke-width="1.4"/>
+    <ellipse cx="29" cy="35" rx="1.2" ry="1.3" fill="#2E221F"/>
+    <ellipse cx="35" cy="35" rx="1.2" ry="1.3" fill="#2E221F"/>
+
+    <!-- Water Line -->
+    <rect x="8" y="38" width="48" height="20" rx="4" class="wood-shadow" stroke="#2E221F" stroke-width="2"/>
+    <ellipse cx="32" cy="38" rx="21" ry="5.5" class="spring-deep"/>
+    <ellipse cx="32" cy="37.5" rx="20" ry="4.8" class="spring-aqua"/>
+
+    <!-- Tub Front -->
+    <path d="M8 43 L10 58 L54 58 L56 43 Z" class="wood-cypress" stroke="#2E221F" stroke-width="1.8"/>
+    <line x1="18" y1="43" x2="19" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <line x1="32" y1="43" x2="32" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <line x1="46" y1="43" x2="45" y2="58" stroke="#A87D4D" stroke-width="1"/>
+    <rect x="8.5" y="47" width="47" height="2" class="wood-band"/>
+    <rect x="9.5" y="54" width="45" height="2" class="wood-band"/>
+  </g>
+</svg>

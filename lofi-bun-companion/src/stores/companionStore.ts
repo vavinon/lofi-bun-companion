@@ -12,7 +12,12 @@
 
 import { create } from 'zustand';
 import { subscribeWithSelector } from 'zustand/middleware';
-import { HardwareMetrics, ResolvedCompanionState } from '../types/companion';
+import {
+  CompanionId,
+  CompanionMetadata,
+  HardwareMetrics,
+  ResolvedCompanionState,
+} from '../types/companion';
 import {
   DEFAULT_ALWAYS_ON_TOP,
   DEFAULT_VIEW_MODE,
@@ -24,6 +29,7 @@ import {
 import { resolveCompanionState } from '../utils/stateResolver';
 import { TelemetryMode } from '../telemetry/types';
 import { telemetryManager } from '../telemetry/telemetryManager';
+import { getCompanion } from '../data/companionRegistry';
 
 export interface CompanionStoreState {
   /** Real-time or simulated hardware load metrics */
@@ -33,7 +39,7 @@ export interface CompanionStoreState {
   /** Manual user override to trigger companion resting animation */
   forceRest: boolean;
   /** Unique ID of currently selected companion character */
-  activeCompanionId: string;
+  activeCompanionId: CompanionId;
   /** Purely derived visual state evaluated from metrics and priority rules */
   resolvedState: ResolvedCompanionState;
 
@@ -53,7 +59,7 @@ export interface CompanionStoreState {
   /** Toggle manual rest mode override and recompute resolved state */
   setForceRest: (forceRest: boolean) => void;
   /** Switch active companion character */
-  setActiveCompanionId: (id: string) => void;
+  setActiveCompanionId: (id: CompanionId) => void;
   /** Set explicit desktop view mode ('COMPACT' or 'FULL') */
   setViewMode: (mode: ViewMode) => void;
   /** Toggle between 'COMPACT' mascot view and 'FULL' dashboard view */
@@ -75,9 +81,9 @@ export const DEFAULT_METRICS: HardwareMetrics = {
   diskUsage: 5,
 };
 
-export const DEFAULT_COMPANION_ID = 'bun-01';
+export const DEFAULT_COMPANION_ID: CompanionId = 'bun';
 export const DEFAULT_FORCE_REST = false;
-export const DEFAULT_TELEMETRY_MODE: TelemetryMode = 'MANUAL';
+export const DEFAULT_TELEMETRY_MODE: TelemetryMode = 'LIVE';
 
 /** Helper to generate initial resolved state from default metrics */
 const getInitialResolvedState = (): ResolvedCompanionState =>
@@ -216,3 +222,14 @@ export const useCompanionStore = create<CompanionStoreState>()(
     },
   }))
 );
+
+/**
+ * Reactive selector hook to retrieve active companion metadata from Registry.
+ * Subscribes only to `activeCompanionId` state changes.
+ */
+export const useActiveCompanionMetadata = (): CompanionMetadata => {
+  const activeCompanionId = useCompanionStore(
+    (state) => state.activeCompanionId
+  );
+  return getCompanion(activeCompanionId);
+};

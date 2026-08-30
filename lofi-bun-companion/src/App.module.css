@@ -212,6 +212,135 @@
   border: 1px solid rgba(141, 163, 153, 0.3);
 }
 
+/* Character Selector Ribbon */
+.characterRibbon {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.65rem 0.85rem;
+  background: rgba(36, 27, 24, 0.65);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 248, 240, 0.09);
+  border-radius: 14px;
+}
+
+.ribbonLabel {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #a3b899;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.characterCardsRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+  gap: 0.5rem;
+}
+
+@media (max-width: 960px) {
+  .characterCardsRow {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .characterCardsRow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.characterCard {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.65rem;
+  background: rgba(255, 248, 240, 0.04);
+  border: 1px solid rgba(255, 248, 240, 0.08);
+  border-radius: 10px;
+  color: #c9d1d9;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  outline: none;
+}
+
+.characterCard:hover {
+  background: rgba(255, 154, 60, 0.12);
+  border-color: rgba(255, 154, 60, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  color: #fff8f0;
+}
+
+.characterCardActive {
+  background: rgba(255, 154, 60, 0.2);
+  border-color: rgba(255, 154, 60, 0.7);
+  box-shadow:
+    0 0 16px rgba(255, 154, 60, 0.3),
+    0 2px 8px rgba(0, 0, 0, 0.4);
+  color: #fff8f0;
+}
+
+.characterCardActive::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #ff9a3c, #ffd13b);
+}
+
+.cardEmoji {
+  font-size: 1.35rem;
+  line-height: 1;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.cardInfo {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+}
+
+.cardName {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cardRole {
+  font-size: 0.65rem;
+  color: #8b949e;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.characterCardActive .cardRole {
+  color: #ffb877;
+}
+
+.activeDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ff9a3c;
+  box-shadow: 0 0 6px #ff9a3c;
+}
+
 /* Responsive Split Grid Layout */
 .showcaseGrid {
   display: grid;

@@ -9,8 +9,8 @@
 </p>
 
 <p align="center">
-  <a href="#-key-features"><img src="https://img.shields.io/badge/version-v1.0.0-8b5cf6?style=flat-square" alt="Version 1.0.0" /></a>
-  <a href="#-5-pillar-automated-quality-gates"><img src="https://img.shields.io/badge/tests-111%2F111%20passed-10b981?style=flat-square" alt="111/111 Tests Passed" /></a>
+  <a href="#-key-features"><img src="https://img.shields.io/badge/version-v1.1.0-8b5cf6?style=flat-square" alt="Version 1.1.0" /></a>
+  <a href="#-5-pillar-automated-quality-gates"><img src="https://img.shields.io/badge/tests-138%2F138%20passed-10b981?style=flat-square" alt="138/138 Tests Passed" /></a>
   <a href="#-pure-css-animation-engine"><img src="https://img.shields.io/badge/CPU%20Usage-0.0%25%20(Pure%20CSS)-f59e0b?style=flat-square" alt="0.0% Idle CPU" /></a>
   <a href="#-typescript-architecture"><img src="https://img.shields.io/badge/TypeScript-Strict%205.7-3178c6?style=flat-square" alt="TypeScript Strict" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-6b7280?style=flat-square" alt="License MIT" /></a>
@@ -95,16 +95,17 @@ lofi_bun_companion/
 └── lofi-bun-companion/        # Application Source Code
     ├── src-tauri/             # Tauri Rust Desktop Core (sysinfo sampler & IPC commands)
     ├── src/
-    │   ├── assets/sprites/    # SVG Vector Spritesheets (bun-sprites.svg, prop-carrot.svg)
+    │   ├── assets/sprites/    # SVG Vector Spritesheets (6 companions & 6 overlay props)
     │   ├── components/
     │   │   ├── Desktop/       # CompactMascotView, PetContextMenu, WindowHeader
     │   │   ├── Pet/           # PetSprite Pure CSS step animator
     │   │   └── Controls/      # MockMetricController simulation sliders
+    │   ├── data/              # Pluggable Companion Registry (companionRegistry.ts)
     │   ├── stores/            # Zustand state management (companionStore)
     │   ├── telemetry/         # Pluggable telemetry engine (Native & WebMock)
     │   ├── utils/             # State resolver & hysteresis math utilities
     │   ├── types/             # TypeScript type definitions (companion, desktop)
-    │   └── __tests__/         # Vitest automated test suites (111 tests)
+    │   └── __tests__/         # Vitest automated test suites (138 tests)
     ├── package.json
     └── vite.config.ts
 ```
@@ -126,7 +127,7 @@ npm run verify
 │ 1. Linting      │ npm run lint         (ESLint v9 Flat)   │
 │ 2. Formatting   │ npm run format:check (Prettier)          │
 │ 3. Type Safety  │ npm run typecheck    (tsc --noEmit)      │
-│ 4. Unit Tests   │ npm test             (Vitest - 111 test) │
+│ 4. Unit Tests   │ npm test             (Vitest - 138 test) │
 │ 5. Build        │ npm run build        (Vite Production)   │
 └─────────────────┴──────────────────────────────────────────┘
 ```
@@ -187,9 +188,11 @@ npm run verify
   - [x] Quick Context Menu (Window opacity, telemetry mode, rest toggle, view switcher, exit)
   - [x] Under 35MB RAM footprint and near-zero idle CPU usage
   - [x] Full integration test suite (111/111 tests passing)
-- [ ] **v1.1.0 — 🐾 Bun & Friends Multiverse (Character Expansion)**
-  - [ ] Unlock 5 additional companion characters (*🐱 Neko, 🐶 Shiba, 🍊 Capybara, 🦜 Cockatiel, 🐬 Dolphin*)
-  - [ ] Character switcher via Quick Context Menu
+- [x] **v1.1.0 — 🐾 Bun & Friends Multiverse (Character Expansion)** *(Completed 🟢)*
+  - [x] Unlock 5 additional companion characters (*🐱 Neko, 🐶 Shiba, 🍊 Capybara, 🦜 Cockatiel, 🐬 Dolphin*)
+  - [x] Pluggable Companion Registry architecture & dynamic GPU step renderer
+  - [x] Character switcher via Quick Context Menu & Dashboard Multiverse Ribbon
+  - [x] Complete 12 SVG pixel-art assets and 138 automated unit tests (100% passing)
 - [ ] **v2.0.0 — 🍅 The Productivity Update (Pomodoro Focus Suite)**
   - [ ] Configurable 25/5 Pomodoro interval timer with auto-rest hooks for companion
   - [ ] Daily focus streak tracker and break reminder cues

@@ -156,4 +156,40 @@ describe('CompactMascotView Component', () => {
 
     await cleanup();
   });
+
+  it('renders active companion pill and updates reactively when active companion changes', async () => {
+    await renderComponent();
+
+    const companionPill = container.querySelector(
+      '[data-testid="compact-companion-pill"]'
+    );
+    const windowTitle = container.querySelector(
+      '[data-testid="window-title-text"]'
+    );
+
+    expect(companionPill).not.toBeNull();
+    expect(companionPill?.textContent).toContain('🐰');
+    expect(companionPill?.textContent).toContain('Lo-fi Bun');
+    expect(windowTitle?.textContent).toBe('Lo-fi Bun');
+
+    // Switch active companion to Shiba
+    await act(async () => {
+      useCompanionStore.getState().setActiveCompanionId('shiba');
+    });
+
+    expect(companionPill?.textContent).toContain('🐶');
+    expect(companionPill?.textContent).toContain('Bakery Shiba');
+    expect(windowTitle?.textContent).toBe('Bakery Shiba');
+
+    // Switch active companion to Capybara
+    await act(async () => {
+      useCompanionStore.getState().setActiveCompanionId('capybara');
+    });
+
+    expect(companionPill?.textContent).toContain('🍊');
+    expect(companionPill?.textContent).toContain('Onsen Capybara');
+    expect(windowTitle?.textContent).toBe('Onsen Capybara');
+
+    await cleanup();
+  });
 });
