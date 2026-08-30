@@ -217,7 +217,7 @@ describe('App Showcase Container Component', () => {
     expect(ramIndicator?.textContent).toContain('Carrots Stack');
 
     const carrotProp = container.querySelector(
-      '[data-testid="carrot-prop-layer"]'
+      '[data-testid="companion-prop-layer"], [data-testid="carrot-prop-layer"]'
     );
     expect(carrotProp).not.toBeNull();
 
