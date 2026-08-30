@@ -1,0 +1,63 @@
+{
+  "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
+  "productName": "Lo-fi Bun Companion",
+  "version": "1.0.0",
+  "identifier": "com.lofibun.companion",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://localhost:5173",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "Lo-fi Bun Companion",
+        "label": "main",
+        "width": 320,
+        "height": 380,
+        "resizable": true,
+        "decorations": false,
+        "transparent": true,
+        "alwaysOnTop": true,
+        "shadow": false,
+        "center": true,
+        "focus": true,
+        "skipTaskbar": false
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["nsis", "msi"],
+    "publisher": "Lo-fi Bun Team",
+    "copyright": "Copyright © 2026 Lo-fi Bun Companion",
+    "shortDescription": "A cozy, lightweight virtual desk companion & hardware monitor",
+    "longDescription": "Lo-fi Bun Companion is a cozy, lightweight virtual desktop mascot featuring an animated pixel bunny, real-time hardware telemetry (CPU, RAM, Disk), and Pomodoro productivity tools.",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico",
+      "icons/icon.png"
+    ],
+    "windows": {
+      "webviewInstallMode": {
+        "type": "downloadBootstrapper",
+        "silent": true
+      },
+      "nsis": {
+        "installMode": "currentUser",
+        "languages": ["English"],
+        "displayLanguageSelector": false
+      },
+      "wix": {
+        "language": "en-US"
+      }
+    }
+  }
+}

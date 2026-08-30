@@ -36,22 +36,34 @@ graph TD
 | **ผ้ากันเปื้อน (Apron Brown)**| `APRON_MOCHA` | `#5C3D2E` | ผ้ากันเปื้อนผ้าฝ้ายสีมอคค่า |
 | **ถ้วยกาแฟ (Coffee Mug)** | `CUP_CERAMIC` | `#E8DFD8` | ถ้วยเซรามิกดริปกาแฟ |
 | **กาแฟ (Espresso)** | `COFFEE_DARK` | `#331D12` | น้ำกาแฟหอมกรุ่น |
-| **กองปลาทู (Fish Stack)** | `FISH_SILVER` | `#A8B2C1` | กองปลาทู RAM Overlay |
+| **กองปลาทู (Fish Stack)** | `FISH_SILVER` | `#A8B2C1` | กองปลาทู RAM Overlay (บนหัว) |
+| **กล่องกระดาษ (Cardboard Box)**| `BOX_KRAFT` | `#C89D7C` | กล่องพัสดุสำหรับฝนเล็บตอน Disk I/O |
 
 ---
 
-## 3. 🎬 Frame-by-Frame Storyboard (5-State Contract)
+## 3. 🎬 Frame-by-Frame Storyboard (6-State/Action Contract)
 
 ```mermaid
 stateDiagram-v2
-    [*] --> IDLE : CPU 0-20% (จิบกาแฟดริป & กะพริบตา)
-    IDLE --> FOCUS : CPU 20-60% (รัวอุ้งมือนวดแป้นคีย์บอร์ด)
-    FOCUS --> FRENZY : CPU 60-100% (แมวดีด วิ่งวนรอบโต๊ะ)
-    IDLE --> REST : AFK (ขดตัวนอนในกล่องกระดาษ)
+    [*] --> IDLE : Default (CPU 0-20%)
+    IDLE --> FOCUS : CPU 20-60%
+    FOCUS --> FRENZY : CPU 60-100%
+    FRENZY --> FOCUS : CPU <57%
+    FOCUS --> IDLE : CPU <17%
+    IDLE --> DISK : Disk >75%
+    FOCUS --> DISK : Disk >75%
+    FRENZY --> DISK : Disk >75%
+    DISK --> IDLE : Disk <72%
+    IDLE --> REST : Rest Mode (Priority 1)
+    FOCUS --> REST : Rest Mode (Priority 1)
+    FRENZY --> REST : Rest Mode (Priority 1)
+    DISK --> REST : Rest Mode (Priority 1)
+    REST --> IDLE : Wake Up
 ```
 
 1. **`IDLE` (CPU 0–20%) — 800ms**: นั่งกอดแก้วกาแฟดริป ควันลอยกรุ่น หางแกว่งซ้ายขวาอย่างผ่อนคลาย
 2. **`FOCUS` (CPU 20–60%) — 600ms**: นั่งตัวตรง ใช้สองอุ้งมือนุ่ม (Paw Paws) กดแป้นพิมพ์เป็นจังหวะเพลงแจ๊ส
 3. **`FRENZY` (CPU 60–100%) — 300ms**: หูพับแบบ Airplane ears ตากลมโต รัวอุ้งมือด้วยความเร็วสูง มีประกายสายฟ้าและเม็ดเหงื่อ
-4. **`HEAVY_RAM` (>80% RAM) — Overlay Prop**: กองปลาทูย่างซ้อนกัน 3 ตัวบนหัว ดุ๊กดิ๊กตามจังหวะเดิน
-5. **`REST` (โหมดพักผ่อน) — 1000ms**: ขดตัวกลมดิ๊กในกล่องพัสดุใบโปรด หูพับลง หางพันรอบตัวอย่างอบอุ่น
+4. **`DISK` (Disk >75%) — 400ms**: สองอุ้งมือข่วน/ฝนเล็บลงบนกล่องพัสดุรัวๆ (Rapid box scratching) เศษกระดาษฟุ้งกระจาย
+5. **`HEAVY_RAM` (>80% RAM) — Overlay Prop**: กองปลาทูย่างซ้อนกัน 3 ตัวบนหัว ดุ๊กดิ๊กตามจังหวะเดิน
+6. **`REST` (โหมดพักผ่อน) — 1000ms**: ขดตัวกลมดิ๊กในกล่องพัสดุใบโปรด หูพับลง หางพันรอบตัวอย่างอบอุ่น

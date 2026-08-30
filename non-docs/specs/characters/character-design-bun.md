@@ -44,24 +44,35 @@ graph TD
 | **ถ้วยมัทฉะ (Matcha Cup)** | `TEA_GREEN` | `#A3B899` | ชามเซรามิกใส่มัทฉะอุ่นๆ |
 | **คีย์บอร์ด (Keyboard Base)** | `KEYBOARD_BEIGE` | `#E3DAC9` | แป้นพิมพ์ Retro Cream Mechanical Keyboard |
 | **ไฟลุก (Frenzy Fire)** | `FIRE_ORANGE` | `#FF7A59` | เปลวไฟปุ๊กปิ๊กตอน CPU >60% |
-| **แครอท (Carrot Base)** | `CARROT_ORANGE` | `#FF9A3C` | กองแครอท RAM Overlay |
+| **แครอท (Carrot Base)** | `CARROT_ORANGE` | `#FF9A3C` | กองแครอท RAM Overlay (บนหัว) |
 | **ใบแครอท (Carrot Leaves)**| `CARROT_LEAF` | `#7FB069` | ก้านใบแครอทเขียวสด |
+| **ปกสมุด (Book Cover)** | `BOOK_COVER` | `#8B5A2B` | สมุดบันทึกหนังสีคาราเมลตอน Disk I/O |
+| **หน้ากระดาษ (Book Pages)**| `BOOK_PAGES` | `#FFFDF0` | หน้ากระดาษสมุดพลิกรัวๆ |
 | **หมอน (Pillow Base)** | `PILLOW_LAVENDER`| `#DDD5E9` | หมอนใบใหญ่นุ่มนิ่มตอน Rest Mode |
 
 ---
 
 ## 3. 🎬 Frame-by-Frame Storyboard (4 Frames ต่อ State)
 
-แอนิเมชันทุกท่าทางทำงานแบบ **4-Frame Loop (ความเร็ว 600ms–800ms ต่อรอบ)**:
+แอนิเมชันทุกท่าทางทำงานแบบ **4-Frame Loop (ความเร็ว 300ms–1000ms ต่อรอบ)**:
 
 ```mermaid
 stateDiagram-v2
-    [*] --> IDLE : CPU 0-20%
+    [*] --> IDLE : Default (CPU 0-20%)
     IDLE --> FOCUS : CPU 20-60%
     FOCUS --> FRENZY : CPU 60-100%
     FRENZY --> FOCUS : CPU <57%
     FOCUS --> IDLE : CPU <17%
-    IDLE --> REST : Rest Mode / Inactive
+    IDLE --> DISK : Disk >75%
+    FOCUS --> DISK : Disk >75%
+    FRENZY --> DISK : Disk >75%
+    DISK --> IDLE : Disk <72% & CPU <17%
+    DISK --> FOCUS : Disk <72% & CPU 20-60%
+    DISK --> FRENZY : Disk <72% & CPU >60%
+    IDLE --> REST : Rest Mode (Priority 1)
+    FOCUS --> REST : Rest Mode (Priority 1)
+    FRENZY --> REST : Rest Mode (Priority 1)
+    DISK --> REST : Rest Mode (Priority 1)
     REST --> IDLE : Wake Up
 ```
 
@@ -94,15 +105,24 @@ stateDiagram-v2
 
 ---
 
-### 🥕 State 4: `HEAVY_RAM` (RAM >80%) — *Carrot Stack Prop Layer (ซ้อนทับได้ทุกท่า)*
-* **รูปแบบ**: ไม่ใช่การเปลี่ยนท่าสไปรต์ตัวละครหลัก แต่เป็น **Sprite Overlay ซ้อนทับ**
-* **ตำแหน่ง**: บนหัว หรือข้างตัวน้องต่าย
+### 📖 State 4: `DISK` (Disk I/O > 75%) — *เปิดสมุดพลิกหน้าค้นหารัวๆ (Fast Page-Flipping)*
+* **ความเร็ว**: 400ms / loop (รวดเร็ว คล่องแคล่ว โฟกัสค้นหาข้อมูล)
+* **เฟรมที่ 1 (Frame 1)**: น้องต่ายก้มมองสมุดบันทึกปกคาราเมล สองมือจับมุมกระดาษ ตากลมโตเพ่งอ่าน
+* **เฟรมที่ 2 (Frame 2)**: มือน้อยสะบัดพลิกหน้ากระดาษขึ้น เกิดเส้นสปีดสีขาว 1 พิกเซล (Page flip motion)
+* **เฟรมที่ 3 (Frame 3)**: หน้ากระดาษตกลงอีกฝั่ง หูขวาที่พับสะบัดตามลมกระดาษ
+* **เฟรมที่ 4 (Frame 4)**: สลับมือเตรียมเปิดหน้าถัดไป หัวขยับสแกนบรรทัดใหม่อย่างรวดเร็ว (Loop ต่อเนื่อง)
+
+---
+
+### 🥕 State 5: `HEAVY_RAM` (RAM >80%) — *Carrot Stack Prop Layer (ซ้อนทับบนหัว)*
+* **รูปแบบ**: ไม่ใช่การเปลี่ยนท่าสไปรต์ตัวละครหลัก แต่เป็น **Sprite Overlay ซ้อนทับบนหัวน้องต่าย**
+* **ตำแหน่ง**: วางซ้อนบนหัวน้องต่ายพอดี ไม่บดบังท่าทางหลัก
 * **ลักษณะ**: กองแครอทอ้วนๆ 3 หัวมัดรวมกัน วางซ้อนโยกเยกตามจังหวะหายใจของน้อง
 * **แอนิเมชัน**: แครอทโยกเยกซ้าย-ขวา 1 พิกเซล ตามจังหวะ Step ของท่าทางหลัก
 
 ---
 
-### 🛏️ State 5: `REST` (โหมดพักผ่อน / Timer หมดเวลา / AFK) — *กอดหมอนนุ่มนอนหลับปุ๋ย*
+### 🛏️ State 6: `REST` (โหมดพักผ่อน / Pomodoro Break / AFK) — *กอดหมอนนุ่มนอนหลับปุ๋ย*
 * **ความเร็ว**: 1000ms / loop (ช้า เงียบสงบ)
 * **เฟรมที่ 1 (Frame 1)**: น้องต่ายนอนตะแคงขดตัว กอดหมอนใบใหญ่สีลาเวนเดอร์ `PILLOW_LAVENDER`
 * **เฟรมที่ 2 (Frame 2)**: ท้องพองขึ้นตามจังหวะหายใจเข้า หูตกลู่แนบพื้น
@@ -132,8 +152,24 @@ stateDiagram-v2
   animation: play-frenzy 0.3s steps(4) infinite;
 }
 
+.bun-disk {
+  background: url('/sprites/bun-disk.svg') 0 0 no-repeat;
+  animation: play-disk 0.4s steps(4) infinite;
+}
+
 .bun-rest {
   background: url('/sprites/bun-rest.svg') 0 0 no-repeat;
   animation: play-rest 1.0s steps(4) infinite;
+}
+
+/* Independent Prop Layer (Carrot Stack on Head) */
+.prop-carrot-stack {
+  position: absolute;
+  top: -8px;
+  left: 18px;
+  width: 28px;
+  height: 20px;
+  background: url('/sprites/prop-carrot.svg') 0 0 no-repeat;
+  animation: prop-bob 0.8s steps(2) infinite;
 }
 ```

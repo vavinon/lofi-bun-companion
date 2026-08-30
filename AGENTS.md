@@ -48,12 +48,13 @@
   - `chore`: Maintenance, dependencies, toolchain (e.g. `chore(deps): configure eslint flat config`)
 
 ### C. Git Operations & Branching Strategy
-- **Branch Hierarchy**:
+- **Branch Hierarchy & Clear Prefixes**:
   - `main`: Release-ready code & production tags (`v1.0.0`).
   - `dev`: Active integration branch.
-  - **Feature Branch**: `feat/<semver>-<slug>` (e.g. `feat/0.1.0-core-sprite-engine`).
-  - **Bugfix Branch**: `fix/<slug>` (e.g. `fix/hysteresis-jitter`).
-  - **Chore / Docs Branch**: `chore/<slug>` or `docs/<slug>`.
+  - **Development Features (from `dev`)**: `dev-feat/<semver>-<slug>` (e.g. `dev-feat/0.1.0-core-sprite-engine`)
+  - **Development Bugfixes (from `dev`)**: `dev-fix/<slug>` (e.g. `dev-fix/hysteresis-jitter`)
+  - **Production Hotfixes (from `main`)**: `prod-hotfix/<slug>` (e.g. `prod-hotfix/audio-crash`)
+  - **Chore / Docs Branch**: `dev-chore/<slug>` or `dev-docs/<slug>`
 - **Decoupled & Manual Approval Protocol**:
   - **`git commit`**: Local only. Used only after `npm run verify` passes 100%, and with explicit user approval.
   - **`git push`**: Remote synchronization. **NEVER chained automatically after commit**. Pushing to remote is a strictly separate step requiring its own explicit confirmation.
@@ -112,28 +113,20 @@ c:/DevProjects/lofi_bun_companion/
 ## 4. 🎮 Project Overview: Lo-fi Bun Companion
 A cozy, lightweight Virtual Desk Companion featuring an animated bunny character, real-time hardware monitor (RunCat/Bongo Cat style), Pomodoro focus timer, and ambient soundscape mixer.
 
-### Core Modules
-- **Hardware-Reactive Bunny State Machine**:
-  - `IDLE / LOW_LOAD` (0-20% CPU): Chilling, sipping tea/coffee, gentle blinking
-  - `FOCUS / MED_LOAD` (20-60% CPU): Typing on keyboard at steady pace
-  - `FRENZY / HIGH_LOAD` (60-100% CPU): Blazing-fast typing, sweat drops, fire effect
-  - `HEAVY_RAM` (>80% RAM): Bun carrying heavy stacks of books/carrots (chubby state)
-  - `DISK_ACTIVE`: Fast-page flipping animation during heavy disk I/O
-  - `RESTING / NAP`: Stretching or napping when timer ends
-  - `HYDRATE`: Reminding user to drink water / take eye breaks
-- **Floating Desk Pet & Mini Widget Mode**:
-  - Always-on-Top / Draggable minimal floating companion badge
-  - Click to expand to full Pomodoro & Audio Mixer suite
-- **Pomodoro Timer**: Configurable Work/Break intervals with smooth visual cues
-- **Soundscape Mixer**: Independent volume channels for Lo-fi beats, rain, keyboard clicks, and cafe chatter
-- **Interactive Actions**: Clickable pet interactions (pats, treats, heart animations)
+### Core Modules & Lean Phased Delivery
+- **Phase 1 (v0.1.0 - Done 🟢)**: Hardware-Reactive Bunny State Machine (Idle, Focus, Frenzy, Disk, Rest, Heavy RAM carrot prop, pure CSS step animator).
+- **Phase 2 (v0.2.0 - Next 🎯)**: Windows Real Hardware Telemetry Engine (CPU, RAM, Disk OS polling with zero main-thread overhead).
+- **Phase 3 (v1.0.0 - Official Launch 📦)**: The Hardware Desk Pet (.exe / Tauri Desktop Mascot with transparent, frameless floating window & context menu).
+- **Phase 4 (v1.1.0 - Character Expansion 🐾)**: Bun & Friends Multiverse (Unlocking 5 companions: Neko, Shiba, Capybara, Cockatiel, Dolphin).
+- **Phase 5 (v2.0.0 - Productivity 🍅)**: Pomodoro Focus Suite (Configurable 25/5 intervals, daily focus streak, automated companion sleep hooks on break).
+- **Phase 6 (v3.0.0 - Soundscape 🎧)**: Ambient Lo-fi Audio Mixer (Multi-channel independent audio channels: beats, rain, keyboard clicks, cafe murmur).
 
 ### Tech Stack & Principles
-- **Frontend**: React + Vite + TypeScript + Tailwind CSS (or scoped CSS modules for pixel art)
-- **State Management**: Zustand
-- **System Monitoring**: Lightweight system metrics hook (polling intervals: 1.5–2s)
-- **Audio Engine**: Howler.js or Native Web Audio API
-- **Animation**: Pure CSS Spritesheet / Keyframes / Framer Motion for near-zero CPU usage
+- **Frontend**: React + Vite + TypeScript + CSS Modules (for pixel-art rendering)
+- **State Management**: Zustand (Selective Subscriptions with `subscribeWithSelector`)
+- **System Monitoring**: Lightweight system metrics hook (polling intervals: 1.5–2.0s)
+- **Audio Engine**: Native Web Audio API / Howler.js (v3.0.0)
+- **Animation**: Pure CSS Spritesheet / Keyframes for 0.0% CPU usage on idle
 - **Automated Testing**: Vitest + React Testing Library (Fast unit & integration tests)
-- **Desktop Packaging**: Tauri (or lightweight web wrapper)
-- **Modularity & Performance**: Strictly decouple Hardware Polling, Audio, Timer, and Character Animation states with minimal CPU/RAM footprint on idle.
+- **Desktop Packaging**: Tauri (Lightweight desktop wrapper on Windows)
+- **Modularity & Performance**: Strictly decouple Hardware Polling, Audio, Timer, and Character Animation states with minimal CPU/RAM footprint (<35MB RAM, ~0.0% CPU on idle).

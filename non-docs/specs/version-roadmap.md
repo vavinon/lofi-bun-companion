@@ -1,11 +1,11 @@
-# 🗺️ Master Specification: Phased Versioning Roadmap & Ecosystem Architecture (SemVer 2.0.0)
+# 🗺️ Master Specification: Phased Versioning Roadmap & Lean Product Architecture (SemVer 2.0.0)
 
 ## 1. 📌 Overview & Core Strategy
 **Lo-fi Bun Companion** ถูกออกแบบด้วยสถาปัตยกรรมแบบ **Modular & Layered Architecture** (Data Registry ➜ State Engine ➜ GPU Renderer) เพื่อให้บรรลุเป้าหมาย:
 1. **Zero-Overhead Budget**: ใช้ทรัพยากรน้อยที่สุดในทุกเวอร์ชัน (<35MB RAM, CPU ~0.0% ขณะ Idle)
-2. **Cozy Emotional Pet**: สัตว์เลี้ยงแก้เหงาที่อบอุ่น ไม่ใช่เพียงแค่เกจวัดตัวเลขฮาร์ดแวร์
-3. **Safe Feedback Loops**: แต่ละ Version สามารถเปิดทดสอบและปรับแต่งได้อย่างอิสระ
-4. **Infinite Extensibility**: รองรับการเติบโตตั้งแต่ Desktop Widget สู่ระบบ Modding, Social Co-working, และ Physical Hardware
+2. **Lean Value Delivery (Ship Early, Ship Real)**: ปล่อยแอป Desktop ตัวจริง (.exe บน Windows) สู่ผู้ใช้ให้เร็วที่สุดใน `v1.0.0`
+3. **Pluggable & Extensible Foundations**: สถาปัตยกรรม State Engine & Registry รองรับการเพิ่มตัวละครใหม่อีก 5 ตัวใน `v1.1.0` โดยไม่ต้องรื้อระบบ
+4. **Focused Major Upgrades**: แยกการอัปเกรดใหญ่เป็นโมดูลชัดเจน (Productivity Pomodoro ใน `v2.0.0`, Soundscape Mixer ใน `v3.0.0`)
 5. **Strict SemVer 2.0.0 Compliance**: จัดการ Release cycle ตามมาตรฐานสากล (`MAJOR.MINOR.PATCH`)
 
 ---
@@ -14,23 +14,18 @@
 
 ```mermaid
 graph TD
-    subgraph PreRelease["0.x.x — Initial Development & PoC (Alpha & Beta)"]
-        v010["0.1.0: Core Sprite & State Engine (Flagship PoC)"] --> v020["0.2.0: Cozy Emotional Pet (Web Interactive)"]
-        v020 --> v030["0.3.0: Desktop Shell & Real Hardware Sync (Tauri)"]
-        v030 --> v040["0.4.0: Pomodoro Dashboard & Soundscape Mixer"]
+    subgraph PreRelease["0.x.x — Prototype & Hardware Hook"]
+        v010["0.1.0: Core Sprite & State Engine (Flagship PoC) 🟢"] --> v020["0.2.0: Real Hardware Telemetry (Windows CPU/RAM/Disk) ⚡"]
     end
 
-    subgraph Major1["1.x.x — Stable Production & Feature Ecosystem"]
-        v040 --> v100["1.0.0: Official Stable Desktop Release 🎉"]
-        v100 --> v110["1.1.0: Bun & Friends Multiverse + Modding Engine"]
-        v110 --> v120["1.2.0: Browser Companion Extension (Manifest V3)"]
-        v120 --> v130["1.3.0: Idle Focus Foraging & Desk Decorator"]
-        v130 --> v140["1.4.0: Lo-fi Study Cafe (P2P Silent Co-Working)"]
-        v140 --> v150["1.5.0: Discord Rich Presence & Community Share"]
+    subgraph Major1["1.x.x — Stable Desktop Mascot & Friends"]
+        v020 --> v100["1.0.0: The Hardware Desk Pet (.exe / Tauri Desktop Launch) 📦🎉"]
+        v100 --> v110["1.1.0: Bun & Friends Multiverse (+5 Companion Roster) 🐾"]
     end
 
-    subgraph Major2["2.x.x — Next-Gen Hardware & AI Buddy (Major Shifts)"]
-        v150 --> v200["2.0.0: Physical Companion (ESP32/E-Ink) & Local AI Buddy 🚀"]
+    subgraph Major2_3["Major Feature Ecosystems"]
+        v110 --> v200["2.0.0: The Productivity Update (Pomodoro Focus Suite) 🍅"]
+        v200 --> v300["3.0.0: The Soundscape Update (Ambient Lo-fi Audio Mixer) 🎧"]
     end
 ```
 
@@ -39,63 +34,68 @@ graph TD
 ## 3. 📋 รายละเอียดแต่ละ Release Milestone
 
 ### 🐾 0.x.x — Initial Development & Desktop Prototype
-* **0.1.0 — Core Sprite Engine & Flagship Lo-fi Bun PoC**:
-  - โครงสร้าง React + Vite + TypeScript + CSS Modules + Vitest + ESLint + Prettier
+* **0.1.0 — Core Sprite Engine & Flagship Lo-fi Bun PoC** *(Completed 🟢)*:
+  - โครงสร้าง React 18 + Vite + TypeScript Strict + CSS Modules + Vitest + ESLint + Prettier
   - แอนิเมชัน Pixel Art 5 ท่าทางของ **🐰 Lo-fi Bun** (จิบชา, พิมพ์งาน, ไฟลุก, แบกกองแครอท, กอดหมอนหลับ)
-  - Pure CSS `steps()` GPU-accelerated Sprite Renderer (CPU 0.0%) + Breathing Idle micro-animation
-  - สถาปัตยกรรม Pluggable Companion Registry (พร้อมต่อเติมสัตว์เลี้ยงตัวถัดไปใน 1.1.0 ได้ทันที)
-  - Pure Utility Functions แยกจาก Store: `hysteresis.ts` + `stateResolver.ts` (Unit-testable อิสระ)
-  - Interactive Mock Hardware Slider สำหรับทดสอบปรับค่า CPU/RAM/Disk ได้ทันที
+  - Pure CSS `steps()` GPU-accelerated Sprite Renderer (CPU 0.0%) + SVG Pixel Spritesheet (256x320 px)
+  - สถาปัตยกรรม Pluggable Companion Registry (`types/companion.ts`)
+  - Pure Utility Functions แยกจาก Store: `hysteresis.ts` ($\pm 3\%$ Asymmetric Buffer) + `stateResolver.ts`
+  - Interactive Mock Hardware Slider Lab Showcase (`App.tsx`)
+  - ผ่าน 5-Pillar Automated Quality Gates (59 Vitest tests 100%)
 
-* **0.2.0 — The Cozy Emotional Pet (Web Interactive)**:
-  - Tactile Petting: คลิกลูบหัว Lo-fi Bun แล้วมีหัวใจลอย (`FloatingHearts`) และเสียง Purr ตอบรับนุ่มๆ
-  - First Boot Unboxing: ตอนเปิดครั้งแรก Lo-fi Bun โผล่จากกล่องพัสดุ พร้อม speech bubble ต้อนรับ 📦
-  - AFK Inactivity Detection (>5 นาทีไม่แตะคอม ➜ Lo-fi Bun เข้าสู่ท่านอนสัปหงก) + Gentle Wakeup
-  - Time-of-Day Ambient Tint: สีพื้นหลังเปลี่ยนตามเวลาจริง (เช้า/กลางวัน/ค่ำ/ดึก) 🌅
-  - Speech Bubble System: ฟองคำพูดน่ารักโผล่สุ่มทุก 10-15 นาที ("☕ ชงชาให้นะ~")
-
-* **0.3.0 — Desktop Shell & Real Hardware Sync**:
-  - Tauri v2 Desktop Shell: หน้าต่างไร้ขอบ (Frameless), Always-on-Top, พื้นหลังโปร่งใส
-  - Mini Floating Pet Widget (~80x80px) ลากได้อิสระพร้อมระบบ Snap ขอบจอ + Dangling Pose
-  - Real Hardware Polling: Rust `sysinfo` crate (CPU, RAM, Disk I/O) ทุก 1.5 วินาที แทน Mock Sliders
-  - Hysteresis Filtering (±3% Buffer) ป้องกันแอนิเมชันกระตุกจากค่าจริง
-
-* **0.4.0 — Pomodoro Dashboard & Soundscape Mixer**:
-  - Expandable Pomodoro Dashboard (Classic Pomodoro, Countdown, Stopwatch, Hydration)
-  - Audio Engine (Muted by default, เสียงเตือนนุ่มนวลตอนหมดเวลา)
-  - Eco Mode / Battery Saver Toggle (ลดแอนิเมชันเป็น 12 FPS + polling ทุก 3 วินาที)
-  - Focus Streak Milestones: Confetti burst เมื่อทำ Pomodoro ครบ 3 รอบติด 🎊
+* **0.2.0 — Real Hardware Telemetry Engine** *(Next Up 🎯)*:
+  - Windows OS Hardware Telemetry Provider: ดึงค่า CPU Utilization, RAM Usage, และ Disk I/O จริง
+  - Dual-Provider Pattern:
+    - `NativeWindowsTelemetryProvider` (อ่านค่าจริงในสภาพแวดล้อม Desktop)
+    - `WebMockTelemetryProvider` (จำลองค่าสำหรับ Web Browser Dev & Vitest Tests)
+  - Zero-Overhead Polling: Background polling interval 1.5s - 2.0s ป้องกันการหน่วง Main Thread
+  - เชื่อมต่อ Telemetry เข้าสู่ Zustand Store (`useCompanionStore`) พร้อมปุ่มสลับ Live vs Mock Mode
 
 ---
 
 ### 🎉 1.0.0 — Official First Stable Production Release
-* **1.0.0 — Complete Lo-fi Suite Launch**:
-  - รวบรวมฟังก์ชันทั้งหมดจาก `0.1.0` ถึง `0.4.0` สู่เวอร์ชันสมบูรณ์พร้อมแจกจ่าย
-  - Cross-Platform Packaging:
-    - 🪟 Windows: Portable Single-File `.exe` (~10MB) & `.msi` Installer (Auto-start)
-    - 🍏 macOS: `.dmg` (Apple Silicon & Intel) + Menu Bar Companion
-    - 🐧 Linux: `.AppImage` & `.deb`
-    - 🌐 Web: PWA / Web Demo
-  - Automated Unit Tests ผ่าน Vitest 100%
+* **1.0.0 — 📦 The Hardware Desk Pet (Tauri Desktop App)**:
+  - First Official Desktop Release (.exe Single-File Installer & Portable บน Windows)
+  - Floating Pet Mascot Mode: หน้าต่าง Frameless ไร้ขอบ, พื้นหลังโปร่งใส, ปักหมุด Always-on-Top
+  - ลากย้ายน้องต่ายวางบนหน้าจอทำงานได้อย่างอิสระ (Draggable Floating Mascot)
+  - Quick Context Menu (คลิกขวา):
+    - 📌 Always-on-Top Toggle
+    - 🔍 Window Scale (1x, 2x, 3x, 4x)
+    - 📊 Live Telemetry Stats Tooltip (ดูตัวเลข CPU/RAM/Disk ปัจจุบัน)
+    - ❌ Quit Application
+  - Resource Budget: RAM < 35MB, CPU Idle ~0.0%
 
 ---
 
 ### 🎨 1.x.x — Feature Expansions (Minor Releases)
-* **1.1.0 — Bun & Friends Multiverse + Modding Engine**:
-  - เปิดตัวเพื่อนใหม่อีก **5 ตัว** (*🐱 Neko, 🐶 Shiba, 🍊 Capybara, 🦜 Cockatiel, 🐬 Dolphin*)
-  - Folder Drop-in Custom Skins (`skins/<name>/meta.json` + `sprites.png`) สำหรับศิลปิน Pixel Art
-* **1.2.0 — Browser Companion Extension (Manifest V3)**:
-  - รองรับ Chrome Web Store, Firefox Add-ons, Edge Add-ons (Side Panel & New Tab Mode)
-* **1.3.0 — Idle Focus Foraging & Desk Decorator**:
-  - ปลดล็อกเควสต์ผจญภัยเก็บใบชาและของตกแต่งห้องทำงาน Isometric Pixel Art
-* **1.4.0 — Lo-fi Study Cafe (Lightweight P2P Co-Working)**:
-  - สร้างห้อง Silent Co-working ผ่าน WebRTC นั่งทำงานคู่กับสัตว์เลี้ยงของเพื่อน
-* **1.5.0 — Discord Rich Presence & Community**:
-  - แสดงสถานะบน Discord ("Studying with Bun: 45m focused 🍵")
+* **1.1.0 — 🐾 Bun & Friends Multiverse (Character Expansion)**:
+  - ปลดล็อกเพื่อนใหม่อีก **5 ตัวละคร** สลับเล่นได้ทันที:
+    - 🐱 **Neko**: แมวส้มจิบลาเต้อุ่นๆ / พิมพ์งานสลับอุ้งเท้า
+    - 🐶 **Shiba**: ชิบะจิบชาโฮจิฉะ / วิ่งบนลู่วิ่งไฟฟ้า
+    - 🍊 **Capybara**: คาปิบาร่าแช่น้ำส้มยูซุ / ทานกิ่งไม้ชิลๆ
+    - 🦜 **Cockatiel**: นกคอกคาเทลไซ้ขน / โยกหัวจิกคีย์บอร์ด
+    - 🐬 **Dolphin**: โลมาลอยน้ำพ่นละอองน้ำ / รัวครีบเล่นน้ำ
+  - Quick Companion Switcher ผ่าน Submenu ใน Context Menu
+  - ผลิต Vector Spritesheet 256x320 px ตามมาตรฐานเดิมของ Lo-fi Bun
 
 ---
 
-### 🚀 2.0.0 — Next-Gen Hardware & AI Buddy (Major Evolution)
-* **2.0.0 — DIY Physical Hardware & Local Ambient AI**:
-  - เฟิร์มแวร์เชื่อมต่อหน้าจอตั้งโต๊ะจริง (ESP32 / E-Ink Display)
-  - Context-Aware Local AI ตรวจจับสภาพอากาศและส่ง Post-it ให้กำลังใจ
+### 🍅 2.0.0 — The Productivity Update (Major Release)
+* **2.0.0 — Pomodoro Focus Suite & Rest Automation**:
+  - Classic 25/5 Pomodoro Timer พร้อมโหมด Deep Work (50/10) และ Custom Timer
+  - Rest Automation Hook: เมื่อหมดเวลาทำงาน น้องสัตว์เลี้ยงจะเข้าสู่โหมดพักผ่อน (`REST`) กอดหมอนนอนหลับอัตโนมัติ เพื่อเตือนให้ผู้ใช้พักสายตา
+  - Daily Focus Streak Tracker & Break Reminders
+  - Soft Chimes & Desktop Toast Notification เมื่อจบรอบ Pomodoro
+
+---
+
+### 🎧 3.0.0 — The Soundscape Update (Major Release)
+* **3.0.0 — Ambient Lo-fi Audio Mixer**:
+  - Multi-Channel Web Audio Engine สำหรับสร้างบรรยากาศการทำงาน
+  - ปรับระดับเสียงแยกอิสระ 4 ช่องสัญญาณ:
+    - 🎶 Lo-fi Chill Beats
+    - 🌧️ Soft Rain on Window
+    - ⌨️ Mechanical Keyboard Clicks (Brown/Blue Switch sound)
+    - ☕ Cozy Cafe Murmur & Coffee Pouring
+  - Sound Presets (Rainy Evening, Cafe Study, Midnight Focus, Mute All)
+  - Master Mute Shortcut & Low-power Audio Suspender เมื่อไม่ได้เปิดเสียง
