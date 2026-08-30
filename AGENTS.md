@@ -48,12 +48,13 @@
   - `chore`: Maintenance, dependencies, toolchain (e.g. `chore(deps): configure eslint flat config`)
 
 ### C. Git Operations & Branching Strategy
-- **Branch Hierarchy**:
+- **Branch Hierarchy & Clear Prefixes**:
   - `main`: Release-ready code & production tags (`v1.0.0`).
   - `dev`: Active integration branch.
-  - **Feature Branch**: `feat/<semver>-<slug>` (e.g. `feat/0.1.0-core-sprite-engine`).
-  - **Bugfix Branch**: `fix/<slug>` (e.g. `fix/hysteresis-jitter`).
-  - **Chore / Docs Branch**: `chore/<slug>` or `docs/<slug>`.
+  - **Development Features (from `dev`)**: `dev-feat/<semver>-<slug>` (e.g. `dev-feat/0.1.0-core-sprite-engine`)
+  - **Development Bugfixes (from `dev`)**: `dev-fix/<slug>` (e.g. `dev-fix/hysteresis-jitter`)
+  - **Production Hotfixes (from `main`)**: `prod-hotfix/<slug>` (e.g. `prod-hotfix/audio-crash`)
+  - **Chore / Docs Branch**: `dev-chore/<slug>` or `dev-docs/<slug>`
 - **Decoupled & Manual Approval Protocol**:
   - **`git commit`**: Local only. Used only after `npm run verify` passes 100%, and with explicit user approval.
   - **`git push`**: Remote synchronization. **NEVER chained automatically after commit**. Pushing to remote is a strictly separate step requiring its own explicit confirmation.
