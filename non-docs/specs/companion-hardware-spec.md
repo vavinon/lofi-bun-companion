@@ -53,14 +53,17 @@ flowchart TD
 
 To ensure predictable behavior and avoid unnecessary re-renders, the state machine evaluates actions using a strict priority chain:
 
-1. **Priority 1: Pomodoro Rest / Break Mode (`RESTING`)**
-   - When focus timer completes, animal immediately enters sleep/relaxation state, overriding hardware metrics.
-2. **Priority 2: Disk I/O Burst (`DISK_ACTIVE`)**
-   - High disk read/write triggers a quick **1.5-second transient micro-action** (e.g. flipping pages, sonar ping, scratching box) as an overlay/action modifier, then smoothly reverts back to baseline CPU tier.
+1. **Priority 1: Pomodoro Rest / Break Mode (`RESTING` / `REST`)**
+   - When focus timer completes or user toggles rest mode, animal immediately enters sleep/relaxation state (`REST`), overriding all hardware metrics to provide a calm, distraction-free environment.
+2. **Priority 2: Disk I/O Threshold (`DISK` / `DISK_ACTIVE`)**
+   - When disk active time / transfer rate exceeds threshold (`diskUsage > 75%`), animal triggers the dedicated **Fast Page-Flipping** state (or transient I/O action) to visually indicate disk bottlenecks/reading. Transitions back when `diskUsage < 72%` (with $-3\%$ hysteresis).
 3. **Priority 3: CPU Workload Tier (`IDLE` / `FOCUS` / `FRENZY`)**
-   - Base body animation speed and pose are driven by CPU usage buckets with hysteresis (preventing erratic state switching when CPU fluctuates around thresholds).
+   - When Disk is normal ($<75\%$), base body animation speed and pose are driven by CPU usage buckets with $\pm 3\%$ hysteresis:
+     - `IDLE` (0–20% CPU rising, $<17\%$ falling): Sipping matcha tea
+     - `FOCUS` (20–60% CPU rising, $<57\%$ falling): Steady rhythmic keyboard typing
+     - `FRENZY` (>60% CPU): Flaming keys & rapid typing
 4. **Independent Prop Layer: Memory Load (`HEAVY_RAM`)**
-   - High RAM usage (>80%) activates an overlay prop (stack of carrots, oranges, or beach balls) without requiring full body re-drawing.
+   - High RAM usage (`ramUsage > 80%`) activates an overlay prop (stack of carrots placed on top of Bun's head) rendered via `PropLayer.tsx` without interrupting the underlying base animation loop.
 
 ---
 

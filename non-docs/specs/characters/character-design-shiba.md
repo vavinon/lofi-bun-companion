@@ -33,22 +33,34 @@ graph TD
 | **หมวกเชฟ (Baker Hat)** | `HAT_WHITE` | `#FFFFFF` | หมวกเชฟสีขาวนวล |
 | **เงาหมวก (Hat Shadow)** | `HAT_SHADOW` | `#D8D2C9` | เงารอยพับหมวกเชฟ |
 | **แป้งขนมปัง (Dough Base)** | `DOUGH_BEIGE` | `#F5EBE0` | ก้อนแป้งโดนุ่มฟู |
-| **ครัวซองต์ (Croissant)** | `CROISSANT_BROWN`| `#C67D34` | กองครัวซองต์ RAM Overlay |
+| **ครัวซองต์ (Croissant)** | `CROISSANT_BROWN`| `#C67D34` | กองครัวซองต์ RAM Overlay (บนหัว) |
+| **พรม/กระสอบแป้ง (Sack Beige)**| `SACK_BEIGE` | `#D5C7B6` | พรม/กระสอบแป้งสำหรับขุดตอน Disk I/O |
 
 ---
 
-## 3. 🎬 Frame-by-Frame Storyboard (5-State Contract)
+## 3. 🎬 Frame-by-Frame Storyboard (6-State/Action Contract)
 
 ```mermaid
 stateDiagram-v2
-    [*] --> IDLE : CPU 0-20% (กอดก้อนแป้งนุ่ม & หาว)
-    IDLE --> FOCUS : CPU 20-60% (นวดแป้งขนมปังจังหวะสม่ำเสมอ)
-    FOCUS --> FRENZY : CPU 60-100% (เตาอบควันฟุ้ง นวดแป้งติดสปีด)
-    IDLE --> REST : AFK (นอนหงายแผ่พุงกลิ้งไปมา)
+    [*] --> IDLE : Default (CPU 0-20%)
+    IDLE --> FOCUS : CPU 20-60%
+    FOCUS --> FRENZY : CPU 60-100%
+    FRENZY --> FOCUS : CPU <57%
+    FOCUS --> IDLE : CPU <17%
+    IDLE --> DISK : Disk >75%
+    FOCUS --> DISK : Disk >75%
+    FRENZY --> DISK : Disk >75%
+    DISK --> IDLE : Disk <72%
+    IDLE --> REST : Rest Mode (Priority 1)
+    FOCUS --> REST : Rest Mode (Priority 1)
+    FRENZY --> REST : Rest Mode (Priority 1)
+    DISK --> REST : Rest Mode (Priority 1)
+    REST --> IDLE : Wake Up
 ```
 
 1. **`IDLE` (CPU 0–20%) — 800ms**: ยืนกอดก้อนแป้งนุ่มๆ หมวกเชฟเอียงเล็กน้อย หางม้วนกลมแกว่งดุ๊กดิ๊ก
 2. **`FOCUS` (CPU 20–60%) — 600ms**: นวดและกดแป้งโดว์อย่างตั้งใจ ขยับสองมือขึ้นลงเข้าจังหวะบีท
 3. **`FRENZY` (CPU 60–100%) — 300ms**: นวดแป้งจนแป้งฟุ้งเป็นละอองขาว ตาหยีสู้ตาย เตาอบด้านหลังมีควันพุ่งฟุ้ง
-4. **`HEAVY_RAM` (>80% RAM) — Overlay Prop**: คอนโดครัวซองต์เนยสด 4 ชิ้นซ้อนกันสูงโยกเยก
-5. **`REST` (โหมดพักผ่อน) — 1000ms**: นอนแผ่สองสลึงพุงกาง หมวกเชฟหลุดมาปิดตา หายใจท้องกระเพื่อมน่ารัก
+4. **`DISK` (Disk >75%) — 400ms**: สองขาหน้าตะกุยขุดพรม/กระสอบแป้งอย่างขะมักเขม้น (Vigorous digging) หูตั้งตรง
+5. **`HEAVY_RAM` (>80% RAM) — Overlay Prop**: คอนโดครัวซองต์เนยสด 4 ชิ้นซ้อนกันสูงโยกเยกบนหัว
+6. **`REST` (โหมดพักผ่อน) — 1000ms**: นอนแผ่สองสลึงพุงกาง หมวกเชฟหลุดมาปิดตา หายใจท้องกระเพื่อมน่ารัก
