@@ -9,8 +9,8 @@
 </p>
 
 <p align="center">
-  <a href="#-key-features"><img src="https://img.shields.io/badge/version-v0.1.0-8b5cf6?style=flat-square" alt="Version 0.1.0" /></a>
-  <a href="#-5-pillar-automated-quality-gates"><img src="https://img.shields.io/badge/tests-59%2F59%20passed-10b981?style=flat-square" alt="59/59 Tests Passed" /></a>
+  <a href="#-key-features"><img src="https://img.shields.io/badge/version-v1.0.0-8b5cf6?style=flat-square" alt="Version 1.0.0" /></a>
+  <a href="#-5-pillar-automated-quality-gates"><img src="https://img.shields.io/badge/tests-111%2F111%20passed-10b981?style=flat-square" alt="111/111 Tests Passed" /></a>
   <a href="#-pure-css-animation-engine"><img src="https://img.shields.io/badge/CPU%20Usage-0.0%25%20(Pure%20CSS)-f59e0b?style=flat-square" alt="0.0% Idle CPU" /></a>
   <a href="#-typescript-architecture"><img src="https://img.shields.io/badge/TypeScript-Strict%205.7-3178c6?style=flat-square" alt="TypeScript Strict" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-6b7280?style=flat-square" alt="License MIT" /></a>
@@ -26,7 +26,13 @@
 
 ## 🎮 Key Features
 
-### 1. ⚙️ Hardware-Reactive Companion State Machine
+### 1. 🪟 The Hardware Desk Pet (Tauri Desktop Mascot)
+- **Frameless & Transparent Floating Window**: Seamless desktop mascot floating gracefully over your wallpaper with no intrusive titlebars.
+- **Draggable Canvas (`data-tauri-drag-region`)**: Freely position the companion anywhere on your desktop.
+- **Right-Click Context Menu**: Instant glassmorphism controls for telemetry mode switching (Live vs Simulation), Rest override, opacity adjusting (40%–100%), always-on-top pinning, and view toggling.
+- **Dual View Modes**: Seamlessly toggle between **Compact Mascot View** (minimal floating widget) and **Full Showcase Dashboard** (complete hardware lab).
+
+### 2. ⚙️ Hardware-Reactive Companion State Machine
 Our bunny intelligently transitions across 5 workload states and dynamic prop layers based on system utilization:
 
 | State | Hardware Condition | Bunny Visual Animation |
@@ -57,14 +63,18 @@ stateDiagram-v2
     REST --> IDLE: forceRest === false
 ```
 
-### 2. ⚡ Pure CSS GPU Step Animator (0.0% CPU Footprint)
+### 3. ⚡ Native OS Telemetry Engine (Rust + `sysinfo`)
+- Non-blocking background hardware polling (1.5s interval) in Rust with zero main-thread overhead.
+- Pluggable provider architecture (`NativeTelemetryProvider` for desktop, `WebMockTelemetryProvider` for browsers and Vitest).
+
+### 4. ⚡ Pure CSS GPU Step Animator (0.0% CPU Footprint)
 - **Zero JavaScript Render Loops**: Animation frames are handled purely via CSS `@keyframes` with `steps(4)` and GPU-accelerated texture translations.
 - **Ultra-Lightweight SVG Spritesheet**: Crisp vector rendering at any DPI scale with crisp pixel-art styling (`image-rendering: pixelated`).
 
-### 3. 🎯 Asymmetric Hysteresis Anti-Jitter Smoothing
-- Implements a $\pm 3\%$ dual-threshold deadband to eliminate rapid state flapping when system metrics hover near boundary thresholds (e.g. CPU oscillating between $19.9\%$ and $20.1\%$).
+### 5. 🎯 Asymmetric Hysteresis Anti-Jitter Smoothing
+- Implements a $\pm 3\%$ dual-threshold deadband to eliminate rapid state flapping when system metrics hover near boundary thresholds.
 
-### 4. 🎛️ Interactive Metric Controller & HUD
+### 6. 🎛️ Interactive Metric Controller & HUD
 - Real-time hardware sliders (CPU, RAM, Disk) for live state simulation.
 - Force Rest mode toggle switch.
 - Live Performance HUD with instant state badge indicators.
@@ -77,20 +87,24 @@ stateDiagram-v2
 lofi_bun_companion/
 ├── AGENTS.md                  # Master guidelines, tech stack & protocols
 ├── README.md                  # Project overview & documentation
+├── CHANGELOG.md               # Version history (Keep a Changelog 1.1.0)
 ├── non-docs/
 │   ├── tasks/                 # Dated task plans & implementation roadmaps
 │   ├── devlogs/               # Daily progress & architectural decision logs
 │   └── specs/                 # Technical specifications & ADRs
 └── lofi-bun-companion/        # Application Source Code
+    ├── src-tauri/             # Tauri Rust Desktop Core (sysinfo sampler & IPC commands)
     ├── src/
     │   ├── assets/sprites/    # SVG Vector Spritesheets (bun-sprites.svg, prop-carrot.svg)
     │   ├── components/
+    │   │   ├── Desktop/       # CompactMascotView, PetContextMenu, WindowHeader
     │   │   ├── Pet/           # PetSprite Pure CSS step animator
     │   │   └── Controls/      # MockMetricController simulation sliders
     │   ├── stores/            # Zustand state management (companionStore)
+    │   ├── telemetry/         # Pluggable telemetry engine (Native & WebMock)
     │   ├── utils/             # State resolver & hysteresis math utilities
-    │   ├── types/             # TypeScript type definitions
-    │   └── __tests__/         # Vitest automated test suites (59 tests)
+    │   ├── types/             # TypeScript type definitions (companion, desktop)
+    │   └── __tests__/         # Vitest automated test suites (111 tests)
     ├── package.json
     └── vite.config.ts
 ```
@@ -112,12 +126,10 @@ npm run verify
 │ 1. Linting      │ npm run lint         (ESLint v9 Flat)   │
 │ 2. Formatting   │ npm run format:check (Prettier)          │
 │ 3. Type Safety  │ npm run typecheck    (tsc --noEmit)      │
-│ 4. Unit Tests   │ npm test             (Vitest - 59 tests) │
+│ 4. Unit Tests   │ npm test             (Vitest - 111 test) │
 │ 5. Build        │ npm run build        (Vite Production)   │
 └─────────────────┴──────────────────────────────────────────┘
 ```
-
-> **Adversarial Mutation Tested**: Verified with 100% Mutation Kill Rate against math boundary, state machine hierarchy, and DOM rendering mutations.
 
 ---
 
@@ -164,16 +176,17 @@ npm run verify
   - [x] Zustand State Store with selective reactive subscriptions (0% CPU Idle)
   - [x] Interactive Simulation Controls & Showcase HUD
   - [x] 59/59 Automated Vitest Suites & Mutation Verification
-- [ ] **v0.2.0 — Real Hardware Telemetry Engine** *(Next Up)*
-  - [ ] Real Windows OS hardware metrics polling (CPU Utilization, RAM, Disk I/O)
-  - [ ] Pluggable Telemetry Provider architecture (Native OS vs Web Mock Fallback)
-  - [ ] Background polling throttling (1.5s - 2.0s) with zero main-thread overhead
-  - [ ] Automated provider unit tests and store integration verification
-- [ ] **v1.0.0 — 📦 The Hardware Desk Pet (Official Desktop Release)**
-  - [ ] Lightweight Tauri Desktop Mascot package (.exe single-file on Windows)
-  - [ ] Frameless, transparent, draggable floating pet window with Always-on-Top
-  - [ ] Quick Context Menu (Window scaling 1x-4x, live metrics tooltip, quit)
-  - [ ] Under 35MB RAM footprint and near-zero idle CPU usage
+- [x] **v0.2.0 — Real Hardware Telemetry Engine** *(Completed)*
+  - [x] Real Windows OS hardware metrics polling (CPU Utilization, RAM, Disk I/O)
+  - [x] Pluggable Telemetry Provider architecture (Native OS vs Web Mock Fallback)
+  - [x] Background polling throttling (1.5s - 2.0s) with zero main-thread overhead
+  - [x] Automated provider unit tests and store integration verification (84 tests)
+- [x] **v1.0.0 — 📦 The Hardware Desk Pet (Official Desktop Release)** *(Completed 🎉)*
+  - [x] Lightweight Tauri Desktop Mascot package (.exe single-file on Windows)
+  - [x] Frameless, transparent, draggable floating pet window with Always-on-Top
+  - [x] Quick Context Menu (Window opacity, telemetry mode, rest toggle, view switcher, exit)
+  - [x] Under 35MB RAM footprint and near-zero idle CPU usage
+  - [x] Full integration test suite (111/111 tests passing)
 - [ ] **v1.1.0 — 🐾 Bun & Friends Multiverse (Character Expansion)**
   - [ ] Unlock 5 additional companion characters (*🐱 Neko, 🐶 Shiba, 🍊 Capybara, 🦜 Cockatiel, 🐬 Dolphin*)
   - [ ] Character switcher via Quick Context Menu

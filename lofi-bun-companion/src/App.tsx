@@ -14,6 +14,7 @@ import { CompanionState } from './types/companion';
 import { useTelemetry } from './telemetry/useTelemetry';
 import { MockMetricController } from './components/Controls/MockMetricController';
 import { PetSprite } from './components/Pet/PetSprite';
+import { CompactMascotView } from './components/Desktop/CompactMascotView';
 import styles from './App.module.css';
 
 interface StatePresentation {
@@ -70,6 +71,8 @@ export const App: React.FC = () => {
   });
 
   // Selective Zustand store subscriptions
+  const viewMode = useCompanionStore((state) => state.viewMode);
+  const toggleViewMode = useCompanionStore((state) => state.toggleViewMode);
   const activeState = useCompanionStore(
     (state) => state.resolvedState.activeState
   );
@@ -82,8 +85,20 @@ export const App: React.FC = () => {
 
   const stateInfo = STATE_CONFIG[activeState] || STATE_CONFIG.IDLE;
 
+  // Render ultra-clean frameless floating desk pet when COMPACT view is selected
+  if (viewMode === 'COMPACT') {
+    return (
+      <div
+        className={styles.compactContainerRoot}
+        data-testid="app-compact-root"
+      >
+        <CompactMascotView />
+      </div>
+    );
+  }
+
   return (
-    <main className={styles.appContainer}>
+    <main className={styles.appContainer} data-testid="app-full-root">
       <div className={styles.deskMat}>
         {/* Header Bar */}
         <header className={styles.headerBar}>
@@ -100,6 +115,18 @@ export const App: React.FC = () => {
           </div>
 
           <div className={styles.headerBadges}>
+            {/* View Mode Switcher Button */}
+            <button
+              type="button"
+              className={styles.viewModeToggleBtn}
+              onClick={toggleViewMode}
+              aria-label="Switch to Compact Desktop Mascot View"
+              data-testid="view-mode-toggle-btn"
+            >
+              <span>🪟</span>
+              <span>Mascot View</span>
+            </button>
+
             {/* Telemetry Mode HUD Badge */}
             <div
               className={`${styles.telemetryModeBadge} ${
@@ -141,7 +168,7 @@ export const App: React.FC = () => {
               Pet: {activeCompanionId.toUpperCase()} (Flagship)
             </span>
             <span className={styles.versionBadge}>
-              v0.2.0 • Real Hardware Telemetry
+              v1.0.0 • Desktop Mascot Edition
             </span>
           </div>
         </header>

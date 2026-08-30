@@ -24,6 +24,13 @@ describe('companionStore (Zustand State Store)', () => {
       expect(state.telemetryMode).toBe('MANUAL');
     });
 
+    it('should initialize with default desktop window configuration (FULL view, opacity 1.0, always-on-top true)', () => {
+      const state = useCompanionStore.getState();
+      expect(state.viewMode).toBe('FULL');
+      expect(state.windowOpacity).toBe(1.0);
+      expect(state.isAlwaysOnTop).toBe(true);
+    });
+
     it('should initialize with resolvedState reflecting default metrics (IDLE, not heavy RAM)', () => {
       const { resolvedState } = useCompanionStore.getState();
       expect(resolvedState.activeState).toBe('IDLE');
@@ -148,13 +155,69 @@ describe('companionStore (Zustand State Store)', () => {
     });
   });
 
+  describe('Desktop Window State Actions', () => {
+    it('should update viewMode via setViewMode', () => {
+      const store = useCompanionStore.getState();
+      expect(store.viewMode).toBe('FULL');
+
+      store.setViewMode('COMPACT');
+      expect(useCompanionStore.getState().viewMode).toBe('COMPACT');
+
+      store.setViewMode('FULL');
+      expect(useCompanionStore.getState().viewMode).toBe('FULL');
+    });
+
+    it('should toggle viewMode between FULL and COMPACT via toggleViewMode', () => {
+      const store = useCompanionStore.getState();
+      expect(store.viewMode).toBe('FULL');
+
+      store.toggleViewMode();
+      expect(useCompanionStore.getState().viewMode).toBe('COMPACT');
+
+      store.toggleViewMode();
+      expect(useCompanionStore.getState().viewMode).toBe('FULL');
+    });
+
+    it('should update windowOpacity with clamping within [0.4, 1.0]', () => {
+      const store = useCompanionStore.getState();
+
+      store.setWindowOpacity(0.85);
+      expect(useCompanionStore.getState().windowOpacity).toBe(0.85);
+
+      // Clamp upper bound
+      store.setWindowOpacity(1.5);
+      expect(useCompanionStore.getState().windowOpacity).toBe(1.0);
+
+      // Clamp lower bound
+      store.setWindowOpacity(0.1);
+      expect(useCompanionStore.getState().windowOpacity).toBe(0.4);
+    });
+
+    it('should update isAlwaysOnTop via setAlwaysOnTop and toggleAlwaysOnTop', () => {
+      const store = useCompanionStore.getState();
+      expect(store.isAlwaysOnTop).toBe(true);
+
+      store.setAlwaysOnTop(false);
+      expect(useCompanionStore.getState().isAlwaysOnTop).toBe(false);
+
+      store.toggleAlwaysOnTop();
+      expect(useCompanionStore.getState().isAlwaysOnTop).toBe(true);
+
+      store.toggleAlwaysOnTop();
+      expect(useCompanionStore.getState().isAlwaysOnTop).toBe(false);
+    });
+  });
+
   describe('resetToDefaults Action', () => {
-    it('should reset all state, telemetryMode, and metrics back to initial defaults', () => {
+    it('should reset all state, telemetryMode, desktop window options, and metrics back to initial defaults', () => {
       const store = useCompanionStore.getState();
       store.setMetrics({ cpuUsage: 95, ramUsage: 92, diskUsage: 85 });
       store.setTelemetryMode('LIVE');
       store.setForceRest(true);
       store.setActiveCompanionId('fox-03');
+      store.setViewMode('COMPACT');
+      store.setWindowOpacity(0.5);
+      store.setAlwaysOnTop(false);
 
       // Reset
       store.resetToDefaults();
@@ -170,6 +233,9 @@ describe('companionStore (Zustand State Store)', () => {
       expect(state.activeCompanionId).toBe('bun-01');
       expect(state.resolvedState.activeState).toBe('IDLE');
       expect(state.resolvedState.isHeavyRam).toBe(false);
+      expect(state.viewMode).toBe('FULL');
+      expect(state.windowOpacity).toBe(1.0);
+      expect(state.isAlwaysOnTop).toBe(true);
     });
   });
 
