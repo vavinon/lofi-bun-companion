@@ -92,6 +92,31 @@ const clampOpacity = (opacity: number): number => {
   return Math.min(MAX_WINDOW_OPACITY, Math.max(MIN_WINDOW_OPACITY, opacity));
 };
 
+/** Helper to synchronize Tauri window size when switching view modes */
+const syncWindowSize = async (mode: ViewMode) => {
+  try {
+    const { invoke, isTauri } = await import('@tauri-apps/api/core');
+    if (isTauri()) {
+      await invoke('set_view_mode', { mode });
+    }
+  } catch (err) {
+    console.error('Failed to sync window size with Tauri backend:', err);
+  }
+};
+
+/** Helper to synchronize Tauri window always-on-top state */
+const syncAlwaysOnTop = async (enabled: boolean) => {
+  try {
+    const { isTauri } = await import('@tauri-apps/api/core');
+    if (isTauri()) {
+      const { getCurrentWindow } = await import('@tauri-apps/api/window');
+      await getCurrentWindow().setAlwaysOnTop(enabled);
+    }
+  } catch (err) {
+    console.error('Failed to sync always on top with Tauri backend:', err);
+  }
+};
+
 export const useCompanionStore = create<CompanionStoreState>()(
   subscribeWithSelector((set) => ({
     metrics: DEFAULT_METRICS,
@@ -146,30 +171,34 @@ export const useCompanionStore = create<CompanionStoreState>()(
         activeCompanionId,
       })),
 
-    setViewMode: (viewMode) =>
-      set(() => ({
-        viewMode,
-      })),
+    setViewMode: (viewMode) => {
+      set(() => ({ viewMode }));
+      void syncWindowSize(viewMode);
+    },
 
     toggleViewMode: () =>
-      set((state) => ({
-        viewMode: state.viewMode === 'FULL' ? 'COMPACT' : 'FULL',
-      })),
+      set((state) => {
+        const nextMode = state.viewMode === 'FULL' ? 'COMPACT' : 'FULL';
+        void syncWindowSize(nextMode);
+        return { viewMode: nextMode };
+      }),
 
     setWindowOpacity: (opacity) =>
       set(() => ({
         windowOpacity: clampOpacity(opacity),
       })),
 
-    setAlwaysOnTop: (isAlwaysOnTop) =>
-      set(() => ({
-        isAlwaysOnTop,
-      })),
+    setAlwaysOnTop: (isAlwaysOnTop) => {
+      set(() => ({ isAlwaysOnTop }));
+      void syncAlwaysOnTop(isAlwaysOnTop);
+    },
 
     toggleAlwaysOnTop: () =>
-      set((state) => ({
-        isAlwaysOnTop: !state.isAlwaysOnTop,
-      })),
+      set((state) => {
+        const next = !state.isAlwaysOnTop;
+        void syncAlwaysOnTop(next);
+        return { isAlwaysOnTop: next };
+      }),
 
     resetToDefaults: () => {
       set(() => ({

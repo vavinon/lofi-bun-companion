@@ -71,12 +71,6 @@ describe('WindowHeader Component', () => {
       '[data-testid="btn-toggle-view-mode"]'
     );
     expect(viewModeBtn).not.toBeNull();
-    expect(useCompanionStore.getState().viewMode).toBe('FULL');
-
-    await act(async () => {
-      viewModeBtn?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
-    });
-
     expect(useCompanionStore.getState().viewMode).toBe('COMPACT');
 
     await act(async () => {
@@ -84,6 +78,12 @@ describe('WindowHeader Component', () => {
     });
 
     expect(useCompanionStore.getState().viewMode).toBe('FULL');
+
+    await act(async () => {
+      viewModeBtn?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    });
+
+    expect(useCompanionStore.getState().viewMode).toBe('COMPACT');
 
     await cleanup();
   });

@@ -85,6 +85,37 @@ export const App: React.FC = () => {
 
   const stateInfo = STATE_CONFIG[activeState] || STATE_CONFIG.IDLE;
 
+  // Store subscriptions
+  const isAlwaysOnTop = useCompanionStore((state) => state.isAlwaysOnTop);
+  const toggleAlwaysOnTop = useCompanionStore(
+    (state) => state.toggleAlwaysOnTop
+  );
+
+  const handleMinimize = async (e: React.MouseEvent) => {
+    e.stopPropagation();
+    try {
+      const { isTauri } = await import('@tauri-apps/api/core');
+      if (isTauri()) {
+        const { getCurrentWindow } = await import('@tauri-apps/api/window');
+        await getCurrentWindow().minimize();
+      }
+    } catch {
+      // Fallback
+    }
+  };
+
+  const handleClose = async (e: React.MouseEvent) => {
+    e.stopPropagation();
+    try {
+      const { invoke, isTauri } = await import('@tauri-apps/api/core');
+      if (isTauri()) {
+        await invoke('exit_app');
+      }
+    } catch {
+      // Fallback
+    }
+  };
+
   // Render ultra-clean frameless floating desk pet when COMPACT view is selected
   if (viewMode === 'COMPACT') {
     return (
@@ -100,33 +131,28 @@ export const App: React.FC = () => {
   return (
     <main className={styles.appContainer} data-testid="app-full-root">
       <div className={styles.deskMat}>
-        {/* Header Bar */}
-        <header className={styles.headerBar}>
-          <div className={styles.brandGroup}>
-            <span className={styles.brandIcon} role="img" aria-label="Bun Icon">
+        {/* Unified Top Header & Drag Bar */}
+        <header className={styles.headerBar} data-tauri-drag-region>
+          <div className={styles.brandGroup} data-tauri-drag-region>
+            <span
+              className={styles.brandIcon}
+              role="img"
+              aria-label="Bun Icon"
+              data-tauri-drag-region
+            >
               🐰
             </span>
-            <div>
-              <h1 className={styles.brandTitle}>Lo-fi Bun Companion</h1>
-              <p className={styles.brandSubtitle}>
+            <div data-tauri-drag-region>
+              <h1 className={styles.brandTitle} data-tauri-drag-region>
+                Lo-fi Bun Companion
+              </h1>
+              <p className={styles.brandSubtitle} data-tauri-drag-region>
                 Cozy Hardware-Reactive Virtual Desk Companion
               </p>
             </div>
           </div>
 
-          <div className={styles.headerBadges}>
-            {/* View Mode Switcher Button */}
-            <button
-              type="button"
-              className={styles.viewModeToggleBtn}
-              onClick={toggleViewMode}
-              aria-label="Switch to Compact Desktop Mascot View"
-              data-testid="view-mode-toggle-btn"
-            >
-              <span>🪟</span>
-              <span>Mascot View</span>
-            </button>
-
+          <div className={styles.headerBadges} data-tauri-drag-region>
             {/* Telemetry Mode HUD Badge */}
             <div
               className={`${styles.telemetryModeBadge} ${
@@ -170,6 +196,69 @@ export const App: React.FC = () => {
             <span className={styles.versionBadge}>
               v1.0.0 • Desktop Mascot Edition
             </span>
+          </div>
+
+          {/* Unified Window Controls Group */}
+          <div
+            className={styles.windowControlsGroup}
+            onMouseDown={(e) => e.stopPropagation()}
+            data-testid="window-controls-group"
+          >
+            {/* Switch View Mode */}
+            <button
+              type="button"
+              className={styles.viewModeToggleBtn}
+              onClick={toggleViewMode}
+              aria-label="Switch to Compact Desktop Mascot View"
+              data-testid="view-mode-toggle-btn"
+            >
+              <span>🪟</span>
+              <span>Mascot View</span>
+            </button>
+
+            {/* Toggle Always on Top */}
+            <button
+              type="button"
+              className={`${styles.controlButton} ${
+                isAlwaysOnTop ? styles.pinned : ''
+              }`}
+              onClick={toggleAlwaysOnTop}
+              title={
+                isAlwaysOnTop
+                  ? 'Unpin (Always on Top: ON)'
+                  : 'Pin Always on Top'
+              }
+              aria-label={
+                isAlwaysOnTop ? 'Unpin Always on Top' : 'Pin Always on Top'
+              }
+              data-testid="btn-toggle-always-on-top"
+            >
+              {isAlwaysOnTop ? '📌' : '📍'}
+            </button>
+
+            {/* Minimize */}
+            <button
+              type="button"
+              className={styles.controlButton}
+              onClick={handleMinimize}
+              title="Minimize Window"
+              aria-label="Minimize Window"
+              data-testid="btn-minimize-window"
+            >
+              −
+            </button>
+
+            {/* Close */}
+            <button
+              type="button"
+              className={`${styles.controlButton} ${styles.closeButton}`}
+              onClick={handleClose}
+              title="Close Pet"
+              aria-label="Close Pet"
+              data-testid="btn-close-window"
+            >
+              ✕
+            </button>
           </div>
         </header>
 

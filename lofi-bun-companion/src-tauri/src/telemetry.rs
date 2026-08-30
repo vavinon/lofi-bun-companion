@@ -64,7 +64,7 @@ impl HardwareSampler {
         };
 
         // 3. Refresh Disk activity / utilization
-        self.disks.refresh(true);
+        self.disks.refresh();
         let (total_disk_space, available_disk_space) = self.disks.iter().fold(
             (0u64, 0u64),
             |(acc_total, acc_avail), disk| {

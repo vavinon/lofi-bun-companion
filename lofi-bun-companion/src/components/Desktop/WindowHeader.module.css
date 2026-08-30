@@ -9,11 +9,11 @@
   justify-content: space-between;
   width: 100%;
   padding: 8px 12px;
-  background: rgba(22, 27, 34, 0.45);
+  background: rgba(22, 27, 34, 0.65);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px 12px 0 0;
+  border-radius: inherit;
   user-select: none;
   box-sizing: border-box;
   z-index: 20;

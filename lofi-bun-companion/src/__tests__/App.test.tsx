@@ -45,7 +45,27 @@ describe('App Showcase Container Component', () => {
     container.remove();
   };
 
-  it('renders all core showcase elements and headers correctly', async () => {
+  it('renders CompactMascotView directly as default on app startup', async () => {
+    await renderComponent();
+
+    expect(
+      container.querySelector('[data-testid="app-compact-root"]')
+    ).not.toBeNull();
+    expect(
+      container.querySelector('[data-testid="compact-mascot-view"]')
+    ).not.toBeNull();
+    expect(
+      container.querySelector('[data-testid="compact-pet-stage"]')
+    ).not.toBeNull();
+    expect(
+      container.querySelector('[data-testid="compact-floating-hud"]')
+    ).not.toBeNull();
+
+    await cleanup();
+  });
+
+  it('renders all core showcase elements and headers correctly in FULL viewMode', async () => {
+    useCompanionStore.getState().setViewMode('FULL');
     await renderComponent();
 
     // Verify Title and Subtitle
@@ -103,7 +123,8 @@ describe('App Showcase Container Component', () => {
     await cleanup();
   });
 
-  it('switches to COMPACT mascot view when viewMode button is clicked and back', async () => {
+  it('switches between COMPACT and FULL viewModes seamlessly', async () => {
+    useCompanionStore.getState().setViewMode('FULL');
     await renderComponent();
 
     // Verify initially in FULL view
@@ -150,24 +171,8 @@ describe('App Showcase Container Component', () => {
     await cleanup();
   });
 
-  it('renders CompactMascotView directly when store initializes in COMPACT viewMode', async () => {
-    useCompanionStore.getState().setViewMode('COMPACT');
-    await renderComponent();
-
-    expect(
-      container.querySelector('[data-testid="app-compact-root"]')
-    ).not.toBeNull();
-    expect(
-      container.querySelector('[data-testid="compact-mascot-view"]')
-    ).not.toBeNull();
-    expect(
-      container.querySelector('[data-testid="compact-pet-stage"]')
-    ).not.toBeNull();
-
-    await cleanup();
-  });
-
   it('updates Stage HUD and PetSprite when hardware sliders change', async () => {
+    useCompanionStore.getState().setViewMode('FULL');
     await renderComponent();
 
     // Find CPU slider
@@ -194,6 +199,7 @@ describe('App Showcase Container Component', () => {
   });
 
   it('updates RAM Prop indicator and renders Carrot overlay on high RAM', async () => {
+    useCompanionStore.getState().setViewMode('FULL');
     await renderComponent();
 
     const ramInput = container.querySelector<HTMLInputElement>(
@@ -219,6 +225,7 @@ describe('App Showcase Container Component', () => {
   });
 
   it('switches to REST mode and updates HUD when toggle switch is clicked', async () => {
+    useCompanionStore.getState().setViewMode('FULL');
     await renderComponent();
 
     const restToggle = container.querySelector<HTMLInputElement>(
@@ -243,6 +250,7 @@ describe('App Showcase Container Component', () => {
   });
 
   it('updates Telemetry HUD when switching to LIVE mode via controller', async () => {
+    useCompanionStore.getState().setViewMode('FULL');
     await renderComponent();
 
     const liveBtn = container.querySelector<HTMLButtonElement>(

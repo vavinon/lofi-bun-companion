@@ -120,11 +120,8 @@ export const PetContextMenu: React.FC<PetContextMenuProps> = ({
     }
 
     try {
-      if (
-        typeof window !== 'undefined' &&
-        '__TAURI_INTERNALS__' in window &&
-        typeof window.__TAURI_INTERNALS__ === 'object'
-      ) {
+      const { isTauri } = await import('@tauri-apps/api/core');
+      if (isTauri()) {
         const { getCurrentWindow } = await import('@tauri-apps/api/window');
         await getCurrentWindow().close();
       }

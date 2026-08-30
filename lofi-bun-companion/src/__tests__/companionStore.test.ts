@@ -24,9 +24,9 @@ describe('companionStore (Zustand State Store)', () => {
       expect(state.telemetryMode).toBe('MANUAL');
     });
 
-    it('should initialize with default desktop window configuration (FULL view, opacity 1.0, always-on-top true)', () => {
+    it('should initialize with default desktop window configuration (COMPACT view, opacity 1.0, always-on-top true)', () => {
       const state = useCompanionStore.getState();
-      expect(state.viewMode).toBe('FULL');
+      expect(state.viewMode).toBe('COMPACT');
       expect(state.windowOpacity).toBe(1.0);
       expect(state.isAlwaysOnTop).toBe(true);
     });
@@ -158,24 +158,24 @@ describe('companionStore (Zustand State Store)', () => {
   describe('Desktop Window State Actions', () => {
     it('should update viewMode via setViewMode', () => {
       const store = useCompanionStore.getState();
-      expect(store.viewMode).toBe('FULL');
-
-      store.setViewMode('COMPACT');
-      expect(useCompanionStore.getState().viewMode).toBe('COMPACT');
+      expect(store.viewMode).toBe('COMPACT');
 
       store.setViewMode('FULL');
       expect(useCompanionStore.getState().viewMode).toBe('FULL');
+
+      store.setViewMode('COMPACT');
+      expect(useCompanionStore.getState().viewMode).toBe('COMPACT');
     });
 
     it('should toggle viewMode between FULL and COMPACT via toggleViewMode', () => {
       const store = useCompanionStore.getState();
-      expect(store.viewMode).toBe('FULL');
-
-      store.toggleViewMode();
-      expect(useCompanionStore.getState().viewMode).toBe('COMPACT');
+      expect(store.viewMode).toBe('COMPACT');
 
       store.toggleViewMode();
       expect(useCompanionStore.getState().viewMode).toBe('FULL');
+
+      store.toggleViewMode();
+      expect(useCompanionStore.getState().viewMode).toBe('COMPACT');
     });
 
     it('should update windowOpacity with clamping within [0.4, 1.0]', () => {
@@ -215,7 +215,7 @@ describe('companionStore (Zustand State Store)', () => {
       store.setTelemetryMode('LIVE');
       store.setForceRest(true);
       store.setActiveCompanionId('fox-03');
-      store.setViewMode('COMPACT');
+      store.setViewMode('FULL');
       store.setWindowOpacity(0.5);
       store.setAlwaysOnTop(false);
 
@@ -233,7 +233,7 @@ describe('companionStore (Zustand State Store)', () => {
       expect(state.activeCompanionId).toBe('bun-01');
       expect(state.resolvedState.activeState).toBe('IDLE');
       expect(state.resolvedState.isHeavyRam).toBe(false);
-      expect(state.viewMode).toBe('FULL');
+      expect(state.viewMode).toBe('COMPACT');
       expect(state.windowOpacity).toBe(1.0);
       expect(state.isAlwaysOnTop).toBe(true);
     });

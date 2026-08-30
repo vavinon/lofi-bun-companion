@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Background Gradients -->
+    <radialGradient id="bgGrad" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#3A3047" />
+      <stop offset="70%" stop-color="#211A29" />
+      <stop offset="100%" stop-color="#16111C" />
+    </radialGradient>
+    <radialGradient id="haloGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFDEB4" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#FFDEB4" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="furGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#FFF5EA" />
+    </linearGradient>
+    <linearGradient id="scarfGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9BB3A8" />
+      <stop offset="100%" stop-color="#738B80" />
+    </linearGradient>
+    <linearGradient id="cupGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#B2C5A8" />
+      <stop offset="100%" stop-color="#8DA184" />
+    </linearGradient>
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.45" />
+    </filter>
+  </defs>
+
+  <!-- Squircle App Icon Container -->
+  <rect x="16" y="16" width="480" height="480" rx="108" fill="url(#bgGrad)" stroke="#534563" stroke-width="4" />
+  
+  <!-- Subtle Ambient Glow -->
+  <circle cx="256" cy="270" r="200" fill="url(#haloGrad)" />
+
+  <!-- Bun Group with Soft Drop Shadow -->
+  <g filter="url(#softShadow)" transform="translate(0, 8)">
+    
+    <!-- Ears -->
+    <!-- Left Upright Ear -->
+    <rect x="176" y="80" width="48" height="120" rx="24" fill="#EADBC8" stroke="#2E221F" stroke-width="12" />
+    <rect x="176" y="74" width="48" height="120" rx="24" fill="url(#furGrad)" stroke="#2E221F" stroke-width="12" />
+    <rect x="188" y="96" width="24" height="74" rx="12" fill="#FFB5B5" opacity="0.9" />
+
+    <!-- Right Floppy Ear -->
+    <path d="M 296 112 C 344 112, 376 144, 360 192 C 352 216, 320 216, 304 176 Z" fill="#EADBC8" stroke="#2E221F" stroke-width="12" stroke-linejoin="round" />
+    <path d="M 296 106 C 344 106, 376 138, 360 186 C 352 210, 320 210, 304 170 Z" fill="url(#furGrad)" stroke="#2E221F" stroke-width="12" stroke-linejoin="round" />
+    <path d="M 310 126 C 336 126, 352 150, 344 174 C 336 190, 320 182, 312 154 Z" fill="#FFB5B5" opacity="0.9" />
+
+    <!-- Bun Head & Body -->
+    <ellipse cx="256" cy="300" rx="136" ry="118" fill="#EADBC8" stroke="#2E221F" stroke-width="12" />
+    <ellipse cx="256" cy="292" rx="136" ry="114" fill="url(#furGrad)" stroke="#2E221F" stroke-width="12" />
+
+    <!-- Rosy Blush Cheeks -->
+    <circle cx="180" cy="316" r="24" fill="#FFB5B5" opacity="0.85" />
+    <circle cx="332" cy="316" r="24" fill="#FFB5B5" opacity="0.85" />
+
+    <!-- Sparkling Eyes -->
+    <!-- Left Eye -->
+    <ellipse cx="214" cy="276" rx="18" ry="22" fill="#3D2B27" />
+    <circle cx="208" cy="268" r="7" fill="#FFFFFF" />
+    <circle cx="222" cy="284" r="3.5" fill="#FFFFFF" />
+
+    <!-- Right Eye -->
+    <ellipse cx="298" cy="276" rx="18" ry="22" fill="#3D2B27" />
+    <circle cx="292" cy="268" r="7" fill="#FFFFFF" />
+    <circle cx="306" cy="284" r="3.5" fill="#FFFFFF" />
+
+    <!-- Glasses Frame (Cozy Scholar Look) -->
+    <rect x="186" y="248" width="56" height="52" rx="16" fill="none" stroke="#2E221F" stroke-width="7" />
+    <rect x="270" y="248" width="56" height="52" rx="16" fill="none" stroke="#2E221F" stroke-width="7" />
+    <line x1="242" y1="272" x2="270" y2="272" stroke="#2E221F" stroke-width="7" stroke-linecap="round" />
+
+    <!-- Nose & Cute Mouth -->
+    <path d="M 248 308 L 256 316 L 264 308" fill="none" stroke="#2E221F" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+
+    <!-- Cozy Sage Scarf -->
+    <path d="M 152 352 C 184 376, 328 376, 360 352 C 368 384, 336 400, 256 400 C 176 400, 144 384, 152 352 Z" fill="url(#scarfGrad)" stroke="#2E221F" stroke-width="12" stroke-linejoin="round" />
+    <rect x="180" y="376" width="44" height="64" rx="8" fill="#738B80" stroke="#2E221F" stroke-width="10" />
+
+    <!-- Matcha Tea Cup -->
+    <rect x="208" y="372" width="96" height="72" rx="16" fill="url(#cupGrad)" stroke="#2E221F" stroke-width="11" />
+    <rect x="224" y="372" width="64" height="14" rx="6" fill="#6B8E23" />
+
+    <!-- Cute Fluffy Paws Holding Cup -->
+    <circle cx="204" cy="406" r="20" fill="url(#furGrad)" stroke="#2E221F" stroke-width="9" />
+    <circle cx="308" cy="406" r="20" fill="url(#furGrad)" stroke="#2E221F" stroke-width="9" />
+
+    <!-- Steam Heart Floating from Tea -->
+    <path d="M 256 328 C 240 312, 256 296, 264 304 C 272 296, 288 312, 272 328 Z" fill="#FFFFFF" opacity="0.85" transform="scale(1.2) translate(-28, -60)" />
+  </g>
+</svg>

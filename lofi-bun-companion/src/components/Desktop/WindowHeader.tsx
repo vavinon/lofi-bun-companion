@@ -3,7 +3,7 @@
  *
  * Provides a minimal, translucent titlebar for the desktop companion window.
  * Features:
- * 1. Tauri Drag Region (`data-tauri-drag-region`) for moving the frameless window.
+ * 1. Tauri Drag Region (`data-tauri-drag-region` and native `start_drag` IPC on mouse down).
  * 2. Quick action buttons: Toggle Always-On-Top, Switch View Mode (Compact <-> Full), Minimize, and Close/Exit.
  */
 
@@ -32,39 +32,46 @@ export const WindowHeader: React.FC<WindowHeaderProps> = ({
   const viewMode = useCompanionStore((state) => state.viewMode);
   const toggleViewMode = useCompanionStore((state) => state.toggleViewMode);
 
-  const handleClose = async () => {
+  const handleStartDrag = async (e: React.MouseEvent) => {
+    if (e.button === 0) {
+      try {
+        const { invoke, isTauri } = await import('@tauri-apps/api/core');
+        if (isTauri()) {
+          await invoke('start_drag');
+        }
+      } catch {
+        // Fallback for browser testing
+      }
+    }
+  };
+
+  const handleClose = async (e: React.MouseEvent) => {
+    e.stopPropagation();
     if (onClose) {
       onClose();
       return;
     }
 
-    // Try invoking Tauri native window close if available
     try {
-      if (
-        typeof window !== 'undefined' &&
-        '__TAURI_INTERNALS__' in window &&
-        typeof window.__TAURI_INTERNALS__ === 'object'
-      ) {
-        const { getCurrentWindow } = await import('@tauri-apps/api/window');
-        await getCurrentWindow().close();
+      const { invoke, isTauri } = await import('@tauri-apps/api/core');
+      if (isTauri()) {
+        await invoke('exit_app');
       }
     } catch {
-      // Fallback for browser testing or unbundled dev runs
+      // Fallback for browser testing
     }
   };
 
-  const handleMinimize = async () => {
+  const handleMinimize = async (e: React.MouseEvent) => {
+    e.stopPropagation();
     if (onMinimize) {
       onMinimize();
       return;
     }
 
     try {
-      if (
-        typeof window !== 'undefined' &&
-        '__TAURI_INTERNALS__' in window &&
-        typeof window.__TAURI_INTERNALS__ === 'object'
-      ) {
+      const { isTauri } = await import('@tauri-apps/api/core');
+      if (isTauri()) {
         const { getCurrentWindow } = await import('@tauri-apps/api/window');
         await getCurrentWindow().minimize();
       }
@@ -73,15 +80,27 @@ export const WindowHeader: React.FC<WindowHeaderProps> = ({
     }
   };
 
+  const handleToggleAlwaysOnTop = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    toggleAlwaysOnTop();
+  };
+
+  const handleToggleViewMode = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    toggleViewMode();
+  };
+
   return (
     <header
       className={styles.headerContainer}
       data-tauri-drag-region
+      onMouseDown={handleStartDrag}
       data-testid="window-header"
     >
       <div
         className={styles.titleArea}
         data-tauri-drag-region
+        onMouseDown={handleStartDrag}
         data-testid="window-title-area"
       >
         <span
@@ -101,14 +120,18 @@ export const WindowHeader: React.FC<WindowHeaderProps> = ({
         </span>
       </div>
 
-      <div className={styles.controlsGroup} data-testid="window-controls-group">
+      <div
+        className={styles.controlsGroup}
+        onMouseDown={(e) => e.stopPropagation()}
+        data-testid="window-controls-group"
+      >
         {/* Toggle Always on Top */}
         <button
           type="button"
           className={`${styles.controlButton} ${
             isAlwaysOnTop ? styles.pinned : ''
           }`}
-          onClick={toggleAlwaysOnTop}
+          onClick={handleToggleAlwaysOnTop}
           title={isAlwaysOnTop ? 'Unpin (Always on Top: ON)' : 'Pin on Top'}
           aria-label={
             isAlwaysOnTop ? 'Unpin Always on Top' : 'Pin Always on Top'
@@ -122,7 +145,7 @@ export const WindowHeader: React.FC<WindowHeaderProps> = ({
         <button
           type="button"
           className={styles.controlButton}
-          onClick={toggleViewMode}
+          onClick={handleToggleViewMode}
           title={
             viewMode === 'COMPACT'
               ? 'Open Full Dashboard'

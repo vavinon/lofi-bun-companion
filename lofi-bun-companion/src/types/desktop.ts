@@ -65,6 +65,6 @@ export interface DesktopWindowState {
 /**
  * Default desktop window configuration constants.
  */
-export const DEFAULT_VIEW_MODE: ViewMode = 'FULL';
+export const DEFAULT_VIEW_MODE: ViewMode = 'COMPACT';
 export const DEFAULT_WINDOW_OPACITY = 1.0;
 export const DEFAULT_ALWAYS_ON_TOP = true;

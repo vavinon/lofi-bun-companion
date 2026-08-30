@@ -3,7 +3,7 @@
  *
  * Provides a borderless, floating desktop mascot view tailored for Tauri desktop pet mode.
  * Features:
- * 1. Compact draggable viewport (`data-tauri-drag-region`).
+ * 1. Compact draggable viewport (`data-tauri-drag-region` + native `start_drag` on mouse down).
  * 2. WindowHeader integration with quick controls.
  * 3. Dynamic ambient halo glow reacting to companion's active state.
  * 4. Minimal floating hardware metrics HUD (CPU, RAM, Disk).
@@ -96,6 +96,19 @@ export const CompactMascotView: React.FC = () => {
     setContextMenu((prev) => ({ ...prev, isOpen: false }));
   };
 
+  const handleStartDrag = async (event: React.MouseEvent) => {
+    if (event.button === 0) {
+      try {
+        const { invoke, isTauri } = await import('@tauri-apps/api/core');
+        if (isTauri()) {
+          await invoke('start_drag');
+        }
+      } catch {
+        // browser fallback
+      }
+    }
+  };
+
   return (
     <div
       className={styles.compactContainer}
@@ -110,6 +123,7 @@ export const CompactMascotView: React.FC = () => {
       <div
         className={styles.petStageArea}
         data-tauri-drag-region
+        onMouseDown={handleStartDrag}
         data-testid="compact-pet-stage"
       >
         {/* State Halo Glow */}
@@ -126,13 +140,18 @@ export const CompactMascotView: React.FC = () => {
         <div
           className={styles.petSpriteWrapper}
           data-tauri-drag-region
+          onMouseDown={handleStartDrag}
           data-testid="compact-pet-sprite"
         >
           <PetSprite scale={2.2} />
         </div>
 
         {/* Floating Minimal Hardware & State HUD */}
-        <div className={styles.floatingHud} data-testid="compact-floating-hud">
+        <div
+          className={styles.floatingHud}
+          onMouseDown={(e) => e.stopPropagation()}
+          data-testid="compact-floating-hud"
+        >
           {/* Active State Pill */}
           <div
             className={styles.statePill}

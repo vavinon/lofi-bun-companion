@@ -6,8 +6,10 @@
  */
 
 .appContainer {
-  min-height: 100vh;
+  height: 100%;
   width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
   background-color: #15100e;
   background-image:
     radial-gradient(
@@ -27,29 +29,51 @@
     28px 28px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   justify-content: flex-start;
-  padding: 1.5rem 1rem 3rem;
+  padding: 0;
   color: #fff8f0;
   box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 154, 60, 0.4) rgba(21, 16, 14, 0.5);
+}
+
+/* Cozy Custom Dark Espresso & Amber Scrollbar */
+.appContainer::-webkit-scrollbar {
+  width: 8px;
+}
+
+.appContainer::-webkit-scrollbar-track {
+  background: rgba(21, 16, 14, 0.7);
+}
+
+.appContainer::-webkit-scrollbar-thumb {
+  background: rgba(255, 154, 60, 0.35);
+  border-radius: 6px;
+  border: 1px solid rgba(255, 154, 60, 0.25);
+  transition: background 0.2s ease;
+}
+
+.appContainer::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 154, 60, 0.65);
 }
 
 /* Master Desk Mat Workspace */
 .deskMat {
   width: 100%;
-  max-width: 1080px;
   background: rgba(28, 22, 20, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 248, 240, 0.12);
-  border-radius: 28px;
+  border-top: 1px solid rgba(255, 248, 240, 0.12);
+  border-radius: 0;
   box-shadow:
     0 24px 56px rgba(0, 0, 0, 0.55),
     0 2px 6px rgba(255, 248, 240, 0.05) inset;
-  padding: 2rem;
+  padding: 0.875rem 1.25rem 1.75rem;
   display: flex;
   flex-direction: column;
-  gap: 1.75rem;
+  gap: 0.875rem;
+  box-sizing: border-box;
 }
 
 /* Header Navigation Bar */
@@ -57,9 +81,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1rem;
-  padding-bottom: 1.25rem;
+  gap: 0.75rem;
+  padding-bottom: 0.75rem;
   border-bottom: 1px solid rgba(255, 248, 240, 0.08);
 }
 
@@ -210,11 +233,11 @@
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 248, 240, 0.12);
   border-radius: 20px;
-  padding: 1.5rem;
+  padding: 1.15rem 1.25rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 1.5rem;
+  gap: 0.75rem;
   position: relative;
   overflow: hidden;
 }
@@ -301,12 +324,12 @@
 /* Center Stage Canvas & Desk Rug */
 .stageArena {
   position: relative;
-  min-height: 220px;
+  min-height: 180px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 1rem 0;
+  margin: 0.25rem 0;
 }
 
 /* Ambient Radial Glow */
@@ -392,7 +415,7 @@
 /* Compact Mascot Window Root Container */
 .compactContainerRoot {
   width: 100%;
-  min-height: 100vh;
+  height: 100%;
   background: transparent;
   padding: 0;
   margin: 0;
@@ -430,4 +453,57 @@
 
 .viewModeToggleBtn:active {
   transform: translateY(0);
+}
+
+/* Window Controls Group in Dashboard Header */
+.windowControlsGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.controlButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  color: #c9d1d9;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  outline: none;
+}
+
+.controlButton:hover {
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.controlButton:active {
+  transform: translateY(0);
+}
+
+.pinned {
+  background: rgba(255, 154, 60, 0.28);
+  border-color: rgba(255, 154, 60, 0.65);
+  color: #ff9a3c;
+}
+
+.pinned:hover {
+  background: rgba(255, 154, 60, 0.4);
+  border-color: rgba(255, 154, 60, 0.85);
+  color: #ffa95c;
+}
+
+.closeButton:hover {
+  background: rgba(248, 81, 73, 0.4);
+  border-color: rgba(248, 81, 73, 0.8);
+  color: #ff7b72;
 }
