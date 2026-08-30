@@ -11,6 +11,7 @@
 import React from 'react';
 import { useCompanionStore } from './stores/companionStore';
 import { CompanionState } from './types/companion';
+import { useTelemetry } from './telemetry/useTelemetry';
 import { MockMetricController } from './components/Controls/MockMetricController';
 import { PetSprite } from './components/Pet/PetSprite';
 import styles from './App.module.css';
@@ -62,6 +63,12 @@ const STATE_CONFIG: Record<CompanionState, StatePresentation> = {
 };
 
 export const App: React.FC = () => {
+  // Activate global background telemetry manager lifecycle
+  const { mode, status, providerName } = useTelemetry({
+    autoStart: true,
+    pollingIntervalMs: 1500,
+  });
+
   // Selective Zustand store subscriptions
   const activeState = useCompanionStore(
     (state) => state.resolvedState.activeState
@@ -93,11 +100,48 @@ export const App: React.FC = () => {
           </div>
 
           <div className={styles.headerBadges}>
+            {/* Telemetry Mode HUD Badge */}
+            <div
+              className={`${styles.telemetryModeBadge} ${
+                mode === 'LIVE' ? styles.modeLive : styles.modeManual
+              }`}
+              data-testid="telemetry-mode-badge"
+            >
+              <span
+                className={`${styles.modeDot} ${
+                  mode === 'LIVE' ? styles.modeDotLive : ''
+                }`}
+              />
+              <span>{mode === 'LIVE' ? '⚡ LIVE' : '🎛️ MANUAL'}</span>
+            </div>
+
+            {/* Provider Source Badge */}
+            <span
+              className={styles.providerBadge}
+              data-testid="telemetry-provider-badge"
+            >
+              {providerName.includes('Native') ||
+              providerName.includes('Windows')
+                ? '🖥️ '
+                : '🌐 '}
+              {providerName}
+            </span>
+
+            {/* Polling Lifecycle Status Badge */}
+            <span
+              className={`${styles.statusBadge} ${
+                status === 'POLLING' ? styles.statusPolling : styles.statusIdle
+              }`}
+              data-testid="telemetry-status-badge"
+            >
+              {status === 'POLLING' ? '🟢 POLLING' : '⚪ IDLE'}
+            </span>
+
             <span className={styles.companionTag}>
               Pet: {activeCompanionId.toUpperCase()} (Flagship)
             </span>
             <span className={styles.versionBadge}>
-              v0.1.0 • Core Sprite Engine
+              v0.2.0 • Real Hardware Telemetry
             </span>
           </div>
         </header>

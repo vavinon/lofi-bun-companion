@@ -2,7 +2,8 @@
  * Reactive Zustand store for Lo-fi Bun Companion.
  *
  * Manages hardware metrics, user overrides, active companion metadata,
- * and automatically computes the derived ResolvedCompanionState via pure stateResolver.
+ * telemetry operational mode (LIVE / MANUAL), and automatically computes
+ * the derived ResolvedCompanionState via pure stateResolver.
  *
  * Employs `subscribeWithSelector` middleware to enable selective component subscriptions
  * ensuring 0.0% CPU overhead during idle cycles.
@@ -12,10 +13,14 @@ import { create } from 'zustand';
 import { subscribeWithSelector } from 'zustand/middleware';
 import { HardwareMetrics, ResolvedCompanionState } from '../types/companion';
 import { resolveCompanionState } from '../utils/stateResolver';
+import { TelemetryMode } from '../telemetry/types';
+import { telemetryManager } from '../telemetry/telemetryManager';
 
 export interface CompanionStoreState {
   /** Real-time or simulated hardware load metrics */
   metrics: HardwareMetrics;
+  /** Operational mode for telemetry data ingestion ('LIVE' | 'MANUAL') */
+  telemetryMode: TelemetryMode;
   /** Manual user override to trigger companion resting animation */
   forceRest: boolean;
   /** Unique ID of currently selected companion character */
@@ -26,6 +31,8 @@ export interface CompanionStoreState {
   // Actions
   /** Update one or more hardware metrics and recompute resolved state */
   setMetrics: (metrics: Partial<HardwareMetrics>) => void;
+  /** Switch between LIVE native hardware monitoring and MANUAL simulation */
+  setTelemetryMode: (mode: TelemetryMode) => void;
   /** Toggle manual rest mode override and recompute resolved state */
   setForceRest: (forceRest: boolean) => void;
   /** Switch active companion character */
@@ -43,6 +50,7 @@ export const DEFAULT_METRICS: HardwareMetrics = {
 
 export const DEFAULT_COMPANION_ID = 'bun-01';
 export const DEFAULT_FORCE_REST = false;
+export const DEFAULT_TELEMETRY_MODE: TelemetryMode = 'MANUAL';
 
 /** Helper to generate initial resolved state from default metrics */
 const getInitialResolvedState = (): ResolvedCompanionState =>
@@ -55,6 +63,7 @@ const getInitialResolvedState = (): ResolvedCompanionState =>
 export const useCompanionStore = create<CompanionStoreState>()(
   subscribeWithSelector((set) => ({
     metrics: DEFAULT_METRICS,
+    telemetryMode: DEFAULT_TELEMETRY_MODE,
     forceRest: DEFAULT_FORCE_REST,
     activeCompanionId: DEFAULT_COMPANION_ID,
     resolvedState: getInitialResolvedState(),
@@ -78,6 +87,11 @@ export const useCompanionStore = create<CompanionStoreState>()(
         };
       }),
 
+    setTelemetryMode: (telemetryMode) => {
+      set(() => ({ telemetryMode }));
+      void telemetryManager.setMode(telemetryMode);
+    },
+
     setForceRest: (forceRest) =>
       set((state) => {
         const nextResolved = resolveCompanionState({
@@ -97,12 +111,16 @@ export const useCompanionStore = create<CompanionStoreState>()(
         activeCompanionId,
       })),
 
-    resetToDefaults: () =>
+    resetToDefaults: () => {
       set(() => ({
         metrics: DEFAULT_METRICS,
+        telemetryMode: DEFAULT_TELEMETRY_MODE,
         forceRest: DEFAULT_FORCE_REST,
         activeCompanionId: DEFAULT_COMPANION_ID,
         resolvedState: getInitialResolvedState(),
-      })),
+      }));
+      void telemetryManager.setMode(DEFAULT_TELEMETRY_MODE);
+      telemetryManager.setManualMetrics(DEFAULT_METRICS);
+    },
   }))
 );

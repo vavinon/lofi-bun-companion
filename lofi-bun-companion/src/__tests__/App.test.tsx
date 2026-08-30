@@ -50,8 +50,27 @@ describe('App Showcase Container Component', () => {
 
     // Verify Title and Subtitle
     expect(container.textContent).toContain('Lo-fi Bun Companion');
-    expect(container.textContent).toContain('v0.1.0 • Core Sprite Engine');
+    expect(container.textContent).toContain('v0.2.0 • Real Hardware Telemetry');
     expect(container.textContent).toContain('Pet: BUN-01 (Flagship)');
+
+    // Verify Telemetry HUD Badges
+    const modeBadge = container.querySelector(
+      '[data-testid="telemetry-mode-badge"]'
+    );
+    const providerBadge = container.querySelector(
+      '[data-testid="telemetry-provider-badge"]'
+    );
+    const statusBadge = container.querySelector(
+      '[data-testid="telemetry-status-badge"]'
+    );
+
+    expect(modeBadge).not.toBeNull();
+    expect(modeBadge?.textContent).toContain('MANUAL');
+    expect(providerBadge).not.toBeNull();
+    expect(providerBadge?.textContent).toMatch(
+      /(Native|Web|Simulation|Provider)/i
+    );
+    expect(statusBadge).not.toBeNull();
 
     // Verify Stage & HUD
     const stateBadge = container.querySelector(
@@ -118,7 +137,7 @@ describe('App Showcase Container Component', () => {
     const ramIndicator = container.querySelector(
       '[data-testid="ram-prop-indicator"]'
     );
-    expect(ramIndicator?.textContent).toContain('Carrots Stacked');
+    expect(ramIndicator?.textContent).toContain('Carrots Stack');
 
     const carrotProp = container.querySelector(
       '[data-testid="carrot-prop-layer"]'
@@ -148,6 +167,26 @@ describe('App Showcase Container Component', () => {
       '[data-testid="pet-sprite-wrapper"]'
     );
     expect(petSprite?.getAttribute('data-state')).toBe('REST');
+
+    await cleanup();
+  });
+
+  it('updates Telemetry HUD when switching to LIVE mode via controller', async () => {
+    await renderComponent();
+
+    const liveBtn = container.querySelector<HTMLButtonElement>(
+      '[data-testid="mode-btn-live"]'
+    );
+    expect(liveBtn).not.toBeNull();
+
+    await act(async () => {
+      liveBtn?.click();
+    });
+
+    const modeBadge = container.querySelector(
+      '[data-testid="telemetry-mode-badge"]'
+    );
+    expect(modeBadge?.textContent).toContain('LIVE');
 
     await cleanup();
   });
