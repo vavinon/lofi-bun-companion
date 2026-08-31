@@ -1,15 +1,15 @@
 # 🐰 Lo-fi Bun Companion
 
 <p align="center">
-  <img src="lofi-bun-companion/src/assets/sprites/bun-sprites.svg" alt="Lo-fi Bun Companion Banner" width="280" />
+  <img src="assets/banner.jpg" alt="Lo-fi Bun & Friends Multiverse Hero Banner" width="100%" style="border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.2);" />
 </p>
 
 <p align="center">
-  <strong>A cozy, lightweight Virtual Desk Companion featuring hardware-reactive pixel animations, Pomodoro focus timer, and ambient lo-fi soundscapes.</strong>
+  <strong>A cozy, lightweight Virtual Desk Companion featuring hardware-reactive pixel animations, Bun & Friends Multiverse, Pomodoro focus timer, and ambient lo-fi soundscapes.</strong>
 </p>
 
 <p align="center">
-  <a href="#-key-features"><img src="https://img.shields.io/badge/version-v1.1.0-8b5cf6?style=flat-square" alt="Version 1.1.0" /></a>
+  <a href="#-key-features"><img src="https://img.shields.io/badge/version-v1.1.1-8b5cf6?style=flat-square" alt="Version 1.1.1" /></a>
   <a href="#-5-pillar-automated-quality-gates"><img src="https://img.shields.io/badge/tests-138%2F138%20passed-10b981?style=flat-square" alt="138/138 Tests Passed" /></a>
   <a href="#-pure-css-animation-engine"><img src="https://img.shields.io/badge/CPU%20Usage-0.0%25%20(Pure%20CSS)-f59e0b?style=flat-square" alt="0.0% Idle CPU" /></a>
   <a href="#-typescript-architecture"><img src="https://img.shields.io/badge/TypeScript-Strict%205.7-3178c6?style=flat-square" alt="TypeScript Strict" /></a>
@@ -20,29 +20,45 @@
 
 ## ✨ Overview
 
-**Lo-fi Bun Companion** transforms your desktop into a calm, productive workspace. Inspired by classic desktop mascots (like RunCat and Bongo Cat) and modern lo-fi aesthetics, our animated bunny reacts in real-time to your computer's hardware workload (CPU, RAM, and Disk I/O) while providing zero-friction productivity tools.
+**Lo-fi Bun Companion** transforms your desktop into a calm, productive workspace. Inspired by classic desktop mascots (like RunCat and Bongo Cat) and modern lo-fi aesthetics, our animated companions react in real-time to your computer's hardware workload (CPU, RAM, and Disk I/O) while providing zero-friction productivity tools.
 
 ---
 
 ## 🎮 Key Features
 
-### 1. 🪟 The Hardware Desk Pet (Tauri Desktop Mascot)
+### 1. 🐾 Bun & Friends Multiverse (6 Unique Mascots)
+Switch between 6 handcrafted pixel-art animal companions on the fly via the right-click context menu or dashboard ribbon:
+
+| Companion | Name & Title | Specialty & Personality | Heavy RAM Prop (>80%) |
+| :---: | :--- | :--- | :---: |
+| 🐰 | **Lo-fi Bun** *(Flagship)* | Focus Study & Cozy Tea Time | 🥕 Stacked Carrot |
+| 🐱 | **Coffee Neko** | Barista & Relaxed Ambient Study | 🐟 Taiyaki Fish Pastry |
+| 🐶 | **Bakery Shiba** | Energetic Artisan Baker & Morale Booster | 🥐 Golden Croissant Stack |
+| 🍊 | **Onsen Capybara** | Zen Master & Anti-Burnout Companion | 🍊 Hot Spring Yuzu Orange |
+| 🦜 | **DJ Cockatiel** | Beat Maker & Lo-fi Rhythm Master | 🎵 Retro Vinyl Record |
+| 🐬 | **Wave Dolphin** | Deep Work Flow State & Ocean Breeze | 🪸 Coral & Pearl Crown |
+
+---
+
+### 2. 🪟 The Hardware Desk Pet (Tauri Desktop Mascot)
 - **Frameless & Transparent Floating Window**: Seamless desktop mascot floating gracefully over your wallpaper with no intrusive titlebars.
 - **Draggable Canvas (`data-tauri-drag-region`)**: Freely position the companion anywhere on your desktop.
-- **Right-Click Context Menu**: Instant glassmorphism controls for telemetry mode switching (Live vs Simulation), Rest override, opacity adjusting (40%–100%), always-on-top pinning, and view toggling.
+- **Right-Click Context Menu**: Instant glassmorphism controls for companion switching (🐾 6 characters), telemetry mode switching (Live vs Simulation), Rest override, opacity adjusting (40%–100%), always-on-top pinning, and view toggling.
 - **Dual View Modes**: Seamlessly toggle between **Compact Mascot View** (minimal floating widget) and **Full Showcase Dashboard** (complete hardware lab).
 
-### 2. ⚙️ Hardware-Reactive Companion State Machine
-Our bunny intelligently transitions across 5 workload states and dynamic prop layers based on system utilization:
+---
 
-| State | Hardware Condition | Bunny Visual Animation |
+### 3. ⚙️ Hardware-Reactive Companion State Machine
+Every companion intelligently transitions across 5 workload states and dynamic prop layers based on system utilization:
+
+| State | Hardware Condition | Mascot Visual Behavior |
 | :--- | :--- | :--- |
-| **`IDLE`** | CPU `< 20%` | Chilling, sipping warm tea/coffee, gentle ear wiggles |
-| **`FOCUS`** | CPU `20% - 60%` | Typing calmly on a mechanical keyboard at steady speed |
-| **`FRENZY`** | CPU `> 60%` | Turbo-typing with sweat drops and intense focus |
-| **`DISK`** | Disk I/O `> 75%` | Flipping furiously through study book pages |
-| **`REST`** | User Override / Break | Cozy sleeping cap, snoring bubbles (`Zzz`) |
-| **`HEAVY RAM`** *(Prop Layer)* | RAM `> 80%` | Balanced carrot stack atop bunny's head (across all states) |
+| **`IDLE`** | CPU `< 20%` | Relaxing, sipping tea/coffee, gentle idle animations |
+| **`FOCUS`** | CPU `20% - 60%` | Typing calmly on a keyboard / steady work rhythm |
+| **`FRENZY`** | CPU `> 60%` | Turbo work mode with sweat drops and high-energy focus |
+| **`DISK`** | Disk I/O `> 75%` | Furious reading / fast scanning / rapid snack chewing |
+| **`REST`** | User Override / Break | Cozy sleeping posture, gentle snoring bubbles (`Zzz`) |
+| **`HEAVY RAM`** *(Prop Layer)* | RAM `> 80%` | Balanced signature prop dynamically overlaid on mascot's head |
 
 ```mermaid
 stateDiagram-v2
@@ -53,10 +69,10 @@ stateDiagram-v2
     FRENZY --> FOCUS: CPU < 57% (Hysteresis)
     FRENZY --> IDLE: CPU < 17% (Rapid Drop)
     
-    IDLE --> DISK: Disk >= 75%
-    FOCUS --> DISK: Disk >= 75%
-    FRENZY --> DISK: Disk >= 75%
-    DISK --> IDLE: Disk < 72% (Hysteresis)
+    IDLE --> DISK: Disk I/O >= 75%
+    FOCUS --> DISK: Disk I/O >= 75%
+    FRENZY --> DISK: Disk I/O >= 75%
+    DISK --> IDLE: Disk I/O < 72% (Hysteresis)
     
     state "Any State" as AnyState
     AnyState --> REST: forceRest === true

@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.1] - 2026-08-31
+
+### Fixed
+- **Real-Time Disk I/O Activity Telemetry**:
+  - Refactored `telemetry.rs` `HardwareSampler` to query real-time process delta read/write throughput (MB/s) instead of static storage volume capacity.
+  - Mapped throughput to 0–100% activity scale with 50 MB/s nominal saturation ceiling, ensuring companion DISK animation states trigger accurately during actual file read/write operations.
+  - Added Rust unit test suite (`telemetry::tests`) verifying default payload shapes, valid range boundaries, and JSON serialization.
+- **WebView2Loader.dll Installer Packaging**:
+  - Bundled `WebView2Loader.dll` into `src-tauri/resources/` and configured `bundle.resources` in `tauri.conf.json` so NSIS installer includes the runtime DLL directly in target installation directory.
+
 ## [1.1.0] - 2026-08-30
 
 ### Added
