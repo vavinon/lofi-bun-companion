@@ -76,22 +76,29 @@ Every companion intelligently transitions across 5 workload states and dynamic p
 | **`HEAVY RAM`** *(Prop Layer)* | RAM `> 80%` | Balanced signature prop dynamically overlaid on mascot's head |
 
 ```mermaid
-stateDiagram-v2
-    [*] --> IDLE
-    IDLE --> FOCUS: CPU >= 20%
-    FOCUS --> IDLE: CPU < 17% (Hysteresis)
-    FOCUS --> FRENZY: CPU >= 60%
-    FRENZY --> FOCUS: CPU < 57% (Hysteresis)
-    FRENZY --> IDLE: CPU < 17% (Rapid Drop)
-    
-    IDLE --> DISK: Disk I/O >= 75%
-    FOCUS --> DISK: Disk I/O >= 75%
-    FRENZY --> DISK: Disk I/O >= 75%
-    DISK --> IDLE: Disk I/O < 72% (Hysteresis)
-    
-    state "Any State" as AnyState
-    AnyState --> REST: forceRest === true OR Pomodoro Break
-    REST --> IDLE: forceRest === false AND Focus Resumes
+flowchart TD
+    IDLE["🍵 IDLE (CPU < 20%)"]
+    FOCUS["⌨️ FOCUS (CPU 20–60%)"]
+    FRENZY["🔥 FRENZY (CPU > 60%)"]
+    DISK["📖 DISK (Disk I/O > 75%)"]
+    REST["💤 REST (Break / Sleep Override)"]
+
+    IDLE -->|CPU >= 20%| FOCUS
+    FOCUS -->|CPU < 17% (Hysteresis)| IDLE
+    FOCUS -->|CPU >= 60%| FRENZY
+    FRENZY -->|CPU < 57% (Hysteresis)| FOCUS
+    FRENZY -->|CPU < 17% (Rapid Drop)| IDLE
+
+    IDLE -->|Disk I/O >= 75%| DISK
+    FOCUS -->|Disk I/O >= 75%| DISK
+    FRENZY -->|Disk I/O >= 75%| DISK
+    DISK -->|Disk I/O < 72%| IDLE
+
+    IDLE -.->|Pomodoro Break / Override| REST
+    FOCUS -.->|Pomodoro Break / Override| REST
+    FRENZY -.->|Pomodoro Break / Override| REST
+    DISK -.->|Pomodoro Break / Override| REST
+    REST -.->|Focus Resumes| IDLE
 ```
 
 ---
