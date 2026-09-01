@@ -75,30 +75,38 @@ Every companion intelligently transitions across 5 workload states and dynamic p
 | **`REST`** | User Override / Pomodoro Break | Cozy sleeping posture, gentle snoring bubbles (`Zzz`) |
 | **`HEAVY RAM`** *(Prop Layer)* | RAM `> 80%` | Balanced signature prop dynamically overlaid on mascot's head |
 
-```mermaid
-flowchart TD
-    IDLE["IDLE (CPU under 20%)"]
-    FOCUS["FOCUS (CPU 20% to 60%)"]
-    FRENZY["FRENZY (CPU above 60%)"]
-    DISK["DISK (Disk I/O above 75%)"]
-    REST["REST (Break or Sleep Override)"]
-
-    IDLE -->|CPU reaches 20 percent| FOCUS
-    FOCUS -->|Hysteresis drop below 17 percent| IDLE
-    FOCUS -->|CPU reaches 60 percent| FRENZY
-    FRENZY -->|Hysteresis drop below 57 percent| FOCUS
-    FRENZY -->|Rapid drop below 17 percent| IDLE
-
-    IDLE -->|Disk I/O reaches 75 percent| DISK
-    FOCUS -->|Disk I/O reaches 75 percent| DISK
-    FRENZY -->|Disk I/O reaches 75 percent| DISK
-    DISK -->|Hysteresis drop below 72 percent| IDLE
-
-    IDLE -.->|Pomodoro Break or Rest| REST
-    FOCUS -.->|Pomodoro Break or Rest| REST
-    FRENZY -.->|Pomodoro Break or Rest| REST
-    DISK -.->|Pomodoro Break or Rest| REST
-    REST -.->|Focus Resumes| IDLE
+```text
+┌────────────────────────────────────────────────────────────────────────┐
+│               Hardware-Reactive State Transition Flow                  │
+├────────────────────────────────────────────────────────────────────────┤
+│                                                                        │
+│               ┌──────────────────────────────────────┐                 │
+│               │   🍵 IDLE (CPU < 20% & Disk < 75%)   │◄────────┐       │
+│               └──────────────────┬───────────────────┘         │       │
+│                        ▲         │                             │       │
+│       (Hysteresis <17%)│         │(CPU >= 20%)                 │       │
+│                        │         ▼                             │       │
+│               ┌──────────────────────────────────────┐         │       │
+│               │       ⌨️ FOCUS (CPU 20% - 60%)       │         │       │
+│               └──────────────────┬───────────────────┘         │       │
+│                        ▲         │                             │       │
+│       (Hysteresis <57%)│         │(CPU >= 60%)                 │       │
+│                        │         ▼                             │       │
+│               ┌──────────────────────────────────────┐         │       │
+│               │       🔥 FRENZY (CPU > 60%)          │         │       │
+│               └──────────────────────────────────────┘         │       │
+│                                                                │       │
+│  [Any State] ───(Disk I/O >= 75%)───► 📖 DISK                  │       │
+│                                          │                     │       │
+│                                          └─(Hysteresis <72%)───┤       │
+│                                                                │       │
+│  [Any State] ───(Pomodoro Break / Rest Toggle)───► 💤 REST     │       │
+│                                                      │         │       │
+│                                                      └─────────┘       │
+│                                                    (Focus Starts)      │
+│                                                                        │
+│  [Prop Layer] ──(RAM > 80%)──► Overlay Signature Prop on Head 🥕🐟🥐🍊 │
+└────────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
