@@ -82,6 +82,30 @@ fn exit_app(app_handle: AppHandle) {
 }
 
 fn main() {
+    // Windows Native DLL Search Path Resolution:
+    // Ensures WebView2Loader.dll is resolved whether located in the root or 'resources/' subfolder.
+    #[cfg(target_os = "windows")]
+    {
+        if let Ok(mut exe_dir) = std::env::current_exe() {
+            exe_dir.pop();
+            let resources_dir = exe_dir.join("resources");
+            if resources_dir.exists() {
+                use std::os::windows::ffi::OsStrExt;
+                let wide: Vec<u16> = resources_dir
+                    .as_os_str()
+                    .encode_wide()
+                    .chain(Some(0))
+                    .collect();
+                extern "system" {
+                    fn SetDllDirectoryW(lpPathName: *const u16) -> i32;
+                }
+                unsafe {
+                    SetDllDirectoryW(wide.as_ptr());
+                }
+            }
+        }
+    }
+
     tauri::Builder::default()
         .manage(TelemetryState(Mutex::new(HardwareSampler::new())))
         .invoke_handler(tauri::generate_handler![
