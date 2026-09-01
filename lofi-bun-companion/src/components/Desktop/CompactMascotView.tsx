@@ -7,8 +7,9 @@
  * 2. WindowHeader integration with quick controls.
  * 3. Dynamic ambient halo glow reacting to companion's active state.
  * 4. Minimal floating hardware metrics HUD (CPU, RAM, Disk).
- * 5. Right-click context menu triggering PetContextMenu.
- * 6. Responsive opacity binding from companionStore.
+ * 5. Mini Pomodoro Progress Widget & Full Focus Dashboard Modal.
+ * 6. Right-click context menu triggering PetContextMenu.
+ * 7. Responsive opacity binding from companionStore.
  */
 
 import React, { useState } from 'react';
@@ -20,6 +21,8 @@ import { CompanionState } from '../../types/companion';
 import { PetSprite } from '../Pet/PetSprite';
 import { WindowHeader } from './WindowHeader';
 import { PetContextMenu } from './PetContextMenu';
+import { PomodoroWidget } from '../Controls/PomodoroWidget';
+import { PomodoroModal } from '../Controls/PomodoroModal';
 import styles from './CompactMascotView.module.css';
 
 interface StateVisualConfig {
@@ -74,7 +77,8 @@ export const CompactMascotView: React.FC = () => {
   const metrics = useCompanionStore((state) => state.metrics);
   const windowOpacity = useCompanionStore((state) => state.windowOpacity);
 
-  // Context menu state
+  // Modal & Context menu states
+  const [isPomodoroModalOpen, setIsPomodoroModalOpen] = useState(false);
   const [contextMenu, setContextMenu] = useState<{
     isOpen: boolean;
     x: number;
@@ -98,6 +102,10 @@ export const CompactMascotView: React.FC = () => {
 
   const handleCloseContextMenu = () => {
     setContextMenu((prev) => ({ ...prev, isOpen: false }));
+  };
+
+  const handleDoubleClickMascot = () => {
+    setIsPomodoroModalOpen(true);
   };
 
   const handleStartDrag = async (event: React.MouseEvent) => {
@@ -128,26 +136,29 @@ export const CompactMascotView: React.FC = () => {
         className={styles.petStageArea}
         data-tauri-drag-region
         onMouseDown={handleStartDrag}
+        onDoubleClick={handleDoubleClickMascot}
         data-testid="compact-pet-stage"
       >
-        {/* State Halo Glow */}
-        <div
-          className={styles.stateGlowHalo}
-          style={{ backgroundColor: stateVisual.glowColor }}
-          data-testid="state-glow-halo"
-        />
-
-        {/* Floor Shadow Pedestal */}
-        <div className={styles.petPedestal} />
-
-        {/* Pet Sprite Character */}
+        {/* Unified Pet Interactive Center Stage */}
         <div
           className={styles.petSpriteWrapper}
           data-tauri-drag-region
           onMouseDown={handleStartDrag}
+          onDoubleClick={handleDoubleClickMascot}
           data-testid="compact-pet-sprite"
         >
-          <PetSprite scale={2.2} />
+          {/* State Halo Glow */}
+          <div
+            className={styles.stateGlowHalo}
+            style={{ backgroundColor: stateVisual.glowColor }}
+            data-testid="state-glow-halo"
+          />
+
+          {/* Floor Shadow Pedestal locked directly under feet */}
+          <div className={styles.petPedestal} />
+
+          {/* Pet Sprite Character */}
+          <PetSprite scale={2.0} />
         </div>
 
         {/* Floating Minimal Hardware & State HUD */}
@@ -156,6 +167,11 @@ export const CompactMascotView: React.FC = () => {
           onMouseDown={(e) => e.stopPropagation()}
           data-testid="compact-floating-hud"
         >
+          {/* Floating Mini Pomodoro Progress Widget */}
+          <div className={styles.pomodoroWidgetWrapper}>
+            <PomodoroWidget onOpenModal={() => setIsPomodoroModalOpen(true)} />
+          </div>
+
           {/* Top HUD Badges Row: Companion Pill + Active State Pill */}
           <div className={styles.hudTopRow}>
             <div
@@ -228,6 +244,13 @@ export const CompactMascotView: React.FC = () => {
         y={contextMenu.y}
         isOpen={contextMenu.isOpen}
         onClose={handleCloseContextMenu}
+        onOpenPomodoro={() => setIsPomodoroModalOpen(true)}
+      />
+
+      {/* Full Focus Dashboard Modal */}
+      <PomodoroModal
+        isOpen={isPomodoroModalOpen}
+        onClose={() => setIsPomodoroModalOpen(false)}
       />
     </div>
   );

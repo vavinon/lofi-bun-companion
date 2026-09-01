@@ -192,4 +192,48 @@ describe('CompactMascotView Component', () => {
 
     await cleanup();
   });
+
+  it('renders PomodoroWidget and opens PomodoroModal on double-click', async () => {
+    await renderComponent();
+
+    // Verify PomodoroWidget is rendered
+    const widget = container.querySelector(
+      '[data-testid="pomodoro-mini-widget"]'
+    );
+    expect(widget).not.toBeNull();
+
+    // Verify modal is initially closed
+    expect(
+      container.querySelector('[data-testid="pomodoro-modal"]')
+    ).toBeNull();
+
+    // Trigger double click on pet stage
+    const petStage = container.querySelector(
+      '[data-testid="compact-pet-stage"]'
+    );
+    await act(async () => {
+      petStage?.dispatchEvent(
+        new MouseEvent('dblclick', { bubbles: true, cancelable: true })
+      );
+    });
+
+    // Verify modal is open
+    expect(
+      container.querySelector('[data-testid="pomodoro-modal"]')
+    ).not.toBeNull();
+
+    // Close modal
+    const closeBtn = container.querySelector(
+      '[data-testid="btn-close-pomodoro-modal"]'
+    ) as HTMLElement;
+    await act(async () => {
+      closeBtn.click();
+    });
+
+    expect(
+      container.querySelector('[data-testid="pomodoro-modal"]')
+    ).toBeNull();
+
+    await cleanup();
+  });
 });

@@ -15,20 +15,42 @@
 
 .menuContainer {
   position: fixed;
-  min-width: 190px;
-  background: rgba(22, 27, 34, 0.92);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  min-width: 200px;
+  max-width: 240px;
+  max-height: min(340px, calc(100vh - 20px));
+  overflow-y: auto;
+  background: rgba(22, 27, 34, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 10px;
   padding: 6px;
   box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.5),
-    0 0 0 1px rgba(255, 255, 255, 0.05);
+    0 8px 32px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(255, 255, 255, 0.06);
   user-select: none;
   z-index: 1000;
   animation: fadeInMenu 0.12s ease-out;
   box-sizing: border-box;
+}
+
+/* Custom Lo-fi Slim Scrollbar for Context Menu */
+.menuContainer::-webkit-scrollbar {
+  width: 4px;
+}
+
+.menuContainer::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 4px;
+}
+
+.menuContainer::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.menuContainer::-webkit-scrollbar-thumb:hover {
+  background: #ff9a3c;
 }
 
 @keyframes fadeInMenu {
@@ -113,6 +135,13 @@
   color: #58a6ff;
 }
 
+.pomodoroActiveCheck {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: #ff9a3c;
+}
+
 .sectionHeaderItem {
   display: flex;
   flex-direction: column;
@@ -155,6 +184,17 @@
   padding: 3px 0 3px 6px;
   margin-left: 6px;
   border-left: 2px solid rgba(255, 154, 60, 0.3);
+  max-height: 130px;
+  overflow-y: auto;
+}
+
+.companionSubmenuList::-webkit-scrollbar {
+  width: 3px;
+}
+
+.companionSubmenuList::-webkit-scrollbar-thumb {
+  background: rgba(255, 154, 60, 0.3);
+  border-radius: 3px;
 }
 
 .companionMenuItem {
