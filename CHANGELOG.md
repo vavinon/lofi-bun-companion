@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.2] - 2026-09-02
+
+### Fixed
+- **WebView2Loader.dll Runtime Resolution & NSIS Packaging**:
+  - Configured `bundle.resources` mapping in `tauri.conf.json` (`"resources/WebView2Loader.dll": "WebView2Loader.dll"`) so Tauri bundler installs the DLL directly alongside the main executable in the application root directory.
+  - Implemented zero-overhead native Win32 `SetDllDirectoryW` fallback in `src-tauri/src/main.rs` before WebView2 initialization, ensuring DLL resolution succeeds seamlessly even if the binary resides in the `resources/` subfolder.
+  - Bumped version across `package.json`, `Cargo.toml`, and `tauri.conf.json` to `1.1.2`.
+
 ## [1.1.1] - 2026-08-31
 
 ### Fixed
