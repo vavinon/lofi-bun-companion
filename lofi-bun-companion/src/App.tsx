@@ -8,14 +8,16 @@
  * Utilizes selective Zustand store subscriptions to maintain zero unnecessary renders.
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useCompanionStore } from './stores/companionStore';
 import { CompanionState } from './types/companion';
 import { getAllCompanions, getCompanion } from './data/companionRegistry';
 import { useTelemetry } from './telemetry/useTelemetry';
+import { usePomodoroTimer } from './hooks/usePomodoroTimer';
 import { MockMetricController } from './components/Controls/MockMetricController';
 import { PetSprite } from './components/Pet/PetSprite';
 import { CompactMascotView } from './components/Desktop/CompactMascotView';
+import { PomodoroModal } from './components/Controls/PomodoroModal';
 import styles from './App.module.css';
 
 interface StatePresentation {
@@ -65,6 +67,12 @@ const STATE_CONFIG: Record<CompanionState, StatePresentation> = {
 };
 
 export const App: React.FC = () => {
+  // Modal state for Pomodoro Focus Suite
+  const [isPomodoroModalOpen, setIsPomodoroModalOpen] = useState(false);
+
+  // Activate global Pomodoro Timer & Rest Automation Hook
+  usePomodoroTimer();
+
   // Activate global background telemetry manager lifecycle
   const { mode, status, providerName } = useTelemetry({
     autoStart: true,
@@ -200,9 +208,7 @@ export const App: React.FC = () => {
               Pet: {activeCompanion.displayName.toUpperCase()} (
               {activeCompanion.id === 'bun' ? 'Flagship' : 'Multiverse'})
             </span>
-            <span className={styles.versionBadge}>
-              v1.1.0 • Multiverse Edition
-            </span>
+            <span className={styles.versionBadge}>v2.0.0 • Focus Suite</span>
           </div>
 
           {/* Unified Window Controls Group */}
@@ -211,6 +217,18 @@ export const App: React.FC = () => {
             onMouseDown={(e) => e.stopPropagation()}
             data-testid="window-controls-group"
           >
+            {/* Pomodoro Focus Suite Modal Trigger */}
+            <button
+              type="button"
+              className={styles.viewModeToggleBtn}
+              onClick={() => setIsPomodoroModalOpen(true)}
+              aria-label="Open Pomodoro Focus Suite"
+              data-testid="btn-open-pomodoro-modal"
+            >
+              <span>🍅</span>
+              <span>Focus Suite</span>
+            </button>
+
             {/* Switch View Mode */}
             <button
               type="button"
@@ -314,7 +332,12 @@ export const App: React.FC = () => {
         {/* Responsive Showcase Split Grid */}
         <div className={styles.showcaseGrid}>
           {/* Left Panel: Pet Stage Viewport */}
-          <section className={styles.stageCard} aria-label="Pet Stage Viewport">
+          <section
+            className={styles.stageCard}
+            aria-label="Pet Stage Viewport"
+            onDoubleClick={() => setIsPomodoroModalOpen(true)}
+            title="Double click stage to open Pomodoro Focus Suite"
+          >
             {/* Top Stage HUD */}
             <div className={styles.stageHudHeader}>
               <div
@@ -351,7 +374,10 @@ export const App: React.FC = () => {
             </div>
 
             {/* Center Stage & Desk Rug */}
-            <div className={styles.stageArena}>
+            <div
+              className={styles.stageArena}
+              onDoubleClick={() => setIsPomodoroModalOpen(true)}
+            >
               <div
                 className={styles.stageGlow}
                 style={{ backgroundColor: stateInfo.glowColor }}
@@ -387,6 +413,12 @@ export const App: React.FC = () => {
           peaceful deep work.
         </p>
       </footer>
+
+      {/* Full Pomodoro Focus Suite Modal */}
+      <PomodoroModal
+        isOpen={isPomodoroModalOpen}
+        onClose={() => setIsPomodoroModalOpen(false)}
+      />
     </main>
   );
 };

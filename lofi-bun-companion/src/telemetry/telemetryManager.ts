@@ -17,7 +17,7 @@ import {
 } from './types';
 
 export class TelemetryManager {
-  private mode: TelemetryMode = 'MANUAL';
+  private mode: TelemetryMode = 'LIVE';
   private nativeProvider: HardwareTelemetryProvider;
   private mockProvider: WebMockTelemetryProvider;
   private listener: TelemetryUpdateListener | null = null;
@@ -26,10 +26,12 @@ export class TelemetryManager {
 
   constructor(
     nativeProvider: HardwareTelemetryProvider = new NativeTelemetryProvider(),
-    mockProvider: WebMockTelemetryProvider = new WebMockTelemetryProvider()
+    mockProvider: WebMockTelemetryProvider = new WebMockTelemetryProvider(),
+    initialMode: TelemetryMode = 'LIVE'
   ) {
     this.nativeProvider = nativeProvider;
     this.mockProvider = mockProvider;
+    this.mode = initialMode;
   }
 
   /** Gets the active provider based on current telemetry mode */

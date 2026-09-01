@@ -7,6 +7,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0] - 2026-09-02
+
+### Added
+- **Pomodoro Focus Suite Engine & Flexible Intervals**:
+  - Added dedicated Zustand Pomodoro State Machine (`src/stores/pomodoroStore.ts`) and TypeScript types (`src/types/pomodoro.ts`).
+  - Implemented 3 focus modes: Classic (25m Focus / 5m Break), Deep Work (50m Focus / 10m Break), and Custom Timer (user-defined minutes).
+  - Implemented 4-cycle Long Break automation (15 min deep rest after 4 completed focus rounds).
+  - Built LocalStorage persistence storing Daily Focus Streak (🍅 counter) and accumulated focus minutes per calendar date.
+- **Companion Rest Automation Hook (`usePomodoroTimer`)**:
+  - Built reactive hook syncing break phases (`SHORT_BREAK` / `LONG_BREAK`) directly with `companionStore` `forceRest` state, automatically putting all 6 multiverse companions to sleep (`REST` pose) during breaks.
+  - Automatically awakens companion to active hardware monitoring when focus phase starts.
+- **Zero-Asset Web Audio Soft Pentatonic Chime (`soundSynth.ts`)**:
+  - Synthesized dual-tone harmonic bell chime using native Web Audio API oscillators (Zero external MP3 asset footprint).
+  - Safe lazy AudioContext initialization with preference toggle in Focus Dashboard.
+- **Cozy Glassmorphism Focus UI**:
+  - `PomodoroWidget.tsx`: Compact circular progress ring and time badge rendered smoothly over desktop mascot.
+  - `PomodoroModal.tsx`: Full focus dashboard modal featuring circular countdown display, phase indicator, mode selection tabs, streak badges, and timer controls.
+  - Seamless double-click trigger on Mascot and Showcase stage arenas.
+- **Context Menu Overhaul & Lo-fi Slim Scrollbar**:
+  - Integrated Quick Pomodoro Actions (Start 25m, Pause/Resume, Open Dashboard) into `PetContextMenu.tsx`.
+  - Optimized menu ergonomics with collapsible companion switcher and custom Lo-fi Slim Scrollbars (`max-height: 340px`) eliminating window clipping.
+- **Quality & Automated Test Expansion**:
+  - Added 33 new automated tests covering `pomodoroStore`, `soundSynth`, `usePomodoroTimer`, `PomodoroWidget`, `PomodoroModal`, and `App` modal triggers (21 test suites, 171 tests passing 100%).
+
 ## [1.1.2] - 2026-09-02
 
 ### Fixed

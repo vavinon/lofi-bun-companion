@@ -1,0 +1,468 @@
+/**
+ * PomodoroModal CSS Module
+ * Glassmorphic dark modal styling with cozy micro-animations.
+ */
+
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 12, 16, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  animation: fadeIn 0.18s ease-out;
+  box-sizing: border-box;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modalContainer {
+  background: rgba(22, 27, 34, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 14px;
+  width: 100%;
+  max-width: 420px;
+  max-height: calc(100vh - 16px);
+  overflow-y: auto;
+  padding: 14px 16px;
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.06);
+  user-select: none;
+  animation: scaleIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.94) translateY(8px);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Custom Lo-fi Slim Scrollbar for Modal Container */
+.modalContainer::-webkit-scrollbar {
+  width: 5px;
+}
+
+.modalContainer::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 4px;
+}
+
+.modalContainer::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.modalContainer::-webkit-scrollbar-thumb:hover {
+  background: #ff9a3c;
+}
+
+.headerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 8px;
+  flex-shrink: 0;
+}
+
+.titleGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.titleIcon {
+  font-size: 18px;
+}
+
+.modalTitle {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: #f0f6fc;
+}
+
+.modalSubtitle {
+  margin: 0;
+  font-size: 10.5px;
+  color: #8b949e;
+}
+
+.closeButton {
+  background: transparent;
+  border: none;
+  color: #8b949e;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.closeButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+/* Mode Selection Tabs */
+.modeTabsRow {
+  display: flex;
+  gap: 4px;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 3px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.modeTab {
+  flex: 1;
+  background: transparent;
+  border: 1px solid transparent;
+  color: #8b949e;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 3px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: center;
+}
+
+.modeTab:hover {
+  color: #c9d1d9;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.modeTabActive {
+  background: rgba(255, 154, 60, 0.18);
+  border-color: rgba(255, 154, 60, 0.4);
+  color: #ff9a3c;
+  font-weight: 700;
+}
+
+/* Custom Duration Inputs */
+.customInputsRow {
+  display: flex;
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  flex-shrink: 0;
+}
+
+.customInputGroup {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.customInputLabel {
+  font-size: 9.5px;
+  color: #8b949e;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.customInputField {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  padding: 3px 5px;
+  color: #f0f6fc;
+  font-family: monospace;
+  font-size: 11.5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.customInputField:focus {
+  border-color: #ff9a3c;
+  outline: none;
+}
+
+/* Big Timer Hero Card */
+.timerHeroCard {
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.phasePill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.phaseFocus {
+  background: rgba(255, 154, 60, 0.16);
+  border: 1px solid rgba(255, 154, 60, 0.4);
+  color: #ff9a3c;
+}
+
+.phaseShortBreak {
+  background: rgba(126, 231, 135, 0.16);
+  border: 1px solid rgba(126, 231, 135, 0.4);
+  color: #7ee787;
+}
+
+.phaseLongBreak {
+  background: rgba(121, 192, 255, 0.16);
+  border: 1px solid rgba(121, 192, 255, 0.4);
+  color: #79c0ff;
+}
+
+.timeCountdown {
+  font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+  font-size: 34px;
+  font-weight: 800;
+  color: #f0f6fc;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+/* Cycle Dots Row */
+.cycleDotsRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cycleDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.2s ease;
+}
+
+.cycleDotFilled {
+  background: #ff9a3c;
+  border-color: #ff9a3c;
+  box-shadow: 0 0 8px rgba(255, 154, 60, 0.6);
+}
+
+.cycleLabel {
+  font-size: 10px;
+  color: #8b949e;
+  margin-left: 3px;
+}
+
+/* Primary Timer Controls */
+.primaryControlsRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+}
+
+.mainActionButton {
+  flex: 1;
+  max-width: 160px;
+  background: linear-gradient(135deg, #ff9a3c, #ff7a59);
+  border: none;
+  border-radius: 8px;
+  color: #0d1117;
+  font-size: 12.5px;
+  font-weight: 700;
+  padding: 8px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-shadow: 0 4px 14px rgba(255, 122, 89, 0.35);
+  transition: all 0.15s ease;
+}
+
+.mainActionButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(255, 122, 89, 0.5);
+  filter: brightness(1.08);
+}
+
+.mainActionButton:active {
+  transform: translateY(0);
+}
+
+.secondaryButton {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  color: #c9d1d9;
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 8px 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.15s ease;
+}
+
+.secondaryButton:hover {
+  background: rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+}
+
+/* Daily Streak & Stats Card */
+.statsCard {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.statItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.statEmoji {
+  font-size: 16px;
+}
+
+.statValue {
+  font-size: 13px;
+  font-weight: 700;
+  color: #f0f6fc;
+}
+
+.statLabel {
+  font-size: 9.5px;
+  color: #8b949e;
+}
+
+.resetStreakBtn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #8b949e;
+  border-radius: 5px;
+  padding: 3px 6px;
+  font-size: 10px;
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+
+.resetStreakBtn:hover {
+  background: rgba(248, 81, 73, 0.2);
+  border-color: rgba(248, 81, 73, 0.4);
+  color: #ff7b72;
+}
+
+/* Preferences / Settings Section */
+.preferencesSection {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.sectionHeading {
+  font-size: 10px;
+  font-weight: 700;
+  color: #8b949e;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
+}
+
+.preferenceRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #c9d1d9;
+}
+
+.toggleSwitch {
+  position: relative;
+  display: inline-block;
+  width: 28px;
+  height: 16px;
+}
+
+.toggleInput {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggleSlider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.15);
+  transition: 0.2s;
+  border-radius: 16px;
+}
+
+.toggleSlider:before {
+  position: absolute;
+  content: '';
+  height: 12px;
+  width: 12px;
+  left: 2px;
+  bottom: 2px;
+  background-color: #ffffff;
+  transition: 0.2s;
+  border-radius: 50%;
+}
+
+.toggleInput:checked + .toggleSlider {
+  background-color: #ff9a3c;
+}
+
+.toggleInput:checked + .toggleSlider:before {
+  transform: translateX(12px);
+}

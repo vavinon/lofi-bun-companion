@@ -8,11 +8,11 @@ import { WebMockTelemetryProvider } from '../telemetry/providers/WebMockTelemetr
 import { NativeTelemetryProvider } from '../telemetry/providers/NativeTelemetryProvider';
 
 describe('TelemetryManager', () => {
-  it('should initialize with default MANUAL mode and mock provider active', () => {
+  it('should initialize with default LIVE mode and native provider active', () => {
     const manager = new TelemetryManager();
 
-    expect(manager.getMode()).toBe('MANUAL');
-    expect(manager.getActiveProvider().type).toBe('mock');
+    expect(manager.getMode()).toBe('LIVE');
+    expect(manager.getActiveProvider().type).toBe('native');
     expect(manager.getStatus()).toBe('IDLE');
     expect(manager.isActive()).toBe(false);
   });
@@ -25,7 +25,8 @@ describe('TelemetryManager', () => {
     });
     const manager = new TelemetryManager(
       new NativeTelemetryProvider(),
-      mockProvider
+      mockProvider,
+      'MANUAL'
     );
     const listener = vi.fn();
 
@@ -61,7 +62,11 @@ describe('TelemetryManager', () => {
     });
     const nativeProvider = new NativeTelemetryProvider(nativeSampler);
 
-    const manager = new TelemetryManager(nativeProvider, mockProvider);
+    const manager = new TelemetryManager(
+      nativeProvider,
+      mockProvider,
+      'MANUAL'
+    );
     const listener = vi.fn();
 
     // Start in MANUAL mode
@@ -98,7 +103,7 @@ describe('TelemetryManager', () => {
   });
 
   it('should handle mode switch when manager is stopped without starting providers', async () => {
-    const manager = new TelemetryManager();
+    const manager = new TelemetryManager(undefined, undefined, 'MANUAL');
 
     expect(manager.getMode()).toBe('MANUAL');
     await manager.setMode('LIVE');

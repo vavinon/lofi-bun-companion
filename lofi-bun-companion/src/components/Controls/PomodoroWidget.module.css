@@ -1,0 +1,150 @@
+/**
+ * PomodoroWidget CSS Module
+ * Glassmorphic mini progress ring and time badge styling for desktop mascot.
+ */
+
+.widgetContainer {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(22, 27, 34, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: 4px 10px 4px 6px;
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 20;
+}
+
+.widgetContainer:hover {
+  background: rgba(30, 37, 46, 0.95);
+  border-color: rgba(255, 154, 60, 0.4);
+  transform: translateY(-1px);
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.5),
+    0 0 12px rgba(255, 154, 60, 0.25);
+}
+
+.widgetContainer:active {
+  transform: translateY(0);
+}
+
+.progressRingWrapper {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.progressSvg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.progressBackground {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.08);
+  stroke-width: 3;
+}
+
+.progressBar {
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.35s ease;
+}
+
+.ringCenterIcon {
+  position: absolute;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.infoColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1.15;
+}
+
+.timeDisplay {
+  font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+  font-size: 13px;
+  font-weight: 700;
+  color: #f0f6fc;
+  letter-spacing: 0.5px;
+}
+
+.phaseLabel {
+  font-size: 9.5px;
+  font-weight: 600;
+  color: #8b949e;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.controlsGroup {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-left: 2px;
+}
+
+.actionButton {
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c9d1d9;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  padding: 0;
+}
+
+.actionButton:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  transform: scale(1.1);
+}
+
+.actionButton:active {
+  transform: scale(0.95);
+}
+
+/* Phase Colors */
+.phaseFocus {
+  stroke: #ff9a3c;
+  color: #ff9a3c;
+}
+
+.phaseShortBreak {
+  stroke: #7ee787;
+  color: #7ee787;
+}
+
+.phaseLongBreak {
+  stroke: #79c0ff;
+  color: #79c0ff;
+}
+
+.paused {
+  opacity: 0.7;
+}

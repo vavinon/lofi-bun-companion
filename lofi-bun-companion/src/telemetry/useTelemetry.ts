@@ -52,27 +52,27 @@ export const useTelemetry = (
     let isMounted = true;
 
     if (autoStart) {
-      void telemetryManager
-        .start((metrics) => {
+      void (async () => {
+        await telemetryManager.setMode(mode);
+        await telemetryManager.start((metrics) => {
           if (isMounted) {
             setStoreMetrics(metrics);
             setStatus(telemetryManager.getStatus());
             setProviderName(telemetryManager.getActiveProvider().name);
           }
-        }, pollingIntervalMs)
-        .then(() => {
-          if (isMounted) {
-            setStatus(telemetryManager.getStatus());
-            setProviderName(telemetryManager.getActiveProvider().name);
-          }
-        });
+        }, pollingIntervalMs);
+        if (isMounted) {
+          setStatus(telemetryManager.getStatus());
+          setProviderName(telemetryManager.getActiveProvider().name);
+        }
+      })();
     }
 
     return () => {
       isMounted = false;
       void telemetryManager.stop();
     };
-  }, [autoStart, pollingIntervalMs, setStoreMetrics]);
+  }, [autoStart, mode, pollingIntervalMs, setStoreMetrics]);
 
   // Synchronize status and provider name when mode changes
   useEffect(() => {
