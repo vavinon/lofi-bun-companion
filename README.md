@@ -77,10 +77,10 @@ Every companion intelligently transitions across 5 workload states and dynamic p
 
 ```mermaid
 flowchart TD
-    IDLE["IDLE: Relax & Sip Tea (CPU under 20%)"]
+    IDLE["IDLE: Relax and Sip Tea (CPU under 20%)"]
     FOCUS["FOCUS: Steady Typing (CPU 20% to 60%)"]
     FRENZY["FRENZY: Turbo Focus (CPU above 60%)"]
-    DISK["DISK: Reading & Scanning (Disk I/O above 75%)"]
+    DISK["DISK: Reading and Scanning (Disk I/O above 75%)"]
     REST["REST: Cozy Nap (Pomodoro Break or Override)"]
 
     IDLE -->|CPU reaches 20%| FOCUS
