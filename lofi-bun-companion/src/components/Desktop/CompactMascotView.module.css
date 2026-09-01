@@ -30,20 +30,37 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 12px;
+  padding: 8px 12px;
   cursor: grab;
+  overflow: hidden;
 }
 
 .petStageArea:active {
   cursor: grabbing;
 }
 
+.petSpriteWrapper {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  margin-top: -30px; /* offset slightly upwards for bottom HUD clearance */
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4));
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.petSpriteWrapper:hover {
+  transform: scale(1.04);
+}
+
 .stateGlowHalo {
   position: absolute;
-  width: 170px;
-  height: 170px;
+  inset: -15px;
   border-radius: 50%;
-  filter: blur(36px);
+  filter: blur(30px);
   opacity: 0.55;
   transition:
     background-color 0.4s ease,
@@ -54,9 +71,9 @@
 
 .petPedestal {
   position: absolute;
-  bottom: 80px;
-  width: 120px;
-  height: 24px;
+  bottom: 8px;
+  width: 100px;
+  height: 18px;
   background: radial-gradient(
     ellipse at center,
     rgba(0, 0, 0, 0.45) 0%,
@@ -67,35 +84,32 @@
   z-index: 2;
 }
 
-.petSpriteWrapper {
-  position: relative;
-  z-index: 3;
-  margin-bottom: 24px;
-  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4));
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.petSpriteWrapper:hover {
-  transform: scale(1.04);
-}
-
 /* Floating Hardware & State HUD */
 .floatingHud {
   position: absolute;
-  bottom: 12px;
-  left: 12px;
-  right: 12px;
+  bottom: 8px;
+  left: 10px;
+  right: 10px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  align-items: center;
+  gap: 4px;
   z-index: 4;
+}
+
+.pomodoroWidgetWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 2px;
 }
 
 .hudTopRow {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 5px;
   flex-wrap: wrap;
 }
 
@@ -104,11 +118,11 @@
   align-items: center;
   justify-content: center;
   gap: 4px;
-  padding: 3px 8px;
+  padding: 2px 7px;
   background: rgba(255, 154, 60, 0.18);
   border: 1px solid rgba(255, 154, 60, 0.4);
   border-radius: 20px;
-  font-size: 10.5px;
+  font-size: 10px;
   font-weight: 700;
   color: #ff9a3c;
   letter-spacing: 0.2px;
@@ -124,10 +138,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  padding: 3px 8px;
+  gap: 5px;
+  padding: 2px 7px;
   border-radius: 20px;
-  font-size: 10.5px;
+  font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.3px;
   backdrop-filter: blur(8px);
@@ -135,8 +149,8 @@
 }
 
 .stateDot {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
 }
 
@@ -147,21 +161,23 @@
   background: rgba(22, 27, 34, 0.7);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 10px;
-  padding: 6px 8px;
+  border-radius: 8px;
+  padding: 4px 6px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .metricBadge {
   display: flex;
   align-items: center;
-  gap: 4px;
-  font-size: 10px;
+  gap: 3px;
+  font-size: 9.5px;
   font-weight: 600;
   color: #c9d1d9;
 }
 
 .metricBadge span:first-child {
-  font-size: 11px;
+  font-size: 10px;
 }
 
 .metricValue {

@@ -70,7 +70,7 @@ describe('App Showcase Container Component', () => {
 
     // Verify Title and Subtitle
     expect(container.textContent).toContain('Lo-fi Bun Companion');
-    expect(container.textContent).toContain('v1.1.0 • Multiverse Edition');
+    expect(container.textContent).toContain('v2.0.0 • Focus Suite');
     expect(container.textContent).toContain('Pet: LO-FI BUN (Flagship)');
 
     // Verify View Mode Button in Full View
@@ -79,6 +79,13 @@ describe('App Showcase Container Component', () => {
     );
     expect(viewModeBtn).not.toBeNull();
     expect(viewModeBtn?.textContent).toContain('Mascot View');
+
+    // Verify Pomodoro Focus Suite Button in Full View
+    const pomodoroBtn = container.querySelector(
+      '[data-testid="btn-open-pomodoro-modal"]'
+    );
+    expect(pomodoroBtn).not.toBeNull();
+    expect(pomodoroBtn?.textContent).toContain('Focus Suite');
 
     // Verify Telemetry HUD Badges
     const modeBadge = container.querySelector(
@@ -386,6 +393,61 @@ describe('App Showcase Container Component', () => {
     expect(dolphinCard?.getAttribute('aria-pressed')).toBe('true');
     expect(shibaCard?.getAttribute('aria-pressed')).toBe('false');
     expect(container.textContent).toContain('WAVE DOLPHIN');
+
+    await cleanup();
+  });
+
+  it('opens and closes Pomodoro Focus Suite modal in FULL view mode', async () => {
+    useCompanionStore.getState().setViewMode('FULL');
+    await renderComponent();
+
+    // Verify modal is not rendered initially
+    expect(
+      container.querySelector('[data-testid="pomodoro-modal"]')
+    ).toBeNull();
+
+    // Click Focus Suite button in header
+    const pomodoroBtn = container.querySelector<HTMLButtonElement>(
+      '[data-testid="btn-open-pomodoro-modal"]'
+    );
+    expect(pomodoroBtn).not.toBeNull();
+
+    await act(async () => {
+      pomodoroBtn?.click();
+    });
+
+    // Modal should now be open
+    expect(
+      container.querySelector('[data-testid="pomodoro-modal"]')
+    ).not.toBeNull();
+
+    // Close modal via close button
+    const closeBtn = container.querySelector<HTMLButtonElement>(
+      '[data-testid="btn-close-pomodoro-modal"]'
+    );
+    expect(closeBtn).not.toBeNull();
+
+    await act(async () => {
+      closeBtn?.click();
+    });
+
+    expect(
+      container.querySelector('[data-testid="pomodoro-modal"]')
+    ).toBeNull();
+
+    // Double click stage card should also open modal
+    const stageCard = container.querySelector<HTMLElement>(
+      '[aria-label="Pet Stage Viewport"]'
+    );
+    expect(stageCard).not.toBeNull();
+
+    await act(async () => {
+      stageCard?.dispatchEvent(new MouseEvent('dblclick', { bubbles: true }));
+    });
+
+    expect(
+      container.querySelector('[data-testid="pomodoro-modal"]')
+    ).not.toBeNull();
 
     await cleanup();
   });

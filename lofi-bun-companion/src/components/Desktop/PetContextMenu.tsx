@@ -3,16 +3,19 @@
  *
  * Floating glassmorphism context menu displayed on right-click.
  * Provides controls for:
- * 1. ⚡ Live Hardware Polling (Toggle Real OS vs Manual Simulation)
- * 2. 💤 Lavender Nap / Rest (Toggle forceRest)
- * 3. 👁️ Window Opacity (100%, 85%, 70%, 50%)
- * 4. 📌 Always on Top (Toggle pin)
- * 5. 🎛️ Full Dashboard (Toggle viewMode)
- * 6. ❌ Exit Pet (Close application)
+ * 1. 🍅 Pomodoro Focus Suite (Quick Start 25m, Pause/Resume, Open Dashboard)
+ * 2. 🐾 Switch Companion (Collapsible submenu)
+ * 3. ⚡ Live Hardware Polling (Toggle Real OS vs Manual Simulation)
+ * 4. 💤 Lavender Nap / Rest (Toggle forceRest)
+ * 5. 👁️ Window Opacity (100%, 85%, 70%, 50%)
+ * 6. 📌 Always on Top (Toggle pin)
+ * 7. 🎛️ Full Dashboard (Toggle viewMode)
+ * 8. ✕ Exit Pet (Close application)
  */
 
 import React, { useEffect, useRef, useState } from 'react';
 import { useCompanionStore } from '../../stores/companionStore';
+import { usePomodoroStore } from '../../stores/pomodoroStore';
 import { getAllCompanions } from '../../data/companionRegistry';
 import { CompanionId } from '../../types/companion';
 import {
@@ -30,21 +33,31 @@ export interface PetContextMenuProps {
   isOpen: boolean;
   /** Callback invoked to close the menu */
   onClose: () => void;
+  /** Optional callback to open the Pomodoro Focus Dashboard */
+  onOpenPomodoro?: () => void;
   /** Optional custom exit handler */
   onExit?: () => void;
 }
+
+const formatTimerMinutesSeconds = (seconds: number): string => {
+  const m = Math.floor(seconds / 60);
+  const s = seconds % 60;
+  return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+};
 
 export const PetContextMenu: React.FC<PetContextMenuProps> = ({
   x,
   y,
   isOpen,
   onClose,
+  onOpenPomodoro,
   onExit,
 }) => {
   const menuRef = useRef<HTMLDivElement>(null);
-  const [isCompanionSubmenuOpen, setIsCompanionSubmenuOpen] = useState(true);
+  // Default to collapsed (false) to keep the menu compact and avoid overflow
+  const [isCompanionSubmenuOpen, setIsCompanionSubmenuOpen] = useState(false);
 
-  // Store subscriptions and actions
+  // Companion store subscriptions and actions
   const activeCompanionId = useCompanionStore(
     (state) => state.activeCompanionId
   );
@@ -63,6 +76,14 @@ export const PetContextMenu: React.FC<PetContextMenuProps> = ({
   const toggleViewMode = useCompanionStore((state) => state.toggleViewMode);
   const windowOpacity = useCompanionStore((state) => state.windowOpacity);
   const setWindowOpacity = useCompanionStore((state) => state.setWindowOpacity);
+
+  // Pomodoro store subscriptions and actions
+  const pomodoroStatus = usePomodoroStore((state) => state.status);
+  const pomodoroPhase = usePomodoroStore((state) => state.phase);
+  const pomodoroRemaining = usePomodoroStore((state) => state.remainingSeconds);
+  const startFocus = usePomodoroStore((state) => state.startFocus);
+  const pauseTimer = usePomodoroStore((state) => state.pauseTimer);
+  const resumeTimer = usePomodoroStore((state) => state.resumeTimer);
 
   const companions = getAllCompanions();
 
@@ -88,7 +109,7 @@ export const PetContextMenu: React.FC<PetContextMenuProps> = ({
 
   // Calculate adjusted menu coordinates to prevent overflowing window bounds
   const MENU_WIDTH = 210;
-  const MENU_HEIGHT = 440;
+  const MENU_MAX_HEIGHT = 340;
   const viewportWidth = typeof window !== 'undefined' ? window.innerWidth : 320;
   const viewportHeight =
     typeof window !== 'undefined' ? window.innerHeight : 480;
@@ -96,12 +117,30 @@ export const PetContextMenu: React.FC<PetContextMenuProps> = ({
   const adjustedX = Math.min(x, Math.max(10, viewportWidth - MENU_WIDTH - 10));
   const adjustedY = Math.min(
     y,
-    Math.max(10, viewportHeight - MENU_HEIGHT - 10)
+    Math.max(10, viewportHeight - MENU_MAX_HEIGHT - 10)
   );
 
   const handleSelectCompanion = (id: CompanionId) => {
     setActiveCompanionId(id);
     onClose();
+  };
+
+  const handleTogglePomodoro = () => {
+    if (pomodoroStatus === 'RUNNING') {
+      pauseTimer();
+    } else if (pomodoroStatus === 'PAUSED') {
+      resumeTimer();
+    } else {
+      startFocus();
+    }
+    onClose();
+  };
+
+  const handleOpenPomodoroDashboard = () => {
+    onClose();
+    if (onOpenPomodoro) {
+      onOpenPomodoro();
+    }
   };
 
   const handleToggleTelemetry = () => {
@@ -173,7 +212,53 @@ export const PetContextMenu: React.FC<PetContextMenuProps> = ({
         </div>
 
         <ul className={styles.menuList}>
-          {/* Switch Companion Submenu / Section */}
+          {/* Quick Pomodoro Controls Section */}
+          <li>
+            <button
+              type="button"
+              className={styles.menuItem}
+              onClick={handleTogglePomodoro}
+              role="menuitem"
+              data-testid="menu-item-pomodoro-toggle"
+            >
+              <span className={styles.itemLabel}>
+                <span className={styles.itemIcon}>
+                  {pomodoroPhase === 'FOCUS' ? '🍅' : '💤'}
+                </span>
+                <span>
+                  {pomodoroStatus === 'RUNNING'
+                    ? `Pause ${pomodoroPhase === 'FOCUS' ? 'Focus' : 'Break'}`
+                    : pomodoroStatus === 'PAUSED'
+                      ? 'Resume Timer'
+                      : 'Start 25m Focus'}
+                </span>
+              </span>
+              <span className={styles.pomodoroActiveCheck}>
+                {pomodoroStatus !== 'IDLE'
+                  ? formatTimerMinutesSeconds(pomodoroRemaining)
+                  : '25:00'}
+              </span>
+            </button>
+          </li>
+
+          <li>
+            <button
+              type="button"
+              className={styles.menuItem}
+              onClick={handleOpenPomodoroDashboard}
+              role="menuitem"
+              data-testid="menu-item-pomodoro-dashboard"
+            >
+              <span className={styles.itemLabel}>
+                <span className={styles.itemIcon}>⏱️</span>
+                <span>Focus Dashboard...</span>
+              </span>
+            </button>
+          </li>
+
+          <div className={styles.divider} />
+
+          {/* Switch Companion Submenu / Section (Default Collapsed) */}
           <li className={styles.sectionHeaderItem}>
             <button
               type="button"
@@ -224,6 +309,7 @@ export const PetContextMenu: React.FC<PetContextMenuProps> = ({
           </li>
 
           <div className={styles.divider} />
+
           {/* Toggle Live Telemetry */}
           <li>
             <button

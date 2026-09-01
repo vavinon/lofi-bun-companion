@@ -24,8 +24,8 @@ graph TD
     end
 
     subgraph Major2_3["Major Feature Ecosystems"]
-        v110 --> v200["2.0.0: The Productivity Update (Pomodoro Focus Suite) 🎯"]
-        v200 --> v300["3.0.0: The Soundscape Update (Ambient Lo-fi Audio Mixer) 🎧"]
+        v110 --> v200["2.0.0: The Productivity Update (Pomodoro Focus Suite) 🟢"]
+        v200 --> v300["3.0.0: The Soundscape Update (Ambient Lo-fi Audio Mixer) 🎯"]
     end
 ```
 
@@ -81,16 +81,19 @@ graph TD
 ---
 
 ### 🍅 2.0.0 — The Productivity Update (Major Release)
-* **2.0.0 — Pomodoro Focus Suite & Rest Automation** *(Next Up 🎯)*:
-  - Classic 25/5 Pomodoro Timer พร้อมโหมด Deep Work (50/10) และ Custom Timer
-  - Rest Automation Hook: เมื่อหมดเวลาทำงาน น้องสัตว์เลี้ยงจะเข้าสู่โหมดพักผ่อน (`REST`) กอดหมอนนอนหลับอัตโนมัติ เพื่อเตือนให้ผู้ใช้พักสายตา
-  - Daily Focus Streak Tracker & Break Reminders
-  - Soft Chimes & Desktop Toast Notification เมื่อจบรอบ Pomodoro
+* **2.0.0 — Pomodoro Focus Suite & Rest Automation** *(Completed 🟢)*:
+  - Classic 25/5 Pomodoro Timer พร้อมโหมด Deep Work (50/10), Custom Timer, และ Long Break Automation (รอบที่ 4)
+  - Rest Automation Hook: เมื่อหมดเวลาทำงาน น้องสัตว์เลี้ยงทั้ง 6 ตัวจะเข้าสู่โหมดพักผ่อน (`REST`) กอดหมอน/แช่น้ำส้มยูซุนอนหลับอัตโนมัติ เพื่อเตือนให้ผู้ใช้พักสายตา
+  - Daily Focus Streak Tracker (🍅 x N) และบันทึกลง LocalStorage
+  - Zero-Asset Web Audio Soft Pentatonic Bell Chime เตือนเมื่อจบแต่ละช่วง
+  - Floating Mini Progress Widget & Full Focus Dashboard Modal (รองรับ Double-Click Mascot / Stage)
+  - Context Menu Overhaul พร้อม Lo-fi Slim Scrollbar ป้องกันเมนูล้นขอบหน้าต่างเดสก์ท็อป
+  - ผ่าน 5-Pillar Quality Gates (171 Vitest tests 100%)
 
 ---
 
 ### 🎧 3.0.0 — The Soundscape Update (Major Release)
-* **3.0.0 — Ambient Lo-fi Audio Mixer**:
+* **3.0.0 — Ambient Lo-fi Audio Mixer** *(Next Up 🎯)*:
   - Multi-Channel Web Audio Engine สำหรับสร้างบรรยากาศการทำงาน
   - ปรับระดับเสียงแยกอิสระ 4 ช่องสัญญาณ:
     - 🎶 Lo-fi Chill Beats

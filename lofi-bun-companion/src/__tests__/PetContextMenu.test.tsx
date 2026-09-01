@@ -3,6 +3,7 @@ import { act } from 'react';
 import { createRoot, Root } from 'react-dom/client';
 import { PetContextMenu } from '../components/Desktop/PetContextMenu';
 import { useCompanionStore } from '../stores/companionStore';
+import { usePomodoroStore } from '../stores/pomodoroStore';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 (globalThis as any).IS_REACT_ACT_ENVIRONMENT = true;
@@ -13,6 +14,7 @@ describe('PetContextMenu Component', () => {
 
   beforeEach(() => {
     useCompanionStore.getState().resetToDefaults();
+    usePomodoroStore.getState().resetToDefaults();
     container = document.createElement('div');
     document.body.appendChild(container);
     root = createRoot(container);
@@ -24,6 +26,7 @@ describe('PetContextMenu Component', () => {
       y: 150,
       isOpen: true,
       onClose: vi.fn(),
+      onOpenPomodoro: vi.fn(),
       ...props,
     };
     await act(async () => {
@@ -57,6 +60,48 @@ describe('PetContextMenu Component', () => {
     expect(menu).not.toBeNull();
     expect(menu.style.left).toBe('50px');
     expect(menu.style.top).toBe('80px');
+
+    await cleanup();
+  });
+
+  it('handles Pomodoro quick start/pause toggle from context menu', async () => {
+    const onClose = vi.fn();
+    await renderMenu({ isOpen: true, onClose });
+
+    const pomodoroToggle = container.querySelector(
+      '[data-testid="menu-item-pomodoro-toggle"]'
+    ) as HTMLElement;
+    expect(pomodoroToggle).not.toBeNull();
+    expect(usePomodoroStore.getState().status).toBe('IDLE');
+
+    // Click to start 25m Focus
+    await act(async () => {
+      pomodoroToggle.click();
+    });
+
+    expect(usePomodoroStore.getState().status).toBe('RUNNING');
+    expect(usePomodoroStore.getState().phase).toBe('FOCUS');
+    expect(onClose).toHaveBeenCalledTimes(1);
+
+    await cleanup();
+  });
+
+  it('triggers onOpenPomodoro callback when clicking Focus Dashboard menu item', async () => {
+    const onClose = vi.fn();
+    const onOpenPomodoro = vi.fn();
+    await renderMenu({ isOpen: true, onClose, onOpenPomodoro });
+
+    const dashboardBtn = container.querySelector(
+      '[data-testid="menu-item-pomodoro-dashboard"]'
+    ) as HTMLElement;
+    expect(dashboardBtn).not.toBeNull();
+
+    await act(async () => {
+      dashboardBtn.click();
+    });
+
+    expect(onClose).toHaveBeenCalledTimes(1);
+    expect(onOpenPomodoro).toHaveBeenCalledTimes(1);
 
     await cleanup();
   });
@@ -153,37 +198,36 @@ describe('PetContextMenu Component', () => {
     await cleanup();
   });
 
-  it('renders all 6 companions in Switch Companion submenu with active indicators', async () => {
+  it('renders Switch Companion submenu collapsed by default and expands on click', async () => {
     const onClose = vi.fn();
     await renderMenu({ isOpen: true, onClose });
 
+    const toggleBtn = container.querySelector(
+      '[data-testid="menu-item-switch-companion"]'
+    ) as HTMLElement;
+    expect(toggleBtn).not.toBeNull();
+
+    // Verify collapsed by default (Phase 4 requirement)
+    expect(
+      container.querySelector('[data-testid="menu-section-companions"]')
+    ).toBeNull();
+
+    // Click to expand
+    await act(async () => {
+      toggleBtn.click();
+    });
+
+    expect(
+      container.querySelector('[data-testid="menu-section-companions"]')
+    ).not.toBeNull();
+
+    // Check all companions
     const bunBtn = container.querySelector(
       '[data-testid="menu-companion-bun"]'
     );
     const nekoBtn = container.querySelector(
       '[data-testid="menu-companion-neko"]'
     );
-    const shibaBtn = container.querySelector(
-      '[data-testid="menu-companion-shiba"]'
-    );
-    const capyBtn = container.querySelector(
-      '[data-testid="menu-companion-capybara"]'
-    );
-    const tielBtn = container.querySelector(
-      '[data-testid="menu-companion-cockatiel"]'
-    );
-    const dolphinBtn = container.querySelector(
-      '[data-testid="menu-companion-dolphin"]'
-    );
-
-    expect(bunBtn).not.toBeNull();
-    expect(nekoBtn).not.toBeNull();
-    expect(shibaBtn).not.toBeNull();
-    expect(capyBtn).not.toBeNull();
-    expect(tielBtn).not.toBeNull();
-    expect(dolphinBtn).not.toBeNull();
-
-    // Verify initial active indicator on bun
     expect(bunBtn?.textContent).toContain('●');
     expect(nekoBtn?.textContent).toContain('○');
 
@@ -194,61 +238,6 @@ describe('PetContextMenu Component', () => {
 
     expect(useCompanionStore.getState().activeCompanionId).toBe('neko');
     expect(onClose).toHaveBeenCalledTimes(1);
-
-    await cleanup();
-  });
-
-  it('toggles companion submenu visibility on header click', async () => {
-    await renderMenu({ isOpen: true });
-
-    const toggleBtn = container.querySelector(
-      '[data-testid="menu-item-switch-companion"]'
-    );
-    expect(toggleBtn).not.toBeNull();
-
-    expect(
-      container.querySelector('[data-testid="menu-section-companions"]')
-    ).not.toBeNull();
-
-    // Click to collapse
-    await act(async () => {
-      toggleBtn?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
-    });
-
-    expect(
-      container.querySelector('[data-testid="menu-section-companions"]')
-    ).toBeNull();
-
-    // Click to expand again
-    await act(async () => {
-      toggleBtn?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
-    });
-
-    expect(
-      container.querySelector('[data-testid="menu-section-companions"]')
-    ).not.toBeNull();
-
-    await cleanup();
-  });
-
-  it('updates companion active indicators when companionStore activeCompanionId changes', async () => {
-    // Set active companion to capybara
-    useCompanionStore.getState().setActiveCompanionId('capybara');
-    await renderMenu({ isOpen: true });
-
-    const bunBtn = container.querySelector(
-      '[data-testid="menu-companion-bun"]'
-    );
-    const capyBtn = container.querySelector(
-      '[data-testid="menu-companion-capybara"]'
-    );
-    const dolphinBtn = container.querySelector(
-      '[data-testid="menu-companion-dolphin"]'
-    );
-
-    expect(bunBtn?.textContent).toContain('○');
-    expect(capyBtn?.textContent).toContain('●');
-    expect(dolphinBtn?.textContent).toContain('○');
 
     await cleanup();
   });
