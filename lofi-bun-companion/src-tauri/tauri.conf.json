@@ -1,7 +1,7 @@
 {
   "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
   "productName": "Lo-fi Bun Companion",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "identifier": "com.lofibun.companion",
   "build": {
     "beforeDevCommand": "npm run dev",
@@ -33,7 +33,9 @@
   "bundle": {
     "active": true,
     "targets": ["nsis", "msi"],
-    "resources": ["resources/WebView2Loader.dll"],
+    "resources": {
+      "resources/WebView2Loader.dll": "WebView2Loader.dll"
+    },
     "publisher": "Lo-fi Bun Team",
     "copyright": "Copyright © 2026 Lo-fi Bun Companion",
     "shortDescription": "A cozy, lightweight virtual desk companion & hardware monitor",
