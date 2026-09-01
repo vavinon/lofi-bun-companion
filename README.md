@@ -77,28 +77,28 @@ Every companion intelligently transitions across 5 workload states and dynamic p
 
 ```mermaid
 flowchart TD
-    IDLE["🍵 IDLE (CPU < 20%)"]
-    FOCUS["⌨️ FOCUS (CPU 20–60%)"]
-    FRENZY["🔥 FRENZY (CPU > 60%)"]
-    DISK["📖 DISK (Disk I/O > 75%)"]
-    REST["💤 REST (Break / Sleep Override)"]
+    IDLE["IDLE: Relax & Sip Tea (CPU under 20%)"]
+    FOCUS["FOCUS: Steady Typing (CPU 20% to 60%)"]
+    FRENZY["FRENZY: Turbo Focus (CPU above 60%)"]
+    DISK["DISK: Reading & Scanning (Disk I/O above 75%)"]
+    REST["REST: Cozy Nap (Pomodoro Break or Override)"]
 
-    IDLE -->|CPU >= 20%| FOCUS
-    FOCUS -->|CPU < 17% (Hysteresis)| IDLE
-    FOCUS -->|CPU >= 60%| FRENZY
-    FRENZY -->|CPU < 57% (Hysteresis)| FOCUS
-    FRENZY -->|CPU < 17% (Rapid Drop)| IDLE
+    IDLE -->|CPU reaches 20%| FOCUS
+    FOCUS -->|CPU drops below 17% - Hysteresis| IDLE
+    FOCUS -->|CPU reaches 60%| FRENZY
+    FRENZY -->|CPU drops below 57% - Hysteresis| FOCUS
+    FRENZY -->|Rapid CPU drop below 17%| IDLE
 
-    IDLE -->|Disk I/O >= 75%| DISK
-    FOCUS -->|Disk I/O >= 75%| DISK
-    FRENZY -->|Disk I/O >= 75%| DISK
-    DISK -->|Disk I/O < 72%| IDLE
+    IDLE -->|Disk I/O reaches 75%| DISK
+    FOCUS -->|Disk I/O reaches 75%| DISK
+    FRENZY -->|Disk I/O reaches 75%| DISK
+    DISK -->|Disk I/O drops below 72%| IDLE
 
-    IDLE -.->|Pomodoro Break / Override| REST
-    FOCUS -.->|Pomodoro Break / Override| REST
-    FRENZY -.->|Pomodoro Break / Override| REST
-    DISK -.->|Pomodoro Break / Override| REST
-    REST -.->|Focus Resumes| IDLE
+    IDLE -.->|Pomodoro Break or Rest Toggle| REST
+    FOCUS -.->|Pomodoro Break or Rest Toggle| REST
+    FRENZY -.->|Pomodoro Break or Rest Toggle| REST
+    DISK -.->|Pomodoro Break or Rest Toggle| REST
+    REST -.->|Focus Starts or Awakens| IDLE
 ```
 
 ---
