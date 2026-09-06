@@ -9,8 +9,8 @@
 </p>
 
 <p align="center">
-  <a href="#-key-features"><img src="https://img.shields.io/badge/version-v2.0.0-8b5cf6?style=flat-square" alt="Version 2.0.0" /></a>
-  <a href="#-5-pillar-automated-quality-gates"><img src="https://img.shields.io/badge/tests-171%2F171%20passed-10b981?style=flat-square" alt="171/171 Tests Passed" /></a>
+  <a href="#-key-features"><img src="https://img.shields.io/badge/version-v2.0.1-8b5cf6?style=flat-square" alt="Version 2.0.1" /></a>
+  <a href="#-5-pillar-automated-quality-gates"><img src="https://img.shields.io/badge/tests-180%2F180%20passed-10b981?style=flat-square" alt="180/180 Tests Passed" /></a>
   <a href="#-pure-css-animation-engine"><img src="https://img.shields.io/badge/CPU%20Usage-0.0%25%20(Pure%20CSS)-f59e0b?style=flat-square" alt="0.0% Idle CPU" /></a>
   <a href="#-typescript-architecture"><img src="https://img.shields.io/badge/TypeScript-Strict%205.7-3178c6?style=flat-square" alt="TypeScript Strict" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-6b7280?style=flat-square" alt="License MIT" /></a>
@@ -153,7 +153,7 @@ lofi_bun_companion/
     │   ├── telemetry/         # Pluggable telemetry engine (Native & WebMock)
     │   ├── utils/             # soundSynth, stateResolver, hysteresis utilities
     │   ├── types/             # TypeScript type definitions (companion, desktop, pomodoro)
-    │   └── __tests__/         # Vitest automated test suites (171 tests passing 100%)
+    │   └── __tests__/         # Vitest automated test suites (180 tests passing 100%)
     ├── package.json
     └── vite.config.ts
 ```
@@ -175,7 +175,7 @@ npm run verify
 │ 1. Linting      │ npm run lint         (ESLint v9 Flat)   │
 │ 2. Formatting   │ npm run format:check (Prettier)          │
 │ 3. Type Safety  │ npm run typecheck    (tsc --noEmit)      │
-│ 4. Unit Tests   │ npm test             (Vitest - 171 tests)│
+│ 4. Unit Tests   │ npm test             (Vitest - 180 tests)│
 │ 5. Build        │ npm run build        (Vite Production)   │
 └─────────────────┴──────────────────────────────────────────┘
 ```
@@ -231,8 +231,15 @@ npm run tauri:build
   - [x] Context Menu overhaul with slim scrollbars
   - [x] 171/171 automated unit & integration tests passing 100%
   - [x] Zero-overhead performance budget secured (<35MB RAM, 0.0% CPU Idle)
+- [x] **v2.0.1 — 🛡️ System Hardening, Timer Precision & QA Fixes (Current Stable Release 🟢)**
+  - [x] Drift-free wall-clock delta timer engine (`Date.now()`) with remainder preservation & instant event re-sync
+  - [x] Daily streak inflation prevention on manual phase skips
+  - [x] Web Audio lifecycle hardening: immediate node GC & 3.0s debounced CPU auto-suspend
+  - [x] Long break cycle milestone (4/4 dots display & clean loop reset)
+  - [x] Context menu right-edge boundary fix (`MENU_WIDTH = 240`) & dynamic titlebar mascot icon
+  - [x] 180/180 automated unit tests passing 100%
 
-> 💡 **Scope Finalized**: The project scope is finalized at **v2.0.0** as a polished, complete desktop mascot to strictly preserve our ultra-low resource footprint and guarantee zero background battery drain.
+> 💡 **Scope Finalized**: The project scope is finalized as a polished, complete desktop mascot to strictly preserve our ultra-low resource footprint and guarantee zero background battery drain.
 
 ---
 
