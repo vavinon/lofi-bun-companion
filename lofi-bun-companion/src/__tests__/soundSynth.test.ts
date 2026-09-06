@@ -10,8 +10,10 @@ describe('soundSynth Web Audio Synthesizer', () => {
     type: string;
     frequency: { setValueAtTime: ReturnType<typeof vi.fn> };
     connect: ReturnType<typeof vi.fn>;
+    disconnect: ReturnType<typeof vi.fn>;
     start: ReturnType<typeof vi.fn>;
     stop: ReturnType<typeof vi.fn>;
+    onended: (() => void) | null;
   };
 
   let mockGain: {
@@ -20,6 +22,7 @@ describe('soundSynth Web Audio Synthesizer', () => {
       exponentialRampToValueAtTime: ReturnType<typeof vi.fn>;
     };
     connect: ReturnType<typeof vi.fn>;
+    disconnect: ReturnType<typeof vi.fn>;
   };
 
   let mockAudioContext: {
@@ -27,17 +30,21 @@ describe('soundSynth Web Audio Synthesizer', () => {
     currentTime: number;
     destination: Record<string, unknown>;
     resume: ReturnType<typeof vi.fn>;
+    suspend: ReturnType<typeof vi.fn>;
     createOscillator: ReturnType<typeof vi.fn>;
     createGain: ReturnType<typeof vi.fn>;
   };
 
   beforeEach(() => {
+    vi.useFakeTimers();
     mockOscillator = {
       type: 'sine',
       frequency: { setValueAtTime: vi.fn() },
       connect: vi.fn(),
+      disconnect: vi.fn(),
       start: vi.fn(),
       stop: vi.fn(),
+      onended: null,
     };
 
     mockGain = {
@@ -46,6 +53,7 @@ describe('soundSynth Web Audio Synthesizer', () => {
         exponentialRampToValueAtTime: vi.fn(),
       },
       connect: vi.fn(),
+      disconnect: vi.fn(),
     };
 
     mockAudioContext = {
@@ -53,6 +61,7 @@ describe('soundSynth Web Audio Synthesizer', () => {
       currentTime: 10.0,
       destination: {},
       resume: vi.fn().mockResolvedValue(undefined),
+      suspend: vi.fn().mockResolvedValue(undefined),
       createOscillator: vi.fn(() => mockOscillator),
       createGain: vi.fn(() => mockGain),
     };
@@ -62,6 +71,7 @@ describe('soundSynth Web Audio Synthesizer', () => {
 
   afterEach(() => {
     setAudioContextForTesting(null);
+    vi.useRealTimers();
     vi.restoreAllMocks();
   });
 
@@ -100,5 +110,39 @@ describe('soundSynth Web Audio Synthesizer', () => {
     expect(result).toBe(false);
 
     window.AudioContext = origAudioContext;
+  });
+
+  it('disconnects audio nodes on note completion to trigger garbage collection', () => {
+    playChimeSound('focusComplete');
+    expect(typeof mockOscillator.onended).toBe('function');
+
+    // Simulate oscillator tone completion event
+    mockOscillator.onended!();
+    expect(mockOscillator.disconnect).toHaveBeenCalled();
+    expect(mockGain.disconnect).toHaveBeenCalled();
+  });
+
+  it('schedules debounced suspend after 3 seconds to return CPU to 0.0%', () => {
+    playChimeSound('focusComplete');
+    expect(mockAudioContext.suspend).not.toHaveBeenCalled();
+
+    vi.advanceTimersByTime(2999);
+    expect(mockAudioContext.suspend).not.toHaveBeenCalled();
+
+    vi.advanceTimersByTime(1);
+    expect(mockAudioContext.suspend).toHaveBeenCalledTimes(1);
+  });
+
+  it('resets debounced suspend timer when another chime is triggered within 3s', () => {
+    playChimeSound('focusComplete');
+    vi.advanceTimersByTime(2000);
+
+    // Trigger second chime before 3.0s expires
+    playChimeSound('breakComplete');
+    vi.advanceTimersByTime(2000);
+    expect(mockAudioContext.suspend).not.toHaveBeenCalled();
+
+    vi.advanceTimersByTime(1000);
+    expect(mockAudioContext.suspend).toHaveBeenCalledTimes(1);
   });
 });

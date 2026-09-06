@@ -108,7 +108,7 @@ export const PetContextMenu: React.FC<PetContextMenuProps> = ({
   }
 
   // Calculate adjusted menu coordinates to prevent overflowing window bounds
-  const MENU_WIDTH = 210;
+  const MENU_WIDTH = 240;
   const MENU_MAX_HEIGHT = 340;
   const viewportWidth = typeof window !== 'undefined' ? window.innerWidth : 320;
   const viewportHeight =

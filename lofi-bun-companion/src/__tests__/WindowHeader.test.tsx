@@ -116,4 +116,23 @@ describe('WindowHeader Component', () => {
 
     await cleanup();
   });
+
+  it('dynamically renders active companion emoji in titlebar icon', async () => {
+    await renderComponent();
+
+    const petIcon = container.querySelector('[role="img"]');
+    expect(petIcon?.textContent?.trim()).toBe('🐰');
+
+    await act(async () => {
+      useCompanionStore.getState().setActiveCompanionId('neko');
+    });
+    expect(petIcon?.textContent?.trim()).toBe('🐱');
+
+    await act(async () => {
+      useCompanionStore.getState().setActiveCompanionId('dolphin');
+    });
+    expect(petIcon?.textContent?.trim()).toBe('🐬');
+
+    await cleanup();
+  });
 });

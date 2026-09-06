@@ -132,8 +132,67 @@ describe('usePomodoroStore', () => {
 
     const state = usePomodoroStore.getState();
     expect(state.phase).toBe('LONG_BREAK');
-    expect(state.currentCycle).toBe(1); // Resets cycle loop back to 1
+    expect(state.currentCycle).toBe(4); // Maintains cycle 4 so UI modals display all 4/4 dots
     expect(state.remainingSeconds).toBe(15 * 60);
+  });
+
+  it('transitions from LONG_BREAK to FOCUS and resets cycle back to 1', () => {
+    usePomodoroStore.setState({
+      currentCycle: 4,
+      phase: 'LONG_BREAK',
+      status: 'RUNNING',
+      remainingSeconds: 1,
+    });
+
+    const result = usePomodoroStore.getState().tick();
+    expect(result.phaseEnded).toBe(true);
+    expect(result.nextPhase).toBe('FOCUS');
+
+    const state = usePomodoroStore.getState();
+    expect(state.phase).toBe('FOCUS');
+    expect(state.currentCycle).toBe(1); // Cycle resets to 1 after long break
+  });
+
+  it('handles multi-second delta tick and caps phase end without cascade', () => {
+    usePomodoroStore.setState({
+      phase: 'FOCUS',
+      status: 'RUNNING',
+      remainingSeconds: 10,
+    });
+
+    // Sub-duration tick
+    const partialResult = usePomodoroStore.getState().tick(4);
+    expect(partialResult.phaseEnded).toBe(false);
+    expect(usePomodoroStore.getState().remainingSeconds).toBe(6);
+
+    // Large overshoot tick (e.g. system sleep) caps at phase end
+    const overshootResult = usePomodoroStore.getState().tick(100);
+    expect(overshootResult.phaseEnded).toBe(true);
+    expect(overshootResult.previousPhase).toBe('FOCUS');
+    expect(overshootResult.nextPhase).toBe('SHORT_BREAK');
+    // Verify only 1 cycle was awarded, not multiple
+    expect(usePomodoroStore.getState().dailyStreak.completedCycles).toBe(1);
+  });
+
+  it('does not increment streak on manual skipPhase vs natural completion', () => {
+    usePomodoroStore.setState({
+      phase: 'FOCUS',
+      status: 'RUNNING',
+      remainingSeconds: 500,
+    });
+
+    // 1. Manual skip (default completedNaturally = false)
+    usePomodoroStore.getState().skipPhase(false);
+    expect(usePomodoroStore.getState().dailyStreak.completedCycles).toBe(0);
+    expect(usePomodoroStore.getState().dailyStreak.totalFocusMinutes).toBe(0);
+
+    // Switch back to focus
+    usePomodoroStore.getState().startFocus();
+    // 2. Natural completion (via tick or completedNaturally = true)
+    usePomodoroStore.setState({ remainingSeconds: 1 });
+    usePomodoroStore.getState().tick(1);
+    expect(usePomodoroStore.getState().dailyStreak.completedCycles).toBe(1);
+    expect(usePomodoroStore.getState().dailyStreak.totalFocusMinutes).toBe(25);
   });
 
   it('transitions from BREAK to FOCUS on skipPhase', () => {

@@ -5,7 +5,7 @@
 1. **Zero-Overhead Budget**: ใช้ทรัพยากรน้อยที่สุดในทุกเวอร์ชัน (<35MB RAM, CPU ~0.0% ขณะ Idle)
 2. **Lean Value Delivery (Ship Early, Ship Real)**: ปล่อยแอป Desktop ตัวจริง (.exe บน Windows) สู่ผู้ใช้ให้เร็วที่สุดใน `v1.0.0`
 3. **Pluggable & Extensible Foundations**: สถาปัตยกรรม State Engine & Registry รองรับการเพิ่มตัวละครใหม่อีก 5 ตัวใน `v1.1.0` โดยไม่ต้องรื้อระบบ
-4. **Focused Major Upgrades**: แยกการอัปเกรดใหญ่เป็นโมดูลชัดเจน (Productivity Pomodoro ใน `v2.0.0`, Soundscape Mixer ใน `v3.0.0`)
+4. **Focused Major Upgrades**: รวบรวมฟังก์ชัน Productivity Pomodoro Suite ใน `v2.0.0` อย่างสมบูรณ์แบบ และยุติ Scope เพื่อรักษา Zero-Overhead Budget
 5. **Strict SemVer 2.0.0 Compliance**: จัดการ Release cycle ตามมาตรฐานสากล (`MAJOR.MINOR.PATCH`)
 
 ---
@@ -23,9 +23,8 @@ graph TD
         v100 --> v110["1.1.0: Bun & Friends Multiverse (+5 Companion Roster) 🟢"]
     end
 
-    subgraph Major2_3["Major Feature Ecosystems"]
-        v110 --> v200["2.0.0: The Productivity Update (Pomodoro Focus Suite) 🟢"]
-        v200 --> v300["3.0.0: The Soundscape Update (Ambient Lo-fi Audio Mixer) 🎯"]
+    subgraph Major2["2.x.x — Final Feature-Complete Release"]
+        v110 --> v200["2.0.0: The Productivity Update & Multiverse (Final Complete Edition) 🟢"]
     end
 ```
 
@@ -60,7 +59,7 @@ graph TD
   - ลากย้ายน้องต่ายวางบนหน้าจอทำงานได้อย่างอิสระ (Draggable Floating Mascot)
   - Quick Context Menu (คลิกขวา):
     - 📌 Always-on-Top Toggle
-    - 🔍 Window Scale (1x, 2x, 3x, 4x)
+    - 🌓 Window Opacity (50%, 70%, 85%, 100%)
     - 📊 Live Telemetry Stats Tooltip (ดูตัวเลข CPU/RAM/Disk ปัจจุบัน)
     - ❌ Quit Application
   - Resource Budget: RAM < 35MB, CPU Idle ~0.0%
@@ -80,7 +79,7 @@ graph TD
 
 ---
 
-### 🍅 2.0.0 — The Productivity Update (Major Release)
+### 🍅 2.0.0 — The Productivity Update & Multiverse (Final Feature-Complete Release)
 * **2.0.0 — Pomodoro Focus Suite & Rest Automation** *(Completed 🟢)*:
   - Classic 25/5 Pomodoro Timer พร้อมโหมด Deep Work (50/10), Custom Timer, และ Long Break Automation (รอบที่ 4)
   - Rest Automation Hook: เมื่อหมดเวลาทำงาน น้องสัตว์เลี้ยงทั้ง 6 ตัวจะเข้าสู่โหมดพักผ่อน (`REST`) กอดหมอน/แช่น้ำส้มยูซุนอนหลับอัตโนมัติ เพื่อเตือนให้ผู้ใช้พักสายตา
@@ -89,16 +88,10 @@ graph TD
   - Floating Mini Progress Widget & Full Focus Dashboard Modal (รองรับ Double-Click Mascot / Stage)
   - Context Menu Overhaul พร้อม Lo-fi Slim Scrollbar ป้องกันเมนูล้นขอบหน้าต่างเดสก์ท็อป
   - ผ่าน 5-Pillar Quality Gates (171 Vitest tests 100%)
+  - **Zero-Overhead Performance Budget**: ควบคุม RAM ต่ำกว่า <35MB และ CPU Idle 0.0% สมบูรณ์แบบ
 
 ---
 
-### 🎧 3.0.0 — The Soundscape Update (Major Release)
-* **3.0.0 — Ambient Lo-fi Audio Mixer** *(Next Up 🎯)*:
-  - Multi-Channel Web Audio Engine สำหรับสร้างบรรยากาศการทำงาน
-  - ปรับระดับเสียงแยกอิสระ 4 ช่องสัญญาณ:
-    - 🎶 Lo-fi Chill Beats
-    - 🌧️ Soft Rain on Window
-    - ⌨️ Mechanical Keyboard Clicks (Brown/Blue Switch sound)
-    - ☕ Cozy Cafe Murmur & Coffee Pouring
-  - Sound Presets (Rainy Evening, Cafe Study, Midnight Focus, Mute All)
-  - Master Mute Shortcut & Low-power Audio Suspender เมื่อไม่ได้เปิดเสียง
+### 🛑 Roadmap Scope Finalization
+- **การตัดสินใจทางสถาปัตยกรรม (Architectural Decision)**: ปิดจบขอบเขตฟังก์ชันหลักของโปรเจกต์ที่ `v2.0.0` อย่างสมบูรณ์แบบ
+- **เหตุผล**: การเพิ่มโมดูล Multi-track Soundscape Audio Mixer (เดิมตั้งไว้ใน v3.0.0) ต้องใช้การประมวลผลเสียงและโหลดทรัพยากรเสียงเพิ่มอย่างต่อเนื่อง ซึ่งอาจทำให้กิน RAM และแบตเตอรี่เกินงบประมาณ (Performance Budget) การหยุดที่ v2.0.0 ทำให้โปรเจกต์คงความเบาหวิว คลีน และตอบโจทย์ Desk Companion ได้ดีที่สุดตามวัตถุประสงค์ตั้งต้น

@@ -351,7 +351,7 @@ export const PomodoroModal: React.FC<PomodoroModalProps> = ({
             <button
               type="button"
               className={styles.secondaryButton}
-              onClick={skipPhase}
+              onClick={() => skipPhase()}
               title="Skip to next phase"
               data-testid="btn-modal-skip"
             >

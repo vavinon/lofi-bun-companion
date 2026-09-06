@@ -7,6 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.1] - 2026-09-06
+
+### Fixed & Hardened
+- **Wall-Clock Delta Precision Timer Engine (`usePomodoroTimer.ts`)**:
+  - Replaced naive `-1` interval decrement with real-time wall-clock delta calculation (`Date.now() - lastTickRef.current`), eliminating timer drift when window is minimized or throttled by Windows OS power management.
+  - Implemented drift-free remainder preservation (`lastTickRef.current += elapsed * 1000`) eliminating fractional millisecond truncation errors over long sessions.
+  - Added instant re-synchronization listeners for `visibilitychange` and `window.focus` events alongside negative delta protection.
+- **Focus Streak Protection on Manual Skip (`pomodoroStore.ts`)**:
+  - Added `completedNaturally: boolean = false` parameter to `skipPhase()`, ensuring Daily Focus Streak (🍅) and accumulated focus minutes are awarded exclusively upon authentic timer completion and never on manual skip.
+- **Cycle Transition & Long Break Display Consistency (`pomodoroStore.ts`)**:
+  - Maintained `currentCycle = 4` during `LONG_BREAK` so modal dashboard displays completed 4/4 dots milestone, resetting back to `1` upon transitioning to the next focus cycle.
+  - Added single-phase capping for large sleep deltas to prevent multiple cascade streak inflation.
+- **Web Audio Lifecycle Hardening & Garbage Collection (`soundSynth.ts`)**:
+  - Implemented immediate oscillator and gain node disconnection (`osc.disconnect()`, `gain.disconnect()`) via `osc.onended` for rapid V8 audio graph garbage collection.
+  - Added 3.0-second debounced auto-suspend (`audioCtx.suspend()`) with cancellation of pending timers on incoming chimes, returning Windows `audiodg.exe` to 0.0% CPU without clipping.
+- **Context Menu Right-Edge Clipping Fix (`PetContextMenu.tsx`)**:
+  - Corrected `MENU_WIDTH` constant from 210px to 240px matching CSS max-width, preventing boundary overflow on right-hand clicks within the 320px mascot window.
+- **Dynamic Companion Icon in Titlebar (`WindowHeader.tsx`)**:
+  - Dynamically resolved active companion emoji avatar via `useCompanionStore` and `getCompanionMetadata`, replacing hardcoded rabbit icon.
+- **Technical Documentation & Spec Alignment**:
+  - Aligned `version-roadmap.md` with window opacity feature and corrected `companion.ts` JSDoc to reflect actual 28x20 px prop dimensions.
+
 ## [2.0.0] - 2026-09-02
 
 ### Added
