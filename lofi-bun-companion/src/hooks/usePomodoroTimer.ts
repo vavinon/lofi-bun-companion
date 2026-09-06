@@ -45,6 +45,7 @@ export const usePomodoroTimer = () => {
   );
 
   const prevPhaseRef = useRef<PomodoroPhase>(phase);
+  const lastTickRef = useRef<number>(Date.now());
 
   // 1. Rest Automation: Synchronize break phases with companion REST pose
   useEffect(() => {
@@ -75,16 +76,47 @@ export const usePomodoroTimer = () => {
     }
   }, [phase, soundEnabled, notificationEnabled]);
 
-  // 2. Active Countdown Interval Driver
+  // 2. Wall-Clock Delta Precision Timer Driver with Drift-Free Remainder Preservation
   useEffect(() => {
     if (status !== 'RUNNING') return;
 
-    const intervalId = window.setInterval(() => {
-      usePomodoroStore.getState().tick();
-    }, 1000);
+    // Synchronize anchor time when timer starts or resumes
+    lastTickRef.current = Date.now();
+
+    const syncTick = () => {
+      const now = Date.now();
+
+      // Negative Delta Guard (prevent backwards clock jump issues)
+      if (now < lastTickRef.current) {
+        lastTickRef.current = now;
+        return;
+      }
+
+      const elapsed = Math.max(
+        0,
+        Math.floor((now - lastTickRef.current) / 1000)
+      );
+
+      if (elapsed >= 1) {
+        // Preserve sub-second milliseconds to avoid cumulative fractional truncation drift
+        lastTickRef.current += elapsed * 1000;
+        usePomodoroStore.getState().tick(elapsed);
+      }
+    };
+
+    const intervalId = window.setInterval(syncTick, 1000);
+
+    const handleVisibilityOrFocus = () => {
+      syncTick();
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityOrFocus);
+    window.addEventListener('focus', handleVisibilityOrFocus);
 
     return () => {
       window.clearInterval(intervalId);
+      document.removeEventListener('visibilitychange', handleVisibilityOrFocus);
+      window.removeEventListener('focus', handleVisibilityOrFocus);
     };
   }, [status]);
 };

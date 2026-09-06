@@ -48,7 +48,7 @@ export interface CompanionMetadata {
   role: string;
   /** Asset path to the 256x320 pixel-art vector spritesheet */
   spriteUrl: string;
-  /** Asset path to the 64x64 overlay prop */
+  /** Asset path to the 28x20 pixel-art overlay prop */
   propUrl: string;
   /** Animation cycle durations per state in milliseconds */
   animationDurations: AnimationDurations;

@@ -9,6 +9,7 @@
 
 import React from 'react';
 import { useCompanionStore } from '../../stores/companionStore';
+import { getCompanionMetadata } from '../../data/companionRegistry';
 import styles from './WindowHeader.module.css';
 
 export interface WindowHeaderProps {
@@ -25,6 +26,10 @@ export const WindowHeader: React.FC<WindowHeaderProps> = ({
   onMinimize,
   onClose,
 }) => {
+  const activeCompanionId = useCompanionStore(
+    (state) => state.activeCompanionId
+  );
+  const companion = getCompanionMetadata(activeCompanionId);
   const isAlwaysOnTop = useCompanionStore((state) => state.isAlwaysOnTop);
   const toggleAlwaysOnTop = useCompanionStore(
     (state) => state.toggleAlwaysOnTop
@@ -106,10 +111,10 @@ export const WindowHeader: React.FC<WindowHeaderProps> = ({
         <span
           className={styles.petIcon}
           role="img"
-          aria-label="Bun"
+          aria-label={companion.displayName}
           data-tauri-drag-region
         >
-          🐰
+          {companion.emoji}
         </span>
         <span
           className={styles.titleText}

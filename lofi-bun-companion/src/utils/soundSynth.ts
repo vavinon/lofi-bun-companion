@@ -10,6 +10,9 @@ export type ChimeType = 'focusComplete' | 'breakComplete';
 /** Audio context holder singleton */
 let audioCtx: AudioContext | null = null;
 
+/** Debounced auto-suspend timer to reclaim system audio resources */
+let suspendTimeoutId: ReturnType<typeof setTimeout> | null = null;
+
 /**
  * Lazily initialize and retrieve the shared AudioContext instance.
  * Handles suspended context resumption safely.
@@ -58,6 +61,10 @@ export const getAudioContext = (): AudioContext | null => {
 export const setAudioContextForTesting = (
   mockContext: AudioContext | null
 ): void => {
+  if (suspendTimeoutId !== null) {
+    clearTimeout(suspendTimeoutId);
+    suspendTimeoutId = null;
+  }
   audioCtx = mockContext;
 };
 
@@ -70,6 +77,7 @@ interface BellNote {
 
 /**
  * Synthesizes a single bell tone with harmonic overtone decay.
+ * Automatically disconnects audio nodes on completion to trigger immediate V8 garbage collection.
  */
 const playBellTone = (
   ctx: AudioContext,
@@ -93,16 +101,33 @@ const playBellTone = (
   osc.connect(gain);
   gain.connect(ctx.destination);
 
+  // Reclaim audio graph memory immediately upon note finish
+  osc.onended = () => {
+    try {
+      osc.disconnect();
+      gain.disconnect();
+    } catch {
+      // Safe fallback if graph is already torn down
+    }
+  };
+
   osc.start(startTime);
   osc.stop(startTime + duration);
 };
 
 /**
  * Play a gentle pentatonic chime sequence based on the completed phase.
+ * Employs a 3.0-second debounced suspend to keep Windows audiodg.exe at 0.0% CPU without clipping.
  */
 export const playChimeSound = (type: ChimeType = 'focusComplete'): boolean => {
   const ctx = getAudioContext();
   if (!ctx) return false;
+
+  // Clear any pending debounced suspend timer to avoid cutting off incoming sounds
+  if (suspendTimeoutId !== null) {
+    clearTimeout(suspendTimeoutId);
+    suspendTimeoutId = null;
+  }
 
   const now = ctx.currentTime;
 
@@ -124,24 +149,35 @@ export const playChimeSound = (type: ChimeType = 'focusComplete'): boolean => {
         note.gain
       );
     }
-    return true;
+  } else {
+    // breakComplete: Cheerful upward focus readiness chime (A4 -> C#5 -> E5)
+    const notes: BellNote[] = [
+      { freq: 440.0, timeOffset: 0.0, duration: 0.8, gain: 0.15 },
+      { freq: 554.37, timeOffset: 0.15, duration: 0.9, gain: 0.14 },
+      { freq: 659.25, timeOffset: 0.3, duration: 1.2, gain: 0.16 },
+    ];
+
+    for (const note of notes) {
+      playBellTone(
+        ctx,
+        note.freq,
+        now + note.timeOffset,
+        note.duration,
+        note.gain
+      );
+    }
   }
 
-  // breakComplete: Cheerful upward focus readiness chime (A4 -> C#5 -> E5)
-  const notes: BellNote[] = [
-    { freq: 440.0, timeOffset: 0.0, duration: 0.8, gain: 0.15 },
-    { freq: 554.37, timeOffset: 0.15, duration: 0.9, gain: 0.14 },
-    { freq: 659.25, timeOffset: 0.3, duration: 1.2, gain: 0.16 },
-  ];
+  // Schedule debounced suspend 3.0s after chime start to return Windows audiodg.exe to 0.0% CPU
+  suspendTimeoutId = setTimeout(() => {
+    try {
+      if (audioCtx && audioCtx.state === 'running') {
+        void audioCtx.suspend().catch(() => {});
+      }
+    } catch {
+      // Safe fallback
+    }
+  }, 3000);
 
-  for (const note of notes) {
-    playBellTone(
-      ctx,
-      note.freq,
-      now + note.timeOffset,
-      note.duration,
-      note.gain
-    );
-  }
   return true;
 };

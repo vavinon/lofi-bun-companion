@@ -111,22 +111,22 @@ c:/DevProjects/lofi_bun_companion/
 ---
 
 ## 4. 🎮 Project Overview: Lo-fi Bun Companion
-A cozy, lightweight Virtual Desk Companion featuring an animated bunny character, real-time hardware monitor (RunCat/Bongo Cat style), Pomodoro focus timer, and ambient soundscape mixer.
+A cozy, lightweight Virtual Desk Companion featuring an animated bunny character, real-time hardware monitor (RunCat/Bongo Cat style), Pomodoro focus timer, and zero-latency harmonic bell chimes.
 
 ### Core Modules & Lean Phased Delivery
 - **Phase 1 (v0.1.0 - Done 🟢)**: Hardware-Reactive Bunny State Machine (Idle, Focus, Frenzy, Disk, Rest, Heavy RAM carrot prop, pure CSS step animator).
 - **Phase 2 (v0.2.0 - Done 🟢)**: Windows Real Hardware Telemetry Engine (CPU, RAM, Disk OS polling with zero main-thread overhead).
 - **Phase 3 (v1.0.0 - Done 🟢)**: The Hardware Desk Pet (.exe / Tauri Desktop Mascot with transparent, frameless floating window & context menu).
 - **Phase 4 (v1.1.0 - Done 🟢)**: Bun & Friends Multiverse (Unlocking 5 companions: Neko, Shiba, Capybara, Cockatiel, Dolphin).
-- **Phase 5 (v2.0.0 - Next 🎯)**: Pomodoro Focus Suite (Configurable 25/5 intervals, daily focus streak, automated companion sleep hooks on break).
-- **Phase 6 (v3.0.0 - Soundscape 🎧)**: Ambient Lo-fi Audio Mixer (Multi-channel independent audio channels: beats, rain, keyboard clicks, cafe murmur).
+- **Phase 5 (v2.0.0 - Done 🟢 / Final Complete Edition)**: Pomodoro Focus Suite (Configurable 25/5 intervals, daily focus streak, automated companion sleep hooks on break, zero-asset Web Audio bell chime, and slim context menu).
+- **Project Scope Finalized**: Scope concluded at v2.0.0 to strictly enforce ultra-low resource consumption (<35MB RAM, ~0.0% CPU on idle) with zero background battery drain.
 
 ### Tech Stack & Principles
 - **Frontend**: React + Vite + TypeScript + CSS Modules (for pixel-art rendering)
 - **State Management**: Zustand (Selective Subscriptions with `subscribeWithSelector`)
 - **System Monitoring**: Lightweight system metrics hook (polling intervals: 1.5–2.0s)
-- **Audio Engine**: Native Web Audio API / Howler.js (v3.0.0)
+- **Audio Chime**: Native Web Audio API dual-tone harmonic synthesizer (`soundSynth.ts`, zero asset overhead)
 - **Animation**: Pure CSS Spritesheet / Keyframes for 0.0% CPU usage on idle
-- **Automated Testing**: Vitest + React Testing Library (Fast unit & integration tests)
+- **Automated Testing**: Vitest + React Testing Library (171/171 unit & integration tests)
 - **Desktop Packaging**: Tauri (Lightweight desktop wrapper on Windows)
-- **Modularity & Performance**: Strictly decouple Hardware Polling, Audio, Timer, and Character Animation states with minimal CPU/RAM footprint (<35MB RAM, ~0.0% CPU on idle).
+- **Modularity & Performance**: Strictly decouple Hardware Polling, Timer, and Character Animation states with minimal CPU/RAM footprint (<35MB RAM, ~0.0% CPU on idle).

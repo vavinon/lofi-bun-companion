@@ -95,6 +95,9 @@ export function getCompanion(id: CompanionId): CompanionMetadata {
   return COMPANION_REGISTRY[id] ?? COMPANION_REGISTRY['bun'];
 }
 
+/** Alias for getCompanion for semantic clarity */
+export const getCompanionMetadata = getCompanion;
+
 /**
  * Returns an array of all registered companion characters in the multiverse roster.
  *

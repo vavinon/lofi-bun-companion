@@ -58,16 +58,16 @@ export interface PomodoroStoreState {
   pauseTimer: () => void;
   /** Reset current phase timer back to full duration in IDLE status */
   resetTimer: () => void;
-  /** Advance immediately to the next phase */
-  skipPhase: () => PomodoroTickResult;
+  /** Advance immediately to the next phase. If completedNaturally is true, records streak. */
+  skipPhase: (completedNaturally?: boolean) => PomodoroTickResult;
   /** Select preset timer mode ('25_5', '50_10', 'CUSTOM') */
   setMode: (mode: PomodoroMode) => void;
   /** Update custom timer durations */
   setCustomDurations: (durations: Partial<PomodoroDurations>) => void;
   /** Update user preferences */
   setPreferences: (preferences: Partial<PomodoroPreferences>) => void;
-  /** Advance the countdown by 1 second. Evaluates phase completion triggers. */
-  tick: () => PomodoroTickResult;
+  /** Advance the countdown by deltaSeconds (default = 1). Evaluates phase completion triggers. */
+  tick: (deltaSeconds?: number) => PomodoroTickResult;
   /** Reset today's daily streak statistics */
   resetStreak: () => void;
   /** Reset entire Pomodoro store to default values */
@@ -232,7 +232,7 @@ export const usePomodoroStore = create<PomodoroStoreState>()(
       }));
     },
 
-    skipPhase: () => {
+    skipPhase: (completedNaturally = false) => {
       const state = get();
       const prevPhase = state.phase;
       let nextPhase: PomodoroPhase = 'FOCUS';
@@ -246,14 +246,18 @@ export const usePomodoroStore = create<PomodoroStoreState>()(
       }
 
       if (prevPhase === 'FOCUS') {
-        nextCompleted += 1;
-        const focusDurationMinutes = Math.round(state.totalSeconds / 60);
-        streak.completedCycles += 1;
-        streak.totalFocusMinutes += focusDurationMinutes;
+        // Accumulate focus streak and minutes only if completed naturally via timer countdown
+        if (completedNaturally) {
+          nextCompleted += 1;
+          const focusDurationMinutes = Math.round(state.totalSeconds / 60);
+          streak.completedCycles += 1;
+          streak.totalFocusMinutes += focusDurationMinutes;
+        }
 
         if (state.currentCycle >= CYCLES_UNTIL_LONG_BREAK) {
           nextPhase = 'LONG_BREAK';
-          nextCycle = 1;
+          // Maintain cycle 4 so UI modals display all 4 dots completed during long break
+          nextCycle = 4;
         } else {
           nextPhase = 'SHORT_BREAK';
           nextCycle = state.currentCycle + 1;
@@ -261,6 +265,13 @@ export const usePomodoroStore = create<PomodoroStoreState>()(
       } else {
         // From SHORT_BREAK or LONG_BREAK -> Next is FOCUS
         nextPhase = 'FOCUS';
+        if (prevPhase === 'LONG_BREAK') {
+          // Reset cycle loop back to 1 when finishing long break
+          nextCycle = 1;
+        } else {
+          // Maintain current cycle across short break
+          nextCycle = state.currentCycle;
+        }
       }
 
       const nextDuration = getPhaseDuration(
@@ -363,19 +374,21 @@ export const usePomodoroStore = create<PomodoroStoreState>()(
       });
     },
 
-    tick: () => {
+    tick: (deltaSeconds = 1) => {
       const state = get();
       if (state.status !== 'RUNNING') {
         return { phaseEnded: false };
       }
 
-      if (state.remainingSeconds > 1) {
-        set((s) => ({ remainingSeconds: s.remainingSeconds - 1 }));
+      const delta = Math.max(1, Math.floor(deltaSeconds));
+
+      if (state.remainingSeconds > delta) {
+        set((s) => ({ remainingSeconds: s.remainingSeconds - delta }));
         return { phaseEnded: false };
       }
 
-      // Remaining seconds reached 0 -> Complete current phase and transition
-      return get().skipPhase();
+      // Remaining seconds <= delta (Sleep or natural expiry) -> End phase and transition naturally
+      return get().skipPhase(true);
     },
 
     resetStreak: () => {
